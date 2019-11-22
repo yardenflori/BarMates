@@ -26,14 +26,8 @@ html, body {
         height: 100%;
         z-index: 1;
         opacity: 0.35;
-        background-image: url('../images/smart_match_background.jpg');
-        /*background-image: url('../images/login_background_img_cover_1.jpg');*/
-        background-image: url('../images/login_background_img_cover_2.jpg');
-        /*optional cover photos for login screen - not so good*/
-        /*====================================================*/
-        /*background-image: url('../images/login_background_img_cover_3.jpg');*/
-        /*background-image: url('../images/login_background_img_cover_4.jpg');*/
-        /*background-image: url('../images/login_background_img_cover_5.jpg');*/
+        background-image: url('../images/bar.jpg');
+        
         background-repeat: no-repeat;
         background-position: 50% 0;
         background-size: cover;
