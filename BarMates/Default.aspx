@@ -32,9 +32,6 @@
                         <i class="material-icons">visibility_off</i>
                     </a>
                 </div>
-                <div class="row capslock">
-                    <span class="status_key_board"></span>
-                </div>
                 <div class="row login_submit_btn">
                     <a onclick="loginClick()" class="btn waves-effect waves-light btn-large" name="submit">כניסה</a>
                 </div>
@@ -42,5 +39,7 @@
         </form>
     </section>
 </body>
+<script src="js/jquery-1.11.3.js"></script>
 <script src="js/materialize.min.js"></script>
+<script src="js/login.js"></script>
 </html>
