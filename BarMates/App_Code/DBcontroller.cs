@@ -100,18 +100,18 @@ public static class DBController
         }
         return foundDBValues;
     }
-    public static int GetUserID()
+    public static string GetUserName()
     {
-        int user_id;
+        string userName = null;
         try
         {
-            user_id = int.Parse(HttpContext.Current.Session["user_id"].ToString());
+            userName = HttpContext.Current.Session["userName"].ToString();
         }
         catch
         {
-            user_id = -1;
+            userName = null;
         }
-        return user_id;
+        return userName;
     }
 
 }

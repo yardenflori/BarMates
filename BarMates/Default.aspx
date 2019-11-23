@@ -7,6 +7,7 @@
     <title></title>
     <link href="css/materialize.min.css" rel="stylesheet" />
     <link href="css/Login.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="main_login login_form">
     <section>

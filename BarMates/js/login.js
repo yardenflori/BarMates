@@ -81,3 +81,16 @@ function clearInputs() {
         $(this).val('');
     });
 }
+
+//On hide password button click
+$('#hidePassword').click(function () {
+    $(this).addClass("hide-icon");
+    $('#showPassword').removeClass("hide-icon");
+    $('#password').attr("type", "password")
+});
+//On show password button click
+$('#showPassword').click(function () {
+    $(this).addClass("hide-icon");
+    $('#hidePassword').removeClass("hide-icon");
+    $('#password').attr("type", "text")
+});
