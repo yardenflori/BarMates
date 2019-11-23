@@ -36,6 +36,9 @@
                 <div class="row login_submit_btn">
                     <a onclick="loginClick()" class="btn waves-effect waves-light btn-large" name="submit">כניסה</a>
                 </div>
+                <div class="row reset_div">
+                    <a>הוספת משתמש חדש</a>
+                </div>
             </fieldset>
         </form>
     </section>
