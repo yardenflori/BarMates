@@ -32,32 +32,34 @@ function showError(error) {
 }
 
 function ajaxLogin() {
-    var formData = new FormData()
-    getLoginDetails(formData);
-
+    var userJson = new Object();
+    userJson.userName = document.getElementById('username').value;
+    userJson.password = document.getElementById('password').value;
+    userJson = JSON.stringify(userJson);
+    var user = JSON.stringify({ 'userDetailsString': userJson });
     $.ajax({
-        url: 'Default.aspx',
-        type: 'POST',
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function (res) {
-            if (res.loginredirectTo != "") {
-                redirectAfterLogin(res.loginredirectTo)
+        type: "POST",
+        url: 'Default.aspx/Login',
+        contentType: "application/json; charset=utf-8",
+        data: user,
+        dataType: "json",
+        success: function (data) {
+            clearInputs();
+            if (data.d == false) {
+                showError('אחד הנתונים שהוזן שגוי');
             }
             else {
-                showError('חלה שגיאה');
+                window.location.href = 'Homepage.aspx';
             }
-
         },
+        error: function (errMsg) {
+            showError('חלה שגיאה');
+            clearInputs();
+        }
     });
 }
 
-function getLoginDetails(formData) {
-    formData.append('username', document.getElementById('username').value);
-    formData.append('password', document.getElementById('password').value);
-}
+
 
 
 function redirectAfterLogin(redirectTo) {
