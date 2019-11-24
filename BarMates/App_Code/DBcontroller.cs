@@ -8,110 +8,115 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Web;
 
-public static class DBController
+namespace BarMates
 {
-    public static SqlConnection GetConnection()
+    public static class DBController
     {
-        SqlConnectionStringBuilder sqlString = new SqlConnectionStringBuilder();
-        sqlString.ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
-        SqlConnection connection = null;
+        public static SqlConnection GetConnection()
+        {
+            SqlConnectionStringBuilder sqlString = new SqlConnectionStringBuilder();
+            sqlString.ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
+            SqlConnection connection = null;
 
-        try
-        {
-            connection = new SqlConnection(sqlString.ConnectionString);
-            connection.Open();
-        }
-        catch (Exception e)
-        {
-            Debug.WriteLine(e.Message);
-            connection.Close();
-        }
-        return connection;
-    }
-
-    public static bool ExecuteStoredProcedure_InsertOrUpdateOrDelete(string procedureName, List<SqlParameter> parameters)
-    {
-        //init
-        SqlConnection connection = GetConnection();
-        bool isSucceeded = false;
-        SqlCommand sqlCmd = new SqlCommand(procedureName, connection);
-        sqlCmd.CommandType = CommandType.StoredProcedure;
-
-        //get parameters
-        foreach (var param in parameters)
-        {
-            sqlCmd.Parameters.Add(param);
-        }
-        //exec sp
-        try
-        {
-            int affectedRows = sqlCmd.ExecuteNonQuery();
-            if (affectedRows <= 0)
+            try
             {
-                isSucceeded = false;
+                connection = new SqlConnection(sqlString.ConnectionString);
+                connection.Open();
             }
-            else
+            catch (Exception e)
             {
-                isSucceeded = true;
+                Debug.WriteLine(e.Message);
+                connection.Close();
             }
+            return connection;
         }
-        catch (Exception e)
-        {
-            Debug.WriteLine(e.Message);
-            isSucceeded = false;
-        }
-        finally
-        {
-            connection.Close();
-        }
-        return isSucceeded;
-    }
-    public static ArrayList ExecuteStoredProcedure_Select(string procedureName, List<SqlParameter> parameters)
-    {
-        //init
-        SqlConnection connection = GetConnection();
-        ArrayList foundDBValues = new ArrayList();
-        SqlCommand sqlCmd = new SqlCommand(procedureName, connection);
-        sqlCmd.CommandType = CommandType.StoredProcedure;
 
-        //get parameters
-        foreach (SqlParameter param in parameters)
+        public static bool ExecuteStoredProcedure_InsertOrUpdateOrDelete(string procedureName, List<SqlParameter> parameters)
         {
-            sqlCmd.Parameters.Add(param);
-        }
-        try
-        {
-            SqlDataReader reader = sqlCmd.ExecuteReader();
-            if (reader.HasRows)
+            //init
+            SqlConnection connection = GetConnection();
+            bool isSucceeded = false;
+            SqlCommand sqlCmd = new SqlCommand(procedureName, connection);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+
+            //get parameters
+            foreach (var param in parameters)
             {
-                foreach (DbDataRecord r in reader)
+                sqlCmd.Parameters.Add(param);
+            }
+            //exec sp
+            try
+            {
+                int affectedRows = sqlCmd.ExecuteNonQuery();
+                if (affectedRows <= 0)
                 {
-                    foundDBValues.Add(r);
+                    isSucceeded = false;
+                }
+                else
+                {
+                    isSucceeded = true;
                 }
             }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                isSucceeded = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isSucceeded;
         }
-        catch (Exception e)
+        public static ArrayList ExecuteStoredProcedure_Select(string procedureName, List<SqlParameter> parameters)
         {
-            Debug.WriteLine(e.Message);
+            //init
+            SqlConnection connection = GetConnection();
+            ArrayList foundDBValues = new ArrayList();
+            SqlCommand sqlCmd = new SqlCommand(procedureName, connection);
+            sqlCmd.CommandType = CommandType.StoredProcedure;
+
+            //get parameters
+            foreach (SqlParameter param in parameters)
+            {
+                sqlCmd.Parameters.Add(param);
+            }
+            try
+            {
+                SqlDataReader reader = sqlCmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    foreach (DbDataRecord r in reader)
+                    {
+                        foundDBValues.Add(r);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return foundDBValues;
         }
-        finally
+        public static string GetUserName()
         {
-            connection.Close();
+            string userName = null;
+            try
+            {
+                userName = HttpContext.Current.Session["userName"].ToString();
+            }
+            catch
+            {
+                userName = null;
+            }
+            return userName;
         }
-        return foundDBValues;
-    }
-    public static string GetUserName()
-    {
-        string userName = null;
-        try
-        {
-            userName = HttpContext.Current.Session["userName"].ToString();
-        }
-        catch
-        {
-            userName = null;
-        }
-        return userName;
+
     }
 
 }
+
