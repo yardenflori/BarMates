@@ -8,14 +8,14 @@ public class Engine
 {
     User User { set; get; }
     List<User> Users { set; get; }
-    
+    List<Bar> Bars { get; set; }
     public Engine()
 	{
         InitUser();
         if(User.UserName!=null)
         {
             InitUsers();
-
+            InitBars();
         }
     }
 
@@ -59,12 +59,37 @@ public class Engine
         }
     }
 
-    public static void UpdateUserFields(User i_user, DbDataRecord i_data)
+    public static void UpdateUserFields(User user, DbDataRecord data)
     {
-        i_user.UserId = int.Parse(i_data["userId"].ToString());
-        i_user.UserName = i_data["userName"].ToString();
+        user.UserId = int.Parse(data["userId"].ToString());
+        user.UserName = data["userName"].ToString();
         //should add here all the user fields that came back from DB
     }
 
-    
+    public void InitBars()
+    {
+        Bars = new List<Bar>();
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        //stored procedure sp_get_all_bars should be built in DB
+        var barsDB = DBController.ExecuteStoredProcedure_Select("sp_get_all_bars", parameters);
+        if (barsDB.Count > 0)
+        {
+            foreach (DbDataRecord currentItem in barsDB)
+            {
+                Bar newBar = new Bar();
+                UpdateBarFields(newBar, currentItem);
+                Bars.Add(newBar);
+            }
+        }
+    }
+
+    public void UpdateBarFields(Bar bar, DbDataRecord data)
+    {
+        bar.BarId = int.Parse(data["barId"].ToString());
+        bar.BarName = data["barName"].ToString();
+        //should add here all the user fields that came back from DB
+    }
+
+
+
 }
