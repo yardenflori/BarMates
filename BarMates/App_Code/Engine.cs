@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.SqlClient;
 using BarMates;
 
 public class Engine
@@ -9,15 +12,15 @@ public class Engine
     public Engine()
 	{
         InitUser();
-        if(user.username!=null)
+        if(user.userName!=null)
         {
             InitUsers();
         }
     }
 
-    public static void InitUser()
+    public void InitUser()
     {
-        string username = DBcontroller.GetUserName();
+        string username = DBController.GetUserName();
         if (username!=null)
         {
             user = new User();
@@ -36,7 +39,7 @@ public class Engine
         }
     }
 
-    public static void InitUsers()
+    public void InitUsers()
     {
         users = new List<User>();
         List<SqlParameter> parameters = new List<SqlParameter>();
@@ -44,13 +47,13 @@ public class Engine
         //stored procedure sp_get_all_other_users should be built in DB
         var usersDB = DBController.ExecuteStoredProcedure_Select("sp_get_all_other_users", parameters);
 
-        if (userDB.Count > 0)
+        if (usersDB.Count > 0)
         {
-            foreach (DbDataRecord currentItem in userDB)
+            foreach (DbDataRecord currentItem in usersDB)
             {
                 User new_user = new User();
                 UpdateUserFields(new_user, currentItem);
-                users.add(new_user);
+                users.Add(new_user);
             }
         }
     }
