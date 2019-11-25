@@ -8,6 +8,7 @@ public class Engine
 {
     User user { set; get; }
     List<User> users { set; get; }
+    List<KeyValuePair<User, List<KeyValuePair<string, bool>>>> interests_and_user_matrix { set; get; }
 
     public Engine()
 	{
@@ -15,6 +16,7 @@ public class Engine
         if(user.userName!=null)
         {
             InitUsers();
+
         }
     }
 
@@ -65,5 +67,9 @@ public class Engine
         //should add here all the user fields that came back from DB
     }
 
-
+    public void Init_interests_and_user_matrix()
+    {
+        interests_and_user_matrix = new List<KeyValuePair<User, List<KeyValuePair<string, bool>>>>();
+        
+    }
 }
