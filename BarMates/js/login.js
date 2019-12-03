@@ -60,21 +60,6 @@ function ajaxLogin() {
 }
 
 
-
-
-function redirectAfterLogin(redirectTo) {
-    if (redirectTo == 'Homepage') {
-        clearInputs();
-        window.location.href = "Homepage.aspx";
-    }
-    
-    else if (redirectTo == 'incorrectDetails') {
-        clearInputs();
-        showError("שם משתמש או סיסמה שגויים. נותרו " + loginAttemtLeft + " נסיונות התחברות.");
-    }
-}
-
-
 function clearInputs() {
     //clean inputs
     $('#general_form').find('input').each(function () {

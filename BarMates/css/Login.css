@@ -55,6 +55,38 @@ html, body {
             min-height: 320px;
         }
 
+::-webkit-scrollbar {
+    width: 6px;
+    -webkit-appearance: none;
+}
+
+    ::-webkit-scrollbar:horizontal {
+        height: 6px;
+        -webkit-appearance: none;
+    }
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+    ::-webkit-scrollbar-track:horizontal {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+    }
+
+::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: #ececec;
+    -webkit-box-shadow: inset 0 0 6px black;
+}
+
+    ::-webkit-scrollbar-thumb:horizontal {
+        border-radius: 12px;
+        background: #ececec;
+        -webkit-box-shadow: inset 0 0 6px black;
+    }
+
 input:not([type]):focus:not([readonly]),
 input[type=text]:focus:not([readonly]),
 input[type=password]:focus:not([readonly]),
@@ -300,4 +332,17 @@ a {
     }
 #recoverPassword_fieldset .login_submit_btn a, #recoverUserName_fieldset .login_submit_btn a {
     width: 49%;
+}
+.row .col {
+    float: right;
+}
+span{
+    text-align:right;
+}
+ul:not(.browser-default){
+    padding-right:0;
+}
+.select-wrapper .caret {
+    left: 0 !important;
+    right: auto !important;
 }
