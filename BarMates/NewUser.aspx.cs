@@ -48,7 +48,7 @@ public partial class NewUser : System.Web.UI.Page
                 if (dataDB.Count > 0)
                 {
                     return "usernameAlreadyExists";
-
+                    //test for pulling
                 }
 
                 returnVal = "Homepage";
