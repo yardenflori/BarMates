@@ -61,9 +61,6 @@ public partial class NewUser : System.Web.UI.Page
     public static string RegisterInDB(string user_name, string password, string age) 
     {
         string userName = null;
-        //לבדוק ששם המשתמש תקין מבחינת תווים
-        // לבדוק שהסיסמה תקינה מבחינת תווים
-        // לבדוק ששם המשתמש לא קיים כבר בDB
 
         if(user_name.Length<6 || password.Length<6)
         {
