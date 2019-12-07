@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -35,29 +36,24 @@ public partial class NewUser : System.Web.UI.Page
             string userName =RegisterInDB(userDetails["userName"].ToString(), userDetails["password"].ToString(),userDetails["age"].ToString());
             if (userName == null)
             {
-                //אם שם המשתמש והסיסמה לא תקינים מבחינת תווים אז להחזיר iLlegal
-                //אם שם המשתמש קיים כבר במערכת אז להחזירusernameAlreadyExists
-                if(userDetails["userName"].ToString().Length>0)
-                {
-                    List<SqlParameter> parameters = new List<SqlParameter>();
-                    parameters.Add(new SqlParameter("user_name", userDetails["userName"].ToString()));
-
-                    var dataDB = DBController.ExecuteStoredProcedure_Select("sp_check_for_existing_user", parameters);
-                    if (dataDB.Count > 0)
-                    {
-                        return "usernameAlreadyExists";
-                    }
-                }
-                else
-                {
-                    return "iLlegal";
-                }
+                return "iLlegal";
             }
+
             else
             {
+                List<SqlParameter> parameters = new List<SqlParameter>();
+                parameters.Add(new SqlParameter("user_name", userDetails["userName"].ToString()));
+
+                var dataDB = DBController.ExecuteStoredProcedure_Select("sp_check_for_existing_user", parameters);
+                if (dataDB.Count > 0)
+                {
+                    return "usernameAlreadyExists";
+                }
+
                 returnVal = "Homepage";
                 HttpContext.Current.Session["userName"] = userName;
 
+                DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_user", parameters);
             }
         }
         return returnVal;
@@ -69,7 +65,7 @@ public partial class NewUser : System.Web.UI.Page
         // לבדוק שהסיסמה תקינה מבחינת תווים
         // לבדוק ששם המשתמש לא קיים כבר בDB
 
-        if(user_name.Length<5 || password.Length<5)
+        if(user_name.Length<6 || password.Length<6)
         {
             return userName;
         }
