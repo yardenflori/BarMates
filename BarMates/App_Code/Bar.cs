@@ -14,7 +14,18 @@ public class Bar
     public Atmosphere<bool> Atmosphere { get; set; }
     public Company<bool> Company { get; set; }
     public Music<bool> Music { get; set; }
-    public int[] BarCharacteristics { get; set; }
+    public int[] BarCharacteristics
+    {
+        get
+        {
+            CalculateBarCharacteristics();
+            return BarCharacteristics;
+        }
+        set
+        {
+
+        }
+    }
     public Bar()
 	{
         BarCharacteristics = new int[44];
