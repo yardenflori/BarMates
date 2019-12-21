@@ -1,0 +1,32 @@
+﻿main {
+    height: calc(100% - 100px);
+}
+    .main.card{
+        height:100%;
+        overflow-y:auto
+    }
+.carousel {
+    height: calc(100% - 70px);
+}
+.carousel .carousel-item {
+    width: 800px;
+    height: 800px;
+    padding: 0;
+}
+.card .card-image .card-title {
+    right: 0;
+    font-size: 64px;
+}
+.main_title {
+    font-size: 36px;
+    color: #474e53;
+    padding: 10px;
+    height: 70px;
+}
+.card-action a{
+    color: #166678!important;
+    cursor: pointer;
+}
+    .card-action a:hover {
+        color: #8bb3bc !important;
+    }

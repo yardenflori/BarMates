@@ -100,8 +100,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]),
 input[type=search]:focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #e21372 !important;
-    box-shadow: 0 1px 0 0 #e21372 !important;
+    border-bottom: 1px solid #166678!important;
+    box-shadow: 0 1px 0 0 #166678!important;
 }
 
     input:not([type]):focus:not([readonly]) + label,
@@ -160,13 +160,14 @@ span.helper-text {
 }
 
     .login_submit_btn a {
-        background-color: #e21372;
+        background-color: #166678;
         font-size: 1.2rem;
         width: 50%;
     }
 
         .login_submit_btn a:hover {
-            background-color: #ef4c97;
+            background-color: #166678;
+            opacity: 0.5;
         }
 
 .forgot_password_btn {
@@ -262,7 +263,7 @@ body.main_login footer {
 }
 .capslock {
     text-align: center !important;
-    color: #e21372 !important;
+    color: #166678!important;
     height: 22px;
 }
 
@@ -345,4 +346,13 @@ ul:not(.browser-default){
 .select-wrapper .caret {
     left: 0 !important;
     right: auto !important;
+}
+#login_fieldset{
+    text-align: center;
+}
+#login_logo {
+    height: 100px;
+}
+.row .col.s4{
+    padding-right:0;
 }

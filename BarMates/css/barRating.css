@@ -1,0 +1,68 @@
+﻿
+#bar_autocomplete_div {
+    min-width: 500px;
+    width: 33.33%;
+    margin: 20px auto;
+    float: none;
+}
+.table-of-contents a {
+    padding-right: 14px;
+    padding-left: 0px;
+}
+.table-of-contents a:hover {
+    border-right: 2px solid #166678;
+    border-left:none;
+}
+.table-of-contents a.active {
+    border-right: 2px solid #166678;
+    border-left: none;
+}
+@media only screen and (min-width: 993px) {
+.row .col.l2 {
+    width: auto;
+}
+}
+
+@media only screen and (min-width: 601px) {
+.row .col.m3 {
+    width: auto;
+
+}
+}
+.main_content {
+    padding: 0 20px;
+}
+.criterion_title {
+    color: #166678;
+    font-size: 36px;
+}
+.criterion_title i{
+    color: #166678;
+    font-size: 36px;
+}
+.criterion_information .row {
+    padding: 0 10px;
+}
+.criterion_information .col {
+    float: right;
+}
+.criterion_information .row:hover{
+    background-color: rgba(0,0,0,0.05)
+}
+.options{
+    display:none;
+}
+.footer{
+    text-align:center
+
+}
+.pinned {
+    position: fixed !important;
+    left: 0 !important;
+}
+.mainCriterion{
+    padding-top:10px;
+}
+#myDIV{
+    float:right;
+}

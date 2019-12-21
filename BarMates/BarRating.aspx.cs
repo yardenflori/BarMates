@@ -1,5 +1,6 @@
 ﻿using BarMates;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Homepage : System.Web.UI.Page
+public partial class BarRating : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,15 +17,13 @@ public partial class Homepage : System.Web.UI.Page
         {
             Response.Redirect("Default.aspx");
         }
-
     }
     [WebMethod]
-    public static string GetUserBars()
+    public static string GetBars()
     {
-        //צריך להחזיר את רשימת הברים המומלצים של היוזר
+        //צריך לשלוף את רשימת הברים מהDB
         string[] bars = { "סעידה בפארק", "מזג", "ברוני" };
 
         return JsonConvert.SerializeObject(bars);
     }
-
 }

@@ -18,7 +18,7 @@ public partial class _Default : System.Web.UI.Page
 
     }
     [WebMethod]
-    public static bool Login (string userDetailsString)
+    public static bool Login(string userDetailsString)
     {
         bool isSucceeded = true;
         JObject userDetails = null;

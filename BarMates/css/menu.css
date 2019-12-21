@@ -1,0 +1,340 @@
+﻿html, body {
+    direction: rtl;
+    font-family: 'Assistant', Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    background-color: #d8d7c3;
+    padding: 0;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 20px;
+    line-height: 1.4rem;
+    /*overflow-x: hidden;*/
+    -webkit-font-smoothing: antialiased;
+}
+header{
+    height:100px;
+}
+/*------scrollbar------*/
+::-webkit-scrollbar {
+    width: 6px;
+    -webkit-appearance: none;
+}
+
+    ::-webkit-scrollbar:horizontal {
+        height: 6px;
+        -webkit-appearance: none;
+    }
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+    ::-webkit-scrollbar-track:horizontal {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+    }
+
+::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: #ececec;
+    -webkit-box-shadow: inset 0 0 6px black;
+}
+
+    ::-webkit-scrollbar-thumb:horizontal {
+        border-radius: 12px;
+        background: #ececec;
+        -webkit-box-shadow: inset 0 0 6px black;
+    }
+
+/*-------------------------------------toolbar----------------------------*/
+#toolbar {
+    display: inline-flex;
+    width: 100%;
+    background: #166678;
+    color: #fff;
+    font-size: 17px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    height: 100px;
+    text-align: right;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+    #toolbar a {
+        color: #fff;
+        text-align: right;
+        cursor: pointer;
+        margin-top: 0 !important;
+        padding: 24px;
+        font-size: 22px;
+        margin: 0px;
+        display: block;
+    }
+
+        #toolbar a:hover {
+            background-color: rgba(0,0,0,0.1);
+            color: #d8d7c3;
+            
+        }
+        #toolbar a.active {
+            background-color: rgba(0,0,0,0.1);
+            color: #d8d7c3;
+        }
+
+.topnav {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    background: #166678;
+    height: 0px;
+    overflow: hidden;
+    transition: .2s height ease;
+    will-change: height;
+}
+
+    .topnav.active {
+        height: max-content;
+    }
+
+.topnav_inner {
+    display: flex;
+    flex-direction: column;
+}
+
+#toolbar a#iconnav {
+    padding: 12px 16px;
+    font-size: 22px;
+    cursor: pointer;
+}
+    #toolbar a#iconnav i {
+        font-size: 55px;
+    }
+
+.logo_wrapper {
+    float: right !important;
+    height: 100px;
+    display: block;
+}
+
+ 
+
+.left_header {
+    float: left !important;
+    text-align: left;
+    margin: auto;
+    display: none;
+    white-space: nowrap;
+}
+
+    .left_header a {
+        cursor: pointer;
+    }
+
+/* Add a black background color to the top navigation */
+.topnav {
+    overflow: hidden;
+    float: right;
+    width: 100%;
+    margin: auto;
+}
+
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: right;
+        display: none;
+        color: #fff;
+        text-align: center;
+        height: 100%;
+        padding: 0 14px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            color: #d8d7c3;
+        }
+
+        .topnav a.icon {
+            float: right;
+            display: block;
+        }
+
+    .topnav.responsive {
+        position: relative;
+    }
+
+        .topnav.responsive a.icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .topnav.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+
+    .topnav a:first-child {
+        margin-top: 50px;
+    }
+.logo_wrapper img {
+    height: 90px;
+    margin: 5px 5px 5px 0;
+    padding: 5px 5px 0 5px;
+}
+@media screen and (min-width: 1024px) {
+
+    .topnav a {
+        float: right;
+        display: block;
+    }
+
+    .topnav .icon {
+        display: none !important;
+    }
+
+    .logo_wrapper {
+        display: block;
+    }
+
+    .left_header {
+        display: block;
+    }
+
+    .topnav a:first-child {
+        margin-top: 0;
+    }
+
+  
+
+    #toolbar a {
+        font-size: 22px;
+    }
+
+        #toolbar a#iconnav {
+            display: none;
+        }
+          
+            #toolbar {
+                display: flex;
+                flex-direction: row;
+                padding: 12px 0;
+            }
+
+    .topnav {
+        position: static;
+        position: unset;
+        height: 100%;
+        background: none;
+    }
+
+    .topnav_inner {
+        flex-direction: row;
+        padding: 0px;
+        height: 100%;
+    }
+    .logo_wrapper img {
+        
+        border-left: 1px solid white;
+    }
+
+}
+main {
+    padding: 15px;
+}
+    main .card {
+        padding: 15px;
+        margin: 0;
+    }
+.input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
+    margin-left: 0;
+    margin-right: 3rem;
+}
+.input-field .prefix ~ label {
+    margin-left: 0rem;
+    margin-right: 3rem;
+}
+input:not([type]):focus:not([readonly]),
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]),
+input[type=url]:focus:not([readonly]),
+input[type=time]:focus:not([readonly]),
+input[type=date]:focus:not([readonly]),
+input[type=datetime]:focus:not([readonly]),
+input[type=datetime-local]:focus:not([readonly]),
+input[type=tel]:focus:not([readonly]),
+input[type=number]:focus:not([readonly]),
+input[type=search]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #166678 !important;
+    box-shadow: 0 1px 0 0 #166678 !important;
+    color: #166678 !important;
+}
+.input-field .prefix.active {
+    color: #166678 !important;
+}
+    input:not([type]):focus:not([readonly]) + label,
+    input[type=text]:focus:not([readonly]) + label,
+    input[type=password]:focus:not([readonly]) + label,
+    input[type=email]:focus:not([readonly]) + label,
+    input[type=url]:focus:not([readonly]) + label,
+    input[type=time]:focus:not([readonly]) + label,
+    input[type=date]:focus:not([readonly]) + label,
+    input[type=datetime]:focus:not([readonly]) + label,
+    input[type=datetime-local]:focus:not([readonly]) + label,
+    input[type=tel]:focus:not([readonly]) + label,
+    input[type=number]:focus:not([readonly]) + label,
+    input[type=search]:focus:not([readonly]) + label,
+    textarea.materialize-textarea:focus:not([readonly]) + label {
+        color: #000 !important;
+    }
+.input-field > label:not(.label-icon).active {
+    font-size: .8rem;
+    transform: translateY(-100%);
+}
+
+.input-field > input[type]:-webkit-autofill:not(.browser-default):not([type="search"]) + label {
+    font-size: .8rem;
+    transform: translateY(-100%);
+}
+.dropdown-content li{
+    text-align:right;
+}
+    .dropdown-content li > a, .dropdown-content li > span {
+        color: #166678;
+    }
+    #bar_autocomplete_div ul {
+        padding-right: 0;
+    }
+[type="checkbox"] + span:not(.lever){
+    padding-right:35px;
+}
+    [type="checkbox"] + span:not(.lever):before, [type="checkbox"]:not(.filled-in) + span:not(.lever):after{
+        right:0;
+    }
+[type="radio"]:not(:checked) + span, [type="radio"]:checked + span {
+    padding-right: 35px;
+}
+[type="radio"] + span:before, [type="radio"] + span:after {
+    right: 0;
+}
+a.btn {
+    background-color: #166678;
+}
+    a.btn:hover {
+        background-color: #166678;
+        opacity: 0.5;
+    }
