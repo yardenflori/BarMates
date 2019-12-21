@@ -61,4 +61,10 @@ public partial class _Default : System.Web.UI.Page
         }
         return userName;
     }
+    [WebMethod]
+    public static void Logout()
+    {
+        HttpContext.Current.Session["userName"] = null;
+
+    }
 }

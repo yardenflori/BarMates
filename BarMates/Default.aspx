@@ -4,7 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+        <link rel="icon" href="images/logo_whiteBackground_withoutBorders.png" type="image/x-icon"/>
+ <title>כניסה למערכת BarMates</title>
     <link href="css/materialize.min.css" rel="stylesheet" />
     <link href="css/Login.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -13,6 +14,7 @@
     <section>
         <form id="general_form">
             <fieldset id="login_fieldset">
+                <img id="login_logo" src="images/logo_whiteBackground.png" />
                 <h1 class="login_form_title">התחברות למערכת BarMates</h1>
                 <div class="row">
                     <div class="input-field">
