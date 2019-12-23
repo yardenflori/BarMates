@@ -13,13 +13,25 @@ public class User
     public Atmosphere<Triple> Atmosphere { get; set; }
     public Company<Triple> Company { get; set; }
     public Music<Triple> Music { get; set; }
-    public double[] InterestsVector { get; set; }
+    public double[] InterestsVector 
+    {
+        get
+        {
+            CalculateInterestsVector();
+            return InterestsVector;
+        }
+
+        set
+        {
+
+        }
+    }
     public User()
     {
         InterestsVector = new double[38];
     }
 
-    public void CalculateInterestsVector()
+    private void CalculateInterestsVector()
     {
         InterestsVector[0] = 1 - (FullService.DontCareCounts / FullService.AllCounts);
         InterestsVector[1] = 1 - (SelfService.DontCareCounts / SelfService.AllCounts);

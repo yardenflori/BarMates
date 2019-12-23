@@ -31,7 +31,7 @@ public class Bar
         BarCharacteristics = new int[44];
 	}
 
-    public void CalculateBarCharacteristics()
+    private void CalculateBarCharacteristics()
     {
         BarCharacteristics[0] = Smoking ? 1 : 0;
         switch(Age)
