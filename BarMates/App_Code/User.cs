@@ -7,7 +7,7 @@ public class User
     public int Age { get; set; }
     public Triple FullService { get; set; }
     public Triple SelfService { get; set; }
-    public Triple Smoking { get; set; }
+    public Triple SmokingFree { get; set; }
     public Food<Triple> Food { get; set; }
     public Drinks<Triple> Drink { get; set; }
     public Atmosphere<Triple> Atmosphere { get; set; }
