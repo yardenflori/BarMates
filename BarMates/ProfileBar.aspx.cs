@@ -24,7 +24,7 @@ public partial class ProfileBar : System.Web.UI.Page
         bar.BarId = 1;
         bar.BarName = "סעידה בפארק";
         bar.Address = "שמואל הנגיד 5 ,חולון";
-        bar.Smoking = true;
+        bar.SmokingFree = true;
         bar.Age = Age.EighteenPlus;
         bar.Price = Price.PriceMed;
         bar.Service = Service.FullService;
