@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -25,5 +27,54 @@ public partial class BarRating : System.Web.UI.Page
         string[] bars = { "סעידה בפארק", "מזג", "ברוני" };
 
         return JsonConvert.SerializeObject(bars);
+    }
+
+    public static void InsertNewRatingToDB(Rate rate)
+    {
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        parameters.Add(new SqlParameter("userId", rate.UserId));
+        parameters.Add(new SqlParameter("barId", rate.BarId));
+        parameters.Add(new SqlParameter("age", (int) rate.Age));
+        parameters.Add(new SqlParameter("burgers", rate.Food.Burger));
+        parameters.Add(new SqlParameter("pizza", rate.Food.Pizza));
+        parameters.Add(new SqlParameter("sushi", rate.Food.Sushi));
+        parameters.Add(new SqlParameter("snacks", rate.Food.Snacks));
+        parameters.Add(new SqlParameter("vegan", rate.Food.Vegan));
+        parameters.Add(new SqlParameter("kosher", rate.Food.Kosher));
+        parameters.Add(new SqlParameter("irish", rate.Atmosphere.Irish));
+        parameters.Add(new SqlParameter("beer", rate.Drinks.Beer));
+        parameters.Add(new SqlParameter("wine", rate.Drinks.Wine));
+        parameters.Add(new SqlParameter("cocktail", rate.Drinks.Cocktail));
+        parameters.Add(new SqlParameter("beveragePackages", rate.Drinks.BeveragePackages));
+        parameters.Add(new SqlParameter("gin", rate.Drinks.Jin));
+        parameters.Add(new SqlParameter("whiskey", rate.Drinks.Whiskey));
+        parameters.Add(new SqlParameter("wideRangeOfBeverages", rate.Drinks.WideRangeOfBeverages));
+        parameters.Add(new SqlParameter("chill", rate.Atmosphere.Chill));
+        parameters.Add(new SqlParameter("dance", rate.Atmosphere.Dance));
+        parameters.Add(new SqlParameter("sport", rate.Atmosphere.Sport));
+        parameters.Add(new SqlParameter("shisha", rate.Atmosphere.Shisha));
+        parameters.Add(new SqlParameter("party", rate.Atmosphere.Party));
+        parameters.Add(new SqlParameter("smokingFree", rate.SmokingFree));
+        parameters.Add(new SqlParameter("dating", rate.Company.Dating));
+        parameters.Add(new SqlParameter("friends", rate.Company.Friends));
+        parameters.Add(new SqlParameter("kidsFriendly", rate.Company.KidsFriendly));
+        parameters.Add(new SqlParameter("petsFriendly", rate.Company.PetsFriendly));
+        parameters.Add(new SqlParameter("colleagues", rate.Company.Colleagues));
+        parameters.Add(new SqlParameter("pop", rate.Music.Pop));
+        parameters.Add(new SqlParameter("jazz", rate.Music.Jazz));
+        parameters.Add(new SqlParameter("mizrahit", rate.Music.Mizrahit));
+        parameters.Add(new SqlParameter("greek", rate.Music.Greek));
+        parameters.Add(new SqlParameter("trance", rate.Music.Trance));
+        parameters.Add(new SqlParameter("mainstream", rate.Music.Mainstream));
+        parameters.Add(new SqlParameter("israeli", rate.Music.Israeli));
+        parameters.Add(new SqlParameter("liveMusic", rate.Music.LiveMusic));
+        parameters.Add(new SqlParameter("reggaeton", rate.Music.Reggaeton));
+        parameters.Add(new SqlParameter("openMic", rate.Music.OpenMic));
+        parameters.Add(new SqlParameter("standup", rate.Music.StandUp));
+        parameters.Add(new SqlParameter("fullService", rate.FullService));
+        parameters.Add(new SqlParameter("selfService", rate.SelfService));
+        parameters.Add(new SqlParameter("age", (int)rate.Price));
+        DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_rating", parameters);
+
     }
 }

@@ -5,6 +5,8 @@ using System.Web;
 
 public class Rate
 {
+    public int UserId { get; set; }
+    public int BarId { get; set; }
     public Age Age { get; set; }
     public Food<int> Food { get; set; }
     public Drinks<int> Drinks { get; set; }
