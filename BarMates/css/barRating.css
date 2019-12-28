@@ -35,6 +35,7 @@
 .criterion_title {
     color: #166678;
     font-size: 36px;
+    margin:10px 0 !important;
 }
 .criterion_title i{
     color: #166678;
@@ -42,6 +43,7 @@
 }
 .criterion_information .row {
     padding: 0 10px;
+    margin:0;
 }
 .criterion_information .col {
     float: right;
@@ -65,4 +67,7 @@
 }
 #myDIV{
     float:right;
+}
+.col p {
+    margin: 5px 0;
 }

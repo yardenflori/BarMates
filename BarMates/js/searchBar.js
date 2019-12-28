@@ -1,4 +1,4 @@
-﻿var globalBars = [];
+﻿var barList;
 var bar = new Object;
 //regular criterions
 bar.Food = [
@@ -212,12 +212,41 @@ bar.Age.options = [
     }
 ];
 var EnumCriterionsArr = [bar.Price, bar.Service, bar.Age];
-
-//save rate
+function goToProfileBar(barId) {
+    
+}
+//show results
+function showResults() {
+    $('#searchDiv').css('display', 'none');
+    $('#results').css('display', 'block');
+    for (var i = 0; i < barList.length; i++) {
+        buildCarouselItem(barList[i].Key, barList[i].Value);
+    }
+    $('.carousel').carousel();
+}
+function buildCarouselItem(barId, barName) {
+    var divCarouselItem = $('<div class=\"carousel-item card\"></div>');
+    var divCarouselImg = $('<div class=\"card-image\"></div>');
+    var img = $('<img src="images/bar1.jpg" />');
+    var span = $('<span class="card-title"></span>').text(barName);
+    var divCardAction = $('<div class=\"card-action\"></div>');
+    var a = $("<a onclick=\"goToProfileBar('" + barId + "')\">מידע נוסף></a>");
+    divCarouselItem.append(divCarouselImg);
+    divCarouselItem.append(divCardAction);
+    divCarouselImg.append(img);
+    divCarouselImg.append(span);
+    divCardAction.append(a);
+    $('#carousel').append(divCarouselItem);
+}
+function showSearch() {
+    $('#searchDiv').css('display', 'block');
+    $('#results').css('display', 'none');
+}
+//searchBar
 function allDetailsEntered() {
     var error = EnteredRegulaeCriterions();
     if (error == '') {
-        error = EnteredEnumCriterions();        
+        error = EnteredEnumCriterions();
     }
     return error;
 }
@@ -235,7 +264,7 @@ function EnteredRegulaeCriterions() {
             }
         }
     }
-    
+
     return error;
 }
 function EnteredEnumCriterions() {
@@ -251,30 +280,31 @@ function EnteredEnumCriterions() {
     }
     return error;
 }
-function saveRate() {
+function searchBar() {
     var error = allDetailsEntered();
     if (error != "") {
         showError(error);
     }
-    else{
+    else {
         fillRateObject();
-        saveRateInDB();
+        searchBarInDB();
     }
 }
-function saveRateInDB() {
+function searchBarInDB() {
     rate = JSON.stringify({ 'rate': JSON.stringify(rate) });
     $.ajax({
         type: "POST",
-        url: 'BarRating.aspx/SaveRate',
+        url: 'SearchBar.aspx/SearchBars',
         contentType: "application/json; charset=utf-8",
         data: rate,
         dataType: "json",
         success: function (data) {
-            if (data.d == true) {
-                showError('השמירה בוצעה בהצלחה');
+            barList = JSON.parse(data.d);
+            if (barList.length > 0) {
+                showResults();
             }
             else {
-                showError('חלה שגיאה');
+                showError('לא נמצאו תוצאות');
             }
         },
         error: function (errMsg) {
@@ -283,10 +313,9 @@ function saveRateInDB() {
     });
 }
 function fillRateObject() {
-    var userBarChoise = $('#barsAutocomplete').val();
     rate = new Object();
     rate.UserName = '';
-    rate.BarId = userBarChoise.toString().split("-")[0];
+    rate.BarId = 0;
     rate.date = null;
     fillRegularRate(bar.Food, 'Food');
     fillRegularRate(bar.Drinks, 'Drinks');
@@ -324,9 +353,9 @@ function fillRegularRate(criterions, criterionType) {
             userRate = $('input[name="' + criterions[i].id + 'group"]:checked').val();
             if ((-1 <= userRate && userRate <= 1) == false) {
                 userRate = 0;
-            }           
+            }
         }
-        rate[criterionType][criterions[i].id] = parseInt(userRate);        
+        rate[criterionType][criterions[i].id] = parseInt(userRate);
     }
 }
 function fillEnumRate(enumCriterion, criterionType) {
@@ -337,7 +366,7 @@ function fillEnumRate(enumCriterion, criterionType) {
     }
     else {
         userRate = $('input[name="' + criterionType + 'group"]:checked').val();
-    }  
+    }
     rate[criterionType] = userRate;
 }
 //build criterions
@@ -347,12 +376,12 @@ function createCheckBox(criterion) {
     var lable = $('<label></label>');
     var input = $('<input id="' + criterion.id + '" type="checkbox" />')
     var span = $('<span></span>').text(criterion.name);
-   
+
     colDiv.append(p);
     p.append(lable);
     lable.append(input);
     lable.append(span);
-  
+
     rowDiv.append(colDiv);
 }
 function createEnumCriterions(criterion) {
@@ -380,14 +409,14 @@ function createCriterions(criterion) {
         var div2 = $('<div class="col s' + optionWidth + '"></div>');
         var p = $('<p></p>');
         var lable = $('<label></label>');
-        var input = $('<input value="' + (-1+i) + '" name="' + criterion.id+'group" type="radio" />');
+        var input = $('<input value="' + (-1 + i) + '" name="' + criterion.id + 'group" type="radio" />');
         var span = $('<span></span>').text(options[i]);
         div1.append(div2);
         div2.append(p);
         p.append(lable);
         lable.append(input);
         lable.append(span);
-    }   
+    }
 
     rowDiv.append(div1);
 }
@@ -411,21 +440,16 @@ function buildMainCriterion(criterions, criterionType) {
         });
     }
 }
-$('.criterion_information').click(function () {
-    if ($('#Beer').prop("disabled") == true) {
-        showError('יש לבחור בר');
-    }
-});
 function buildEnumCriterion(criterions, criterionType) {
     rowDiv = $('<div class=\"row\"></div>');
     $('#' + criterionType + ' .criterion_information').append(rowDiv);
     createCheckBox(criterions);
     createEnumCriterions(criterions);
-    $('#' + criterions.id ).click(function () {
-            var id = $(this).attr('id');
-            showRadioButtonOptions(id);
-        });
-    
+    $('#' + criterions.id).click(function () {
+        var id = $(this).attr('id');
+        showRadioButtonOptions(id);
+    });
+
 }
 function initCriterions() {
     buildMainCriterion(bar.Drinks, 'drinks');
@@ -437,59 +461,12 @@ function initCriterions() {
     buildEnumCriterion(bar.Price, 'price');
     buildEnumCriterion(bar.Service, 'serv');
     buildEnumCriterion(bar.Age, 'age');
-    $('.main_content input').prop('disabled', true);
-}
-//init bar list
-function initAutocompleteBar() {
-    $.ajax({
-        type: "POST",
-        url: 'BarRating.aspx/GetBars',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-            var barsFromDb = JSON.parse(data.d);
-            globalBars = barsFromDb;
-            var BarsToAutocomplete = [];
-            for (var i = 0; i < barsFromDb.length; i++) {
-                BarsToAutocomplete[barsFromDb[i]] = null;//BarsToAutocomplete["סעידה בפארק"] = null;
-            }
-            $('#barsAutocomplete').autocomplete({
-                data: BarsToAutocomplete,
-                onAutocomplete: showBarCriterions,
-            });
-        },
-        error: function (errMsg) {
-            showError('חלה שגיאה');
-        }
-    });
-    
-}
-function checkIfChoseBar() {
-    var barName = $('#barsAutocomplete').val();
-    if ($.inArray(barName, globalBars) > -1) {
-        $('.main_content input').prop('disabled', false);
-        $('#savebtn').removeClass('disabled');
-    }
-    else {
-        $('.main_content input').prop('disabled', true);
-        $('#savebtn').addClass('disabled');
-
-    }
-}
-function showBarCriterions() {
-    //when user chose bar
-    var barName = $('#barsAutocomplete').val();
-    if ($.inArray(barName, globalBars) > -1) {
-        $('.main_content input').prop('disabled', false);
-        $('#savebtn').removeClass('disabled');
-    }
 }
 //init scrollSpy
 function initScrollSpy() {
-    $('.scrollspy').scrollSpy({ scrollOffset:100});//offset for menu
+    $('.scrollspy').scrollSpy({ scrollOffset: 100 });//offset for menu
 }
 $(document).ready(function () {
-    initAutocompleteBar();
     initScrollSpy();
     initCriterions();
 });

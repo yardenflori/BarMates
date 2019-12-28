@@ -24,24 +24,49 @@ public partial class BarRating : System.Web.UI.Page
     public static string GetBars()
     {
         //צריך לשלוף את רשימת הברים מהDB
-        string[] bars = { "סעידה בפארק", "מזג", "ברוני" };
-
+        //לשים barid ואז מכף ואז שם הבר
+        string[] bars = { "3- סעידה בפארק", "2- מזג", "1- ברוני" };
         return JsonConvert.SerializeObject(bars);
     }
-
-    public static void InsertNewRatingToDB(Rate rate)
+    [WebMethod]
+    public static bool SaveRate(string rate)
     {
+        bool saveSucceeded = true;
+        JObject jsonRate = null;
+        try
+        {
+            jsonRate = JsonConvert.DeserializeObject<JObject>(rate);           
+        }
+        catch
+        {
+            saveSucceeded = false;
+        }
+        if (saveSucceeded)
+        {
+            Rate newRate = Rate.ParseObjectToRate(jsonRate);
+            saveSucceeded = InsertNewRatingToDB(newRate);
+        }
+        return saveSucceeded;
+    }
+    public static bool InsertNewRatingToDB(Rate rate)
+    {
+        bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
-        parameters.Add(new SqlParameter("userId", rate.UserId));
+        parameters.Add(new SqlParameter("userName", rate.UserName));
         parameters.Add(new SqlParameter("barId", rate.BarId));
+        parameters.Add(new SqlParameter("date", rate.date));
+
         parameters.Add(new SqlParameter("age", (int) rate.Age));
+        parameters.Add(new SqlParameter("service", (int)rate.Service));
+        parameters.Add(new SqlParameter("price", (int)rate.Price));
+
         parameters.Add(new SqlParameter("burgers", rate.Food.Burger));
         parameters.Add(new SqlParameter("pizza", rate.Food.Pizza));
         parameters.Add(new SqlParameter("sushi", rate.Food.Sushi));
         parameters.Add(new SqlParameter("snacks", rate.Food.Snacks));
         parameters.Add(new SqlParameter("vegan", rate.Food.Vegan));
         parameters.Add(new SqlParameter("kosher", rate.Food.Kosher));
-        parameters.Add(new SqlParameter("irish", rate.Atmosphere.Irish));
+
         parameters.Add(new SqlParameter("beer", rate.Drinks.Beer));
         parameters.Add(new SqlParameter("wine", rate.Drinks.Wine));
         parameters.Add(new SqlParameter("cocktail", rate.Drinks.Cocktail));
@@ -49,17 +74,22 @@ public partial class BarRating : System.Web.UI.Page
         parameters.Add(new SqlParameter("gin", rate.Drinks.Jin));
         parameters.Add(new SqlParameter("whiskey", rate.Drinks.Whiskey));
         parameters.Add(new SqlParameter("wideRangeOfBeverages", rate.Drinks.WideRangeOfBeverages));
+
+        parameters.Add(new SqlParameter("irish", rate.Atmosphere.Irish));
         parameters.Add(new SqlParameter("chill", rate.Atmosphere.Chill));
         parameters.Add(new SqlParameter("dance", rate.Atmosphere.Dance));
         parameters.Add(new SqlParameter("sport", rate.Atmosphere.Sport));
         parameters.Add(new SqlParameter("shisha", rate.Atmosphere.Shisha));
         parameters.Add(new SqlParameter("party", rate.Atmosphere.Party));
+
         parameters.Add(new SqlParameter("smokingFree", rate.SmokingFree));
+
         parameters.Add(new SqlParameter("dating", rate.Company.Dating));
         parameters.Add(new SqlParameter("friends", rate.Company.Friends));
         parameters.Add(new SqlParameter("kidsFriendly", rate.Company.KidsFriendly));
         parameters.Add(new SqlParameter("petsFriendly", rate.Company.PetsFriendly));
         parameters.Add(new SqlParameter("colleagues", rate.Company.Colleagues));
+
         parameters.Add(new SqlParameter("pop", rate.Music.Pop));
         parameters.Add(new SqlParameter("jazz", rate.Music.Jazz));
         parameters.Add(new SqlParameter("mizrahit", rate.Music.Mizrahit));
@@ -71,10 +101,8 @@ public partial class BarRating : System.Web.UI.Page
         parameters.Add(new SqlParameter("reggaeton", rate.Music.Reggaeton));
         parameters.Add(new SqlParameter("openMic", rate.Music.OpenMic));
         parameters.Add(new SqlParameter("standup", rate.Music.StandUp));
-        parameters.Add(new SqlParameter("fullService", rate.FullService));
-        parameters.Add(new SqlParameter("selfService", rate.SelfService));
-        parameters.Add(new SqlParameter("age", (int)rate.Price));
-        DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_rating", parameters);
 
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_rating", parameters);
+        return insertSucceeded;
     }
 }

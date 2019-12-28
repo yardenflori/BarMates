@@ -203,11 +203,11 @@ public class User
         switch (i)
         {
             //FullService
-            case 0:
-                return rate.FullService;
+           // case 0:
+              //  return rate.FullService;
             //SelfService
-            case 1:
-                return rate.SelfService;
+           // case 1:
+            //    return rate.SelfService;
             //SmokingFree
             case 2:
                 return rate.SmokingFree;

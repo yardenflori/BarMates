@@ -21,10 +21,13 @@ public partial class Homepage : System.Web.UI.Page
     [WebMethod]
     public static string GetUserBars()
     {
-        //צריך להחזיר את רשימת הברים המומלצים של היוזר
-        string[] bars = { "סעידה בפארק", "מזג", "ברוני" };
-
-        return JsonConvert.SerializeObject(bars);
+        //צריך להחזיר את רשימת הברים המומלצים של היוזר )
+        //ת.ז ושם
+        List<KeyValuePair<int, string>> barsList = new List<KeyValuePair<int, string>>();
+        barsList.Add(new KeyValuePair<int, string>(1, "ברוני"));
+        barsList.Add(new KeyValuePair<int, string>(2, "מזג"));
+        barsList.Add(new KeyValuePair<int, string>(3, "סעידה בפארק"));
+        return JsonConvert.SerializeObject(barsList);
     }
 
 }

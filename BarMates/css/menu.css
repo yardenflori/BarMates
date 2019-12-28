@@ -338,3 +338,28 @@ a.btn {
         background-color: #166678;
         opacity: 0.5;
     }
+#toast-container {
+    left: 7%;
+    top: auto;
+    right: auto;
+    bottom: 5%;
+    width: 100%;
+}
+
+.error_toast {
+    background-color: #cc4c4a;
+}
+
+.confirm_toast {
+    background-color: #007a6e;
+}
+
+.neutral_toast {
+    background-color: #3c596b;
+}
+
+.toast .toast-action {
+    color: #fff;
+    margin-left: 0px;
+    padding-left: 0;
+}

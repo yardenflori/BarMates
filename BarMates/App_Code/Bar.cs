@@ -30,8 +30,8 @@ public class Bar
     }
     public Bar()
 	{
-        BarCharacteristics = new int[44];
-	}
+        BarCharacteristics = new int[44];      
+    }
 
     private void CalculateBarCharacteristics()
     {
