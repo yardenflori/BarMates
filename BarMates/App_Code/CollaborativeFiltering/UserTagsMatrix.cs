@@ -8,26 +8,24 @@ public class UserTagsMatrix
         
     }
     
-    public double[][] GetUsersTagsMatrix(List<User> users)
+    private static Matrix GetUsersTagsMatrix(List<User> users)
     {
         int n = users.Count;
-        int len = users[0].InterestsVector.Length;
-        double[][] matrix = new double[n][];
-        for(int i = 0; i <n ; i++)
+        Matrix matrix = new Matrix();
+        matrix.IDS = new int[n];
+        matrix.CharMatrix = new double[n][];
+        for (int i = 0; i <n ; i++)
         {
-            matrix[i] = new double[len + 1];
-            matrix[i][0] = users[i].UserId;
-            for(int j = 1; j < len + 1; j++)
-            {
-                matrix[i][j] = users[i].InterestsVector[j];
-            }
+            matrix.IDS[i] = users[i].UserId;
+            matrix.CharMatrix[i] = users[i].InterestsVector;
         }
         return matrix;
     }
 
-    public Matrix GetSimilarUsers(int numSimilar, User user, Matrix userTagsMatrix)
+    public static List<int> GetSimilarUsers(int numSimilar, User user, List<User> users)
     {
-        Matrix similarUsers = new Matrix();
+        var similarUsers = new List<int>();
+        var userTagsMatrix = GetUsersTagsMatrix(users);
         int n = userTagsMatrix.IDS.Length;
         double[] userDistance = new double[n];
         double tempMax = 0;
@@ -40,8 +38,7 @@ public class UserTagsMatrix
         {
             tempMax = userDistance.Max();
             tempInd = userDistance.ToList().IndexOf(tempMax);
-            similarUsers.IDS[i] = userTagsMatrix.IDS[tempInd];
-            similarUsers.CharMatrix[i] = userTagsMatrix.CharMatrix[tempInd];
+            similarUsers[i] = userTagsMatrix.IDS[tempInd];
             userDistance[tempInd] = -1;
         }
         return similarUsers;

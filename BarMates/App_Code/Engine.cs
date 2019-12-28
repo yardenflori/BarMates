@@ -7,9 +7,9 @@ using System.Collections;
 
 public class Engine
 {
-    User User { set; get; }
-    List<User> Users { set; get; }
-    List<Bar> Bars { get; set; }
+    public User User { set; get; }
+    public List<User> Users { set; get; }
+    public List<Bar> Bars { get; set; }
     public Engine()
 	{
         InitUser();
