@@ -7,5 +7,4 @@ public class Food <T>
         public T Snacks { get; set; }
         public T Vegan { get; set; }
         public T Kosher { get; set; }
-        public T Irish { get; set; }
 }

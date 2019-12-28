@@ -7,11 +7,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
+    
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
@@ -21,17 +17,18 @@
     </style>
   </head>
   <body>
-    <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
+    <script>        
+        const url = 'https://api.foursquare.com/v2/venues/search?client_id=0FKKD0AE1ISLEO0VFRKGFEFMMHZWF21VRS14KQYHOYLQ4ZVA&client_secret=GJRRCIVBBXDZTYDPH4LHCP01JNXC4GNIZYSMXIHNL2A2ZOIB&ll=32.109333, 34.855499&categoryId= 4bf58dd8d48988d116941735&v=20191228';
+        fetch(url)
+            .then(function (data) {
+                var jsonStr = JSON.stringify(data.json);
+                document.body.innerHTML = jsonStr;
+                console.log(data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });   
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc&callback=initMap"
-    async defer></script>
+   
   </body>
 </html>

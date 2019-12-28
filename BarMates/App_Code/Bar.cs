@@ -5,15 +5,17 @@ public class Bar
     public int BarId { get; set; }
     public string BarName { get; set; }
     public string Address { get; set; }
-    public bool Smoking { get; set; }
     public Age Age { get; set; }
-    public Price Price { get; set; }
-    public Service Service { get; set; }
     public Food<bool> Food { get; set; }
     public Drinks<bool> Drink { get; set; }
     public Atmosphere<bool> Atmosphere { get; set; }
+    public bool SmokingFree { get; set; }
     public Company<bool> Company { get; set; }
     public Music<bool> Music { get; set; }
+
+    public Price Price { get; set; }
+    public Service Service { get; set; }
+    
     public int[] BarCharacteristics
     {
         get
@@ -28,12 +30,12 @@ public class Bar
     }
     public Bar()
 	{
-        BarCharacteristics = new int[44];
-	}
+        BarCharacteristics = new int[44];      
+    }
 
-    public void CalculateBarCharacteristics()
+    private void CalculateBarCharacteristics()
     {
-        BarCharacteristics[0] = Smoking ? 1 : 0;
+        BarCharacteristics[0] = SmokingFree ? 1 : 0;
         switch(Age)
         {
             case Age.EighteenPlus:
@@ -68,19 +70,19 @@ public class Bar
                 break;
         }
         BarCharacteristics[9] = Food.Burger ? 1 : 0;
-        BarCharacteristics[10] = Food.Irish ? 1 : 0;
+        BarCharacteristics[10] = Food.Vegan ? 1 : 0;
         BarCharacteristics[11] = Food.Kosher ? 1 : 0;
         BarCharacteristics[12] = Food.Pizza ? 1 : 0;
         BarCharacteristics[13] = Food.Snacks ? 1 : 0;
         BarCharacteristics[14] = Food.Sushi ? 1 : 0;
-        BarCharacteristics[15] = Food.Vegan ? 1 : 0;
+        BarCharacteristics[15] = Drink.WideRangeOfBeverages ? 1 : 0;
         BarCharacteristics[16] = Drink.Beer ? 1 : 0;
         BarCharacteristics[17] = Drink.BeveragePackages ? 1 : 0;
         BarCharacteristics[18] = Drink.Cocktail ? 1 : 0;
         BarCharacteristics[19] = Drink.Jin ? 1 : 0;
         BarCharacteristics[20] = Drink.Whiskey ? 1 : 0;
-        BarCharacteristics[21] = Drink.WideRangeOfBeverages ? 1 : 0;
-        BarCharacteristics[22] = Drink.Wine ? 1 : 0;
+        BarCharacteristics[21] = Drink.Wine ? 1 : 0;
+        BarCharacteristics[22] = Atmosphere.Irish ? 1 : 0;
         BarCharacteristics[23] = Atmosphere.Chill ? 1 : 0;
         BarCharacteristics[24] = Atmosphere.Dance ? 1 : 0;
         BarCharacteristics[25] = Atmosphere.Party ? 1 : 0;

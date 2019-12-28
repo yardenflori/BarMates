@@ -1,13 +1,13 @@
-﻿function goToProfileBar(barName) {
+﻿function goToProfileBar(barId) {
   
 }
-function buildCarouselItem( barName) {
+function buildCarouselItem(barId, barName) {
     var divCarouselItem = $('<div class=\"carousel-item card\"></div>');
     var divCarouselImg = $('<div class=\"card-image\"></div>');
     var img = $('<img src="images/bar1.jpg" />');
     var span = $('<span class="card-title"></span>').text(barName);
     var divCardAction = $('<div class=\"card-action\"></div>');
-    var a = $("<a onclick=\"goToProfileBar('" + barName + "')\">מידע נוסף></a>");
+    var a = $("<a onclick=\"goToProfileBar('" + barId + "')\">מידע נוסף></a>");
     divCarouselItem.append(divCarouselImg);
     divCarouselItem.append(divCardAction);
     divCarouselImg.append(img);
@@ -25,7 +25,7 @@ function initCarousel() {
             var barsFromDb = JSON.parse(data.d);
             globalBars = barsFromDb;
             for (var i = 0; i < globalBars.length; i++) {
-                buildCarouselItem(globalBars[i]);
+                buildCarouselItem(globalBars[i].Key, globalBars[i].Value);
             }
             $('.carousel').carousel();
         },

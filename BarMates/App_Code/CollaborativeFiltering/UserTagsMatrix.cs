@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using System.Linq;
 public class UserTagsMatrix
 {
     public double[][] GetUsersTagsMatrix(List<User> users)
@@ -17,6 +17,28 @@ public class UserTagsMatrix
             }
         }
         return matrix;
+    }
+
+    public Matrix GetSimilarUsers(int numSimilar, User user, Matrix userTagsMatrix)
+    {
+        Matrix similarUsers = new Matrix();
+        int n = userTagsMatrix.IDS.Length;
+        double[] userDistance = new double[n];
+        double tempMax = 0;
+        int tempInd = 0;
+        for (int i = 0; i < n; i++)
+        {
+            userDistance[i] = Helpers.VectorDistance(user.InterestsVector, userTagsMatrix.CharMatrix[i]);
+        }
+        for (int i = 0; i < numSimilar; i++)
+        {
+            tempMax = userDistance.Max();
+            tempInd = userDistance.ToList().IndexOf(tempMax);
+            similarUsers.IDS[i] = userTagsMatrix.IDS[tempInd];
+            similarUsers.CharMatrix[i] = userTagsMatrix.CharMatrix[tempInd];
+            userDistance[tempInd] = -1;
+        }
+        return similarUsers;
     }
     public UserTagsMatrix()
     {
