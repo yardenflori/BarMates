@@ -1,7 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
 public class UserTagsMatrix
 {
+    public UserTagsMatrix()
+    {
+        
+    }
+    
     public double[][] GetUsersTagsMatrix(List<User> users)
     {
         int n = users.Count;
@@ -40,8 +46,34 @@ public class UserTagsMatrix
         }
         return similarUsers;
     }
-    public UserTagsMatrix()
+    
+    public Matrix SimilarUsersScoreForAllBars(Bar[] bars, Matrix similarUsers)
     {
-        
+        Matrix scoreMatrix = new Matrix();
+        int n = similarUsers.IDS.Length;
+        scoreMatrix.IDS = similarUsers.IDS;
+        scoreMatrix.CharMatrix = new double[n][];
+        for(int i = 0; i < n; i++)
+        {
+            scoreMatrix.CharMatrix[i] = new double[bars.Length];
+            var user = Engine.GetUserByUserID(scoreMatrix.IDS[i]);
+            var rates = Engine.GetRatesByUser(user);
+            for(int j = 0; j < bars.Length; j++)
+            {
+                var possibleRate = (rates.Where(x => (x.BarId == bars[j].BarId)).ToList());
+                if(possibleRate.Count > 0)
+                {
+                    Rate rate = possibleRate[0];
+                    scoreMatrix.CharMatrix[i][j] = user.CalculateScoreForBar(bars[j], rate);
+                }
+                else
+                {
+                    scoreMatrix.CharMatrix[i][j] = int.MinValue;
+                }
+            }
+        }
+        return scoreMatrix;
     }
+
+
 }
