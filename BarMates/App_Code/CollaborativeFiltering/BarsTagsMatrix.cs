@@ -11,11 +11,13 @@ public class BarsTagsMatrix
     }
 
     /*returns a matrix, in the i row we have the bar tags (0 if dont have the tag, else 1)*/
-    public Matrix GetBarTagsMatrix(List<Bar> bars)
+    private static Matrix GetBarTagsMatrix(List<Bar> bars)
     {
         int n = bars.Count;
         Matrix barsMatrix = new Matrix();
         barsMatrix.IDS = new int[n];
+        barsMatrix.CharMatrix = new double[n][];
+
         for (int i = 0; i < n; i++)
         {
             barsMatrix.IDS[i] = bars[i].BarId;
@@ -23,9 +25,10 @@ public class BarsTagsMatrix
         }
         return barsMatrix;
     }
-    public Matrix GetSimilarBars(int numSimilar, Bar bar, Matrix barTagsMatrix)
+    public List<int> GetSimilarBars(int numSimilar, Bar bar, List<Bar> bars)
     {
-        Matrix similarBars = new Matrix();
+        var similarBars = new List<int>();
+        Matrix barTagsMatrix = GetBarTagsMatrix(bars);
         int n = barTagsMatrix.IDS.Length;
         double[] barDistance = new double[n];
         double tempMax = 0;
@@ -38,8 +41,7 @@ public class BarsTagsMatrix
         {
             tempMax = barDistance.Max();
             tempInd = barDistance.ToList().IndexOf(tempMax);
-            similarBars.IDS[i] = barTagsMatrix.IDS[tempInd];
-            similarBars.CharMatrix[i] = barTagsMatrix.CharMatrix[tempInd];
+            similarBars[i] = barTagsMatrix.IDS[tempInd];
             barDistance[tempInd] = -1;
         }
         return similarBars;
