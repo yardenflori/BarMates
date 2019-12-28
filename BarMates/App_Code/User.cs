@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 public class User
 {
     public int UserId { get; set; }
@@ -336,5 +337,20 @@ public class User
             }
         }
         return score;
+    }
+
+    public List<Bar> GetBestBars(int numOfBars, List<Bar> bars)
+    {
+        var rates = new List<Rate>();
+        foreach(Bar bar in bars)
+        {
+
+        }
+        return null;
+    }
+
+    private double GuessScoreForBar(Bar bar)
+    {
+        return 0;
     }
 }

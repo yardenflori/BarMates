@@ -1,4 +1,11 @@
 using System;
+using System.Data.SqlClient;
+using System.Collections.Generic;
+using BarMates;
+using System.Collections;
+using System.Data.Common;
+
+
 
 public static class Helpers
 {
@@ -13,4 +20,5 @@ public static class Helpers
         sum = Math.Sqrt(sum);
         return sum;
     }
+
 }
