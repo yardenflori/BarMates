@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -50,6 +51,7 @@ public partial class BarRating : System.Web.UI.Page
     }
     public static bool InsertNewRatingToDB(Rate rate)
     {
+        ArrayList rating_of_user_and_bar;
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("userName", rate.UserName));
@@ -71,7 +73,7 @@ public partial class BarRating : System.Web.UI.Page
         parameters.Add(new SqlParameter("wine", rate.Drinks.Wine));
         parameters.Add(new SqlParameter("cocktail", rate.Drinks.Cocktail));
         parameters.Add(new SqlParameter("beveragePackages", rate.Drinks.BeveragePackages));
-        parameters.Add(new SqlParameter("gin", rate.Drinks.Jin));
+        parameters.Add(new SqlParameter("Jin", rate.Drinks.Jin));
         parameters.Add(new SqlParameter("whiskey", rate.Drinks.Whiskey));
         parameters.Add(new SqlParameter("wideRangeOfBeverages", rate.Drinks.WideRangeOfBeverages));
 
@@ -102,7 +104,20 @@ public partial class BarRating : System.Web.UI.Page
         parameters.Add(new SqlParameter("openMic", rate.Music.OpenMic));
         parameters.Add(new SqlParameter("standup", rate.Music.StandUp));
 
-        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_rating", parameters);
+        
+        List<SqlParameter> parameters1 = new List<SqlParameter>();
+        parameters1.Add(new SqlParameter("userName", rate.UserName));
+        parameters1.Add(new SqlParameter("barId", rate.BarId));
+        rating_of_user_and_bar = DBController.ExecuteStoredProcedure_Select("sp_get_rating_of_user_and_bar", parameters1);
+        if (rating_of_user_and_bar.Count == 0)
+        {
+            insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_rating", parameters); 
+        }
+        else
+        {
+            insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_rating", parameters);
+        }
+
         return insertSucceeded;
     }
 }

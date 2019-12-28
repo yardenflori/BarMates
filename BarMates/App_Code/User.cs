@@ -1,6 +1,9 @@
-﻿
+﻿using System.Collections.Generic;
+using System.Linq;
+
 public class User
 {
+    public Engine Engine { get; set; }
     public int UserId { get; set; }
     public string UserName { get; set; }
     public string Password { get; set; }
@@ -13,7 +16,7 @@ public class User
     public Atmosphere<Triple> Atmosphere { get; set; }
     public Company<Triple> Company { get; set; }
     public Music<Triple> Music { get; set; }
-    public double[] InterestsVector 
+    public double[] InterestsVector
     {
         get
         {
@@ -26,9 +29,10 @@ public class User
 
         }
     }
-    public User()
+    public User(Engine engine)
     {
         InterestsVector = new double[38];
+        Engine = engine;
     }
 
     private void CalculateInterestsVector()
@@ -203,10 +207,10 @@ public class User
         switch (i)
         {
             //FullService
-           // case 0:
-              //  return rate.FullService;
+            // case 0:
+            //  return rate.FullService;
             //SelfService
-           // case 1:
+            // case 1:
             //    return rate.SelfService;
             //SmokingFree
             case 2:
@@ -326,15 +330,95 @@ public class User
     {
         double score = 0;
         int j, realRate;
-        for(int i = 0; i < 38; i++)
+        for (int i = 0; i < 38; i++)
         {
             j = UserCatToBarCat(i);
             realRate = UserCatToRate(i, rate);
-            if(realRate != 2)
+            if (realRate != 2)
             {
                 score += InterestsVector[i] * bar.BarCharacteristics[j] * realRate;
             }
         }
         return score;
+    }
+
+    public List<Bar> GetBestBars(int numOfBest, List<Bar> bars)
+    {
+        var rates = new List<Rate>();
+        int n = bars.Count();
+        var scores = new double[n];
+        double tempMax;
+        int tempInd;
+        var resultBars = new List<Bar>();
+        for (int i = 0; i < n; i++)
+        {
+            var tempRate = rates.Where(x => (x.BarId == bars[i].BarId)).ToList();
+            if (tempRate.Count() > 0)
+            {
+                scores[i] = CalculateScoreForBar(bars[i], tempRate[0]) * (3 / 4);
+            }
+            else
+            {
+                scores[i] = GuessScoreForBar(bars[i]);
+            }
+        }
+
+        for (int i = 0; i < numOfBest; i++)
+        {
+            tempMax = scores.Max();
+            tempInd = scores.ToList().IndexOf(tempMax);
+            resultBars.Add(bars[tempInd]);
+            scores[tempInd] = double.MinValue;
+        }
+        return resultBars;
+    }
+
+
+    public Rate GetRateFromUser(Bar bar)
+    {
+        var rates = Engine.GetRatesByUser(this);
+        var possibleRate = (rates.Where(x => (x.BarId == bar.BarId)).ToList());
+        if (possibleRate.Count > 0)
+        {
+            return possibleRate[0];
+        }
+        else
+        {
+            return null;
+        }
+    }
+    private double ScoreBarUserByUser(Bar bar)
+    {
+        var users = UserTagsMatrix.GetSimilarUsers(10, this, Engine.Users);
+        int cnt = 0;
+        double score = 0;
+        for (int i = 0; i < 10; i++)
+        {
+            User user = Engine.GetUserByUserID(users[i]);
+            Rate rate = GetRateFromUser(bar);
+            if(rate != null)
+            {
+                cnt++;
+                score += CalculateScoreForBar(bar, rate);
+            }
+        }
+        if(cnt > 0)
+        {
+            return score / cnt;
+        }
+        return 0;
+    }
+
+    private double ScoreBarItemByItem(Bar bar)
+    {
+
+    }
+
+    private double GuessScoreForBar(Bar bar)
+    {
+        double scoreItemByItem;
+        double scoreUserByUser;
+
+        return 0;
     }
 }
