@@ -200,17 +200,82 @@ public class Engine
     {
         bar.BarId = int.Parse(data["barId"].ToString());
         bar.BarName = data["barName"].ToString();
-        bar.Address = data["barName"].ToString();
-        bar.BarName = data["barName"].ToString();
-        bar.BarName = data["barName"].ToString();
-        bar.BarName = data["barName"].ToString();
-        bar.BarName = data["barName"].ToString();
-        bar.BarName = data["barName"].ToString();
-        bar.BarName = data["barName"].ToString();
-        bar.BarName = data["barName"].ToString();
-        bar.BarName = data["barName"].ToString();
-        bar.BarName = data["barName"].ToString();
-        //should add here all the user fields that came back from DB
+        bar.Address = data["Address"].ToString();
+        bar.Age = Age.None;
+        if(int.Parse(data["age18"].ToString())==1)
+        {
+            bar.Age = Age.EighteenPlus;
+        }
+        else if(int.Parse(data["age21"].ToString()) == 1)
+        {
+            bar.Age = Age.TwentyOnePlus;
+        }
+        else if (int.Parse(data["age24"].ToString()) == 1)
+        {
+            bar.Age = Age.TwentyFourPlus;
+        }
+
+        bar.Food.Burger = int.Parse(data["burgers"].ToString()) == 1;
+        bar.Food.Pizza = int.Parse(data["pizza"].ToString()) == 1;
+        bar.Food.Sushi = int.Parse(data["sushi"].ToString()) == 1;
+        bar.Food.Snacks = int.Parse(data["snacks"].ToString()) == 1;
+        bar.Food.Vegan = int.Parse(data["vegan"].ToString()) == 1;
+        bar.Food.Kosher = int.Parse(data["kosher"].ToString()) == 1;
+        bar.Drink.Beer = int.Parse(data["beer"].ToString()) == 1;
+        bar.Drink.Wine = int.Parse(data["wine"].ToString()) == 1;
+        bar.Drink.Cocktail = int.Parse(data["cocktail"].ToString()) == 1;
+        bar.Drink.BeveragePackages = int.Parse(data["beveragePackages"].ToString()) == 1;
+        bar.Drink.Jin = int.Parse(data["Jin"].ToString()) == 1;
+        bar.Drink.Whiskey = int.Parse(data["whiskey"].ToString()) == 1;
+        bar.Drink.WideRangeOfBeverages = int.Parse(data["wideRangeOfBeverages"].ToString()) == 1;
+        bar.Atmosphere.Irish = int.Parse(data["irish"].ToString()) == 1;
+        bar.Atmosphere.Chill = int.Parse(data["chill"].ToString()) == 1;
+        bar.Atmosphere.Dance = int.Parse(data["dance"].ToString()) == 1;
+        bar.Atmosphere.Sport = int.Parse(data["sport"].ToString()) == 1;
+        bar.Atmosphere.Shisha = int.Parse(data["shisha"].ToString()) == 1;
+        bar.Atmosphere.Party = int.Parse(data["party"].ToString()) == 1;
+        bar.SmokingFree = int.Parse(data["smokingFree"].ToString()) == 1;
+        bar.Company.Dating = int.Parse(data["dating"].ToString()) == 1;
+        bar.Company.Friends = int.Parse(data["friends"].ToString()) == 1;
+        bar.Company.KidsFriendly = int.Parse(data["kidsFriendly"].ToString()) == 1;
+        bar.Company.PetsFriendly = int.Parse(data["petsFriendly"].ToString()) == 1;
+        bar.Company.Colleagues = int.Parse(data["colleagues"].ToString()) == 1;
+        bar.Music.Pop = int.Parse(data["pop"].ToString()) == 1;
+        bar.Music.Jazz = int.Parse(data["jazz"].ToString()) == 1;
+        bar.Music.Mizrahit = int.Parse(data["mizrahit"].ToString()) == 1;
+        bar.Music.Greek = int.Parse(data["greek"].ToString()) == 1;
+        bar.Music.Trance = int.Parse(data["trance"].ToString()) == 1;
+        bar.Music.Mainstream = int.Parse(data["mainstream"].ToString()) == 1;
+        bar.Music.Israeli = int.Parse(data["israeli"].ToString()) == 1;
+        bar.Music.LiveMusic = int.Parse(data["liveMusic"].ToString()) == 1;
+        bar.Music.Reggaeton = int.Parse(data["reggaeton"].ToString()) == 1;
+        bar.Music.OpenMic = int.Parse(data["openMic"].ToString()) == 1;
+        bar.Music.StandUp = int.Parse(data["standup"].ToString()) == 1;
+
+        bar.Price = Price.None;
+        if (int.Parse(data["priceLow"].ToString()) == 1)
+        {
+            bar.Price = Price.PriceLow;
+        }
+        else if (int.Parse(data["priceMed"].ToString()) == 1)
+        {
+            bar.Price = Price.PriceMed;
+        }
+        else if (int.Parse(data["priceHigh"].ToString()) == 1)
+        {
+            bar.Price = Price.PriceHigh;
+        }
+
+        bar.Service = Service.None;
+        if (int.Parse(data["fullService"].ToString()) == 1)
+        {
+            bar.Service = Service.FullService;
+        }
+        else if (int.Parse(data["selfService"].ToString()) == 1)
+        {
+            bar.Service = Service.SelfService;
+        }
+        
     }
 
     public static User GetUserByUserID(int userID)
