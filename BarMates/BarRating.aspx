@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">    
-    <link rel="icon" href="images/logo_whiteBackground_withoutBorders.png" type="image/x-icon"/>
+<head runat="server">
+    <link rel="icon" href="images/logo_whiteBackground_withoutBorders.png" type="image/x-icon" />
     <title>דירוג בר BarMates</title>
     <link href="css/materialize.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -122,6 +122,24 @@
 </body>
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/materialize.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc&amp;libraries=places&type=bar"></script>
+
+
+
+<script>
+  google.maps.event.addDomListener(window, 'load', initialize);
+    function initialize() {
+      var input = document.getElementById('barsAutocomplete');
+      var autocomplete = new google.maps.places.Autocomplete(input,{componentRestrictions: {country: 'il'}} );
+      autocomplete.addListener('place_changed', function () {
+      var place = autocomplete.getPlace();
+     
+      // place variable will have all the information you are looking for.
+      $('#lat').val(place.geometry['location'].lat());
+      $('#long').val(place.geometry['location'].lng());
+    });
+  }
+</script>
 <script src="js/menu.js"></script>
 <script src="js/barRating.js"></script>
 </html>
