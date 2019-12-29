@@ -25,7 +25,7 @@ public class BarsTagsMatrix
         }
         return barsMatrix;
     }
-    public List<int> GetSimilarBars(int numSimilar, Bar bar, List<Bar> bars)
+    public static List<int> GetSimilarBars(int numSimilar, Bar bar, List<Bar> bars)
     {
         var similarBars = new List<int>();
         Matrix barTagsMatrix = GetBarTagsMatrix(bars);

@@ -3,9 +3,10 @@ using System.Linq;
 
 public class UserTagsMatrix
 {
-    public UserTagsMatrix()
+    public Engine Engine { get; set; }
+    public UserTagsMatrix(Engine engine)
     {
-        
+        Engine = engine;
     }
     
     private static Matrix GetUsersTagsMatrix(List<User> users)

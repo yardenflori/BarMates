@@ -411,14 +411,32 @@ public class User
 
     private double ScoreBarItemByItem(Bar bar)
     {
-
+        var bars = BarsTagsMatrix.GetSimilarBars(10, bar, Engine.Bars);
+        int cnt = 0;
+        double score = 0;
+        for (int i = 0; i < 10; i++)
+        {
+            //Add get GetBarByBarID
+            Bar tempBar = Engine.GetBarByBarID(bars[i]);
+            Rate rate = GetRateFromUser(bar);
+            if (rate != null)
+            {
+                cnt++;
+                score += CalculateScoreForBar(bar, rate);
+            }
+        }
+        if (cnt > 0)
+        {
+            return score / cnt;
+        }
+        return 0;
     }
 
     private double GuessScoreForBar(Bar bar)
     {
-        double scoreItemByItem;
-        double scoreUserByUser;
-
+        double scoreItemByItem = ScoreBarItemByItem(bar);
+        double scoreUserByUser = ScoreBarUserByUser(bar);
+        return (scoreItemByItem + scoreUserByUser) / 2;
         return 0;
     }
 }

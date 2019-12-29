@@ -25,7 +25,7 @@ public class Engine
         string username = DBController.GetUserName();
         if (username!=null)
         {
-            User = new User();
+            User = new User(this);
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("user_name", username));
             var userDB = DBController.ExecuteStoredProcedure_Select("sp_get_user_by_username", parameters);
@@ -51,7 +51,7 @@ public class Engine
         {
             foreach (DbDataRecord currentItem in usersDB)
             {
-                User new_user = new User();
+                User new_user = new User(this);
                 UpdateUserFields(new_user, currentItem);
                 Users.Add(new_user);
             }
@@ -278,7 +278,7 @@ public class Engine
         
     }
 
-    public static User GetUserByUserID(int userID)
+    public User GetUserByUserID(int userID)
     {
         ArrayList users;
         List<SqlParameter> parameters = new List<SqlParameter>();
@@ -288,13 +288,14 @@ public class Engine
         {
             foreach (DbDataRecord currentItem in users)
             {
-                User user = new User();
+                User user = new User(this);
                 UpdateUserFields(user, currentItem);
                 return user;
             }
         }
         return null;
     }
+   
     public static void UpdateRateFields(Rate rate, DbDataRecord data)
     {
         rate.UserName = data["userName"].ToString();
@@ -403,4 +404,24 @@ public class Engine
         }
         return userRates;
     }
-}
+
+    public Bar GetBarByBarID(int barID)
+    {
+        ArrayList bars;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        parameters.Add(new SqlParameter("userId", barID));
+        //Need to add sp_get_bar_by_barId
+        bars = DBController.ExecuteStoredProcedure_Select("sp_get_bar_by_barId", parameters);
+        if (bars.Count > 0)
+        {
+            foreach (DbDataRecord currentItem in bars)
+            {
+                Bar bar = new Bar();
+                UpdateBarFields(bar, currentItem);
+                return bar;
+            }
+        }
+        return null;
+    }
+}   
+
