@@ -282,14 +282,14 @@ function fillRateObject() {
     var userBarChoise = $('#barsAutocomplete').val();
     rate = new Object();
     rate.UserName = '';
-    rate.BarId = userBarChoise.toString().split("-")[0]; //eyal should change to the ID of the bar from the google api
+    rate.BarId = 3; //eyal should change to the ID of the bar from the google api
     rate.date = null;
     fillRegularRate(bar.Food, 'Food');
     fillRegularRate(bar.Drinks, 'Drinks');
     fillRegularRate(bar.Atmosphere, 'Atmosphere');
     fillRegularRate(bar.Music, 'Music');
     fillRegularRate(bar.Company, 'Company');
-    rate.SmokingFreeFree = getSmokingFreeRate();
+    rate.SmokingFree = getSmokingFreeRate();
     fillEnumRate(bar.Price, 'Price');
     fillEnumRate(bar.Service, 'Service');
     fillEnumRate(bar.Age, 'Age');
