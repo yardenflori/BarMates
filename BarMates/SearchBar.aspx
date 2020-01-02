@@ -51,7 +51,7 @@
                             <li><a class="right_menu" href="#comp" onclick="setActive('#comp')">חברה<i class="material-icons right">people</i></a></li>
                             <li><a class="right_menu" href="#price" onclick="setActive('#price')">מחיר<i class="material-icons right">attach_money</i></a></li>
                             <li><a class="right_menu" href="#music" onclick="setActive('#music')">מוסיקה<i class="material-icons right">music_note</i></a></li>
-                            <li><a class="right_menu" href="#smoking" onclick="setActive('#smoking')">עישון<i class="material-icons right">smoking_rooms</i></a></li>
+                            <li><a class="right_menu" href="#Smoking" onclick="setActive('#Smoking')">עישון<i class="material-icons right">smoking_rooms</i></a></li>
                         </ul>
                     </div>
                     <div id="myDIV" class="col  s10">
@@ -103,7 +103,7 @@
                                 <div class="criterion_information"></div>
                             </div>
                         </div>
-                        <div id="smoking" class="mainCriterion scrollspy">
+                        <div id="Smoking" class="mainCriterion scrollspy">
                             <div class="criterion">
                                 <p class="criterion_title"><i class="material-icons right">smoking_rooms</i>עישון</p>
                                 <div class="criterion_information"></div>
@@ -118,7 +118,7 @@
             </div>
             <div id="results" class="card">
                 <div class="main_title">
-                    <span>ברים מומלצים עבורך</span>
+                    <span>תוצאות החיפוש</span>
                     <a id="backToSearch" onclick="showSearch()">(חזור לחיפוש)</a>
                 </div>
                 <div id="carousel" class="carousel"></div>

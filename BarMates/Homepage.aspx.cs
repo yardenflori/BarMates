@@ -19,10 +19,12 @@ public partial class Homepage : System.Web.UI.Page
 
     }
     [WebMethod]
-    public static string GetUserBars()
+    public static string GetUserBars() //Shaked and Yuval should implement this
     {
         //צריך להחזיר את רשימת הברים המומלצים של היוזר )
         //ת.ז ושם
+        // if stored procedures needed, contact Yarden
+        String userName = DBController.GetUserName();
         List<KeyValuePair<int, string>> barsList = new List<KeyValuePair<int, string>>();
         barsList.Add(new KeyValuePair<int, string>(1, "ברוני"));
         barsList.Add(new KeyValuePair<int, string>(2, "מזג"));

@@ -71,3 +71,6 @@
 .col p {
     margin: 5px 0;
 }
+.pac-item {
+    text-align: right;
+}

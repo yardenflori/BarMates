@@ -25,10 +25,6 @@ bar.Food = [
     {
         id: 'Kosher',
         name: 'כשר'
-    },
-    {
-        id: 'Irish',
-        name: 'אירי'
     }
 ]
 bar.Drinks = [
@@ -156,9 +152,9 @@ bar.Music = [
 ]
 var RegulaeCriterionsArr = [bar.Drinks, bar.Food, bar.Atmosphere, bar.Company, bar.Music];
 var options = ['לא אהבתי', 'לא אכפת לי', 'אהבתי'];
-bar.Smoking = [
+bar.SmokingFree = [
     {
-        id: 'Smoking',
+        id: 'SmokingFree',
         name: 'עישון'
     }
 ];
@@ -243,60 +239,18 @@ function showSearch() {
     $('#results').css('display', 'none');
 }
 //searchBar
-function allDetailsEntered() {
-    var error = EnteredRegulaeCriterions();
-    if (error == '') {
-        error = EnteredEnumCriterions();
-    }
-    return error;
-}
-function EnteredRegulaeCriterions() {
-    var error = '';
-    for (var j = 0; j < RegulaeCriterionsArr.length; j++) {
-        var regulaeCriterion = RegulaeCriterionsArr[j];
-        for (var i = 0; i < regulaeCriterion.length; i++) {
-            var subCriterion = regulaeCriterion[i];
-            if ($('#' + subCriterion.id).prop("checked") == true) {
-                var userRate = $('input[name="' + subCriterion.id + 'group"]:checked').val();
-                if ((-1 <= userRate && userRate <= 1) == false) {
-                    error = 'יש לבחור ' + subCriterion.name;
-                }
-            }
-        }
-    }
-
-    return error;
-}
-function EnteredEnumCriterions() {
-    var error = '';
-    for (var j = 0; j < EnumCriterionsArr.length; j++) {
-        var enumCriterion = EnumCriterionsArr[j];
-        if ($('#' + enumCriterion.id).prop("checked") == true) {
-            var userRate = $('input[name="' + enumCriterion.id + 'group"]:checked').val();
-            if ((-1 <= userRate && userRate <= 1) == false) {
-                error = 'יש לבחור ' + enumCriterion.name;
-            }
-        }
-    }
-    return error;
-}
 function searchBar() {
-    var error = allDetailsEntered();
-    if (error != "") {
-        showError(error);
-    }
-    else {
-        fillRateObject();
-        searchBarInDB();
-    }
+    choises = [];//save only true choises
+    fillChoises();
+    searchBarInDB();
 }
 function searchBarInDB() {
-    rate = JSON.stringify({ 'rate': JSON.stringify(rate) });
+    choises = JSON.stringify({ 'choises': JSON.stringify(choises) });
     $.ajax({
         type: "POST",
         url: 'SearchBar.aspx/SearchBars',
         contentType: "application/json; charset=utf-8",
-        data: rate,
+        data: choises,
         dataType: "json",
         success: function (data) {
             barList = JSON.parse(data.d);
@@ -312,62 +266,25 @@ function searchBarInDB() {
         }
     });
 }
-function fillRateObject() {
-    rate = new Object();
-    rate.UserName = '';
-    rate.BarId = 0;
-    rate.date = null;
-    fillRegularRate(bar.Food, 'Food');
-    fillRegularRate(bar.Drinks, 'Drinks');
-    fillRegularRate(bar.Atmosphere, 'Atmosphere');
-    fillRegularRate(bar.Music, 'Music');
-    fillRegularRate(bar.Company, 'Company');
-    rate.SmokingFree = getSmokingRate();
-    fillEnumRate(bar.Price, 'Price');
-    fillEnumRate(bar.Service, 'Service');
-    fillEnumRate(bar.Age, 'Age');
+function fillChoises() {
+    //fill Regular Choises
+    $('input[type="checkbox"]').each(function () {
+        criterion_id = $(this).attr('id');
+        criterion_value = $('#' + criterion_id).prop("checked");
+        if (criterion_value == true) {
+            choises.push({ 'Key': criterion_id, 'Value': 1 });
+        }
+    });
+    //fill Enum Choises
+    var EnumsType = ['Price', 'Service', 'Age'];
+    for (var i = 0; i < EnumsType.length; i++) {
+        radioBtnValue = $('input[name="' + EnumsType[i] + 'group"]:checked').val()
+        if (radioBtnValue != undefined) {
+            choises.push({ 'Key': EnumsType[i], 'Value': radioBtnValue });
+        }
+    }
+    
 
-}
-function getSmokingRate() {
-    var userRate;
-    if ($('#Smoking').prop("checked") == false) {
-        userRate = 7;
-    }
-    else {
-        userRate = $('input[name="Smokinggroup"]:checked').val();
-        if ((-1 <= userRate && userRate <= 1) == false) {
-            userRate = 0;
-        }
-    }
-    return userRate;
-}
-function fillRegularRate(criterions, criterionType) {
-    rate[criterionType] = new Object();
-
-    for (var i = 0; i < criterions.length; i++) {
-        var userRate;
-        if ($('#' + criterions[i].id).prop("checked") == false) {
-            userRate = 7;
-        }
-        else {
-            userRate = $('input[name="' + criterions[i].id + 'group"]:checked').val();
-            if ((-1 <= userRate && userRate <= 1) == false) {
-                userRate = 0;
-            }
-        }
-        rate[criterionType][criterions[i].id] = parseInt(userRate);
-    }
-}
-function fillEnumRate(enumCriterion, criterionType) {
-    rate[criterionType];
-    var userRate;
-    if ($('#' + criterionType).prop("checked") == false) {
-        userRate = 7;
-    }
-    else {
-        userRate = $('input[name="' + criterionType + 'group"]:checked').val();
-    }
-    rate[criterionType] = userRate;
 }
 //build criterions
 function createCheckBox(criterion) {
@@ -384,72 +301,33 @@ function createCheckBox(criterion) {
 
     rowDiv.append(colDiv);
 }
-function createEnumCriterions(criterion) {
-    var div1 = $('<div id="' + criterion.id + '_options" class="col s9 options"></div>');
-    var optionWidth = 12 / criterion.options.length;
+function createRadioBtn(criterion) {
     for (var i = 0; i < criterion.options.length; i++) {
-        var div2 = $('<div class="col s' + optionWidth + '"></div>');
+        var colDiv = $('<div class="col s3"></div>');
         var p = $('<p></p>');
         var lable = $('<label></label>');
         var input = $('<input value="' + criterion.options[i].id + '" name="' + criterion.id + 'group" type="radio" />');
         var span = $('<span></span>').text(criterion.options[i].name);
-        div1.append(div2);
-        div2.append(p);
+        colDiv.append(p);
         p.append(lable);
         lable.append(input);
         lable.append(span);
+        rowDiv.append(colDiv);
+
     }
 
-    rowDiv.append(div1);
-}
-function createCriterions(criterion) {
-    var div1 = $('<div id="' + criterion.id + '_options" class="col s9 options"></div>');
-    var optionWidth = 12 / options.length;
-    for (var i = 0; i < options.length; i++) {
-        var div2 = $('<div class="col s' + optionWidth + '"></div>');
-        var p = $('<p></p>');
-        var lable = $('<label></label>');
-        var input = $('<input value="' + (-1 + i) + '" name="' + criterion.id + 'group" type="radio" />');
-        var span = $('<span></span>').text(options[i]);
-        div1.append(div2);
-        div2.append(p);
-        p.append(lable);
-        lable.append(input);
-        lable.append(span);
-    }
-
-    rowDiv.append(div1);
-}
-function showRadioButtonOptions(id) {
-    if ($('#' + id).prop("checked") == true) {
-        $('#' + id + '_options').css('display', 'block');//showOptions
-    }
-    else if ($('#' + id).prop("checked") == false) {
-        $('#' + id + '_options').css('display', 'none');//hideOptions
-    }
 }
 function buildMainCriterion(criterions, criterionType) {
-    for (var i = 0; i < criterions.length; i++) {
-        rowDiv = $('<div class=\"row\"></div>');
-        $('#' + criterionType + ' .criterion_information').append(rowDiv);
-        createCheckBox(criterions[i]);
-        createCriterions(criterions[i]);
-        $('#' + criterions[i].id).click(function () {
-            var id = $(this).attr('id');
-            showRadioButtonOptions(id);
-        });
+    rowDiv = $('<div class=\"row\"></div>');
+    $('#' + criterionType + ' .criterion_information').append(rowDiv);
+    for (var i = 0; i < criterions.length; i++) {        
+        createCheckBox(criterions[i]);       
     }
 }
 function buildEnumCriterion(criterions, criterionType) {
     rowDiv = $('<div class=\"row\"></div>');
     $('#' + criterionType + ' .criterion_information').append(rowDiv);
-    createCheckBox(criterions);
-    createEnumCriterions(criterions);
-    $('#' + criterions.id).click(function () {
-        var id = $(this).attr('id');
-        showRadioButtonOptions(id);
-    });
-
+    createRadioBtn(criterions);
 }
 function initCriterions() {
     buildMainCriterion(bar.Drinks, 'drinks');
@@ -457,7 +335,7 @@ function initCriterions() {
     buildMainCriterion(bar.Atmosphere, 'envi');
     buildMainCriterion(bar.Company, 'comp');
     buildMainCriterion(bar.Music, 'music');
-    buildMainCriterion(bar.Smoking, 'smoking');
+    buildMainCriterion(bar.SmokingFree, 'Smoking');
     buildEnumCriterion(bar.Price, 'price');
     buildEnumCriterion(bar.Service, 'serv');
     buildEnumCriterion(bar.Age, 'age');

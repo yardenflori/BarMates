@@ -25,10 +25,6 @@ bar.Food = [
     {
         id: 'Kosher',
         name: 'כשר'
-    },
-    {
-        id: 'Irish',
-        name: 'אירי'
     }
 ]
 bar.Drinks = [
@@ -156,9 +152,9 @@ bar.Music = [
 ]
 var RegulaeCriterionsArr = [bar.Drinks, bar.Food, bar.Atmosphere, bar.Company, bar.Music];
 var options = ['לא אהבתי', 'לא אכפת לי', 'אהבתי'];
-bar.Smoking = [
+bar.SmokingFree = [
     {
-        id: 'Smoking',
+        id: 'SmokingFree',
         name: 'עישון'
     }
 ];
@@ -286,26 +282,26 @@ function fillRateObject() {
     var userBarChoise = $('#barsAutocomplete').val();
     rate = new Object();
     rate.UserName = '';
-    rate.BarId = userBarChoise.toString().split("-")[0];
+    rate.BarId = userBarChoise.toString().split("-")[0]; //eyal should change to the ID of the bar from the google api
     rate.date = null;
     fillRegularRate(bar.Food, 'Food');
     fillRegularRate(bar.Drinks, 'Drinks');
     fillRegularRate(bar.Atmosphere, 'Atmosphere');
     fillRegularRate(bar.Music, 'Music');
     fillRegularRate(bar.Company, 'Company');
-    rate.SmokingFree = getSmokingRate();
+    rate.SmokingFreeFree = getSmokingFreeRate();
     fillEnumRate(bar.Price, 'Price');
     fillEnumRate(bar.Service, 'Service');
     fillEnumRate(bar.Age, 'Age');
 
 }
-function getSmokingRate() {
+function getSmokingFreeRate() {
     var userRate;
-    if ($('#Smoking').prop("checked") == false) {
+    if ($('#SmokingFree').prop("checked") == false) {
         userRate = 7;
     }
     else {
-        userRate = $('input[name="Smokinggroup"]:checked').val();
+        userRate = $('input[name="SmokingFreegroup"]:checked').val();
         if ((-1 <= userRate && userRate <= 1) == false) {
             userRate = 0;
         }
@@ -433,63 +429,43 @@ function initCriterions() {
     buildMainCriterion(bar.Atmosphere, 'envi');
     buildMainCriterion(bar.Company, 'comp');
     buildMainCriterion(bar.Music, 'music');
-    buildMainCriterion(bar.Smoking, 'smoking');
+    buildMainCriterion(bar.SmokingFree, 'Smoking');
     buildEnumCriterion(bar.Price, 'price');
     buildEnumCriterion(bar.Service, 'serv');
     buildEnumCriterion(bar.Age, 'age');
     $('.main_content input').prop('disabled', true);
 }
-//init bar list
-function initAutocompleteBar() {
-    $.ajax({
-        type: "POST",
-        url: 'BarRating.aspx/GetBars',
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data) {
-            var barsFromDb = JSON.parse(data.d);
-            globalBars = barsFromDb;
-            var BarsToAutocomplete = [];
-            for (var i = 0; i < barsFromDb.length; i++) {
-                BarsToAutocomplete[barsFromDb[i]] = null;//BarsToAutocomplete["סעידה בפארק"] = null;
-            }
-            $('#barsAutocomplete').autocomplete({
-                data: BarsToAutocomplete,
-                onAutocomplete: showBarCriterions,
-            });
-        },
-        error: function (errMsg) {
-            showError('חלה שגיאה');
-        }
-    });
-    
-}
-function checkIfChoseBar() {
-    var barName = $('#barsAutocomplete').val();
-    if ($.inArray(barName, globalBars) > -1) {
-        $('.main_content input').prop('disabled', false);
-        $('#savebtn').removeClass('disabled');
-    }
-    else {
-        $('.main_content input').prop('disabled', true);
-        $('#savebtn').addClass('disabled');
 
-    }
+//initAutocompleteBar
+google.maps.event.addDomListener(window, 'load', initialize);
+function initialize() {
+    var input = document.getElementById('barsAutocomplete');
+    var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'il' } });
+    autocomplete.addListener('place_changed', function () {
+        var place = autocomplete.getPlace();
+        if (isBar(place) == true) {
+            showBarCriterions();
+        }
+        // place variable will have all the information you are looking for.
+        //$('#lat').val(place.geometry['location'].lat());
+        // $('#long').val(place.geometry['location'].lng());
+    });
+}    
+function isBar(place) {  //eyal should implement this function
+    var isbar = true;
+
+    return isbar;
 }
 function showBarCriterions() {
-    //when user chose bar
-    var barName = $('#barsAutocomplete').val();
-    if ($.inArray(barName, globalBars) > -1) {
-        $('.main_content input').prop('disabled', false);
-        $('#savebtn').removeClass('disabled');
-    }
+    $('.main_content input').prop('disabled', false);
+    $('#savebtn').removeClass('disabled');
 }
+
 //init scrollSpy
 function initScrollSpy() {
     $('.scrollspy').scrollSpy({ scrollOffset:100});//offset for menu
 }
-$(document).ready(function () {
-    initAutocompleteBar();
+$(document).ready(function () {   
     initScrollSpy();
     initCriterions();
 });

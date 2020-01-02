@@ -37,8 +37,7 @@
             <div class="row">
                 <div id="bar_autocomplete_div" class="input-field col">
                     <i class="material-icons prefix">search</i>
-                    <input type="text" id="barsAutocomplete" onkeyup="checkIfChoseBar()" class="autocomplete" />
-                    <label for="autocomplete-input">בחר בר לדירוג</label>
+                    <input type="text" id="barsAutocomplete" class="autocomplete" placeholder="בחר בר לדירוג" />
                 </div>
             </div>
             <div class="main_content">
@@ -53,7 +52,7 @@
                             <li><a class="right_menu" href="#comp" onclick="setActive('#comp')">חברה<i class="material-icons right">people</i></a></li>
                             <li><a class="right_menu" href="#price" onclick="setActive('#price')">מחיר<i class="material-icons right">attach_money</i></a></li>
                             <li><a class="right_menu" href="#music" onclick="setActive('#music')">מוסיקה<i class="material-icons right">music_note</i></a></li>
-                            <li><a class="right_menu" href="#smoking" onclick="setActive('#smoking')">עישון<i class="material-icons right">smoking_rooms</i></a></li>
+                            <li><a class="right_menu" href="#Smoking" onclick="setActive('#Smoking')">עישון<i class="material-icons right">smoking_rooms</i></a></li>
                         </ul>
                     </div>
                     <div id="myDIV" class="col  s10">
@@ -105,7 +104,7 @@
                                 <div class="criterion_information"></div>
                             </div>
                         </div>
-                        <div id="smoking" class="mainCriterion scrollspy">
+                        <div id="Smoking" class="mainCriterion scrollspy">
                             <div class="criterion">
                                 <p class="criterion_title"><i class="material-icons right">smoking_rooms</i>עישון</p>
                                 <div class="criterion_information"></div>
@@ -124,22 +123,6 @@
 <script src="js/materialize.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc&amp;libraries=places&type=bar"></script>
 
-
-
-<script>
-  google.maps.event.addDomListener(window, 'load', initialize);
-    function initialize() {
-      var input = document.getElementById('barsAutocomplete');
-      var autocomplete = new google.maps.places.Autocomplete(input,{componentRestrictions: {country: 'il'}} );
-      autocomplete.addListener('place_changed', function () {
-      var place = autocomplete.getPlace();
-     
-      // place variable will have all the information you are looking for.
-      $('#lat').val(place.geometry['location'].lat());
-      $('#long').val(place.geometry['location'].lng());
-    });
-  }
-</script>
 <script src="js/menu.js"></script>
 <script src="js/barRating.js"></script>
 </html>

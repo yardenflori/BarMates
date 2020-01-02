@@ -22,14 +22,6 @@ public partial class BarRating : System.Web.UI.Page
         }
     }
     [WebMethod]
-    public static string GetBars()
-    {
-        //צריך לשלוף את רשימת הברים מהDB
-        //לשים barid ואז מכף ואז שם הבר
-        string[] bars = { "3- סעידה בפארק", "2- מזג", "1- ברוני" };
-        return JsonConvert.SerializeObject(bars);
-    }
-    [WebMethod]
     public static bool SaveRate(string rate)
     {
         bool saveSucceeded = true;
@@ -44,13 +36,13 @@ public partial class BarRating : System.Web.UI.Page
         }
         if (saveSucceeded)
         {
-            Rate newRate = Rate.ParseObjectToRate(jsonRate);
+            Rate newRate = Rate.ParseObjectToRate(jsonRate); 
             saveSucceeded = InsertNewRatingToDB(newRate);
         }
         return saveSucceeded;
     }
     public static bool InsertNewRatingToDB(Rate rate)
-    {
+    {//should be changed to add the bar to DB if missing
         ArrayList rating_of_user_and_bar;
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();

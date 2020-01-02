@@ -20,14 +20,15 @@ public partial class SearchBar : System.Web.UI.Page
     }
   
     [WebMethod]
-    public static string SearchBars(string rate)
+    public static string SearchBars(string choises)
     {
         List<KeyValuePair<int, string>> barsList = new List<KeyValuePair<int, string>>();
         bool isSucceeded = true;
-        JObject jsonRate = null;
+        List<JObject> choisesJobject = null;
+        List<KeyValuePair<string, int>> choisesList = new List<KeyValuePair<string, int>>();
         try
         {
-            jsonRate = JsonConvert.DeserializeObject<JObject>(rate);
+            choisesJobject = JsonConvert.DeserializeObject<List<JObject>>(choises);
         }
         catch
         {
@@ -35,15 +36,25 @@ public partial class SearchBar : System.Web.UI.Page
         }
         if (isSucceeded)
         {
-            Rate newRate = Rate.ParseObjectToRate(jsonRate);
-            barsList = SearchBarsInDb(newRate);
+            for(int i=0;i< choisesJobject.Count; i++)
+            {
+                string key = choisesJobject[i]["Key"].ToString();
+                int value = int.Parse(choisesJobject[i]["Value"].ToString());
+                choisesList.Add(new KeyValuePair<string, int>(key,value));
+
+            }
+            barsList = SearchBarsInDb(choisesList);
         }
         return JsonConvert.SerializeObject(barsList);
     }
-    public static List<KeyValuePair<int, string>> SearchBarsInDb(Rate rate)
-    {//הפונקציה מקבלת דירוג ומחזירה את הברים הרלוונטים
-        //ת.ז ושם
-        List<KeyValuePair<int, string>> barsList = new List<KeyValuePair<int, string>>();
+    public static List<KeyValuePair<int, string>> SearchBarsInDb(List<KeyValuePair<string, int>> choisesList)
+    {//הפונקציה מקבלת רשימה של 
+     //KeyValuePair<int, int> 
+     //id =beer, value-1 or 0
+     //ומחזירה את הברים הרלוונטים בפורמט שמופיע למטה
+     // Yarden should implement this with SP
+     
+              List<KeyValuePair<int, string>> barsList = new List<KeyValuePair<int, string>>();
         barsList.Add(new KeyValuePair<int, string>(1, "ברוני"));
         barsList.Add(new KeyValuePair<int, string>(2, "מזג"));
         barsList.Add(new KeyValuePair<int, string>(3, "סעידה בפארק"));
