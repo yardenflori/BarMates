@@ -1,4 +1,5 @@
 ﻿function goToProfileBar(barId) {
+    window.location.href = "ProfileBar.aspx?barId=" + barId;
   
 }
 function buildCarouselItem(barId, barName) {

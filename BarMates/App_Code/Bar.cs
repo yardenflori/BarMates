@@ -15,94 +15,96 @@ public class Bar
 
     public Price Price { get; set; }
     public Service Service { get; set; }
-    
+    public int[] _BarCharacteristics;
     public int[] BarCharacteristics
     {
         get
         {
             CalculateBarCharacteristics();
-            return BarCharacteristics;
+            return _BarCharacteristics;
         }
         set
         {
-
+            _BarCharacteristics = value;
         }
     }
     public Bar()
-	{
-        BarCharacteristics = new int[44];      
+    {
+        _BarCharacteristics = new int[44];
+
     }
 
-    private void CalculateBarCharacteristics()
+    public void CalculateBarCharacteristics()
     {
-        BarCharacteristics[0] = SmokingFree ? 1 : 0;
-        switch(Age)
+
+        _BarCharacteristics[0] = SmokingFree ? 1 : 0;
+        switch (Age)
         {
             case Age.EighteenPlus:
-                BarCharacteristics[1] = 1;
+                _BarCharacteristics[1] = 1;
                 break;
             case Age.TwentyOnePlus:
-                BarCharacteristics[2] = 1;
+                _BarCharacteristics[2] = 1;
                 break;
             case Age.TwentyFourPlus:
-                BarCharacteristics[3] = 1;
+                _BarCharacteristics[3] = 1;
                 break;
         }
         switch (Price)
         {
             case Price.PriceLow:
-                BarCharacteristics[4] = 1;
+                _BarCharacteristics[4] = 1;
                 break;
             case Price.PriceMed:
-                BarCharacteristics[5] = 1;
+                _BarCharacteristics[5] = 1;
                 break;
             case Price.PriceHigh:
-                BarCharacteristics[6] = 1;
+                _BarCharacteristics[6] = 1;
                 break;
         }
         switch (Service)
         {
             case Service.FullService:
-                BarCharacteristics[7] = 1;
+                _BarCharacteristics[7] = 1;
                 break;
             case Service.SelfService:
-                BarCharacteristics[8] = 1;
+                _BarCharacteristics[8] = 1;
                 break;
         }
-        BarCharacteristics[9] = Food.Burger ? 1 : 0;
-        BarCharacteristics[10] = Food.Vegan ? 1 : 0;
-        BarCharacteristics[11] = Food.Kosher ? 1 : 0;
-        BarCharacteristics[12] = Food.Pizza ? 1 : 0;
-        BarCharacteristics[13] = Food.Snacks ? 1 : 0;
-        BarCharacteristics[14] = Food.Sushi ? 1 : 0;
-        BarCharacteristics[15] = Drink.WideRangeOfBeverages ? 1 : 0;
-        BarCharacteristics[16] = Drink.Beer ? 1 : 0;
-        BarCharacteristics[17] = Drink.BeveragePackages ? 1 : 0;
-        BarCharacteristics[18] = Drink.Cocktail ? 1 : 0;
-        BarCharacteristics[19] = Drink.Jin ? 1 : 0;
-        BarCharacteristics[20] = Drink.Whiskey ? 1 : 0;
-        BarCharacteristics[21] = Drink.Wine ? 1 : 0;
-        BarCharacteristics[22] = Atmosphere.Irish ? 1 : 0;
-        BarCharacteristics[23] = Atmosphere.Chill ? 1 : 0;
-        BarCharacteristics[24] = Atmosphere.Dance ? 1 : 0;
-        BarCharacteristics[25] = Atmosphere.Party ? 1 : 0;
-        BarCharacteristics[26] = Atmosphere.Shisha ? 1 : 0;
-        BarCharacteristics[27] = Atmosphere.Sport ? 1 : 0;
-        BarCharacteristics[28] = Company.Colleagues ? 1 : 0;
-        BarCharacteristics[29] = Company.Dating ? 1 : 0;
-        BarCharacteristics[30] = Company.Friends ? 1 : 0;
-        BarCharacteristics[31] = Company.KidsFriendly ? 1 : 0;
-        BarCharacteristics[32] = Company.PetsFriendly ? 1 : 0;
-        BarCharacteristics[33] = Music.Greek ? 1 : 0;
-        BarCharacteristics[34] = Music.Israeli ? 1 : 0;
-        BarCharacteristics[35] = Music.Jazz ? 1 : 0;
-        BarCharacteristics[36] = Music.LiveMusic ? 1 : 0;
-        BarCharacteristics[37] = Music.Mainstream ? 1 : 0;
-        BarCharacteristics[38] = Music.Mizrahit ? 1 : 0;
-        BarCharacteristics[39] = Music.OpenMic ? 1 : 0;
-        BarCharacteristics[40] = Music.Pop ? 1 : 0;
-        BarCharacteristics[41] = Music.Reggaeton ? 1 : 0;
-        BarCharacteristics[42] = Music.StandUp ? 1 : 0;
-        BarCharacteristics[43] = Music.Trance ? 1 : 0;
+        _BarCharacteristics[9] = Food.Burger ? 1 : 0;
+        _BarCharacteristics[10] = Food.Vegan ? 1 : 0;
+        _BarCharacteristics[11] = Food.Kosher ? 1 : 0;
+        _BarCharacteristics[12] = Food.Pizza ? 1 : 0;
+        _BarCharacteristics[13] = Food.Snacks ? 1 : 0;
+        _BarCharacteristics[14] = Food.Sushi ? 1 : 0;
+        _BarCharacteristics[15] = Drink.WideRangeOfBeverages ? 1 : 0;
+        _BarCharacteristics[16] = Drink.Beer ? 1 : 0;
+        _BarCharacteristics[17] = Drink.BeveragePackages ? 1 : 0;
+        _BarCharacteristics[18] = Drink.Cocktail ? 1 : 0;
+        _BarCharacteristics[19] = Drink.Jin ? 1 : 0;
+        _BarCharacteristics[20] = Drink.Whiskey ? 1 : 0;
+        _BarCharacteristics[21] = Drink.Wine ? 1 : 0;
+        _BarCharacteristics[22] = Atmosphere.Irish ? 1 : 0;
+        _BarCharacteristics[23] = Atmosphere.Chill ? 1 : 0;
+        _BarCharacteristics[24] = Atmosphere.Dance ? 1 : 0;
+        _BarCharacteristics[25] = Atmosphere.Party ? 1 : 0;
+        _BarCharacteristics[26] = Atmosphere.Shisha ? 1 : 0;
+        _BarCharacteristics[27] = Atmosphere.Sport ? 1 : 0;
+        _BarCharacteristics[28] = Company.Colleagues ? 1 : 0;
+        _BarCharacteristics[29] = Company.Dating ? 1 : 0;
+        _BarCharacteristics[30] = Company.Friends ? 1 : 0;
+        _BarCharacteristics[31] = Company.KidsFriendly ? 1 : 0;
+        _BarCharacteristics[32] = Company.PetsFriendly ? 1 : 0;
+        _BarCharacteristics[33] = Music.Greek ? 1 : 0;
+        _BarCharacteristics[34] = Music.Israeli ? 1 : 0;
+        _BarCharacteristics[35] = Music.Jazz ? 1 : 0;
+        _BarCharacteristics[36] = Music.LiveMusic ? 1 : 0;
+        _BarCharacteristics[37] = Music.Mainstream ? 1 : 0;
+        _BarCharacteristics[38] = Music.Mizrahit ? 1 : 0;
+        _BarCharacteristics[39] = Music.OpenMic ? 1 : 0;
+        _BarCharacteristics[40] = Music.Pop ? 1 : 0;
+        _BarCharacteristics[41] = Music.Reggaeton ? 1 : 0;
+        _BarCharacteristics[42] = Music.StandUp ? 1 : 0;
+        _BarCharacteristics[43] = Music.Trance ? 1 : 0;
     }
 }
