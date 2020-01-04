@@ -207,38 +207,188 @@ bar.Age.options = [
         name: '24+'
     }
 ];
+
+//enums results criterions
+bar.resultsPrice = new Object();
+bar.resultsPrice.id = 'Price';
+bar.resultsPrice.name = 'מחיר';
+bar.resultsPrice.options = [
+    {
+        id: 'Price0',
+        name: 'זול'
+    },
+    {
+        id: 'Price1',
+        name: 'סביר'
+    },
+    {
+        id: 'Price2',
+        name: 'יקר'
+    }
+];
+bar.resultsService = new Object();
+bar.resultsService.id = 'Service';
+bar.resultsService.name = 'שירות';
+bar.resultsService.options = [
+    {
+        id: 'Service0',
+        name: 'שירות עצמי'
+    },
+    {
+        id: 'Service1',
+        name: 'שירות מלא'
+    }
+];
+bar.resultsAge = new Object();
+bar.resultsAge.id = 'Age';
+bar.resultsAge.name = 'גיל';
+bar.resultsAge.options = [
+    {
+        id: 'Age0',
+        name: '18+'
+    },
+    {
+        id: 'Age1',
+        name: '21+'
+    },
+    {
+        id: 'Age2',
+        name: '24+'
+    }
+];
+
+
 var EnumCriterionsArr = [bar.Price, bar.Service, bar.Age];
-function goToProfileBar(barId) {
-    
-}
-//show results
+
+//------------------results
 function showResults() {
     $('#searchDiv').css('display', 'none');
     $('#results').css('display', 'block');
     for (var i = 0; i < barList.length; i++) {
-        buildCarouselItem(barList[i].Key, barList[i].Value);
+        buildCarouselItem(barList[i].BarId, barList[i].BarName);
     }
-    $('.carousel').carousel();
+    $('.carousel').carousel({
+        onCycleTo: function (el) {
+            var barId = $(el).attr('id');
+            fillProfileBar(barId);
+        }
+    });
 }
 function buildCarouselItem(barId, barName) {
-    var divCarouselItem = $('<div class=\"carousel-item card\"></div>');
+    var divCarouselItem = $('<div id="' + barId + '"class=\"carousel-item card\"></div>');
     var divCarouselImg = $('<div class=\"card-image\"></div>');
-    var img = $('<img src="images/bar1.jpg" />');
+    var img = $('<img src="images/bar.jpg" />');
     var span = $('<span class="card-title"></span>').text(barName);
-    var divCardAction = $('<div class=\"card-action\"></div>');
-    var a = $("<a onclick=\"goToProfileBar('" + barId + "')\">מידע נוסף></a>");
     divCarouselItem.append(divCarouselImg);
-    divCarouselItem.append(divCardAction);
     divCarouselImg.append(img);
     divCarouselImg.append(span);
-    divCardAction.append(a);
     $('#carousel').append(divCarouselItem);
 }
 function showSearch() {
     $('#searchDiv').css('display', 'block');
     $('#results').css('display', 'none');
 }
-//searchBar
+function fillMainCriterion(criterions, criterionProperty, mainCriterionId) {
+    var countTrue = 0;
+    for (var i = 0; i < criterions.length; i++) {
+        if (criterionProperty[criterions[i].id] != undefined && criterionProperty[criterions[i].id] == true) {
+            countTrue++;
+            $('#Results' + criterions[i].id).attr("checked", true);
+            $('#Results' + criterions[i].id + '_div').css('display', 'block');
+
+        }
+        else {
+            $('#Results' + criterions[i].id + '_div').css('display', 'none');
+        }
+    }
+    if (countTrue == 0) {
+        $('#' + mainCriterionId).css('display', 'none');
+    }
+    else {
+        $('#' + mainCriterionId).css('display', 'block');
+    }
+}
+function fillSmokingCriterion(smokingFreeValue) {
+    if (smokingFreeValue == true) {
+        $('#results_Smoking').css('display', 'block');
+        $('#ResultsSmokingFree').attr("checked", true);
+        $('#ResultsSmokingFree_div').css('display', 'block');
+    }
+    else {
+        $('#results_Smoking').css('display', 'none');
+    }
+}
+function fillEnumCriterion(options, barValue, mainCriterionId, barPropertyName) {
+    var informationExsist = false;
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].id == barPropertyName +barValue) {
+            informationExsist = true;
+            $('#Results' + options[i].id).attr("checked", true);
+            $('#Results' + options[i].id + '_div').css('display', 'block');
+        }
+        else {
+            $('#Results' + options[i].id + '_div').css('display', 'none');
+        }
+    }
+    if (informationExsist == false) {
+        $('#' + mainCriterionId).css('display', 'none');
+    }
+    else {
+        $('#' + mainCriterionId).css('display', 'block');
+    }
+}
+function fillProfileBar(barId) {
+    for (var i = 0; i < barList.length; i++) {
+        if (barList[i].BarId == barId) {
+            $('#results_address .criterion_information').text(barList[i].Address);
+            fillMainCriterion(bar.Food, barList[i].Food, 'results_food');
+            fillMainCriterion(bar.Drinks, barList[i].Drink, 'results_drinks');
+            fillMainCriterion(bar.Atmosphere, barList[i].Atmosphere, 'results_envi');
+            fillMainCriterion(bar.Company, barList[i].Company, 'results_comp');
+            fillMainCriterion(bar.Music, barList[i].Music, 'results_music');
+            fillSmokingCriterion(barList[i].SmokingFree);
+            fillEnumCriterion(bar.resultsPrice.options, barList[i].Price, 'results_price', 'Price');
+            fillEnumCriterion(bar.resultsAge.options, barList[i].Age, 'results_age', 'Age');
+            fillEnumCriterion(bar.resultsService.options, barList[i].Service, 'results_serv', 'Service');
+
+        }
+    }
+    $('#profile_bar input[type="checkbox"]').attr('disabled', true);
+}
+//build search criterions
+function createResultsCheckBox(criterion) {
+    var colDiv = $('<div id="Results' + criterion.id + '_div' + '"class="col s3"></div>');
+    var p = $('<p></p>');
+    var lable = $('<label></label>');
+    var input = $('<input id="Results' + criterion.id + '" type="checkbox" />')
+    var span = $('<span></span>').text(criterion.name);
+
+    colDiv.append(p);
+    p.append(lable);
+    lable.append(input);
+    lable.append(span);
+
+    rowDiv.append(colDiv);
+}
+function buildResultsMainCriterion(criterions, criterionType) {
+    rowDiv = $('<div class=\"row\"></div>');
+    $('#' + criterionType + ' .criterion_information').append(rowDiv);
+    for (var i = 0; i < criterions.length; i++) {
+        createResultsCheckBox(criterions[i]);
+    }
+}
+function initResultsBarCriterions() {
+    buildResultsMainCriterion(bar.Drinks, 'results_drinks');
+    buildResultsMainCriterion(bar.Food, 'results_food');
+    buildResultsMainCriterion(bar.Atmosphere, 'results_envi');
+    buildResultsMainCriterion(bar.Company, 'results_comp');
+    buildResultsMainCriterion(bar.Music, 'results_music');
+    buildResultsMainCriterion(bar.SmokingFree, 'results_Smoking');
+    buildResultsMainCriterion(bar.resultsPrice.options, 'results_price');
+    buildResultsMainCriterion(bar.resultsService.options, 'results_serv');
+    buildResultsMainCriterion(bar.resultsAge.options, 'results_age');
+}
+//-----------------searchBar
 function searchBar() {
     choises = [];//save only true choises
     fillChoises();
@@ -255,6 +405,7 @@ function searchBarInDB() {
         success: function (data) {
             barList = JSON.parse(data.d);
             if (barList.length > 0) {
+                $('#carousel').empty();//clear carousel
                 showResults();
             }
             else {
@@ -286,7 +437,7 @@ function fillChoises() {
     
 
 }
-//build criterions
+//build search criterions
 function createCheckBox(criterion) {
     var colDiv = $('<div class="col s3"></div>');
     var p = $('<p></p>');
@@ -329,7 +480,7 @@ function buildEnumCriterion(criterions, criterionType) {
     $('#' + criterionType + ' .criterion_information').append(rowDiv);
     createRadioBtn(criterions);
 }
-function initCriterions() {
+function initSearchCriterions() {
     buildMainCriterion(bar.Drinks, 'drinks');
     buildMainCriterion(bar.Food, 'food');
     buildMainCriterion(bar.Atmosphere, 'envi');
@@ -346,5 +497,6 @@ function initScrollSpy() {
 }
 $(document).ready(function () {
     initScrollSpy();
-    initCriterions();
+    initSearchCriterions();
+    initResultsBarCriterions();
 });

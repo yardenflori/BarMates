@@ -396,13 +396,13 @@ public class User
         {
             User user = Engine.GetUserByUserID(users[i]);
             Rate rate = GetRateFromUser(bar);
-            if (rate != null)
+            if(rate != null)
             {
                 cnt++;
                 score += CalculateScoreForBar(bar, rate);
             }
         }
-        if (cnt > 0)
+        if(cnt > 0)
         {
             return score / cnt;
         }
@@ -437,6 +437,6 @@ public class User
         double scoreItemByItem = ScoreBarItemByItem(bar);
         double scoreUserByUser = ScoreBarUserByUser(bar);
         return (scoreItemByItem + scoreUserByUser) / 2;
-        
+        return 0;
     }
 }

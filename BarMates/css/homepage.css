@@ -5,17 +5,8 @@
         height:100%;
         overflow-y:auto
     }
-.carousel {
-    height: calc(100% - 70px);
-}
-.carousel .carousel-item {
-    width: 800px;
-    height: 800px;
-    padding: 0;
-}
-.card .card-image .card-title {
-    right: 0;
-    font-size: 64px;
+p {
+    margin: 10px;
 }
 .main_title {
     font-size: 36px;
@@ -23,10 +14,49 @@
     padding: 10px;
     height: 70px;
 }
-.card-action a{
-    color: #166678!important;
-    cursor: pointer;
+
+#recomendBars {
+    height: 70%;
 }
-    .card-action a:hover {
-        color: #8bb3bc !important;
+
+.criterion_information .s3 {
+    float: right;
+   
+}
+    .criterion_information .s3 span {
+        cursor:default;
     }
+
+#address .criterion_information {
+    color: #9e9e9e;
+}
+
+.details {
+    border: 3px solid #166678;
+    padding:40px;
+}
+.criterion_title {
+    border-bottom: 1px solid #166678;
+}
+/*----------carousel---------------*/
+
+.carousel {
+    height: calc(100% - 70px);
+}
+.carousel .carousel-item {
+    width: 500px;
+    height: 350px;
+    padding: 0;
+    opacity:1 !important;
+}
+.card-image {
+    height: 100%;
+}
+.card .card-image img {
+    height: 100%;
+}
+
+.card .card-image .card-title {
+    right: 0;
+    font-size: 64px;
+}

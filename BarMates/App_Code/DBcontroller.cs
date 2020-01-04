@@ -30,7 +30,38 @@ namespace BarMates
             }
             return connection;
         }
+        public static ArrayList getValues_FromDB(string sqlQuery)
+        {
+            ArrayList foundDBValues = new ArrayList();
+            SqlDataReader dataReader = null;
+            SqlConnection connection = GetConnection();
+            SqlCommand command;           
 
+            try
+            {
+                
+                command = new SqlCommand(sqlQuery, connection); dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    foreach (DbDataRecord r in dataReader)
+                    {
+                        foundDBValues.Add(r);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
+            finally
+            {
+                if (dataReader != null)
+                    dataReader.Close();
+                connection.Close();
+            }
+
+            return foundDBValues;
+        }
         public static bool ExecuteStoredProcedure_InsertOrUpdateOrDelete(string procedureName, List<SqlParameter> parameters)
         {
             //init

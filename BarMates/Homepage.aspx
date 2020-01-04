@@ -19,9 +19,9 @@
             </div>
             <div class="topnav" id="myTopnav">
                 <div class="topnav_inner">
-                    <a class="active" onclick="goToHomePage()">ראשי</a>
-                    <a onclick="goToSearchBar()">חיפוש בר</a>
-                    <a onclick="goToBarRating()">דירוג בר</a>
+                    <a id="Homepage" href="Homepage.aspx" class="active">ראשי</a>
+                    <a id="SearchBar" href="SearchBar.aspx">חיפוש בר</a>
+                    <a id="BarRating"  href="BarRating.aspx">דירוג בר</a>
                 </div>
             </div>
             <a id="iconnav" class="icon" onclick="ToggleNav()">
@@ -34,10 +34,76 @@
     </header>
     <main>
         <div class="main card">
-            <div class="main_title">
-                <span>ברים מומלצים עבורך</span>
+            <div id="recomendBars" >
+                <div class="main_title">
+                    <span>ברים מומלצים עבורך</span>
+                </div>
+                <div id="carousel" class="carousel"></div>
             </div>
-            <div id="carousel" class="carousel"></div>
+            <div id="profile_bar">
+                <div class="details">
+                     <div id="address" class="mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">place</i>כתובת</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                    <div id="drinks" class="mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">local_bar</i>שתיה</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                    <div id="food" class="mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">local_pizza</i>אוכל</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                    <div id="serv" class="serv mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">room_service</i>שירות</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                    <div id="age" class="age mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">date_range</i>גיל</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                    <div id="envi" class="mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">mood</i>אווירה</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                    <div id="comp" class="mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">people</i>חברה</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                    <div id="price" class="price mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">attach_money</i>מחיר</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                    <div id="music" class="mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">music_note</i>מוסיקה</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                    <div id="Smoking" class="mainCriterion">
+                        <div class="criterion">
+                            <p class="criterion_title"><i class="material-icons right">smoking_rooms</i>עישון</p>
+                            <div class="criterion_information"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 </body>

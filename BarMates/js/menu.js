@@ -25,12 +25,3 @@ function ToggleNav() {
 function showError(error) {
     M.toast({ html: error, classes: 'error_toast' });
 }
-function goToHomePage() {
-    window.location.href = 'Homepage.aspx';
-}
-function goToSearchBar() {
-    window.location.href = 'SearchBar.aspx';
-}
-function goToBarRating() {
-    window.location.href = 'BarRating.aspx';
-}

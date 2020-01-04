@@ -29,7 +29,7 @@ public class Bar
         }
     }
     public Bar()
-    {
+	{
         _BarCharacteristics = new int[44];
 
     }

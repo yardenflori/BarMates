@@ -19,9 +19,9 @@
             </div>
             <div class="topnav" id="myTopnav">
                 <div class="topnav_inner">
-                    <a onclick="goToHomePage()">ראשי</a>
-                    <a onclick="goToSearchBar()">חיפוש בר</a>
-                    <a class="active" onclick="goToBarRating()">דירוג בר</a>
+                    <a id="Homepage" href="Homepage.aspx" >ראשי</a>
+                    <a id="SearchBar" href="SearchBar.aspx">חיפוש בר</a>
+                    <a id="BarRating"  href="BarRating.aspx" class="active">דירוג בר</a>
                 </div>
             </div>
             <a id="iconnav" class="icon" onclick="ToggleNav()">

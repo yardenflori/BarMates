@@ -38,14 +38,14 @@
 }
 
 .criterion_title {
-    color: #166678;
-    font-size: 36px;
-    margin: 10px 0 !important;
+    /*color: #166678;*/
+    /*font-size: 36px;
+    margin: 10px 0 !important;*/
 }
 
     .criterion_title i {
-        color: #166678;
-        font-size: 36px;
+        /*color: #166678;*/
+        /*font-size: 36px;*/
     }
 
 .criterion_information .row {
@@ -76,8 +76,11 @@
 
 .mainCriterion {
     padding-top: 10px;
+  
 }
-
+.criterion_title {
+    border-bottom: 1px solid #166678;
+}
 #myDIV {
     float: right;
 }
@@ -89,9 +92,6 @@ main {
     height: calc(100% - 100px);
 }
 
-.carousel {
-    height: calc(100% - 70px);
-}
 #searchTitle_div {
     float: right;
 }
@@ -100,18 +100,10 @@ main {
     height: 100%;
     overflow-y: auto
 }
-
-    .carousel .carousel-item {
-        width: 800px;
-        height: 800px;
-        padding: 0;
-    }
-
-.card .card-image .card-title {
-    right: 0;
-    font-size: 64px;
+.details {
+    border: 3px solid #166678;
+    padding: 40px;
 }
-
 .main_title {
     font-size: 36px;
     color: #474e53;
@@ -119,21 +111,45 @@ main {
     height: 70px;
 }
 
-.card-action a {
-    color: #166678 !important;
-    cursor: pointer;
-}
 
-    .card-action a:hover {
-        color: #8bb3bc !important;
-    }
 #backToSearch {
-    padding-right:10px;
+    padding-right: 10px;
     color: #166678 !important;
     font-size: 20px;
     cursor: pointer;
 }
+
     #backToSearch:hover {
         color: #8bb3bc !important;
     }
+/*----------carousel---------------*/
+.carousel {
+    height: calc(100% - 70px);
+}
+
+    .carousel .carousel-item {
+        width: 500px;
+        height: 350px;
+        padding: 0;
+        opacity: 1 !important;
+    }
+
+.card-image {
+    height: 100%;
+}
+
+.card .card-image img {
+    height: 100%;
+}
+
+.card .card-image .card-title {
+    right: 0;
+    font-size: 64px;
+}
+/*results bar*/
+
+#recomendBars {
+    height: 70%;
+}
+
 
