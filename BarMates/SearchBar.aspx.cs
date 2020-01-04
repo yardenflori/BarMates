@@ -2,7 +2,10 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -54,8 +57,29 @@ public partial class SearchBar : System.Web.UI.Page
      //ומחזירה את רשימה של הברים מסוג בר
      // Yarden should implement this with SP
 
-        List<Bar> bars = new List<Bar>();
-        Bar bar = new Bar();
+        List<Bar> barsList = new List<Bar>();
+        ArrayList searchresults;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        for (int i = 0; i < choisesList.Count; i++)
+        {
+            parameters.Add(new SqlParameter(choisesList[i].Key, choisesList[i].Value));
+        }
+
+        searchresults = DBController.ExecuteStoredProcedure_Select("sp_get_bars_by_search_of_tags", parameters);
+
+        if (searchresults.Count > 0)
+        {
+            foreach (DbDataRecord currentItem in searchresults)
+            {
+                Bar newBar = new Bar();
+                Engine.UpdateBarFields(newBar, currentItem);
+
+                barsList.Add(newBar);
+            }
+        }
+
+        /*Bar bar = new Bar();
         bar.BarId = 1;
         bar.BarName = "סעידה בפארק";
         bar.Address = "שמואל הנגיד 5 ,חולון";
@@ -174,6 +198,9 @@ public partial class SearchBar : System.Web.UI.Page
         bar2.Music.Mizrahit = true;
 
         bars.Add(bar2);
-        return bars;
+
+    */
+
+        return barsList;
     }
 }

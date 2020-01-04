@@ -22,6 +22,8 @@ public partial class Homepage : System.Web.UI.Page
     public static string GetUserBars() //Shaked and Yuval should implement this
     {
         //צריך להחזיר רשימה של ברים מסוג בר
+        // יש כאן 3 ברים שהוגדרו ידנית רק לבדיקות. אחרי ששקד ויובל יעדכנו
+        // את הקוד שבונה את הרשימה, ניתן למחוק אותם
         // if stored procedures needed, contact Yarden
         String userName = DBController.GetUserName();
         List<Bar> bars = new List<Bar>();

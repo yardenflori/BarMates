@@ -196,7 +196,7 @@ public class Engine
         }
     }
 
-    public void UpdateBarFields(Bar bar, DbDataRecord data)
+    public static void UpdateBarFields(Bar bar, DbDataRecord data)
     {
         bar.BarId = int.Parse(data["barId"].ToString());
         bar.BarName = data["barName"].ToString();

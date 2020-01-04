@@ -425,6 +425,9 @@ function fillChoises() {
         if (criterion_value == true) {
             choises.push({ 'Key': criterion_id, 'Value': 1 });
         }
+        else {
+            choises.push({ 'Key': criterion_id, 'Value': 0 });
+        }
     });
     //fill Enum Choises
     var EnumsType = ['Price', 'Service', 'Age'];
@@ -433,8 +436,11 @@ function fillChoises() {
         if (radioBtnValue != undefined) {
             choises.push({ 'Key': EnumsType[i], 'Value': radioBtnValue });
         }
+        else {
+            choises.push({ 'Key': EnumsType[i], 'Value': 7 });
+        }
     }
-    
+
 
 }
 //build search criterions
