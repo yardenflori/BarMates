@@ -155,7 +155,7 @@ var options = ['לא אהבתי', 'לא אכפת לי', 'אהבתי'];
 bar.SmokingFree = [
     {
         id: 'SmokingFree',
-        name: 'עישון'
+        name: 'נקי מעישון'
     }
 ];
 
@@ -419,7 +419,7 @@ function searchBarInDB() {
 }
 function fillChoises() {
     //fill Regular Choises
-    $('input[type="checkbox"]').each(function () {
+    $('#searchDiv input[type="checkbox"]').each(function () {
         criterion_id = $(this).attr('id');
         criterion_value = $('#' + criterion_id).prop("checked");
         if (criterion_value == true) {

@@ -152,7 +152,7 @@ bar.Music = [
 bar.SmokingFree = [
     {
         id: 'SmokingFree',
-        name: 'עישון'
+        name: 'נקי מעישון'
     }
 ];
 //enums criterions

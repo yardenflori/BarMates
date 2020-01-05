@@ -22,7 +22,7 @@ public class User
         get
         {
             CalculateInterestsVector();
-            return InterestsVector;
+            return _interestsVector;
         }
         set
         {

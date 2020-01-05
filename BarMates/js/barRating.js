@@ -1,5 +1,7 @@
 ﻿var globalBars = [];
 var bar = new Object;
+var barId;
+var barName;
 //regular criterions
 bar.Food = [
     {
@@ -282,7 +284,7 @@ function fillRateObject() {
     var userBarChoise = $('#barsAutocomplete').val();
     rate = new Object();
     rate.UserName = '';
-    rate.BarId = 3; //eyal should change to the ID of the bar from the google api
+    rate.BarId = barId; //eyal should change to the ID of the bar from the google api
     rate.date = null;
     fillRegularRate(bar.Food, 'Food');
     fillRegularRate(bar.Drinks, 'Drinks');
@@ -440,21 +442,24 @@ function initCriterions() {
 google.maps.event.addDomListener(window, 'load', initialize);
 function initialize() {
     var input = document.getElementById('barsAutocomplete');
-    var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'il' } });
+    var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'il' }, types:['establishment'] });
     autocomplete.addListener('place_changed', function () {
         var place = autocomplete.getPlace();
+        barId = place.id;
         if (isBar(place) == true) {
             showBarCriterions();
         }
-        // place variable will have all the information you are looking for.
-        //$('#lat').val(place.geometry['location'].lat());
-        // $('#long').val(place.geometry['location'].lng());
+        else {          
+            $('.main_content input').prop('disabled', true);
+            $('#savebtn').addClass('disabled');
+        }
     });
-}    
-function isBar(place) {  //eyal should implement this function
-    var isbar = true;
-
-    return isbar;
+}
+function isBar(place) {  
+    if (place.types.includes("bar"))
+        return true;
+    else
+        return false;
 }
 function showBarCriterions() {
     $('.main_content input').prop('disabled', false);
@@ -469,3 +474,8 @@ $(document).ready(function () {
     initScrollSpy();
     initCriterions();
 });
+
+functoin photoPerPlace(name)
+{
+
+};
