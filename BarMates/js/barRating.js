@@ -283,6 +283,7 @@ function saveRateInDB() {
 function fillRateObject() {
     var userBarChoise = $('#barsAutocomplete').val();
     rate = new Object();
+    
     rate.UserName = '';
     rate.BarId = barId; //eyal should change to the ID of the bar from the google api
     rate.date = null;

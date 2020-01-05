@@ -28,7 +28,8 @@ public class Rate
     {
         Rate newRate = new Rate();
         newRate.UserName = DBController.GetUserName();
-        newRate.BarId = int.Parse(jsonRate["BarId"].ToString());
+        var a = jsonRate["BarId"].ToString();
+        newRate.BarId = jsonRate["BarId"].ToString().GetHashCode();
         newRate.date = DateTime.Now;
         //Age
         newRate.Age = (Age)int.Parse(jsonRate["Age"].ToString());
