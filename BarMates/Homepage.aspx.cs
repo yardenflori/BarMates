@@ -44,10 +44,10 @@ public partial class Homepage : System.Web.UI.Page
         bar.Food.Kosher = false;
         bar.Food.Vegan = false;
 
-        bar.Drink = new Drinks<bool>();
-        bar.Drink.Beer = true;
-        bar.Drink.Wine = true;
-        bar.Drink.Whiskey = true;
+        bar.Drinks = new Drinks<bool>();
+        bar.Drinks.Beer = true;
+        bar.Drinks.Wine = true;
+        bar.Drinks.Whiskey = true;
 
         bar.Atmosphere = new Atmosphere<bool>();
         bar.Atmosphere.Chill = true;
@@ -84,10 +84,10 @@ public partial class Homepage : System.Web.UI.Page
         bar1.Food.Kosher = false;
         bar1.Food.Vegan = false;
 
-        bar1.Drink = new Drinks<bool>();
-        bar1.Drink.Beer = true;
-        bar1.Drink.Wine = true;
-        bar1.Drink.Whiskey = true;
+        bar1.Drinks = new Drinks<bool>();
+        bar1.Drinks.Beer = true;
+        bar1.Drinks.Wine = true;
+        bar1.Drinks.Whiskey = true;
 
         bar1.Atmosphere = new Atmosphere<bool>();
         bar1.Atmosphere.Chill = true;
@@ -125,10 +125,10 @@ public partial class Homepage : System.Web.UI.Page
         bar2.Food.Kosher = true;
         bar2.Food.Vegan = true;
 
-        bar2.Drink = new Drinks<bool>();
-        bar2.Drink.Beer = true;
-        bar2.Drink.Wine = true;
-        bar2.Drink.Whiskey = true;
+        bar2.Drinks = new Drinks<bool>();
+        bar2.Drinks.Beer = true;
+        bar2.Drinks.Wine = true;
+        bar2.Drinks.Whiskey = true;
 
         bar2.Atmosphere = new Atmosphere<bool>();
         bar2.Atmosphere.Chill = true;
