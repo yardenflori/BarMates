@@ -474,8 +474,3 @@ $(document).ready(function () {
     initScrollSpy();
     initCriterions();
 });
-
-functoin photoPerPlace(name)
-{
-
-};

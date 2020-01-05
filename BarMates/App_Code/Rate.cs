@@ -8,7 +8,7 @@ using System.Web;
 public class Rate
 {
     public string UserName { get; set; }
-    public int BarId { get; set; }
+    public string BarId { get; set; }
     public DateTime date { get; set; }
     public Age Age { get; set; }//-------------------
     public Food<int> Food { get; set; }
@@ -28,7 +28,7 @@ public class Rate
     {
         Rate newRate = new Rate();
         newRate.UserName = DBController.GetUserName();
-        newRate.BarId = int.Parse(jsonRate["BarId"].ToString());
+        newRate.BarId = jsonRate["BarId"].ToString();
         newRate.date = DateTime.Now;
         //Age
         newRate.Age = (Age)int.Parse(jsonRate["Age"].ToString());
