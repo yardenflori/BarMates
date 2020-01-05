@@ -437,6 +437,5 @@ public class User
         double scoreItemByItem = ScoreBarItemByItem(bar);
         double scoreUserByUser = ScoreBarUserByUser(bar);
         return (scoreItemByItem + scoreUserByUser) / 2;
-        return 0;
     }
 }
