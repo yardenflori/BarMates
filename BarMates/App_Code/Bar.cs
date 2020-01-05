@@ -116,13 +116,41 @@ public class Bar
 
     public void UpdateBarByRate()
     {
-        List<Rate> rates = Engine.GetRatesByBar();
-        int[] barSize = new int[44];
+        List<Rate> rates = Engine.GetRatesByBar(this);
+        int[] counters = new int[44];
+        int cnt = 0;
+        int timeDiff;
         for (int i = 0; i < rates.Count; i++)
         {
-            int[] vector = rates[i].rateVector();
-
+            int[] vector = rates[i].RateVector();
+            for (int j = 0; j < vector.Length; j++)
+            {
+                timeDiff = Helpers.TimeDifference(DateTime.Now, rates[i].date);
+                if (timeDiff < 3)
+                {
+                    cnt += 4;
+                    counters[j] += vector[j] * 4;
+                }
+                else if (timeDiff < 6)
+                {
+                    cnt += 3;
+                    counters[j] += vector[j] * 3;
+                }
+                else if (timeDiff < 12)
+                {
+                    cnt += 2;
+                    counters[j] += vector[j] * 2;
+                }
+                else
+                {
+                    cnt += 1;
+                    counters[j] += vector[j];
+                }
+            }
         }
-
+        for (int i = 0; i < _barCharacteristics.Length; i++)
+        {
+            _barCharacteristics[i] = (counters[i] > (0.2 * cnt)) ? 1 : 0;
+        }
     }
 }
