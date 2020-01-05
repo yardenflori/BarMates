@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections;
 
 public class Bar
 {
@@ -8,7 +10,7 @@ public class Bar
     public string PhotoUrl { get; set; }
     public Age Age { get; set; }
     public Food<bool> Food { get; set; }
-    public Drinks<bool> Drink { get; set; }
+    public Drinks<bool> Drinks { get; set; }
     public Atmosphere<bool> Atmosphere { get; set; }
     public bool SmokingFree { get; set; }
     public Company<bool> Company { get; set; }
@@ -31,7 +33,7 @@ public class Bar
     public Bar()
 	{
         Food = new Food<bool>();
-        Drink = new Drinks<bool>();
+        Drinks = new Drinks<bool>();
         Atmosphere = new Atmosphere<bool>();
         Company = new Company<bool>();
         Music = new Music<bool>();
@@ -81,13 +83,13 @@ public class Bar
         _barCharacteristics[12] = Food.Pizza ? 1 : 0;
         _barCharacteristics[13] = Food.Snacks ? 1 : 0;
         _barCharacteristics[14] = Food.Sushi ? 1 : 0;
-        _barCharacteristics[15] = Drink.WideRangeOfBeverages ? 1 : 0;
-        _barCharacteristics[16] = Drink.Beer ? 1 : 0;
-        _barCharacteristics[17] = Drink.BeveragePackages ? 1 : 0;
-        _barCharacteristics[18] = Drink.Cocktail ? 1 : 0;
-        _barCharacteristics[19] = Drink.Jin ? 1 : 0;
-        _barCharacteristics[20] = Drink.Whiskey ? 1 : 0;
-        _barCharacteristics[21] = Drink.Wine ? 1 : 0;
+        _barCharacteristics[15] = Drinks.WideRangeOfBeverages ? 1 : 0;
+        _barCharacteristics[16] = Drinks.Beer ? 1 : 0;
+        _barCharacteristics[17] = Drinks.BeveragePackages ? 1 : 0;
+        _barCharacteristics[18] = Drinks.Cocktail ? 1 : 0;
+        _barCharacteristics[19] = Drinks.Jin ? 1 : 0;
+        _barCharacteristics[20] = Drinks.Whiskey ? 1 : 0;
+        _barCharacteristics[21] = Drinks.Wine ? 1 : 0;
         _barCharacteristics[22] = Atmosphere.Irish ? 1 : 0;
         _barCharacteristics[23] = Atmosphere.Chill ? 1 : 0;
         _barCharacteristics[24] = Atmosphere.Dance ? 1 : 0;
@@ -110,5 +112,17 @@ public class Bar
         _barCharacteristics[41] = Music.Reggaeton ? 1 : 0;
         _barCharacteristics[42] = Music.StandUp ? 1 : 0;
         _barCharacteristics[43] = Music.Trance ? 1 : 0;
+    }
+
+    public void UpdateBarByRate()
+    {
+        List<Rate> rates = Engine.GetRatesByBar();
+        int[] barSize = new int[44];
+        for (int i = 0; i < rates.Count; i++)
+        {
+            int[] vector = rates[i].rateVector();
+
+        }
+
     }
 }
