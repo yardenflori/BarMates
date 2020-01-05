@@ -2,7 +2,7 @@
 
 public class Bar
 {
-    public int BarId { get; set; }
+    public string BarId { get; set; }
     public string BarName { get; set; }
     public string Address { get; set; }
     public Age Age { get; set; }
