@@ -297,7 +297,7 @@ public class Engine
     {
         ArrayList users;
         List<SqlParameter> parameters = new List<SqlParameter>();
-        parameters.Add(new SqlParameter("userName", userName));
+        parameters.Add(new SqlParameter("user_name", userName));
         users = DBController.ExecuteStoredProcedure_Select("sp_get_user_by_userName", parameters);
         if (users.Count > 0)
         {
@@ -425,7 +425,7 @@ public class Engine
         ArrayList rates;
         var barRates = new List<Rate>();
         List<SqlParameter> parameters = new List<SqlParameter>();
-        parameters.Add(new SqlParameter("barName", bar.BarId));
+        parameters.Add(new SqlParameter("barId", bar.BarId));
         rates = DBController.ExecuteStoredProcedure_Select("sp_get_all_ratings_of_bar_by_barId", parameters);
         if (rates.Count > 0)
         {
@@ -443,7 +443,7 @@ public class Engine
     {
         ArrayList bars;
         List<SqlParameter> parameters = new List<SqlParameter>();
-        parameters.Add(new SqlParameter("userId", barID));
+        parameters.Add(new SqlParameter("barId", barID));
         //Need to add sp_get_bar_by_barId
         bars = DBController.ExecuteStoredProcedure_Select("sp_get_bar_by_barId", parameters);
         if (bars.Count > 0)
