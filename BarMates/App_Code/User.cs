@@ -201,119 +201,112 @@ public class User
     {
         switch (i)
         {
-            //FullService
-            // case 0:
-            //  return rate.FullService;
-            //SelfService
-            // case 1:
-            //    return rate.SelfService;
-            //SmokingFree
-            case 2:
+            case 0:
                 return rate.SmokingFree;
             //Food.Burger
-            case 3:
+            case 1:
                 return rate.Food.Burger;
             //Food.Vegan
-            case 4:
+            case 2:
                 return rate.Food.Vegan;
             //Food.Kosher
-            case 5:
+            case 3:
                 return rate.Food.Kosher;
             //Food.Pizza
-            case 6:
+            case 4:
                 return rate.Food.Pizza;
             //Food.Snacks
-            case 7:
+            case 5:
                 return rate.Food.Snacks;
             //Food.Sushi
-            case 8:
+            case 6:
                 return rate.Food.Sushi;
             //Drink.Wine
-            case 9:
+            case 7:
                 return rate.Drinks.Wine;
             //Drink.Beer
-            case 10:
+            case 8:
                 return rate.Drinks.Beer;
             //Drink.BeveragePackages
-            case 11:
+            case 9:
                 return rate.Drinks.BeveragePackages;
             //Drink.Cocktail
-            case 12:
+            case 10:
                 return rate.Drinks.Cocktail;
             //Drink.Jin
-            case 13:
+            case 11:
                 return rate.Drinks.Jin;
             //Drink.Whiskey
-            case 14:
+            case 12:
                 return rate.Drinks.Whiskey;
             //Drink.WideRange
-            case 15:
+            case 13:
                 return rate.Drinks.WideRangeOfBeverages;
             //Atmosphere.Irish
-            case 16:
+            case 14:
                 return rate.Atmosphere.Irish;
             //Atmosphere.Chill
-            case 17:
+            case 15:
                 return rate.Atmosphere.Chill;
             //Atmosphere.Dance
-            case 18:
+            case 16:
                 return rate.Atmosphere.Dance;
             //Atmosphere.Party
-            case 19:
+            case 17:
                 return rate.Atmosphere.Party;
             //Atmosphere.Shisha
-            case 20:
+            case 18:
                 return rate.Atmosphere.Shisha;
             //Atmosphere.Sport
-            case 21:
+            case 19:
                 return rate.Atmosphere.Sport;
             //Company.Colleagues
-            case 22:
+            case 20:
                 return rate.Company.Colleagues;
             //Company.Dating
-            case 23:
+            case 21:
                 return rate.Company.Dating;
             //Company.Friends
-            case 24:
+            case 22:
                 return rate.Company.Friends;
             //Company.KidsFriendly
-            case 25:
+            case 23:
                 return rate.Company.KidsFriendly;
             //Company.PetsFriendly
-            case 26:
+            case 24:
                 return rate.Company.PetsFriendly;
             //Music.Greek
-            case 27:
+            case 25:
                 return rate.Music.Greek;
             //Music.Israeli
-            case 28:
+            case 26:
                 return rate.Music.Israeli;
             //Music.Jazz
-            case 29:
+            case 27:
                 return rate.Music.Jazz;
             //Music.LiveMusic
-            case 30:
+            case 28:
                 return rate.Music.LiveMusic;
             //Music.Mainstream
-            case 31:
+            case 29:
                 return rate.Music.Mainstream;
             //Music.Mizrahit
-            case 32:
+            case 30:
                 return rate.Music.Mizrahit;
             //Music.OpenMic
-            case 33:
+            case 31:
                 return rate.Music.OpenMic;
             //Music.Pop
-            case 34:
+            case 32:
                 return rate.Music.Pop;
             //Music.Reggaeton
-            case 35:
+            case 33:
                 return rate.Music.Reggaeton;
             //Music.StandUp
-            case 36:
+            case 34:
                 return rate.Music.StandUp;
             //Music.Trance
-            case 37:
+            case 35:
                 return rate.Music.Trance;
             default:
                 break;
