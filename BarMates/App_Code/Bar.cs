@@ -30,8 +30,12 @@ public class Bar
     }
     public Bar()
 	{
+        Food = new Food<bool>();
+        Drink = new Drinks<bool>();
+        Atmosphere = new Atmosphere<bool>();
+        Company = new Company<bool>();
+        Music = new Music<bool>();
         _BarCharacteristics = new int[44];
-
     }
 
     public void CalculateBarCharacteristics()
