@@ -121,7 +121,7 @@
 </body>
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/materialize.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc&amp;libraries=places&type=bar"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc&amp;libraries=places"></script>
 
 <script src="js/menu.js"></script>
 <script src="js/barRating.js"></script>
