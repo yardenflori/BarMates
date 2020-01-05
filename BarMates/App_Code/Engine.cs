@@ -39,7 +39,7 @@ public class Engine
             }
         }
     }
-
+    sp_get_all_ratings_of_bar_by_barId
     public void InitUsers()
     {
         Users = new List<User>();

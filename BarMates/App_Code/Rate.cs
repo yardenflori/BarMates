@@ -22,7 +22,12 @@ public class Rate
 
     public Rate()
     {
-        
+        date = new DateTime();
+        Food = new Food<int>();
+        Drinks = new Drinks<int>();
+        Atmosphere = new Atmosphere<int>();
+        Music = new Music<int>();
+        Company = new Company<int>();
     }
     public static Rate ParseObjectToRate(JObject jsonRate)
     {
