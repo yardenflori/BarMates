@@ -39,7 +39,7 @@ public class Engine
             }
         }
     }
-
+    sp_get_all_ratings_of_bar_by_barId
     public void InitUsers()
     {
         Users = new List<User>();
@@ -64,12 +64,6 @@ public class Engine
         user.UserName = data["userName"].ToString();
         user.Password = data["password"].ToString();
         user.Age = int.Parse(data["age"].ToString());
-        user.FullService.NegCounts = int.Parse(data["fullServiceNeg"].ToString());
-        user.FullService.PosCounts = int.Parse(data["fullServicePos"].ToString());
-        user.FullService.DontCareCounts = int.Parse(data["fullServiceDontCare"].ToString());
-        user.SelfService.NegCounts = int.Parse(data["selfServiceNeg"].ToString());
-        user.SelfService.PosCounts = int.Parse(data["selfServicePos"].ToString());
-        user.SelfService.DontCareCounts = int.Parse(data["selfServiceDontCare"].ToString());
         user.SmokingFree.NegCounts = int.Parse(data["smokingFreeNeg"].ToString());
         user.SmokingFree.PosCounts = int.Parse(data["smokingFreePos"].ToString());
         user.SmokingFree.DontCareCounts = int.Parse(data["smokingFreeDontCare"].ToString());

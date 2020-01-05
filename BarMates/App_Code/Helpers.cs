@@ -21,4 +21,10 @@ public static class Helpers
         return sum;
     }
 
+    public static double TimeDifference(DateTime now, DateTime then)
+    {
+        int x = now.Year - then.Year;
+        int y = now.Month - then.Month;
+        return x * 12 + y;
+    }
 }

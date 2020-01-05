@@ -8,8 +8,6 @@ public class User
     public string UserName { get; set; }
     public string Password { get; set; }
     public int Age { get; set; }
-    public Triple FullService { get; set; }
-    public Triple SelfService { get; set; }
     public Triple SmokingFree { get; set; }
     public Food<Triple> Food { get; set; }
     public Drinks<Triple> Drink { get; set; }
@@ -31,169 +29,167 @@ public class User
     }
     public User(Engine engine)
     {
-        _interestsVector = new double[38];
+        _interestsVector = new double[36];
         Engine = engine;
+        Food = new Food<Triple>();
+        Drink = new Drinks<Triple>();
+        Atmosphere = new Atmosphere<Triple>();
+        Company = new Company<Triple>();
+        Music = new Music<Triple>();
+        
     }
 
     private void CalculateInterestsVector()
     {
-        _interestsVector[0] = 1 - (FullService.DontCareCounts / FullService.AllCounts);
-        _interestsVector[1] = 1 - (SelfService.DontCareCounts / SelfService.AllCounts);
-        _interestsVector[2] = 1 - (SmokingFree.DontCareCounts / SmokingFree.AllCounts);
-        _interestsVector[3] = 1 - (Food.Burger.DontCareCounts / Food.Burger.AllCounts);
-        _interestsVector[4] = 1 - (Food.Vegan.DontCareCounts / Food.Vegan.AllCounts);
-        _interestsVector[5] = 1 - (Food.Kosher.DontCareCounts / Food.Kosher.AllCounts);
-        _interestsVector[6] = 1 - (Food.Pizza.DontCareCounts / Food.Pizza.AllCounts);
-        _interestsVector[7] = 1 - (Food.Snacks.DontCareCounts / Food.Snacks.AllCounts);
-        _interestsVector[8] = 1 - (Food.Sushi.DontCareCounts / Food.Sushi.AllCounts);
-        _interestsVector[9] = 1 - (Drink.Wine.DontCareCounts / Drink.Wine.AllCounts);
-        _interestsVector[10] = 1 - (Drink.Beer.DontCareCounts / Drink.Beer.AllCounts);
-        _interestsVector[11] = 1 - (Drink.BeveragePackages.DontCareCounts / Drink.BeveragePackages.AllCounts);
-        _interestsVector[12] = 1 - (Drink.Cocktail.DontCareCounts / Drink.Cocktail.AllCounts);
-        _interestsVector[13] = 1 - (Drink.Jin.DontCareCounts / Drink.Jin.AllCounts);
-        _interestsVector[14] = 1 - (Drink.Whiskey.DontCareCounts / Drink.Whiskey.AllCounts);
-        _interestsVector[15] = 1 - (Drink.WideRangeOfBeverages.DontCareCounts / Drink.WideRangeOfBeverages.AllCounts);
-        _interestsVector[16] = 1 - (Atmosphere.Irish.DontCareCounts / Atmosphere.Irish.AllCounts);
-        _interestsVector[17] = 1 - (Atmosphere.Chill.DontCareCounts / Atmosphere.Chill.AllCounts);
-        _interestsVector[18] = 1 - (Atmosphere.Dance.DontCareCounts / Atmosphere.Dance.AllCounts);
-        _interestsVector[19] = 1 - (Atmosphere.Party.DontCareCounts / Atmosphere.Party.AllCounts);
-        _interestsVector[20] = 1 - (Atmosphere.Shisha.DontCareCounts / Atmosphere.Shisha.AllCounts);
-        _interestsVector[21] = 1 - (Atmosphere.Sport.DontCareCounts / Atmosphere.Sport.AllCounts);
-        _interestsVector[22] = 1 - (Company.Colleagues.DontCareCounts / Company.Colleagues.AllCounts);
-        _interestsVector[23] = 1 - (Company.Dating.DontCareCounts / Company.Dating.AllCounts);
-        _interestsVector[24] = 1 - (Company.Friends.DontCareCounts / Company.Friends.AllCounts);
-        _interestsVector[25] = 1 - (Company.KidsFriendly.DontCareCounts / Company.KidsFriendly.AllCounts);
-        _interestsVector[26] = 1 - (Company.PetsFriendly.DontCareCounts / Company.PetsFriendly.AllCounts);
-        _interestsVector[27] = 1 - (Music.Greek.DontCareCounts / Music.Greek.AllCounts);
-        _interestsVector[28] = 1 - (Music.Israeli.DontCareCounts / Music.Israeli.AllCounts);
-        _interestsVector[29] = 1 - (Music.Jazz.DontCareCounts / Music.Jazz.AllCounts);
-        _interestsVector[30] = 1 - (Music.LiveMusic.DontCareCounts / Music.LiveMusic.AllCounts);
-        _interestsVector[31] = 1 - (Music.Mainstream.DontCareCounts / Music.Mainstream.AllCounts);
-        _interestsVector[32] = 1 - (Music.Mizrahit.DontCareCounts / Music.Mizrahit.AllCounts);
-        _interestsVector[33] = 1 - (Music.OpenMic.DontCareCounts / Music.OpenMic.AllCounts);
-        _interestsVector[34] = 1 - (Music.Pop.DontCareCounts / Music.Pop.AllCounts);
-        _interestsVector[35] = 1 - (Music.Reggaeton.DontCareCounts / Music.Reggaeton.AllCounts);
-        _interestsVector[36] = 1 - (Music.StandUp.DontCareCounts / Music.StandUp.AllCounts);
-        _interestsVector[37] = 1 - (Music.Trance.DontCareCounts / Music.Trance.AllCounts);
+        _interestsVector[0] = 1 - (SmokingFree.DontCareCounts / SmokingFree.AllCounts);
+        _interestsVector[1] = 1 - (Food.Burger.DontCareCounts / Food.Burger.AllCounts);
+        _interestsVector[2] = 1 - (Food.Vegan.DontCareCounts / Food.Vegan.AllCounts);
+        _interestsVector[3] = 1 - (Food.Kosher.DontCareCounts / Food.Kosher.AllCounts);
+        _interestsVector[4] = 1 - (Food.Pizza.DontCareCounts / Food.Pizza.AllCounts);
+        _interestsVector[5] = 1 - (Food.Snacks.DontCareCounts / Food.Snacks.AllCounts);
+        _interestsVector[6] = 1 - (Food.Sushi.DontCareCounts / Food.Sushi.AllCounts);
+        _interestsVector[7] = 1 - (Drink.Wine.DontCareCounts / Drink.Wine.AllCounts);
+        _interestsVector[8] = 1 - (Drink.Beer.DontCareCounts / Drink.Beer.AllCounts);
+        _interestsVector[9] = 1 - (Drink.BeveragePackages.DontCareCounts / Drink.BeveragePackages.AllCounts);
+        _interestsVector[10] = 1 - (Drink.Cocktail.DontCareCounts / Drink.Cocktail.AllCounts);
+        _interestsVector[11] = 1 - (Drink.Jin.DontCareCounts / Drink.Jin.AllCounts);
+        _interestsVector[12] = 1 - (Drink.Whiskey.DontCareCounts / Drink.Whiskey.AllCounts);
+        _interestsVector[13] = 1 - (Drink.WideRangeOfBeverages.DontCareCounts / Drink.WideRangeOfBeverages.AllCounts);
+        _interestsVector[14] = 1 - (Atmosphere.Irish.DontCareCounts / Atmosphere.Irish.AllCounts);
+        _interestsVector[15] = 1 - (Atmosphere.Chill.DontCareCounts / Atmosphere.Chill.AllCounts);
+        _interestsVector[16] = 1 - (Atmosphere.Dance.DontCareCounts / Atmosphere.Dance.AllCounts);
+        _interestsVector[17] = 1 - (Atmosphere.Party.DontCareCounts / Atmosphere.Party.AllCounts);
+        _interestsVector[18] = 1 - (Atmosphere.Shisha.DontCareCounts / Atmosphere.Shisha.AllCounts);
+        _interestsVector[19] = 1 - (Atmosphere.Sport.DontCareCounts / Atmosphere.Sport.AllCounts);
+        _interestsVector[20] = 1 - (Company.Colleagues.DontCareCounts / Company.Colleagues.AllCounts);
+        _interestsVector[21] = 1 - (Company.Dating.DontCareCounts / Company.Dating.AllCounts);
+        _interestsVector[22] = 1 - (Company.Friends.DontCareCounts / Company.Friends.AllCounts);
+        _interestsVector[23] = 1 - (Company.KidsFriendly.DontCareCounts / Company.KidsFriendly.AllCounts);
+        _interestsVector[24] = 1 - (Company.PetsFriendly.DontCareCounts / Company.PetsFriendly.AllCounts);
+        _interestsVector[25] = 1 - (Music.Greek.DontCareCounts / Music.Greek.AllCounts);
+        _interestsVector[26] = 1 - (Music.Israeli.DontCareCounts / Music.Israeli.AllCounts);
+        _interestsVector[27] = 1 - (Music.Jazz.DontCareCounts / Music.Jazz.AllCounts);
+        _interestsVector[28] = 1 - (Music.LiveMusic.DontCareCounts / Music.LiveMusic.AllCounts);
+        _interestsVector[29] = 1 - (Music.Mainstream.DontCareCounts / Music.Mainstream.AllCounts);
+        _interestsVector[30] = 1 - (Music.Mizrahit.DontCareCounts / Music.Mizrahit.AllCounts);
+        _interestsVector[31] = 1 - (Music.OpenMic.DontCareCounts / Music.OpenMic.AllCounts);
+        _interestsVector[32] = 1 - (Music.Pop.DontCareCounts / Music.Pop.AllCounts);
+        _interestsVector[33] = 1 - (Music.Reggaeton.DontCareCounts / Music.Reggaeton.AllCounts);
+        _interestsVector[34] = 1 - (Music.StandUp.DontCareCounts / Music.StandUp.AllCounts);
+        _interestsVector[35] = 1 - (Music.Trance.DontCareCounts / Music.Trance.AllCounts);
     }
 
     private int UserCatToBarCat(int i)
     {
         switch (i)
         {
-            //FullService
-            case 0:
-                return 7;
-            //SelfService
-            case 1:
-                return 8;
             //SmokingFree
-            case 2:
+            case 0:
                 return 0;
             //Food.Burger
-            case 3:
+            case 1:
                 return 9;
             //Food.Vegan
-            case 4:
+            case 2:
                 return 10;
             //Food.Kosher
-            case 5:
+            case 3:
                 return 11;
             //Food.Pizza
-            case 6:
+            case 4:
                 return 12;
             //Food.Snacks
-            case 7:
+            case 5:
                 return 13;
             //Food.Sushi
-            case 8:
+            case 6:
                 return 14;
             //Drink.Wine
-            case 9:
+            case 7:
                 return 21;
             //Drink.Beer
-            case 10:
+            case 8:
                 return 16;
             //Drink.BeveragePackages
-            case 11:
+            case 9:
                 return 17;
             //Drink.Cocktail
-            case 12:
+            case 10:
                 return 18;
             //Drink.Jin
-            case 13:
+            case 11:
                 return 19;
             //Drink.Whiskey
-            case 14:
+            case 12:
                 return 20;
             //Drink.WideRange
-            case 15:
+            case 13:
                 return 15;
             //Atmosphere.Irish
-            case 16:
+            case 14:
                 return 22;
             //Atmosphere.Chill
-            case 17:
+            case 15:
                 return 23;
             //Atmosphere.Dance
-            case 18:
+            case 16:
                 return 24;
             //Atmosphere.Party
-            case 19:
+            case 17:
                 return 25;
             //Atmosphere.Shisha
-            case 20:
+            case 18:
                 return 26;
             //Atmosphere.Sport
-            case 21:
+            case 19:
                 return 27;
             //Company.Colleagues
-            case 22:
+            case 20:
                 return 28;
             //Company.Dating
-            case 23:
+            case 21:
                 return 29;
             //Company.Friends
-            case 24:
+            case 22:
                 return 30;
             //Company.KidsFriendly
-            case 25:
+            case 23:
                 return 31;
             //Company.PetsFriendly
-            case 26:
+            case 24:
                 return 32;
             //Music.Greek
-            case 27:
+            case 25:
                 return 33;
             //Music.Israeli
-            case 28:
+            case 26:
                 return 34;
             //Music.Jazz
-            case 29:
+            case 27:
                 return 35;
             //Music.LiveMusic
-            case 30:
+            case 28:
                 return 36;
             //Music.Mainstream
-            case 31:
+            case 29:
                 return 37;
             //Music.Mizrahit
-            case 32:
+            case 30:
                 return 38;
             //Music.OpenMic
-            case 33:
+            case 31:
                 return 39;
             //Music.Pop
-            case 34:
+            case 32:
                 return 40;
             //Music.Reggaeton
-            case 35:
+            case 33:
                 return 41;
             //Music.StandUp
-            case 36:
+            case 34:
                 return 42;
             //Music.Trance
-            case 37:
+            case 35:
                 return 43;
             default:
                 break;
@@ -393,8 +389,7 @@ public class User
         int cnt = 0;
         double score = 0;
         for (int i = 0; i < 10; i++)
-        {
-            User user = Engine.GetUserByUserID(users[i]);
+        {      
             Rate rate = GetRateFromUser(bar);
             if(rate != null)
             {
@@ -416,8 +411,6 @@ public class User
         double score = 0;
         for (int i = 0; i < 10; i++)
         {
-            //Add get GetBarByBarID
-            Bar tempBar = Engine.GetBarByBarID(bars[i]);
             Rate rate = GetRateFromUser(bar);
             if (rate != null)
             {

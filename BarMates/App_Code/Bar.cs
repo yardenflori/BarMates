@@ -12,7 +12,6 @@ public class Bar
     public bool SmokingFree { get; set; }
     public Company<bool> Company { get; set; }
     public Music<bool> Music { get; set; }
-
     public Price Price { get; set; }
     public Service Service { get; set; }
     private int[] _barCharacteristics { get; set; }
