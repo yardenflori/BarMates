@@ -457,8 +457,6 @@ function initialize() {
             barName = place.name;
             barAddress = place.formatted_address;
             barPhotoURL = place.photos[0].getUrl({ maxWidth: 500, maxHeight: 500 });
-            window.open(barPhotoURL);
-            console.log(place);
         }
         else {          
             $('.main_content input').prop('disabled', true);

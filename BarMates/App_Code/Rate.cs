@@ -36,8 +36,10 @@ public class Rate
     {
         Rate newRate = new Rate();
         newRate.UserName = DBController.GetUserName();
-        var a = jsonRate["BarId"].ToString();
+        newRate.BarName = jsonRate["BarName"].ToString();
+        newRate.address = jsonRate["address"].ToString();
         newRate.BarId = jsonRate["BarId"].ToString().GetHashCode();
+        newRate.photoURL = jsonRate["photoUrl"].ToString();
         newRate.date = DateTime.Now;
         //Age
         newRate.Age = (Age)int.Parse(jsonRate["Age"].ToString());
