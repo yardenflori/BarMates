@@ -93,4 +93,45 @@ public class Rate
         newRate.Music.StandUp = int.Parse(jsonRate["Music"]["StandUp"].ToString());
         return newRate;
     }
+
+    public int[] RateVector()
+    {
+        int[] vector = new int[44];
+        vector[9] = (Food.Burger != 7) ? 1 : 0;
+        vector[10] = (Food.Vegan != 7) ? 1 : 0;
+        vector[11] = (Food.Kosher != 7) ? 1 : 0;
+        vector[12] = (Food.Pizza != 7) ? 1 : 0;
+        vector[13] = (Food.Snacks != 7) ? 1 : 0;
+        vector[14] = (Food.Sushi != 7) ? 1 : 0;
+        vector[15] = (Drinks.WideRangeOfBeverages != 7) ? 1 : 0;
+        vector[16] = (Drinks.Beer != 7) ? 1 : 0;
+        vector[17] = (Drinks.BeveragePackages != 7) ? 1 : 0;
+        vector[18] = (Drinks.Cocktail != 7) ? 1 : 0;
+        vector[19] = (Drinks.Jin != 7) ? 1 : 0;
+        vector[20] = (Drinks.Whiskey != 7) ? 1 : 0;
+        vector[21] = (Drinks.Wine != 7) ? 1 : 0;
+        vector[22] = (Atmosphere.Irish != 7) ? 1 : 0;
+        vector[23] = (Atmosphere.Chill != 7) ? 1 : 0;
+        vector[24] = (Atmosphere.Dance != 7) ? 1 : 0;
+        vector[25] = (Atmosphere.Party != 7) ? 1 : 0;
+        vector[26] = (Atmosphere.Shisha != 7) ? 1 : 0;
+        vector[27] = (Atmosphere.Sport != 7) ? 1 : 0;
+        vector[28] = (Company.Colleagues != 7) ? 1 : 0;
+        vector[29] = (Company.Dating != 7) ? 1 : 0;
+        vector[30] = (Company.Friends != 7) ? 1 : 0;
+        vector[31] = (Company.KidsFriendly != 7) ? 1 : 0;
+        vector[32] = (Company.PetsFriendly != 7) ? 1 : 0;
+        vector[33] = (Music.Greek != 7) ? 1 : 0;
+        vector[34] = (Music.Israeli != 7) ? 1 : 0;
+        vector[35] = (Music.Jazz != 7) ? 1 : 0;
+        vector[36] = (Music.LiveMusic != 7) ? 1 : 0;
+        vector[37] = (Music.Mainstream != 7) ? 1 : 0;
+        vector[38] = (Music.Mizrahit != 7) ? 1 : 0;
+        vector[39] = (Music.OpenMic != 7) ? 1 : 0;
+        vector[40] = (Music.Pop != 7) ? 1 : 0;
+        vector[41] = (Music.Reggaeton != 7) ? 1 : 0;
+        vector[42] = (Music.StandUp != 7) ? 1 : 0;
+        vector[43] = (Music.Trance != 7) ? 1 : 0;
+        return vector;
+    }
 }

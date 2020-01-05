@@ -404,6 +404,24 @@ public class Engine
         return userRates;
     }
 
+    public static List<Rate> GetRatesByBar(Bar bar)
+    {
+        ArrayList rates;
+        var barRates = new List<Rate>();
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        parameters.Add(new SqlParameter("barName", bar.BarId));
+        rates = DBController.ExecuteStoredProcedure_Select("sp_get_all_ratings_of_bar_by_barId", parameters);
+        if (rates.Count > 0)
+        {
+            foreach (DbDataRecord currentItem in rates)
+            {
+                Rate newRate = new Rate();
+                UpdateRateFields(newRate, currentItem);
+                barRates.Add(newRate);
+            }
+        }
+        return barRates;
+    }
     public Bar GetBarByBarID(int barID)
     {
         ArrayList bars;
