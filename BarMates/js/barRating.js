@@ -2,6 +2,8 @@
 var bar = new Object;
 var barId;
 var barName;
+var barAddress;
+var barPhotoURL;
 //regular criterions
 bar.Food = [
     {
@@ -283,8 +285,12 @@ function saveRateInDB() {
 function fillRateObject() {
     var userBarChoise = $('#barsAutocomplete').val();
     rate = new Object();
+    
     rate.UserName = '';
-    rate.BarId = barId; //eyal should change to the ID of the bar from the google api
+    rate.BarId = barId;
+    rate.BarName = barName;
+    rate.photoUrl = barPhotoURL;
+    rate.address = barAddress;
     rate.date = null;
     fillRegularRate(bar.Food, 'Food');
     fillRegularRate(bar.Drinks, 'Drinks');
@@ -445,9 +451,14 @@ function initialize() {
     var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'il' }, types:['establishment'] });
     autocomplete.addListener('place_changed', function () {
         var place = autocomplete.getPlace();
-        barId = place.id;
         if (isBar(place) == true) {
             showBarCriterions();
+            barId = place.place_id;
+            barName = place.name;
+            barAddress = place.formatted_address;
+            barPhotoURL = place.photos[0].getUrl({ maxWidth: 500, maxHeight: 500 });
+            window.open(barPhotoURL);
+            console.log(place);
         }
         else {          
             $('.main_content input').prop('disabled', true);
