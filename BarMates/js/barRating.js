@@ -2,6 +2,8 @@
 var bar = new Object;
 var barId;
 var barName;
+var barAddress;
+var barPhotoURL;
 //regular criterions
 bar.Food = [
     {
@@ -445,9 +447,14 @@ function initialize() {
     var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'il' }, types:['establishment'] });
     autocomplete.addListener('place_changed', function () {
         var place = autocomplete.getPlace();
-        barId = place.id;
         if (isBar(place) == true) {
             showBarCriterions();
+            barId = place.place_id;
+            barName = place.name;
+            barAddress = place.formatted_address;
+            barPhotoURL = place.photos[0].getUrl({ maxWidth: 500, maxHeight: 500 });
+            window.open(barPhotoURL);
+            console.log(place);
         }
         else {          
             $('.main_content input').prop('disabled', true);
@@ -474,8 +481,3 @@ $(document).ready(function () {
     initScrollSpy();
     initCriterions();
 });
-
-functoin photoPerPlace(name)
-{
-
-};
