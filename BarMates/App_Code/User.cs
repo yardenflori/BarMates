@@ -3,7 +3,6 @@ using System.Linq;
 
 public class User
 { 
-    public Engine Engine { get; set; }
     public int UserId { get; set; }
     public string UserName { get; set; }
     public string Password { get; set; }
@@ -27,10 +26,9 @@ public class User
             _interestsVector = value;
         }
     }
-    public User(Engine engine)
+    public User()
     {
         _interestsVector = new double[36];
-        Engine = engine;
         Food = new Food<Triple>();
         Drink = new Drinks<Triple>();
         Atmosphere = new Atmosphere<Triple>();

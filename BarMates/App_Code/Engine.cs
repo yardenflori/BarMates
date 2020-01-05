@@ -7,9 +7,9 @@ using System.Collections;
 
 public class Engine
 {
-    public User User { set; get; }
-    public List<User> Users { set; get; }
-    public List<Bar> Bars { get; set; }
+    public static User User { set; get; }
+    public static List<User> Users { set; get; }
+    public static List<Bar> Bars { get; set; }
     public Engine()
 	{
         InitUser();
@@ -25,7 +25,7 @@ public class Engine
         string username = DBController.GetUserName();
         if (username!=null)
         {
-            User = new User(this);
+            User = new User();
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("user_name", username));
             var userDB = DBController.ExecuteStoredProcedure_Select("sp_get_user_by_username", parameters);
@@ -51,9 +51,25 @@ public class Engine
         {
             foreach (DbDataRecord currentItem in usersDB)
             {
-                User new_user = new User(this);
+                User new_user = new User();
                 UpdateUserFields(new_user, currentItem);
                 Users.Add(new_user);
+            }
+        }
+    }
+    
+    public void InitBars()
+    {
+        Bars = new List<Bar>();
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        var barsDB = DBController.ExecuteStoredProcedure_Select("sp_get_all_bars", parameters);
+        if (barsDB.Count > 0)
+        {
+            foreach (DbDataRecord currentItem in barsDB)
+            {
+                Bar newBar = new Bar();
+                UpdateBarFields(newBar, currentItem);
+                Bars.Add(newBar);
             }
         }
     }
@@ -174,22 +190,6 @@ public class Engine
         user.Music.StandUp.DontCareCounts = int.Parse(data["standupDontCare"].ToString());
     }
 
-    public void InitBars()
-    {
-        Bars = new List<Bar>();
-        List<SqlParameter> parameters = new List<SqlParameter>();
-        var barsDB = DBController.ExecuteStoredProcedure_Select("sp_get_all_bars", parameters);
-        if (barsDB.Count > 0)
-        {
-            foreach (DbDataRecord currentItem in barsDB)
-            {
-                Bar newBar = new Bar();
-                UpdateBarFields(newBar, currentItem);
-                Bars.Add(newBar);
-            }
-        }
-    }
-
     public static void UpdateBarFields(Bar bar, DbDataRecord data)
     {
         bar.BarId = int.Parse(data["barId"].ToString());
@@ -217,15 +217,13 @@ public class Engine
         bar.Food.Snacks = data["snacks"].ToString() == "True";
         bar.Food.Vegan = data["vegan"].ToString() == "True";
         bar.Food.Kosher = data["kosher"].ToString() == "True";
-        bar.Drink.Beer = data["beer"].ToString() == "True";
-        bar.Drink.Wine = data["wine"].ToString() == "True";
-        bar.Drink.Cocktail = data["cocktail"].ToString() == "True";
-        bar.Drink.BeveragePackages = data["beveragePackages"].ToString() == "True";
-        
-        bar.Drink.Jin = data["jin"].ToString() == "True";
-        bar.Drink.Whiskey = data["whiskey"].ToString() == "True";
-        bar.Drink.WideRangeOfBeverages = data["wideRangeOfBeverages"].ToString() == "True";
-        
+        bar.Drinks.Beer = data["beer"].ToString() == "True";
+        bar.Drinks.Wine = data["wine"].ToString() == "True";
+        bar.Drinks.Cocktail = data["cocktail"].ToString() == "True";
+        bar.Drinks.BeveragePackages = data["beveragePackages"].ToString() == "True";
+        bar.Drinks.Jin = data["jin"].ToString() == "True";
+        bar.Drinks.Whiskey = data["whiskey"].ToString() == "True";
+        bar.Drinks.WideRangeOfBeverages = data["wideRangeOfBeverages"].ToString() == "True";
         bar.Atmosphere.Irish = data["irish"].ToString() == "True";
         bar.Atmosphere.Chill = data["chill"].ToString() == "True";
         bar.Atmosphere.Dance = data["dance"].ToString() == "True";
@@ -277,7 +275,7 @@ public class Engine
         
     }
 
-    public User GetUserByUserID(int userID)
+    public static User GetUserByUserID(int userID)
     {
         ArrayList users;
         List<SqlParameter> parameters = new List<SqlParameter>();
@@ -287,14 +285,32 @@ public class Engine
         {
             foreach (DbDataRecord currentItem in users)
             {
-                User user = new User(this);
+                User user = new User();
                 UpdateUserFields(user, currentItem);
                 return user;
             }
         }
         return null;
     }
-   
+
+    public static User GetUserByUserName(string userName)
+    {
+        ArrayList users;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        parameters.Add(new SqlParameter("userName", userName));
+        users = DBController.ExecuteStoredProcedure_Select("sp_get_user_by_userName", parameters);
+        if (users.Count > 0)
+        {
+            foreach (DbDataRecord currentItem in users)
+            {
+                User user = new User();
+                UpdateUserFields(user, currentItem);
+                return user;
+            }
+        }
+        return null;
+    }
+
     public static void UpdateRateFields(Rate rate, DbDataRecord data)
     {
         rate.UserName = data["userName"].ToString();
@@ -422,6 +438,7 @@ public class Engine
         }
         return barRates;
     }
+    
     public Bar GetBarByBarID(int barID)
     {
         ArrayList bars;
