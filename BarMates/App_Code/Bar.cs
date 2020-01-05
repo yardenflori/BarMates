@@ -110,4 +110,5 @@ public class Bar
         _barCharacteristics[42] = Music.StandUp ? 1 : 0;
         _barCharacteristics[43] = Music.Trance ? 1 : 0;
     }
+
 }
