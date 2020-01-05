@@ -2,7 +2,7 @@
 using System.Linq;
 
 public class User
-{
+{ 
     public Engine Engine { get; set; }
     public int UserId { get; set; }
     public string UserName { get; set; }
@@ -16,7 +16,7 @@ public class User
     public Atmosphere<Triple> Atmosphere { get; set; }
     public Company<Triple> Company { get; set; }
     public Music<Triple> Music { get; set; }
-    public double[] _InterestsVector;
+    private double[] _interestsVector { get; set; }
     public double[] InterestsVector
     {
         get
@@ -26,57 +26,56 @@ public class User
         }
         set
         {
-            _InterestsVector = value;
+            _interestsVector = value;
         }
     }
     public User(Engine engine)
     {
-        _InterestsVector = new double[38];
+        _interestsVector = new double[38];
         Engine = engine;
     }
 
     private void CalculateInterestsVector()
     {
-        _InterestsVector[0] = 1 - (FullService.DontCareCounts / FullService.AllCounts);
-        _InterestsVector[1] = 1 - (SelfService.DontCareCounts / SelfService.AllCounts);
-        _InterestsVector[2] = 1 - (SmokingFree.DontCareCounts / SmokingFree.AllCounts);
-        _InterestsVector[3] = 1 - (Food.Burger.DontCareCounts / Food.Burger.AllCounts);
-        _InterestsVector[4] = 1 - (Food.Vegan.DontCareCounts / Food.Vegan.AllCounts);
-        _InterestsVector[5] = 1 - (Food.Kosher.DontCareCounts / Food.Kosher.AllCounts);
-        _InterestsVector[6] = 1 - (Food.Pizza.DontCareCounts / Food.Pizza.AllCounts);
-        _InterestsVector[7] = 1 - (Food.Snacks.DontCareCounts / Food.Snacks.AllCounts);
-        _InterestsVector[8] = 1 - (Food.Sushi.DontCareCounts / Food.Sushi.AllCounts);
-        _InterestsVector[9] = 1 - (Drink.Wine.DontCareCounts / Drink.Wine.AllCounts);
-        _InterestsVector[10] = 1 - (Drink.Beer.DontCareCounts / Drink.Beer.AllCounts);
-        _InterestsVector[11] = 1 - (Drink.BeveragePackages.DontCareCounts / Drink.BeveragePackages.AllCounts);
-        _InterestsVector[12] = 1 - (Drink.Cocktail.DontCareCounts / Drink.Cocktail.AllCounts);
-        _InterestsVector[13] = 1 - (Drink.Jin.DontCareCounts / Drink.Jin.AllCounts);
-        _InterestsVector[14] = 1 - (Drink.Whiskey.DontCareCounts / Drink.Whiskey.AllCounts);
-        _InterestsVector[15] = 1 - (Drink.WideRangeOfBeverages.DontCareCounts / Drink.WideRangeOfBeverages.AllCounts);
-        _InterestsVector[16] = 1 - (Atmosphere.Irish.DontCareCounts / Atmosphere.Irish.AllCounts);
-        _InterestsVector[17] = 1 - (Atmosphere.Chill.DontCareCounts / Atmosphere.Chill.AllCounts);
-        _InterestsVector[18] = 1 - (Atmosphere.Dance.DontCareCounts / Atmosphere.Dance.AllCounts);
-        _InterestsVector[19] = 1 - (Atmosphere.Party.DontCareCounts / Atmosphere.Party.AllCounts);
-        _InterestsVector[20] = 1 - (Atmosphere.Shisha.DontCareCounts / Atmosphere.Shisha.AllCounts);
-        _InterestsVector[21] = 1 - (Atmosphere.Sport.DontCareCounts / Atmosphere.Sport.AllCounts);
-        _InterestsVector[22] = 1 - (Company.Colleagues.DontCareCounts / Company.Colleagues.AllCounts);
-        _InterestsVector[23] = 1 - (Company.Dating.DontCareCounts / Company.Dating.AllCounts);
-        _InterestsVector[24] = 1 - (Company.Friends.DontCareCounts / Company.Friends.AllCounts);
-        _InterestsVector[25] = 1 - (Company.KidsFriendly.DontCareCounts / Company.KidsFriendly.AllCounts);
-        _InterestsVector[26] = 1 - (Company.PetsFriendly.DontCareCounts / Company.PetsFriendly.AllCounts);
-        _InterestsVector[27] = 1 - (Music.Greek.DontCareCounts / Music.Greek.AllCounts);
-        _InterestsVector[28] = 1 - (Music.Israeli.DontCareCounts / Music.Israeli.AllCounts);
-        _InterestsVector[29] = 1 - (Music.Jazz.DontCareCounts / Music.Jazz.AllCounts);
-        _InterestsVector[30] = 1 - (Music.LiveMusic.DontCareCounts / Music.LiveMusic.AllCounts);
-        _InterestsVector[31] = 1 - (Music.Mainstream.DontCareCounts / Music.Mainstream.AllCounts);
-        _InterestsVector[32] = 1 - (Music.Mizrahit.DontCareCounts / Music.Mizrahit.AllCounts);
-        _InterestsVector[33] = 1 - (Music.OpenMic.DontCareCounts / Music.OpenMic.AllCounts);
-        _InterestsVector[34] = 1 - (Music.Pop.DontCareCounts / Music.Pop.AllCounts);
-        _InterestsVector[35] = 1 - (Music.Reggaeton.DontCareCounts / Music.Reggaeton.AllCounts);
-        _InterestsVector[36] = 1 - (Music.StandUp.DontCareCounts / Music.StandUp.AllCounts);
-        _InterestsVector[37] = 1 - (Music.Trance.DontCareCounts / Music.Trance.AllCounts);
+        _interestsVector[0] = 1 - (FullService.DontCareCounts / FullService.AllCounts);
+        _interestsVector[1] = 1 - (SelfService.DontCareCounts / SelfService.AllCounts);
+        _interestsVector[2] = 1 - (SmokingFree.DontCareCounts / SmokingFree.AllCounts);
+        _interestsVector[3] = 1 - (Food.Burger.DontCareCounts / Food.Burger.AllCounts);
+        _interestsVector[4] = 1 - (Food.Vegan.DontCareCounts / Food.Vegan.AllCounts);
+        _interestsVector[5] = 1 - (Food.Kosher.DontCareCounts / Food.Kosher.AllCounts);
+        _interestsVector[6] = 1 - (Food.Pizza.DontCareCounts / Food.Pizza.AllCounts);
+        _interestsVector[7] = 1 - (Food.Snacks.DontCareCounts / Food.Snacks.AllCounts);
+        _interestsVector[8] = 1 - (Food.Sushi.DontCareCounts / Food.Sushi.AllCounts);
+        _interestsVector[9] = 1 - (Drink.Wine.DontCareCounts / Drink.Wine.AllCounts);
+        _interestsVector[10] = 1 - (Drink.Beer.DontCareCounts / Drink.Beer.AllCounts);
+        _interestsVector[11] = 1 - (Drink.BeveragePackages.DontCareCounts / Drink.BeveragePackages.AllCounts);
+        _interestsVector[12] = 1 - (Drink.Cocktail.DontCareCounts / Drink.Cocktail.AllCounts);
+        _interestsVector[13] = 1 - (Drink.Jin.DontCareCounts / Drink.Jin.AllCounts);
+        _interestsVector[14] = 1 - (Drink.Whiskey.DontCareCounts / Drink.Whiskey.AllCounts);
+        _interestsVector[15] = 1 - (Drink.WideRangeOfBeverages.DontCareCounts / Drink.WideRangeOfBeverages.AllCounts);
+        _interestsVector[16] = 1 - (Atmosphere.Irish.DontCareCounts / Atmosphere.Irish.AllCounts);
+        _interestsVector[17] = 1 - (Atmosphere.Chill.DontCareCounts / Atmosphere.Chill.AllCounts);
+        _interestsVector[18] = 1 - (Atmosphere.Dance.DontCareCounts / Atmosphere.Dance.AllCounts);
+        _interestsVector[19] = 1 - (Atmosphere.Party.DontCareCounts / Atmosphere.Party.AllCounts);
+        _interestsVector[20] = 1 - (Atmosphere.Shisha.DontCareCounts / Atmosphere.Shisha.AllCounts);
+        _interestsVector[21] = 1 - (Atmosphere.Sport.DontCareCounts / Atmosphere.Sport.AllCounts);
+        _interestsVector[22] = 1 - (Company.Colleagues.DontCareCounts / Company.Colleagues.AllCounts);
+        _interestsVector[23] = 1 - (Company.Dating.DontCareCounts / Company.Dating.AllCounts);
+        _interestsVector[24] = 1 - (Company.Friends.DontCareCounts / Company.Friends.AllCounts);
+        _interestsVector[25] = 1 - (Company.KidsFriendly.DontCareCounts / Company.KidsFriendly.AllCounts);
+        _interestsVector[26] = 1 - (Company.PetsFriendly.DontCareCounts / Company.PetsFriendly.AllCounts);
+        _interestsVector[27] = 1 - (Music.Greek.DontCareCounts / Music.Greek.AllCounts);
+        _interestsVector[28] = 1 - (Music.Israeli.DontCareCounts / Music.Israeli.AllCounts);
+        _interestsVector[29] = 1 - (Music.Jazz.DontCareCounts / Music.Jazz.AllCounts);
+        _interestsVector[30] = 1 - (Music.LiveMusic.DontCareCounts / Music.LiveMusic.AllCounts);
+        _interestsVector[31] = 1 - (Music.Mainstream.DontCareCounts / Music.Mainstream.AllCounts);
+        _interestsVector[32] = 1 - (Music.Mizrahit.DontCareCounts / Music.Mizrahit.AllCounts);
+        _interestsVector[33] = 1 - (Music.OpenMic.DontCareCounts / Music.OpenMic.AllCounts);
+        _interestsVector[34] = 1 - (Music.Pop.DontCareCounts / Music.Pop.AllCounts);
+        _interestsVector[35] = 1 - (Music.Reggaeton.DontCareCounts / Music.Reggaeton.AllCounts);
+        _interestsVector[36] = 1 - (Music.StandUp.DontCareCounts / Music.StandUp.AllCounts);
+        _interestsVector[37] = 1 - (Music.Trance.DontCareCounts / Music.Trance.AllCounts);
     }
-
 
     private int UserCatToBarCat(int i)
     {
@@ -325,6 +324,7 @@ public class User
         }
         return -2;
     }
+    
     //Warning : Only bars that matches user's age
     public double CalculateScoreForBar(Bar bar, Rate rate)
     {
@@ -373,7 +373,6 @@ public class User
         return resultBars;
     }
 
-
     public Rate GetRateFromUser(Bar bar)
     {
         var rates = Engine.GetRatesByUser(this);
@@ -387,6 +386,7 @@ public class User
             return null;
         }
     }
+    
     private double ScoreBarUserByUser(Bar bar)
     {
         var users = UserTagsMatrix.GetSimilarUsers(10, this, Engine.Users);
