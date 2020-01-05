@@ -33,6 +33,12 @@ public class User
     {
         _interestsVector = new double[38];
         Engine = engine;
+        Food = new Food<Triple>();
+        Drink = new Drinks<Triple>();
+        Atmosphere = new Atmosphere<Triple>();
+        Company = new Company<Triple>();
+        Music = new Music<Triple>();
+        
     }
 
     private void CalculateInterestsVector()
@@ -393,8 +399,7 @@ public class User
         int cnt = 0;
         double score = 0;
         for (int i = 0; i < 10; i++)
-        {
-            User user = Engine.GetUserByUserID(users[i]);
+        {      
             Rate rate = GetRateFromUser(bar);
             if(rate != null)
             {
@@ -416,8 +421,6 @@ public class User
         double score = 0;
         for (int i = 0; i < 10; i++)
         {
-            //Add get GetBarByBarID
-            Bar tempBar = Engine.GetBarByBarID(bars[i]);
             Rate rate = GetRateFromUser(bar);
             if (rate != null)
             {
