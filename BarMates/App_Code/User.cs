@@ -30,10 +30,52 @@ public class User
     {
         _interestsVector = new double[36];
         Food = new Food<Triple>();
+        Food.Burger = new Triple();
+        Food.Pizza = new Triple();
+        Food.Sushi = new Triple();
+        Food.Snacks = new Triple();
+        Food.Vegan = new Triple();
+        Food.Kosher = new Triple();
+
         Drink = new Drinks<Triple>();
+        Drink.Beer = new Triple();
+        Drink.Wine = new Triple();
+        Drink.Cocktail = new Triple();
+        Drink.BeveragePackages = new Triple();
+        Drink.Jin = new Triple();
+        Drink.Whiskey = new Triple();
+        Drink.WideRangeOfBeverages = new Triple();
+
         Atmosphere = new Atmosphere<Triple>();
+        Atmosphere.Irish = new Triple();
+        Atmosphere.Chill = new Triple();
+        Atmosphere.Dance = new Triple();
+        Atmosphere.Sport = new Triple();
+        Atmosphere.Shisha = new Triple();
+        Atmosphere.Party = new Triple();
+
         Company = new Company<Triple>();
+        Company.Dating = new Triple();
+        Company.Friends = new Triple();
+        Company.KidsFriendly = new Triple();
+        Company.PetsFriendly = new Triple();
+        Company.Colleagues = new Triple();
+
         Music = new Music<Triple>();
+        Music.Pop = new Triple();
+        Music.Jazz = new Triple();
+        Music.Mizrahit = new Triple();
+        Music.Greek = new Triple();
+        Music.Trance = new Triple();
+        Music.Mainstream = new Triple();
+        Music.Israeli = new Triple();
+        Music.LiveMusic = new Triple();
+        Music.Reggaeton = new Triple();
+        Music.OpenMic = new Triple();
+        Music.StandUp = new Triple();
+        
+
+        SmokingFree = new Triple();
         
     }
 
