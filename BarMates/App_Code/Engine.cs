@@ -198,7 +198,7 @@ public class Engine
 
     public static void UpdateBarFields(Bar bar, DbDataRecord data)
     {
-        bar.BarId = data["barId"].ToString();
+        bar.BarId = int.Parse(data["barId"].ToString());
         bar.BarName = data["barName"].ToString();
         bar.Address = data["Address"].ToString();
         bar.Age = Age.None;
@@ -304,7 +304,7 @@ public class Engine
     public static void UpdateRateFields(Rate rate, DbDataRecord data)
     {
         rate.UserName = data["userName"].ToString();
-        rate.BarId = data["userName"].ToString();
+        rate.BarId = int.Parse(data["userName"].ToString());
         rate.date = DateTime.Parse(data["date"].ToString());
         int age = int.Parse(data["age"].ToString());
         switch(age)
