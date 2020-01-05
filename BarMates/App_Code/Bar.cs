@@ -5,6 +5,7 @@ public class Bar
     public int BarId { get; set; }
     public string BarName { get; set; }
     public string Address { get; set; }
+    public string PhotoUrl { get; set; }
     public Age Age { get; set; }
     public Food<bool> Food { get; set; }
     public Drinks<bool> Drink { get; set; }
