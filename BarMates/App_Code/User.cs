@@ -90,42 +90,78 @@ public class User
 
     private void CalculateInterestsVector()
     {
-        _interestsVector[0] = 1 - (SmokingFree.DontCareCounts / SmokingFree.AllCounts);
-        _interestsVector[1] = 1 - (Food.Burger.DontCareCounts / Food.Burger.AllCounts);
-        _interestsVector[2] = 1 - (Food.Vegan.DontCareCounts / Food.Vegan.AllCounts);
-        _interestsVector[3] = 1 - (Food.Kosher.DontCareCounts / Food.Kosher.AllCounts);
-        _interestsVector[4] = 1 - (Food.Pizza.DontCareCounts / Food.Pizza.AllCounts);
-        _interestsVector[5] = 1 - (Food.Snacks.DontCareCounts / Food.Snacks.AllCounts);
-        _interestsVector[6] = 1 - (Food.Sushi.DontCareCounts / Food.Sushi.AllCounts);
-        _interestsVector[7] = 1 - (Drink.Wine.DontCareCounts / Drink.Wine.AllCounts);
-        _interestsVector[8] = 1 - (Drink.Beer.DontCareCounts / Drink.Beer.AllCounts);
-        _interestsVector[9] = 1 - (Drink.BeveragePackages.DontCareCounts / Drink.BeveragePackages.AllCounts);
-        _interestsVector[10] = 1 - (Drink.Cocktail.DontCareCounts / Drink.Cocktail.AllCounts);
-        _interestsVector[11] = 1 - (Drink.Jin.DontCareCounts / Drink.Jin.AllCounts);
-        _interestsVector[12] = 1 - (Drink.Whiskey.DontCareCounts / Drink.Whiskey.AllCounts);
-        _interestsVector[13] = 1 - (Drink.WideRangeOfBeverages.DontCareCounts / Drink.WideRangeOfBeverages.AllCounts);
-        _interestsVector[14] = 1 - (Atmosphere.Irish.DontCareCounts / Atmosphere.Irish.AllCounts);
-        _interestsVector[15] = 1 - (Atmosphere.Chill.DontCareCounts / Atmosphere.Chill.AllCounts);
-        _interestsVector[16] = 1 - (Atmosphere.Dance.DontCareCounts / Atmosphere.Dance.AllCounts);
-        _interestsVector[17] = 1 - (Atmosphere.Party.DontCareCounts / Atmosphere.Party.AllCounts);
-        _interestsVector[18] = 1 - (Atmosphere.Shisha.DontCareCounts / Atmosphere.Shisha.AllCounts);
-        _interestsVector[19] = 1 - (Atmosphere.Sport.DontCareCounts / Atmosphere.Sport.AllCounts);
-        _interestsVector[20] = 1 - (Company.Colleagues.DontCareCounts / Company.Colleagues.AllCounts);
-        _interestsVector[21] = 1 - (Company.Dating.DontCareCounts / Company.Dating.AllCounts);
-        _interestsVector[22] = 1 - (Company.Friends.DontCareCounts / Company.Friends.AllCounts);
-        _interestsVector[23] = 1 - (Company.KidsFriendly.DontCareCounts / Company.KidsFriendly.AllCounts);
-        _interestsVector[24] = 1 - (Company.PetsFriendly.DontCareCounts / Company.PetsFriendly.AllCounts);
-        _interestsVector[25] = 1 - (Music.Greek.DontCareCounts / Music.Greek.AllCounts);
-        _interestsVector[26] = 1 - (Music.Israeli.DontCareCounts / Music.Israeli.AllCounts);
-        _interestsVector[27] = 1 - (Music.Jazz.DontCareCounts / Music.Jazz.AllCounts);
-        _interestsVector[28] = 1 - (Music.LiveMusic.DontCareCounts / Music.LiveMusic.AllCounts);
-        _interestsVector[29] = 1 - (Music.Mainstream.DontCareCounts / Music.Mainstream.AllCounts);
-        _interestsVector[30] = 1 - (Music.Mizrahit.DontCareCounts / Music.Mizrahit.AllCounts);
-        _interestsVector[31] = 1 - (Music.OpenMic.DontCareCounts / Music.OpenMic.AllCounts);
-        _interestsVector[32] = 1 - (Music.Pop.DontCareCounts / Music.Pop.AllCounts);
-        _interestsVector[33] = 1 - (Music.Reggaeton.DontCareCounts / Music.Reggaeton.AllCounts);
-        _interestsVector[34] = 1 - (Music.StandUp.DontCareCounts / Music.StandUp.AllCounts);
-        _interestsVector[35] = 1 - (Music.Trance.DontCareCounts / Music.Trance.AllCounts);
+        if(SmokingFree.AllCounts != 0)
+            _interestsVector[0] = 1 - (SmokingFree.DontCareCounts / SmokingFree.AllCounts);
+        if (Food.Burger.AllCounts != 0)
+            _interestsVector[1] = 1 - (Food.Burger.DontCareCounts / Food.Burger.AllCounts);
+        if (Food.Vegan.AllCounts != 0)
+            _interestsVector[2] = 1 - (Food.Vegan.DontCareCounts / Food.Vegan.AllCounts);
+        if (Food.Kosher.AllCounts != 0)
+            _interestsVector[3] = 1 - (Food.Kosher.DontCareCounts / Food.Kosher.AllCounts);
+        if (Food.Pizza.AllCounts != 0)
+            _interestsVector[4] = 1 - (Food.Pizza.DontCareCounts / Food.Pizza.AllCounts);
+        if (Food.Snacks.AllCounts != 0)
+            _interestsVector[5] = 1 - (Food.Snacks.DontCareCounts / Food.Snacks.AllCounts);
+        if (Food.Sushi.AllCounts != 0)
+            _interestsVector[6] = 1 - (Food.Sushi.DontCareCounts / Food.Sushi.AllCounts);
+        if (Drink.Wine.AllCounts != 0)
+            _interestsVector[7] = 1 - (Drink.Wine.DontCareCounts / Drink.Wine.AllCounts);
+        if (Drink.Beer.AllCounts != 0)
+            _interestsVector[8] = 1 - (Drink.Beer.DontCareCounts / Drink.Beer.AllCounts);
+        if (Drink.BeveragePackages.AllCounts != 0)
+            _interestsVector[9] = 1 - (Drink.BeveragePackages.DontCareCounts / Drink.BeveragePackages.AllCounts);
+        if (Drink.Cocktail.AllCounts != 0)
+            _interestsVector[10] = 1 - (Drink.Cocktail.DontCareCounts / Drink.Cocktail.AllCounts);
+        if (Drink.Jin.AllCounts != 0)
+            _interestsVector[11] = 1 - (Drink.Jin.DontCareCounts / Drink.Jin.AllCounts);
+        if (Drink.Whiskey.AllCounts != 0)
+            _interestsVector[12] = 1 - (Drink.Whiskey.DontCareCounts / Drink.Whiskey.AllCounts);
+        if (Drink.WideRangeOfBeverages.AllCounts != 0)
+            _interestsVector[13] = 1 - (Drink.WideRangeOfBeverages.DontCareCounts / Drink.WideRangeOfBeverages.AllCounts);
+        if (Atmosphere.Irish.AllCounts != 0)
+            _interestsVector[14] = 1 - (Atmosphere.Irish.DontCareCounts / Atmosphere.Irish.AllCounts);
+        if (Atmosphere.Chill.AllCounts != 0)
+            _interestsVector[15] = 1 - (Atmosphere.Chill.DontCareCounts / Atmosphere.Chill.AllCounts);
+        if (Atmosphere.Dance.AllCounts != 0)
+            _interestsVector[16] = 1 - (Atmosphere.Dance.DontCareCounts / Atmosphere.Dance.AllCounts);
+        if (Atmosphere.Party.AllCounts != 0)
+            _interestsVector[17] = 1 - (Atmosphere.Party.DontCareCounts / Atmosphere.Party.AllCounts);
+        if (Atmosphere.Shisha.AllCounts != 0)
+            _interestsVector[18] = 1 - (Atmosphere.Shisha.DontCareCounts / Atmosphere.Shisha.AllCounts);
+        if (Atmosphere.Sport.AllCounts != 0)
+            _interestsVector[19] = 1 - (Atmosphere.Sport.DontCareCounts / Atmosphere.Sport.AllCounts);
+        if (Company.Colleagues.AllCounts != 0)
+            _interestsVector[20] = 1 - (Company.Colleagues.DontCareCounts / Company.Colleagues.AllCounts);
+        if (Company.Dating.AllCounts != 0)
+            _interestsVector[21] = 1 - (Company.Dating.DontCareCounts / Company.Dating.AllCounts);
+        if (Company.Friends.AllCounts != 0)
+            _interestsVector[22] = 1 - (Company.Friends.DontCareCounts / Company.Friends.AllCounts);
+        if (Company.KidsFriendly.AllCounts != 0)
+            _interestsVector[23] = 1 - (Company.KidsFriendly.DontCareCounts / Company.KidsFriendly.AllCounts);
+        if (Company.PetsFriendly.AllCounts != 0)
+            _interestsVector[24] = 1 - (Company.PetsFriendly.DontCareCounts / Company.PetsFriendly.AllCounts);
+        if (Music.Greek.AllCounts != 0)
+            _interestsVector[25] = 1 - (Music.Greek.DontCareCounts / Music.Greek.AllCounts);
+        if (Music.Israeli.AllCounts != 0)
+            _interestsVector[26] = 1 - (Music.Israeli.DontCareCounts / Music.Israeli.AllCounts);
+        if (Music.Jazz.AllCounts != 0)
+            _interestsVector[27] = 1 - (Music.Jazz.DontCareCounts / Music.Jazz.AllCounts);
+        if (Music.LiveMusic.AllCounts != 0)
+            _interestsVector[28] = 1 - (Music.LiveMusic.DontCareCounts / Music.LiveMusic.AllCounts);
+        if (Music.Mainstream.AllCounts != 0)
+            _interestsVector[29] = 1 - (Music.Mainstream.DontCareCounts / Music.Mainstream.AllCounts);
+        if (Music.Mizrahit.AllCounts != 0)
+            _interestsVector[30] = 1 - (Music.Mizrahit.DontCareCounts / Music.Mizrahit.AllCounts);
+        if (Music.OpenMic.AllCounts != 0)
+            _interestsVector[31] = 1 - (Music.OpenMic.DontCareCounts / Music.OpenMic.AllCounts);
+        if (Music.Pop.AllCounts != 0)
+            _interestsVector[32] = 1 - (Music.Pop.DontCareCounts / Music.Pop.AllCounts);
+        if (Music.Reggaeton.AllCounts != 0)
+            _interestsVector[33] = 1 - (Music.Reggaeton.DontCareCounts / Music.Reggaeton.AllCounts);
+        if (Music.StandUp.AllCounts != 0)
+            _interestsVector[34] = 1 - (Music.StandUp.DontCareCounts / Music.StandUp.AllCounts);
+        if (Music.Trance.AllCounts != 0)
+            _interestsVector[35] = 1 - (Music.Trance.DontCareCounts / Music.Trance.AllCounts);
     }
 
     private int UserCatToBarCat(int i)
@@ -363,12 +399,11 @@ public class User
         return -2;
     }
 
-    //Warning : Only bars that matches user's age
     public double CalculateScoreForBar(Bar bar, Rate rate)
     {
         double score = 0;
         int j, realRate;
-        for (int i = 0; i < 38; i++)
+        for (int i = 0; i < InterestsVector.Length; i++)
         {
             j = UserCatToBarCat(i);
             realRate = UserCatToRate(i, rate);
