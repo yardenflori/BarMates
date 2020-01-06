@@ -2,7 +2,7 @@
 using System.Linq;
 
 public class User
-{ 
+{
     public int UserId { get; set; }
     public string UserName { get; set; }
     public string Password { get; set; }
@@ -29,54 +29,63 @@ public class User
     public User()
     {
         _interestsVector = new double[36];
-        Food = new Food<Triple>();
-        Food.Burger = new Triple();
-        Food.Pizza = new Triple();
-        Food.Sushi = new Triple();
-        Food.Snacks = new Triple();
-        Food.Vegan = new Triple();
-        Food.Kosher = new Triple();
+        Food = new Food<Triple>()
+        {
+            Burger = new Triple(),
+            Pizza = new Triple(),
+            Sushi = new Triple(),
+            Snacks = new Triple(),
+            Vegan = new Triple(),
+            Kosher = new Triple()
+        };
 
-        Drink = new Drinks<Triple>();
-        Drink.Beer = new Triple();
-        Drink.Wine = new Triple();
-        Drink.Cocktail = new Triple();
-        Drink.BeveragePackages = new Triple();
-        Drink.Jin = new Triple();
-        Drink.Whiskey = new Triple();
-        Drink.WideRangeOfBeverages = new Triple();
+        Drink = new Drinks<Triple>()
+        {
+            Beer = new Triple(),
+            Wine = new Triple(),
+            Cocktail = new Triple(),
+            BeveragePackages = new Triple(),
+            Jin = new Triple(),
+            Whiskey = new Triple(),
+            WideRangeOfBeverages = new Triple()
+        };
 
-        Atmosphere = new Atmosphere<Triple>();
-        Atmosphere.Irish = new Triple();
-        Atmosphere.Chill = new Triple();
-        Atmosphere.Dance = new Triple();
-        Atmosphere.Sport = new Triple();
-        Atmosphere.Shisha = new Triple();
-        Atmosphere.Party = new Triple();
+        Atmosphere = new Atmosphere<Triple>()
+        {
+            Irish = new Triple(),
+            Chill = new Triple(),
+            Dance = new Triple(),
+            Sport = new Triple(),
+            Shisha = new Triple(),
+            Party = new Triple()
+        };
 
-        Company = new Company<Triple>();
-        Company.Dating = new Triple();
-        Company.Friends = new Triple();
-        Company.KidsFriendly = new Triple();
-        Company.PetsFriendly = new Triple();
-        Company.Colleagues = new Triple();
+        Company = new Company<Triple>()
+        {
+            Dating = new Triple(),
+            Friends = new Triple(),
+            KidsFriendly = new Triple(),
+            PetsFriendly = new Triple(),
+            Colleagues = new Triple()
+        };
 
-        Music = new Music<Triple>();
-        Music.Pop = new Triple();
-        Music.Jazz = new Triple();
-        Music.Mizrahit = new Triple();
-        Music.Greek = new Triple();
-        Music.Trance = new Triple();
-        Music.Mainstream = new Triple();
-        Music.Israeli = new Triple();
-        Music.LiveMusic = new Triple();
-        Music.Reggaeton = new Triple();
-        Music.OpenMic = new Triple();
-        Music.StandUp = new Triple();
-        
+        Music = new Music<Triple>()
+        {
+            Pop = new Triple(),
+            Jazz = new Triple(),
+            Mizrahit = new Triple(),
+            Greek = new Triple(),
+            Trance = new Triple(),
+            Mainstream = new Triple(),
+            Israeli = new Triple(),
+            LiveMusic = new Triple(),
+            Reggaeton = new Triple(),
+            OpenMic = new Triple(),
+            StandUp = new Triple()
+        };
 
         SmokingFree = new Triple();
-        
+
     }
 
     private void CalculateInterestsVector()
@@ -353,7 +362,7 @@ public class User
         }
         return -2;
     }
-    
+
     //Warning : Only bars that matches user's age
     public double CalculateScoreForBar(Bar bar, Rate rate)
     {
@@ -415,22 +424,22 @@ public class User
             return null;
         }
     }
-    
+
     private double ScoreBarUserByUser(Bar bar)
     {
         var users = UserTagsMatrix.GetSimilarUsers(10, this, Engine.Users);
         int cnt = 0;
         double score = 0;
         for (int i = 0; i < 10; i++)
-        {      
+        {
             Rate rate = GetRateFromUser(bar);
-            if(rate != null)
+            if (rate != null)
             {
                 cnt++;
                 score += CalculateScoreForBar(bar, rate);
             }
         }
-        if(cnt > 0)
+        if (cnt > 0)
         {
             return score / cnt;
         }
