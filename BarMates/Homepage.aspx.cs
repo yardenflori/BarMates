@@ -25,8 +25,8 @@ public partial class Homepage : System.Web.UI.Page
     {
         string userName = DBController.GetUserName();
         User user = Engine.GetUserByUserName(userName);
-        //List<Bar> bars = user.GetBestBars(5, Engine.Bars);
-        List<Bar> bars = new List<Bar>();
+        List<Bar> bars = user.GetBestBars(5, Engine.Bars);
+        /*List<Bar> bars = new List<Bar>();
         List<SqlParameter> parameters = new List<SqlParameter>();
         var barsDB = DBController.ExecuteStoredProcedure_Select("sp_get_all_bars", parameters);
         if (barsDB.Count > 0)
@@ -38,6 +38,6 @@ public partial class Homepage : System.Web.UI.Page
                 bars.Add(newBar);
             }
         }
-        return JsonConvert.SerializeObject(bars);
+        return JsonConvert.SerializeObject(bars);*/
     }
 }
