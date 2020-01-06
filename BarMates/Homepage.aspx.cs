@@ -37,7 +37,7 @@ public partial class Homepage : System.Web.UI.Page
                 Engine.UpdateBarFields(newBar, currentItem);
                 bars.Add(newBar);
             }
-        }
-        return JsonConvert.SerializeObject(bars);*/
+        }*/
+        return JsonConvert.SerializeObject(bars);
     }
 }
