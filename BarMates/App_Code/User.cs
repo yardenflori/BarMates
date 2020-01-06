@@ -427,16 +427,17 @@ public class User
 
     private double ScoreBarUserByUser(Bar bar)
     {
-        var users = UserTagsMatrix.GetSimilarUsers(10, this, Engine.Users);
+        var users = UserTagsMatrix.GetSimilarUsers(5, this, Engine.Users);
         int cnt = 0;
         double score = 0;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
-            Rate rate = GetRateFromUser(bar);
+            User user = Engine.GetUserByUserID(users[i]);
+            Rate rate = user.GetRateFromUser(bar);
             if (rate != null)
             {
                 cnt++;
-                score += CalculateScoreForBar(bar, rate);
+                score += user.CalculateScoreForBar(bar, rate);
             }
         }
         if (cnt > 0)
@@ -448,16 +449,17 @@ public class User
 
     private double ScoreBarItemByItem(Bar bar)
     {
-        var bars = BarsTagsMatrix.GetSimilarBars(10, bar, Engine.Bars);
+        var bars = BarsTagsMatrix.GetSimilarBars(5, bar, Engine.Bars);
         int cnt = 0;
         double score = 0;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
-            Rate rate = GetRateFromUser(bar);
+            Bar newBar = Engine.GetBarByBarID(bars[i]);
+            Rate rate = GetRateFromUser(newBar);
             if (rate != null)
             {
                 cnt++;
-                score += CalculateScoreForBar(bar, rate);
+                score += CalculateScoreForBar(newBar, rate);
             }
         }
         if (cnt > 0)

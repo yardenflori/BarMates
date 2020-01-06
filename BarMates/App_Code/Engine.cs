@@ -440,7 +440,7 @@ public class Engine
         return barRates;
     }
     
-    public Bar GetBarByBarID(int barID)
+    public static Bar GetBarByBarID(int barID)
     {
         ArrayList bars;
         List<SqlParameter> parameters = new List<SqlParameter>();
