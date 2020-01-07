@@ -135,4 +135,6 @@ public partial class BarRating : System.Web.UI.Page
 
         return insertSucceeded;
     }
+
+
 }

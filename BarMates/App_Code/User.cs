@@ -9,7 +9,7 @@ public class User
     public int Age { get; set; }
     public Triple SmokingFree { get; set; }
     public Food<Triple> Food { get; set; }
-    public Drinks<Triple> Drink { get; set; }
+    public Drinks<Triple> Drinks { get; set; }
     public Atmosphere<Triple> Atmosphere { get; set; }
     public Company<Triple> Company { get; set; }
     public Music<Triple> Music { get; set; }
@@ -39,7 +39,7 @@ public class User
             Kosher = new Triple()
         };
 
-        Drink = new Drinks<Triple>()
+        Drinks = new Drinks<Triple>()
         {
             Beer = new Triple(),
             Wine = new Triple(),
@@ -104,20 +104,20 @@ public class User
             _interestsVector[5] = 1 - (Food.Snacks.DontCareCounts / Food.Snacks.AllCounts);
         if (Food.Sushi.AllCounts != 0)
             _interestsVector[6] = 1 - (Food.Sushi.DontCareCounts / Food.Sushi.AllCounts);
-        if (Drink.Wine.AllCounts != 0)
-            _interestsVector[7] = 1 - (Drink.Wine.DontCareCounts / Drink.Wine.AllCounts);
-        if (Drink.Beer.AllCounts != 0)
-            _interestsVector[8] = 1 - (Drink.Beer.DontCareCounts / Drink.Beer.AllCounts);
-        if (Drink.BeveragePackages.AllCounts != 0)
-            _interestsVector[9] = 1 - (Drink.BeveragePackages.DontCareCounts / Drink.BeveragePackages.AllCounts);
-        if (Drink.Cocktail.AllCounts != 0)
-            _interestsVector[10] = 1 - (Drink.Cocktail.DontCareCounts / Drink.Cocktail.AllCounts);
-        if (Drink.Jin.AllCounts != 0)
-            _interestsVector[11] = 1 - (Drink.Jin.DontCareCounts / Drink.Jin.AllCounts);
-        if (Drink.Whiskey.AllCounts != 0)
-            _interestsVector[12] = 1 - (Drink.Whiskey.DontCareCounts / Drink.Whiskey.AllCounts);
-        if (Drink.WideRangeOfBeverages.AllCounts != 0)
-            _interestsVector[13] = 1 - (Drink.WideRangeOfBeverages.DontCareCounts / Drink.WideRangeOfBeverages.AllCounts);
+        if (Drinks.Wine.AllCounts != 0)
+            _interestsVector[7] = 1 - (Drinks.Wine.DontCareCounts / Drinks.Wine.AllCounts);
+        if (Drinks.Beer.AllCounts != 0)
+            _interestsVector[8] = 1 - (Drinks.Beer.DontCareCounts / Drinks.Beer.AllCounts);
+        if (Drinks.BeveragePackages.AllCounts != 0)
+            _interestsVector[9] = 1 - (Drinks.BeveragePackages.DontCareCounts / Drinks.BeveragePackages.AllCounts);
+        if (Drinks.Cocktail.AllCounts != 0)
+            _interestsVector[10] = 1 - (Drinks.Cocktail.DontCareCounts / Drinks.Cocktail.AllCounts);
+        if (Drinks.Jin.AllCounts != 0)
+            _interestsVector[11] = 1 - (Drinks.Jin.DontCareCounts / Drinks.Jin.AllCounts);
+        if (Drinks.Whiskey.AllCounts != 0)
+            _interestsVector[12] = 1 - (Drinks.Whiskey.DontCareCounts / Drinks.Whiskey.AllCounts);
+        if (Drinks.WideRangeOfBeverages.AllCounts != 0)
+            _interestsVector[13] = 1 - (Drinks.WideRangeOfBeverages.DontCareCounts / Drinks.WideRangeOfBeverages.AllCounts);
         if (Atmosphere.Irish.AllCounts != 0)
             _interestsVector[14] = 1 - (Atmosphere.Irish.DontCareCounts / Atmosphere.Irish.AllCounts);
         if (Atmosphere.Chill.AllCounts != 0)
