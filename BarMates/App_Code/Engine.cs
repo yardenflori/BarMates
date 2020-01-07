@@ -76,6 +76,9 @@ public class Engine
 
     public static void UpdateUserFields(User user, DbDataRecord data)
     {
+        String a = data["userId"].ToString();
+        String b = data["userName"].ToString();
+
         user.UserId = int.Parse(data["userId"].ToString());
         user.UserName = data["userName"].ToString();
         user.Password = data["password"].ToString();
@@ -128,7 +131,7 @@ public class Engine
         user.Atmosphere.Chill.NegCounts = int.Parse(data["chillNeg"].ToString());
         user.Atmosphere.Chill.PosCounts = int.Parse(data["chillPos"].ToString());
         user.Atmosphere.Chill.DontCareCounts = int.Parse(data["chillDontCare"].ToString());
-        string a = data["danceDontCare"].ToString();
+        
         user.Atmosphere.Dance.NegCounts = int.Parse(data["danceNeg"].ToString());
         user.Atmosphere.Dance.PosCounts = int.Parse(data["dancePos"].ToString());
         user.Atmosphere.Dance.DontCareCounts = int.Parse(data["danceDontCare"].ToString());
