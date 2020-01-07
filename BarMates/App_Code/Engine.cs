@@ -214,6 +214,7 @@ public class Engine
             bar.Age = Age.TwentyFourPlus;
         }
 
+        bar.PhotoUrl = data["photoUrl"].ToString();
 
         bar.Food.Burger = data["burgers"].ToString() == "True";
         bar.Food.Pizza = data["pizza"].ToString() == "True";
