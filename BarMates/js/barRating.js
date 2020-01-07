@@ -453,7 +453,8 @@ function initialize() {
             barName = place.name;
             barAddress = place.formatted_address;
             barPhotoURL = place.photos[0].getUrl({ maxWidth: 500, maxHeight: 500 });
-            window.open(barPhotoURL);
+            //window.open(barPhotoURL);
+            alert(place.place_id);
             console.log(place);
         }
         else {          
@@ -480,4 +481,10 @@ function initScrollSpy() {
 $(document).ready(function () {   
     initScrollSpy();
     initCriterions();
+});
+
+
+
+$(document).ready(function () {
+    $('.slider').slider();
 });
