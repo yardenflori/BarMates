@@ -265,7 +265,7 @@ function showResults() {
     $('#searchDiv').css('display', 'none');
     $('#results').css('display', 'block');
     for (var i = 0; i < barList.length; i++) {
-        buildCarouselItem(barList[i].BarId, barList[i].BarName);
+        buildCarouselItem(barList[i].BarId, barList[i].BarName, barList[i].PhotoUrl);
     }
     $('.carousel').carousel({
         onCycleTo: function (el) {
@@ -274,10 +274,10 @@ function showResults() {
         }
     });
 }
-function buildCarouselItem(barId, barName) {
+function buildCarouselItem(barId, barName, barPhoto) {
     var divCarouselItem = $('<div id="' + barId + '"class=\"carousel-item card\"></div>');
     var divCarouselImg = $('<div class=\"card-image\"></div>');
-    var img = $('<img src="images/bar.jpg" />');
+    var img = $('<img src=' + barPhoto + '/> ');
     var span = $('<span class="card-title"></span>').text(barName);
     divCarouselItem.append(divCarouselImg);
     divCarouselImg.append(img);

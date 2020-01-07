@@ -18,7 +18,9 @@ public partial class Homepage : System.Web.UI.Page
         //{
         //    Response.Redirect("Default.aspx");
         //}
-        _ = new Engine();
+
+        _= new Engine();
+
     }
     [WebMethod]
     public static string GetUserBars()

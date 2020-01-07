@@ -303,10 +303,17 @@ function initCriterions() {
     buildMainCriterion(bar.Service.options, 'serv');
     buildMainCriterion(bar.Age.options, 'age');
 }
-function buildCarouselItem(barId, barName) {
+
+
+function buildCarouselItem(barId, barName, barPhoto) {
+   
+
+    
     var divCarouselItem = $('<div id="' + barId+'"class=\"carousel-item card\"></div>');
     var divCarouselImg = $('<div class=\"card-image\"></div>');
-    var img = $('<img src="images/bar.jpg" />');
+
+    var img = $('<img src=' + barPhoto +  '/> ');
+
     var span = $('<span class="card-title"></span>').text(barName);
     divCarouselItem.append(divCarouselImg);
     divCarouselImg.append(img);
@@ -323,7 +330,7 @@ function initCarousel() {
             var barsFromDb = JSON.parse(data.d);
             globalBars = barsFromDb;
             for (var i = 0; i < globalBars.length; i++) {
-                buildCarouselItem(globalBars[i].BarId, globalBars[i].BarName);
+                buildCarouselItem(globalBars[i].BarId, globalBars[i].BarName, globalBars[i].PhotoUrl);
             }
             $('.carousel').carousel({
                 onCycleTo: function (el) {
