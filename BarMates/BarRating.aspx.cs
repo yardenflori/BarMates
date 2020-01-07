@@ -134,7 +134,7 @@ public partial class BarRating : System.Web.UI.Page
         }
 
         Bar bar = Engine.GetBarByBarID(rate.BarId);
-        bar.UpdateBarByRate(rate);
+        bar.UpdateBarByRate();
         Engine.InsertUpdateBarCharacteristicToDB(bar);
         User user = Engine.GetUserByUserName(rate.UserName);
         user.UpdateUserByRate(rate);

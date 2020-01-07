@@ -199,10 +199,9 @@ public class Bar
         Music.Trance = (_barCharacteristics[43] == 1) ? true : false;
     }
     
-    public void UpdateBarByRate(Rate rate)
+    public void UpdateBarByRate()
     {
         List<Rate> rates = Engine.GetRatesByBar(this);
-        rates.Add(rate);
         int[] counters = new int[44];
         int cnt = 0;
         int temp = 0;

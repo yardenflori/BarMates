@@ -111,6 +111,46 @@ public class Rate
     public int[] RateVector()
     {
         int[] vector = new int[44];
+        vector[0] = (SmokingFree != 7) ? 1 : 0;
+        switch(Age)
+        {
+            case Age.EighteenPlus:
+                vector[1] = 1;
+                break;
+            case Age.TwentyOnePlus:
+                vector[2] = 1;
+                break;
+            case Age.TwentyFourPlus:
+                vector[3] = 1;
+                break;
+            default:
+                break;
+        }
+        switch (Price)
+        {
+            case Price.PriceLow:
+                vector[4] = 1;
+                break;
+            case Price.PriceMed:
+                vector[5] = 1;
+                break;
+            case Price.PriceHigh:
+                vector[6] = 1;
+                break;
+            default:
+                break;
+        }
+        switch (Service)
+        {
+            case Service.FullService:
+                vector[7] = 1;
+                break;
+            case Service.SelfService:
+                vector[8] = 1;
+                break;
+            default:
+                break;
+        }
         vector[9] = (Food.Burger != 7) ? 1 : 0;
         vector[10] = (Food.Vegan != 7) ? 1 : 0;
         vector[11] = (Food.Kosher != 7) ? 1 : 0;
