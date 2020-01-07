@@ -104,27 +104,27 @@ public class Engine
         user.Food.Kosher.NegCounts = int.Parse(data["kosherNeg"].ToString());
         user.Food.Kosher.PosCounts = int.Parse(data["kosherPos"].ToString());
         user.Food.Kosher.DontCareCounts = int.Parse(data["kosherDontCare"].ToString());
-        user.Drink.Beer.NegCounts = int.Parse(data["beerNeg"].ToString());
-        user.Drink.Beer.PosCounts = int.Parse(data["beerPos"].ToString());
-        user.Drink.Beer.DontCareCounts = int.Parse(data["beerDontCare"].ToString());
-        user.Drink.Wine.NegCounts = int.Parse(data["wineNeg"].ToString());
-        user.Drink.Wine.PosCounts = int.Parse(data["winePos"].ToString());
-        user.Drink.Wine.DontCareCounts = int.Parse(data["wineDontCare"].ToString());
-        user.Drink.Cocktail.NegCounts = int.Parse(data["cocktailNeg"].ToString());
-        user.Drink.Cocktail.PosCounts = int.Parse(data["cocktailPos"].ToString());
-        user.Drink.Cocktail.DontCareCounts = int.Parse(data["cocktailDontCare"].ToString());
-        user.Drink.BeveragePackages.NegCounts = int.Parse(data["beveragePackagesNeg"].ToString());
-        user.Drink.BeveragePackages.PosCounts = int.Parse(data["beveragePackagesPos"].ToString());
-        user.Drink.BeveragePackages.DontCareCounts = int.Parse(data["beveragePackagesDontCare"].ToString());
-        user.Drink.Jin.NegCounts = int.Parse(data["JinNeg"].ToString());
-        user.Drink.Jin.PosCounts = int.Parse(data["JinPos"].ToString());
-        user.Drink.Jin.DontCareCounts = int.Parse(data["JinDontCare"].ToString());
-        user.Drink.Whiskey.NegCounts = int.Parse(data["whiskeyNeg"].ToString());
-        user.Drink.Whiskey.PosCounts = int.Parse(data["whiskeyPos"].ToString());
-        user.Drink.Whiskey.DontCareCounts = int.Parse(data["whiskeyDontCare"].ToString());
-        user.Drink.WideRangeOfBeverages.NegCounts = int.Parse(data["wideRangeOfBeveragesNeg"].ToString());
-        user.Drink.WideRangeOfBeverages.PosCounts = int.Parse(data["wideRangeOfBeveragesPos"].ToString());
-        user.Drink.WideRangeOfBeverages.DontCareCounts = int.Parse(data["wideRangeOfBeveragesDontCare"].ToString());
+        user.Drinks.Beer.NegCounts = int.Parse(data["beerNeg"].ToString());
+        user.Drinks.Beer.PosCounts = int.Parse(data["beerPos"].ToString());
+        user.Drinks.Beer.DontCareCounts = int.Parse(data["beerDontCare"].ToString());
+        user.Drinks.Wine.NegCounts = int.Parse(data["wineNeg"].ToString());
+        user.Drinks.Wine.PosCounts = int.Parse(data["winePos"].ToString());
+        user.Drinks.Wine.DontCareCounts = int.Parse(data["wineDontCare"].ToString());
+        user.Drinks.Cocktail.NegCounts = int.Parse(data["cocktailNeg"].ToString());
+        user.Drinks.Cocktail.PosCounts = int.Parse(data["cocktailPos"].ToString());
+        user.Drinks.Cocktail.DontCareCounts = int.Parse(data["cocktailDontCare"].ToString());
+        user.Drinks.BeveragePackages.NegCounts = int.Parse(data["beveragePackagesNeg"].ToString());
+        user.Drinks.BeveragePackages.PosCounts = int.Parse(data["beveragePackagesPos"].ToString());
+        user.Drinks.BeveragePackages.DontCareCounts = int.Parse(data["beveragePackagesDontCare"].ToString());
+        user.Drinks.Jin.NegCounts = int.Parse(data["JinNeg"].ToString());
+        user.Drinks.Jin.PosCounts = int.Parse(data["JinPos"].ToString());
+        user.Drinks.Jin.DontCareCounts = int.Parse(data["JinDontCare"].ToString());
+        user.Drinks.Whiskey.NegCounts = int.Parse(data["whiskeyNeg"].ToString());
+        user.Drinks.Whiskey.PosCounts = int.Parse(data["whiskeyPos"].ToString());
+        user.Drinks.Whiskey.DontCareCounts = int.Parse(data["whiskeyDontCare"].ToString());
+        user.Drinks.WideRangeOfBeverages.NegCounts = int.Parse(data["wideRangeOfBeveragesNeg"].ToString());
+        user.Drinks.WideRangeOfBeverages.PosCounts = int.Parse(data["wideRangeOfBeveragesPos"].ToString());
+        user.Drinks.WideRangeOfBeverages.DontCareCounts = int.Parse(data["wideRangeOfBeveragesDontCare"].ToString());
         user.Atmosphere.Irish.NegCounts = int.Parse(data["irishNeg"].ToString());
         user.Atmosphere.Irish.PosCounts = int.Parse(data["irishPos"].ToString());
         user.Atmosphere.Irish.DontCareCounts = int.Parse(data["irishDontCare"].ToString());
@@ -462,5 +462,196 @@ public class Engine
         }
         return null;
     }
-}   
+
+    public static bool InsertUpdateBarCharacteristicToDB(Bar bar)
+    {
+
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        parameters.Add(new SqlParameter("barId", bar.BarId));
+        parameters.Add(new SqlParameter("barName", bar.BarName));
+        parameters.Add(new SqlParameter("address", bar.Address));
+        parameters.Add(new SqlParameter("photoUrl", bar.PhotoUrl));
+
+        parameters.Add(new SqlParameter("age", (int)bar.Age));
+        parameters.Add(new SqlParameter("service", (int)bar.Service));
+        parameters.Add(new SqlParameter("price", (int)bar.Price));
+
+        parameters.Add(new SqlParameter("burgers", bar.Food.Burger));
+        parameters.Add(new SqlParameter("pizza", bar.Food.Pizza));
+        parameters.Add(new SqlParameter("sushi", bar.Food.Sushi));
+        parameters.Add(new SqlParameter("snacks", bar.Food.Snacks));
+        parameters.Add(new SqlParameter("vegan", bar.Food.Vegan));
+        parameters.Add(new SqlParameter("kosher", bar.Food.Kosher));
+
+        parameters.Add(new SqlParameter("beer", bar.Drinks.Beer));
+        parameters.Add(new SqlParameter("wine", bar.Drinks.Wine));
+        parameters.Add(new SqlParameter("cocktail", bar.Drinks.Cocktail));
+        parameters.Add(new SqlParameter("beveragePackages", bar.Drinks.BeveragePackages));
+        parameters.Add(new SqlParameter("Jin", bar.Drinks.Jin));
+        parameters.Add(new SqlParameter("whiskey", bar.Drinks.Whiskey));
+        parameters.Add(new SqlParameter("wideRangeOfBeverages", bar.Drinks.WideRangeOfBeverages));
+
+        parameters.Add(new SqlParameter("irish", bar.Atmosphere.Irish));
+        parameters.Add(new SqlParameter("chill", bar.Atmosphere.Chill));
+        parameters.Add(new SqlParameter("dance", bar.Atmosphere.Dance));
+        parameters.Add(new SqlParameter("sport", bar.Atmosphere.Sport));
+        parameters.Add(new SqlParameter("shisha", bar.Atmosphere.Shisha));
+        parameters.Add(new SqlParameter("party", bar.Atmosphere.Party));
+
+        parameters.Add(new SqlParameter("smokingFree", bar.SmokingFree));
+
+        parameters.Add(new SqlParameter("dating", bar.Company.Dating));
+        parameters.Add(new SqlParameter("friends", bar.Company.Friends));
+        parameters.Add(new SqlParameter("kidsFriendly", bar.Company.KidsFriendly));
+        parameters.Add(new SqlParameter("petsFriendly", bar.Company.PetsFriendly));
+        parameters.Add(new SqlParameter("colleagues", bar.Company.Colleagues));
+
+        parameters.Add(new SqlParameter("pop", bar.Music.Pop));
+        parameters.Add(new SqlParameter("jazz", bar.Music.Jazz));
+        parameters.Add(new SqlParameter("mizrahit", bar.Music.Mizrahit));
+        parameters.Add(new SqlParameter("greek", bar.Music.Greek));
+        parameters.Add(new SqlParameter("trance", bar.Music.Trance));
+        parameters.Add(new SqlParameter("mainstream", bar.Music.Mainstream));
+        parameters.Add(new SqlParameter("israeli", bar.Music.Israeli));
+        parameters.Add(new SqlParameter("liveMusic", bar.Music.LiveMusic));
+        parameters.Add(new SqlParameter("reggaeton", bar.Music.Reggaeton));
+        parameters.Add(new SqlParameter("openMic", bar.Music.OpenMic));
+        parameters.Add(new SqlParameter("standup", bar.Music.StandUp));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_bar", parameters);
+
+        return insertSucceeded;
+    }
+
+    public static bool InsertUpdateUserCountersToDB(User user)
+    {
+
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        parameters.Add(new SqlParameter("userId", user.UserId));
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("password", user.Password));
+        parameters.Add(new SqlParameter("age", (int)user.Age));
+
+        parameters.Add(new SqlParameter("burgersPos", user.Food.Burger.PosCounts));
+        parameters.Add(new SqlParameter("burgersNeg", user.Food.Burger.NegCounts));
+        parameters.Add(new SqlParameter("burgersDontCare", user.Food.Burger.DontCareCounts));
+        parameters.Add(new SqlParameter("pizzaPos", user.Food.Pizza.PosCounts));
+        parameters.Add(new SqlParameter("pizzaNeg", user.Food.Pizza.NegCounts));
+        parameters.Add(new SqlParameter("pizzaDontCare", user.Food.Pizza.DontCareCounts));
+        parameters.Add(new SqlParameter("sushiPos", user.Food.Sushi.PosCounts));
+        parameters.Add(new SqlParameter("sushiNeg", user.Food.Sushi.NegCounts));
+        parameters.Add(new SqlParameter("sushiDontCare", user.Food.Sushi.DontCareCounts));
+        parameters.Add(new SqlParameter("snacksPos", user.Food.Snacks.PosCounts));
+        parameters.Add(new SqlParameter("snacksNeg", user.Food.Snacks.NegCounts));
+        parameters.Add(new SqlParameter("snacksDontCare", user.Food.Snacks.DontCareCounts));
+        parameters.Add(new SqlParameter("veganPos", user.Food.Vegan.PosCounts));
+        parameters.Add(new SqlParameter("veganNeg", user.Food.Vegan.NegCounts));
+        parameters.Add(new SqlParameter("veganDontCare", user.Food.Vegan.DontCareCounts));
+        parameters.Add(new SqlParameter("kosherPos", user.Food.Kosher.PosCounts));
+        parameters.Add(new SqlParameter("kosherNeg", user.Food.Kosher.NegCounts));
+        parameters.Add(new SqlParameter("kosherDontCare", user.Food.Kosher.DontCareCounts));
+
+        parameters.Add(new SqlParameter("beerPos", user.Drinks.Beer.PosCounts));
+        parameters.Add(new SqlParameter("beerNeg", user.Drinks.Beer.NegCounts));
+        parameters.Add(new SqlParameter("beerDontCare", user.Drinks.Beer.DontCareCounts));
+        parameters.Add(new SqlParameter("winePos", user.Drinks.Wine.PosCounts));
+        parameters.Add(new SqlParameter("wineNeg", user.Drinks.Wine.NegCounts));
+        parameters.Add(new SqlParameter("wineDontCare", user.Drinks.Wine.DontCareCounts));
+        parameters.Add(new SqlParameter("cocktailPos", user.Drinks.Cocktail.PosCounts));
+        parameters.Add(new SqlParameter("cocktailNeg", user.Drinks.Cocktail.NegCounts));
+        parameters.Add(new SqlParameter("cocktailDontCare", user.Drinks.Cocktail.DontCareCounts));
+        parameters.Add(new SqlParameter("beveragePackagesPos", user.Drinks.BeveragePackages.PosCounts));
+        parameters.Add(new SqlParameter("beveragePackagesNeg", user.Drinks.BeveragePackages.NegCounts));
+        parameters.Add(new SqlParameter("beveragePackagesDontCare", user.Drinks.BeveragePackages.DontCareCounts));
+        parameters.Add(new SqlParameter("JinPos", user.Drinks.Jin.PosCounts));
+        parameters.Add(new SqlParameter("JinNeg", user.Drinks.Jin.NegCounts));
+        parameters.Add(new SqlParameter("JinDontCare", user.Drinks.Jin.DontCareCounts));
+        parameters.Add(new SqlParameter("whiskeyPos", user.Drinks.Whiskey.PosCounts));
+        parameters.Add(new SqlParameter("whiskeyNeg", user.Drinks.Whiskey.NegCounts));
+        parameters.Add(new SqlParameter("whiskeyDontCare", user.Drinks.Whiskey.DontCareCounts));
+        parameters.Add(new SqlParameter("wideRangeOfBeveragesPos", user.Drinks.WideRangeOfBeverages.PosCounts));
+        parameters.Add(new SqlParameter("wideRangeOfBeveragesNeg", user.Drinks.WideRangeOfBeverages.NegCounts));
+        parameters.Add(new SqlParameter("wideRangeOfBeveragesDontCare", user.Drinks.WideRangeOfBeverages.DontCareCounts));
+
+        parameters.Add(new SqlParameter("irishPos", user.Atmosphere.Irish.PosCounts));
+        parameters.Add(new SqlParameter("irishNeg", user.Atmosphere.Irish.NegCounts));
+        parameters.Add(new SqlParameter("irishDontCare", user.Atmosphere.Irish.DontCareCounts));
+        parameters.Add(new SqlParameter("chillPos", user.Atmosphere.Chill.PosCounts));
+        parameters.Add(new SqlParameter("chillNeg", user.Atmosphere.Chill.NegCounts));
+        parameters.Add(new SqlParameter("chillDontCare", user.Atmosphere.Chill.DontCareCounts));
+        parameters.Add(new SqlParameter("dancePos", user.Atmosphere.Dance.PosCounts));
+        parameters.Add(new SqlParameter("danceNeg", user.Atmosphere.Dance.NegCounts));
+        parameters.Add(new SqlParameter("danceDontCare", user.Atmosphere.Dance.DontCareCounts));
+        parameters.Add(new SqlParameter("sportPos", user.Atmosphere.Sport.PosCounts));
+        parameters.Add(new SqlParameter("sportNeg", user.Atmosphere.Sport.NegCounts));
+        parameters.Add(new SqlParameter("sportDontCare", user.Atmosphere.Sport.DontCareCounts));
+        parameters.Add(new SqlParameter("shishaPos", user.Atmosphere.Shisha.PosCounts));
+        parameters.Add(new SqlParameter("shishaNeg", user.Atmosphere.Shisha.NegCounts));
+        parameters.Add(new SqlParameter("shishaDontCare", user.Atmosphere.Shisha.DontCareCounts));
+        parameters.Add(new SqlParameter("partyPos", user.Atmosphere.Party.PosCounts));
+        parameters.Add(new SqlParameter("partyNeg", user.Atmosphere.Party.NegCounts));
+        parameters.Add(new SqlParameter("partyDontCare", user.Atmosphere.Party.DontCareCounts));
+
+        parameters.Add(new SqlParameter("smokingFreePos", user.SmokingFree.PosCounts));
+        parameters.Add(new SqlParameter("smokingFreeNeg", user.SmokingFree.NegCounts));
+        parameters.Add(new SqlParameter("smokingFreeDontCare", user.SmokingFree.DontCareCounts));
+
+        parameters.Add(new SqlParameter("datingPos", user.Company.Dating.PosCounts));
+        parameters.Add(new SqlParameter("datingNeg", user.Company.Dating.NegCounts));
+        parameters.Add(new SqlParameter("datingDontCare", user.Company.Dating.DontCareCounts));
+        parameters.Add(new SqlParameter("friendsPos", user.Company.Friends.PosCounts));
+        parameters.Add(new SqlParameter("friendsNeg", user.Company.Friends.NegCounts));
+        parameters.Add(new SqlParameter("friendsDontare", user.Company.Friends.DontCareCounts));
+        parameters.Add(new SqlParameter("kidsFriendlyPos", user.Company.KidsFriendly.PosCounts));
+        parameters.Add(new SqlParameter("kidsFriendlyNeg", user.Company.KidsFriendly.NegCounts));
+        parameters.Add(new SqlParameter("kidsFriendlyDontCare", user.Company.KidsFriendly.DontCareCounts));
+        parameters.Add(new SqlParameter("petsFriendlyPos", user.Company.PetsFriendly.PosCounts));
+        parameters.Add(new SqlParameter("petsFriendlyNeg", user.Company.PetsFriendly.NegCounts));
+        parameters.Add(new SqlParameter("petsFriendlyDontCare", user.Company.PetsFriendly.DontCareCounts));
+        parameters.Add(new SqlParameter("colleaguesPos", user.Company.Colleagues.PosCounts));
+        parameters.Add(new SqlParameter("colleaguesNeg", user.Company.Colleagues.NegCounts));
+        parameters.Add(new SqlParameter("colleaguesDontCare", user.Company.Colleagues.DontCareCounts));
+
+        parameters.Add(new SqlParameter("popPos", user.Music.Pop.PosCounts));
+        parameters.Add(new SqlParameter("popNeg", user.Music.Pop.NegCounts));
+        parameters.Add(new SqlParameter("popDontCare", user.Music.Pop.DontCareCounts));
+        parameters.Add(new SqlParameter("jazzPos", user.Music.Jazz.PosCounts));
+        parameters.Add(new SqlParameter("jazzNeg", user.Music.Jazz.NegCounts));
+        parameters.Add(new SqlParameter("jazzDontCare", user.Music.Jazz.DontCareCounts));
+        parameters.Add(new SqlParameter("mizrahitPos", user.Music.Mizrahit.PosCounts));
+        parameters.Add(new SqlParameter("mizrahitNeg", user.Music.Mizrahit.NegCounts));
+        parameters.Add(new SqlParameter("mizrahitDontCare", user.Music.Mizrahit.DontCareCounts));
+        parameters.Add(new SqlParameter("greekPos", user.Music.Greek.PosCounts));
+        parameters.Add(new SqlParameter("greekNeg", user.Music.Greek.NegCounts));
+        parameters.Add(new SqlParameter("greekDontCare", user.Music.Greek.DontCareCounts));
+        parameters.Add(new SqlParameter("trancePos", user.Music.Trance.PosCounts));
+        parameters.Add(new SqlParameter("tranceNeg", user.Music.Trance.NegCounts));
+        parameters.Add(new SqlParameter("tranceDontCare", user.Music.Trance.DontCareCounts));
+        parameters.Add(new SqlParameter("mainstreamPos", user.Music.Mainstream.PosCounts));
+        parameters.Add(new SqlParameter("mainstreamNeg", user.Music.Mainstream.NegCounts));
+        parameters.Add(new SqlParameter("mainstreamDontCare", user.Music.Mainstream.DontCareCounts));
+        parameters.Add(new SqlParameter("israeliPos", user.Music.Israeli.PosCounts));
+        parameters.Add(new SqlParameter("israeliNeg", user.Music.Israeli.NegCounts));
+        parameters.Add(new SqlParameter("israeliDontCare", user.Music.Israeli.DontCareCounts));
+        parameters.Add(new SqlParameter("liveMusicPos", user.Music.LiveMusic.PosCounts));
+        parameters.Add(new SqlParameter("liveMusicNeg", user.Music.LiveMusic.NegCounts));
+        parameters.Add(new SqlParameter("liveMusicDontCare", user.Music.LiveMusic.DontCareCounts));
+        parameters.Add(new SqlParameter("reggaetonPos", user.Music.Reggaeton.PosCounts));
+        parameters.Add(new SqlParameter("reggaetonNeg", user.Music.Reggaeton.NegCounts));
+        parameters.Add(new SqlParameter("reggaetonDontCare", user.Music.Reggaeton.DontCareCounts));
+        parameters.Add(new SqlParameter("openMicPos", user.Music.OpenMic.PosCounts));
+        parameters.Add(new SqlParameter("openMicNeg", user.Music.OpenMic.NegCounts));
+        parameters.Add(new SqlParameter("openMicDontCare", user.Music.OpenMic.DontCareCounts));
+        parameters.Add(new SqlParameter("standupPos", user.Music.StandUp.PosCounts));
+        parameters.Add(new SqlParameter("standupNeg", user.Music.StandUp.NegCounts));
+        parameters.Add(new SqlParameter("standupDontCare", user.Music.StandUp.DontCareCounts));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_user_interest_vector", parameters);
+
+        return insertSucceeded;
+    }
+
+}
 

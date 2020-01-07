@@ -41,9 +41,9 @@ public partial class BarRating : System.Web.UI.Page
         }
         return saveSucceeded;
     }
+    
     public static bool InsertNewRatingToDB(Rate rate)
     {
-
         bool insertSucceeded;
         ArrayList barByIds;
         List<SqlParameter> barIds = new List<SqlParameter>();
@@ -133,6 +133,14 @@ public partial class BarRating : System.Web.UI.Page
             insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_rating", parameters);
         }
 
+        Bar bar = Engine.GetBarByBarID(rate.BarId);
+        bar.UpdateBarByRate(rate);
+        Engine.InsertUpdateBarCharacteristicToDB(bar);
+        User user = Engine.GetUserByUserName(rate.UserName);
+        user.UpdateUserByRate(rate);
+        Engine.InsertUpdateUserCountersToDB(user);
         return insertSucceeded;
     }
+
+
 }
