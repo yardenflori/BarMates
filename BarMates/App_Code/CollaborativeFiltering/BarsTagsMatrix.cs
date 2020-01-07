@@ -41,7 +41,7 @@ public class BarsTagsMatrix
         {
             tempMax = barDistance.Max();
             tempInd = barDistance.ToList().IndexOf(tempMax);
-            similarBars[i] = barTagsMatrix.IDS[tempInd];
+            similarBars.Add(barTagsMatrix.IDS[tempInd]);
             barDistance[tempInd] = -1;
         }
         return similarBars;

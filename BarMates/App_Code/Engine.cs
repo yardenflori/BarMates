@@ -318,7 +318,7 @@ public class Engine
     public static void UpdateRateFields(Rate rate, DbDataRecord data)
     {
         rate.UserName = data["userName"].ToString();
-        rate.BarId = int.Parse(data["userName"].ToString());
+        rate.BarId = int.Parse(data["barId"].ToString());
         rate.date = DateTime.Parse(data["date"].ToString());
         int age = int.Parse(data["age"].ToString());
         switch(age)
@@ -443,7 +443,7 @@ public class Engine
         return barRates;
     }
     
-    public Bar GetBarByBarID(int barID)
+    public static Bar GetBarByBarID(int barID)
     {
         ArrayList bars;
         List<SqlParameter> parameters = new List<SqlParameter>();

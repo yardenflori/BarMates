@@ -37,7 +37,7 @@ public class UserTagsMatrix
         {
             tempMax = userDistance.Max();
             tempInd = userDistance.ToList().IndexOf(tempMax);
-            similarUsers[i] = userTagsMatrix.IDS[tempInd];
+            similarUsers.Add(userTagsMatrix.IDS[tempInd]);
             userDistance[tempInd] = -1;
         }
         return similarUsers;
