@@ -312,10 +312,7 @@ function buildCarouselItem(barId, barName, barPhoto) {
     var divCarouselItem = $('<div id="' + barId+'"class=\"carousel-item card\"></div>');
     var divCarouselImg = $('<div class=\"card-image\"></div>');
 
-
     var img = $('<img src=' + barPhoto +  '/> ');
-
-    
 
     var span = $('<span class="card-title"></span>').text(barName);
     divCarouselItem.append(divCarouselImg);
