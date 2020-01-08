@@ -93,6 +93,7 @@ public class Rate
             //Music 
             Music = new Music<int>()
             {
+                Pop = int.Parse(jsonRate["Music"]["Pop"].ToString()),
                 Jazz = int.Parse(jsonRate["Music"]["Jazz"].ToString()),
                 Mizrahit = int.Parse(jsonRate["Music"]["Mizrahit"].ToString()),
                 Greek = int.Parse(jsonRate["Music"]["Greek"].ToString()),
