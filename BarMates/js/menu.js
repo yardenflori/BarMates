@@ -25,3 +25,6 @@ function ToggleNav() {
 function showError(error) {
     M.toast({ html: error, classes: 'error_toast' });
 }
+function showConfirm(text) {
+    M.toast({ html: text, classes: 'confirm_toast' });
+}
