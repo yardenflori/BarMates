@@ -258,7 +258,7 @@ function fillProfileBar(barId) {
         if (globalBars[i].BarId == barId) {
             $('#address .criterion_information').text(globalBars[i].Address);
             fillMainCriterion(bar.Food, globalBars[i].Food, 'food');
-            fillMainCriterion(bar.Drinks, globalBars[i].Drink, 'drinks');
+            fillMainCriterion(bar.Drinks, globalBars[i].Drinks, 'drinks');
             fillMainCriterion(bar.Atmosphere, globalBars[i].Atmosphere, 'envi');
             fillMainCriterion(bar.Company, globalBars[i].Company, 'comp');
             fillMainCriterion(bar.Music, globalBars[i].Music, 'music');

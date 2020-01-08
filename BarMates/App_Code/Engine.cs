@@ -469,9 +469,8 @@ public class Engine
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("barId", bar.BarId));
-        parameters.Add(new SqlParameter("barName", bar.BarName));
-        parameters.Add(new SqlParameter("address", bar.Address));
-        parameters.Add(new SqlParameter("photoUrl", bar.PhotoUrl));
+        
+        
 
         parameters.Add(new SqlParameter("age18", int.Parse("0")));
         parameters.Add(new SqlParameter("age21", int.Parse("0")));
@@ -480,21 +479,52 @@ public class Engine
         switch(bar.Age)
         {
             case Age.EighteenPlus:
-                parameters[4].Value = 1;
+                parameters[1].Value = 1;
                 break;
             case Age.TwentyOnePlus:
-                parameters[5].Value = 1;
+                parameters[2].Value = 1;
                 break;
             case Age.TwentyFourPlus:
-                parameters[6].Value = 1;
+                parameters[3].Value = 1;
                 break;
 
             default:
                 break;
         }
+        parameters.Add(new SqlParameter("selfService", int.Parse("0")));
+        parameters.Add(new SqlParameter("fullService", int.Parse("0")));
 
-        parameters.Add(new SqlParameter("service", (int)bar.Service));
-        parameters.Add(new SqlParameter("price", (int)bar.Price));
+        switch (bar.Service)
+        {
+            case Service.SelfService:
+                parameters[4].Value = 1;
+                break;
+            case Service.FullService:
+                parameters[5].Value = 1;
+                break;
+            default:
+                break;
+        }
+
+        parameters.Add(new SqlParameter("priceLow", int.Parse("0")));
+        parameters.Add(new SqlParameter("priceMed", int.Parse("0")));
+        parameters.Add(new SqlParameter("priceHigh", int.Parse("0")));
+
+        switch (bar.Price)
+        {
+            case Price.PriceLow:
+                parameters[6].Value = 1;
+                break;
+            case Price.PriceMed:
+                parameters[7].Value = 1;
+                break;
+            case Price.PriceHigh:
+                parameters[8].Value = 1;
+                break;
+
+            default:
+                break;
+        }
 
         parameters.Add(new SqlParameter("burgers", bar.Food.Burger));
         parameters.Add(new SqlParameter("pizza", bar.Food.Pizza));
