@@ -473,7 +473,26 @@ public class Engine
         parameters.Add(new SqlParameter("address", bar.Address));
         parameters.Add(new SqlParameter("photoUrl", bar.PhotoUrl));
 
-        parameters.Add(new SqlParameter("age", (int)bar.Age));
+        parameters.Add(new SqlParameter("age18", int.Parse("0")));
+        parameters.Add(new SqlParameter("age21", int.Parse("0")));
+        parameters.Add(new SqlParameter("age24", int.Parse("0")));
+
+        switch(bar.Age)
+        {
+            case Age.EighteenPlus:
+                parameters[4].Value = 1;
+                break;
+            case Age.TwentyOnePlus:
+                parameters[5].Value = 1;
+                break;
+            case Age.TwentyFourPlus:
+                parameters[6].Value = 1;
+                break;
+
+            default:
+                break;
+        }
+
         parameters.Add(new SqlParameter("service", (int)bar.Service));
         parameters.Add(new SqlParameter("price", (int)bar.Price));
 
