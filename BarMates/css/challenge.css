@@ -111,20 +111,54 @@ img{
       max-height:100%;
       max-width:100%;
 }
-.collapsible-header {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    line-height: 1.5;
-    padding: 1rem;  
-    height: 100px;  
-    
+
+h3,h5 {
+    color: #166678;
+    margin: 10px 0 !important;
 }
-.collapsible-body {
+* {
+    box-sizing: border-box;
+}
+
+
+/* Float four columns side by side */
+.column {
+    float: right;
+    width: 20%;
+    padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {
+    margin: 0 -5px;
+}
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+/* Style the counter cards */
+.card {
+    padding: 16px;
+    text-align: center;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+p {
     text-align: right;
-    font-size: small;
-    direction:rtl;
+    font-size: large;
+    font-weight:bold;
+    direction: rtl;
+    color: #166678;
+    margin: 10px 0 !important;
 }

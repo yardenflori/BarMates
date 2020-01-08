@@ -11,6 +11,7 @@
     <link href="css/challenge.css" rel="stylesheet" />
 </head>
 <body>
+
     <header>
         <div id="toolbar">
             <div class="logo_wrapper">
@@ -35,84 +36,663 @@
         <div class="card">
             <div class="row">
                 <div class="col">
-                     <h3>אתגרי תל אביב</h3>
+                    <h3>אתגרי תל אביב</h3>
                 </div>
-                
+                <div class="col">
+                    <img src="images/chall/tlv.jpeg" style="height: 100px; width: 86px" />
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>אתגר דיזינגוף:</h5>
+                </div>
             </div>
             <div class="row">
                 <div class="column">
-                    <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header">
-                                <img src="images/dizi/ilka.jpg" />
-                            </div>
-                            <div class="collapsible-body"><span>כתובת: דיזינגוף</span></div>
-                        </li>
-                    </ul>
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/dizi/dizi.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">דיזי פרישדון<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">דיזי פרישדון<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: דיזנגוף 121, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 03-523-4111</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="column">
-                    <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header">
-                                <img src="images/dizi/dizi.jpg" />
-                            </div>
-                            <div class="collapsible-body"><span>כתובת: דיזינגוף</span></div>
-                        </li>
-                    </ul>
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/dizi/consier.png" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">קונסיירג'<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">קונסיירג'<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: דיזנגוף 95, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 03-522-3340</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="column">
-                    <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header">
-                                <img src="images/dizi/mila.jpg" />
-                            </div>
-                            <div class="collapsible-body"><span>כתובת: דיזינגוף</span></div>
-                        </li>
-                    </ul>
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/dizi/ilka.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator text-darken-4">אילקה<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">אילקה<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: דיזנגוף 148, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 052-977-2244</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="column">
-                    <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header">
-                                <img src="images/dizi/simta.jpg" />
-                            </div>
-                            <div class="collapsible-body"><span>כתובת: דיזינגוף</span></div>
-                        </li>
-                    </ul>
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/dizi/mila.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">מילה<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">מילה<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: דיזנגוף 164, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 052-833-3668</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/dizi/zina.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">צינה<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">צינה<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: דיזנגוף 116, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 052-533-0028</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="column">
-                    <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header">
-                                <img src="images/dizi/zina.jpg" />
-                            </div>
-                            <div class="collapsible-body"><span>כתובת: דיזינגוף</span></div>
-                        </li>
-                    </ul>
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/dizi/simta.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">סימטא<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">סימטא<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: דיזנגוף 122, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 052-533-0028</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="column">
-                    <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header">
-                                <img src="images/dizi/rutina.png" />
-                            </div>
-                            <div class="collapsible-body" dir="rtl"><span>כתובת: דיזינגוף</span></div>
-                        </li>
-                    </ul>
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/dizi/rutina.png" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">רוטינא<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">רוטינא<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: פרישמן 41, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 054-578-4838</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>אתגר אבן גבירול:</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/iben/giora.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">בר-גיורא<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">בר-גיורא<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שלמה אבן גבירול 30, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 03-543-3963</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="column">
-                    <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header">
-                                <img src="images/dizi/consier.png" />
-                            </div>
-                            <div class="collapsible-body"><span>כתובת: דיזינגוף</span></div>
-                        </li>
-                    </ul>
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/iben/liliroz.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">לילי רוז<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">לילי רוז<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שלמה אבן גבירול 146, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 03-544-6663</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/iben/mezeg.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">המזג<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">המזג<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שלמה אבן גבירול 151, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 052-397-4760</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/iben/silvib.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">סילביה באמפר<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">סילביה באמפר<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שלמה אבן גבירול 38, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 054-456-6228</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/iben/square.png" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">המשבצת<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">המשבצת<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות דוד המלך 1, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 055-660-9167</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>אתגר רוטשילד:</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/rotshild/beerbazar.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">ביר-באזאר<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">ביר-באזאר<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 142, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 054-796-7995</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/rotshild/patricks.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">פטריקס<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">פטריקס<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 39, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 03-605-0509</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/rotshild/poli.png" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">פולי<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">פולי<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 60, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 073-757-6245</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/rotshild/speak.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">ספיקאיזי<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">ספיקאיזי<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 24, תל אביב יפו</p>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/rotshild/zozo.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">זו-זו<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">זו-זו<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 32, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 072-395-2045</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- jerusalem challenges-->
+            <div class="row">
+                <div class="col">
+                    <h3>אתגרי ירושלים</h3>
+                </div>
+                <div class="col">
+                    <img src="images/chall/jerus.jpeg" style="height: 100px; width: 86px" />
+                </div>
+
+            </div>
+
+             <div class="row">
+                <div class="col">
+                    <h5>אתגר מחנה יהודה:</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/fredy.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">פרדי לימן<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">">פרדי לימן<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 142, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 054-796-7995</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/neighber.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">השכנה<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">השכנה<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 39, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 03-605-0509</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/paris.png" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">קזינו דה פריס<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">קזינו דה פריס<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 60, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 073-757-6245</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/shoka.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">שוקא<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">שוקא<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 24, תל אביב יפו</p>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/tear.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">הטיפה<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">הטיפה<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 32, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 072-395-2045</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col">
+                    <h5>אתגר העיר:</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/jerusalem/kaktus9.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">קקטוס 9<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">">קקטוס 9<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 142, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 054-796-7995</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/jerusalem/taklit.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">התקליט<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">התקליט<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 39, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 03-605-0509</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/jerusalem/zabotinsky.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">זבוטינסקי בר<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">זבוטינסקי בר<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 60, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 073-757-6245</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/jerusalem/gatsbi.png" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">גטסבי<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">גטסבי<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 24, תל אביב יפו</p>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/jerusalem/glen.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">גלן<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">גלן<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 32, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 072-395-2045</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- world challenges-->
+            <div class="row">
+                <div class="col">
+                    <h3>אתגרים עולמיים</h3>
+                </div>
+                <div class="col">
+                    <img src="images/chall/world.jpeg" style="height: 100px; width: 86px" />
+                </div>
+
+            </div>
+
+             <div class="row">
+                <div class="col">
+                    <h5>אתגר איטליה:</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/fredy.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">פרדי לימן<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">">פרדי לימן<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 142, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 054-796-7995</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/neighber.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">השכנה<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">השכנה<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 39, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 03-605-0509</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/paris.png" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">קזינו דה פריס<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">קזינו דה פריס<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 60, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 073-757-6245</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/shoka.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">שוקא<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">שוקא<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 24, תל אביב יפו</p>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/mahne/tear.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">הטיפה<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">הטיפה<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: שדרות רוטשילד 32, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 072-395-2045</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </main>
 </body>
 <script src="js/jquery-1.11.3.js"></script>

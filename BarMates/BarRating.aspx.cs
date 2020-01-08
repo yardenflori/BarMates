@@ -42,9 +42,32 @@ public partial class BarRating : System.Web.UI.Page
         return saveSucceeded;
     }
     public static bool InsertNewRatingToDB(Rate rate)
-    {//should be changed to add the bar to DB if missing
-        ArrayList rating_of_user_and_bar;
+    {
+
         bool insertSucceeded;
+        ArrayList barByIds;
+        List<SqlParameter> barIds = new List<SqlParameter>();
+        List<SqlParameter> barParameters = new List<SqlParameter>();
+        barIds.Add(new SqlParameter("@barId", rate.BarId));
+
+        barByIds = DBController.ExecuteStoredProcedure_Select("sp_get_bar_by_barId", barIds);
+        
+        if (barByIds.Count == 0)
+        {
+            barParameters.Add(new SqlParameter("@barId", rate.BarId));
+            barParameters.Add(new SqlParameter("@barName", rate.BarName));
+            barParameters.Add(new SqlParameter("@photoUrl", rate.photoURL));
+            barParameters.Add(new SqlParameter("@Address", rate.address));
+            insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_bar", barParameters);
+
+            if (!insertSucceeded)
+            {
+                return insertSucceeded;
+            }
+        }
+
+        ArrayList rating_of_user_and_bar;
+        
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("userName", rate.UserName));
         parameters.Add(new SqlParameter("barId", rate.BarId));
@@ -112,4 +135,6 @@ public partial class BarRating : System.Web.UI.Page
 
         return insertSucceeded;
     }
+
+
 }

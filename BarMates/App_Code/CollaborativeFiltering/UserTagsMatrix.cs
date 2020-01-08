@@ -3,10 +3,8 @@ using System.Linq;
 
 public class UserTagsMatrix
 {
-    public Engine Engine { get; set; }
-    public UserTagsMatrix(Engine engine)
+    public UserTagsMatrix()
     {
-        Engine = engine;
     }
     
     private static Matrix GetUsersTagsMatrix(List<User> users)
@@ -39,7 +37,7 @@ public class UserTagsMatrix
         {
             tempMax = userDistance.Max();
             tempInd = userDistance.ToList().IndexOf(tempMax);
-            similarUsers[i] = userTagsMatrix.IDS[tempInd];
+            similarUsers.Add(userTagsMatrix.IDS[tempInd]);
             userDistance[tempInd] = -1;
         }
         return similarUsers;

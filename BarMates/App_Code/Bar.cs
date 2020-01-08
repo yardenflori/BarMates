@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections;
 
 public class Bar
 {
     public int BarId { get; set; }
     public string BarName { get; set; }
     public string Address { get; set; }
+    public string PhotoUrl { get; set; }
     public Age Age { get; set; }
     public Food<bool> Food { get; set; }
-    public Drinks<bool> Drink { get; set; }
+    public Drinks<bool> Drinks { get; set; }
     public Atmosphere<bool> Atmosphere { get; set; }
     public bool SmokingFree { get; set; }
     public Company<bool> Company { get; set; }
@@ -30,7 +33,7 @@ public class Bar
     public Bar()
 	{
         Food = new Food<bool>();
-        Drink = new Drinks<bool>();
+        Drinks = new Drinks<bool>();
         Atmosphere = new Atmosphere<bool>();
         Company = new Company<bool>();
         Music = new Music<bool>();
@@ -80,13 +83,13 @@ public class Bar
         _barCharacteristics[12] = Food.Pizza ? 1 : 0;
         _barCharacteristics[13] = Food.Snacks ? 1 : 0;
         _barCharacteristics[14] = Food.Sushi ? 1 : 0;
-        _barCharacteristics[15] = Drink.WideRangeOfBeverages ? 1 : 0;
-        _barCharacteristics[16] = Drink.Beer ? 1 : 0;
-        _barCharacteristics[17] = Drink.BeveragePackages ? 1 : 0;
-        _barCharacteristics[18] = Drink.Cocktail ? 1 : 0;
-        _barCharacteristics[19] = Drink.Jin ? 1 : 0;
-        _barCharacteristics[20] = Drink.Whiskey ? 1 : 0;
-        _barCharacteristics[21] = Drink.Wine ? 1 : 0;
+        _barCharacteristics[15] = Drinks.WideRangeOfBeverages ? 1 : 0;
+        _barCharacteristics[16] = Drinks.Beer ? 1 : 0;
+        _barCharacteristics[17] = Drinks.BeveragePackages ? 1 : 0;
+        _barCharacteristics[18] = Drinks.Cocktail ? 1 : 0;
+        _barCharacteristics[19] = Drinks.Jin ? 1 : 0;
+        _barCharacteristics[20] = Drinks.Whiskey ? 1 : 0;
+        _barCharacteristics[21] = Drinks.Wine ? 1 : 0;
         _barCharacteristics[22] = Atmosphere.Irish ? 1 : 0;
         _barCharacteristics[23] = Atmosphere.Chill ? 1 : 0;
         _barCharacteristics[24] = Atmosphere.Dance ? 1 : 0;
@@ -109,5 +112,45 @@ public class Bar
         _barCharacteristics[41] = Music.Reggaeton ? 1 : 0;
         _barCharacteristics[42] = Music.StandUp ? 1 : 0;
         _barCharacteristics[43] = Music.Trance ? 1 : 0;
+    }
+
+    public void UpdateBarByRate()
+    {
+        List<Rate> rates = Engine.GetRatesByBar(this);
+        int[] counters = new int[44];
+        int cnt = 0;
+        int timeDiff;
+        for (int i = 0; i < rates.Count; i++)
+        {
+            int[] vector = rates[i].RateVector();
+            for (int j = 0; j < vector.Length; j++)
+            {
+                timeDiff = Helpers.TimeDifference(DateTime.Now, rates[i].date);
+                if (timeDiff < 3)
+                {
+                    cnt += 4;
+                    counters[j] += vector[j] * 4;
+                }
+                else if (timeDiff < 6)
+                {
+                    cnt += 3;
+                    counters[j] += vector[j] * 3;
+                }
+                else if (timeDiff < 12)
+                {
+                    cnt += 2;
+                    counters[j] += vector[j] * 2;
+                }
+                else
+                {
+                    cnt += 1;
+                    counters[j] += vector[j];
+                }
+            }
+        }
+        for (int i = 0; i < _barCharacteristics.Length; i++)
+        {
+            _barCharacteristics[i] = (counters[i] > (0.2 * cnt)) ? 1 : 0;
+        }
     }
 }
