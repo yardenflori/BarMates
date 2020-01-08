@@ -56,6 +56,7 @@ public partial class NewUser : System.Web.UI.Page
                 parameters = new List<SqlParameter>();
                 parameters.Add(new SqlParameter("user_name", userDetails["userName"].ToString()));
                 parameters.Add(new SqlParameter("password", userDetails["password"].ToString()));
+                parameters.Add(new SqlParameter("age", int.Parse(userDetails["age"].ToString())));
                 DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_user", parameters);
             }
         }
