@@ -27,7 +27,7 @@ public class UserTagsMatrix
         var userTagsMatrix = GetUsersTagsMatrix(users);
         int n = userTagsMatrix.IDS.Length;
         double[] userDistance = new double[n];
-        double tempMax = 0;
+        double tempMin = 0;
         int tempInd = 0;
         for (int i = 0; i < n; i++)
         {
@@ -35,10 +35,10 @@ public class UserTagsMatrix
         }
         for (int i = 0; i < numSimilar; i++)
         {
-            tempMax = userDistance.Max();
-            tempInd = userDistance.ToList().IndexOf(tempMax);
+            tempMin = userDistance.Min();
+            tempInd = userDistance.ToList().IndexOf(tempMin);
             similarUsers.Add(userTagsMatrix.IDS[tempInd]);
-            userDistance[tempInd] = -1;
+            userDistance[tempInd] = double.MaxValue;
         }
         return similarUsers;
     }
