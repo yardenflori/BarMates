@@ -4,6 +4,10 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using BarMates;
 using System.Collections;
+using System.Net;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 public class Engine
 {
@@ -197,6 +201,7 @@ public class Engine
     public static void UpdateBarFields(Bar bar, DbDataRecord data)
     {
         bar.BarId = int.Parse(data["barId"].ToString());
+        bar.BarGoogleId = data["barGoogleId"].ToString();
         bar.BarName = data["barName"].ToString();
         bar.Address = data["Address"].ToString();
         bar.Age = Age.None;
@@ -469,8 +474,9 @@ public class Engine
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("barId", bar.BarId));
-        
-        
+        parameters.Add(new SqlParameter("barGoogleId", bar.BarGoogleId));
+
+
 
         parameters.Add(new SqlParameter("age18", int.Parse("0")));
         parameters.Add(new SqlParameter("age21", int.Parse("0")));
@@ -578,7 +584,7 @@ public class Engine
 
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
-        parameters.Add(new SqlParameter("userId", user.UserId));
+        
         parameters.Add(new SqlParameter("userName", user.UserName));
         parameters.Add(new SqlParameter("password", user.Password));
         parameters.Add(new SqlParameter("age", user.Age));
@@ -702,5 +708,56 @@ public class Engine
         return insertSucceeded;
     }
 
+    public static int updatePhotoUrlInDB()
+    {
+        List<string> namesList = new List<string>();
+        string urlRequest;
+        WebRequest request;
+        WebResponse response;
+        string photoUrl;
+
+        for(int i =0; i< Bars.Count; i++)
+        {
+            urlRequest = "https://maps.googleapis.com/maps/api/place/details/xml?place_id=" + Bars[i].BarGoogleId + "&fields=photo&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
+            request = WebRequest.Create(urlRequest);
+            response = request.GetResponse();
+
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                try
+                {
+                    XDocument xdoc = XDocument.Load(dataStream);
+
+                    var name1 = from item in xdoc.Descendants("result").Elements("photo")
+                                select item.Element("photo_reference").Value;
+                    foreach (string name in name1)
+                    {
+                        namesList.Add(name);
+                        photoUrl = photoReferenceToPhotoUrl(namesList[0]);
+                        Bars[i].PhotoUrl = photoUrl;
+                        // call sp to update bar (and create sp if needed)
+                    }
+
+                }
+                catch
+                {
+
+                }
+
+            }
+            response.Close();
+        }
+        
+        
+        
+        return 1;
+    }
+
+    public static string photoReferenceToPhotoUrl(string photoReference)
+    {//should be completed
+        return "";
+    }
+
 }
+
 

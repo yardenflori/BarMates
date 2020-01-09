@@ -55,6 +55,7 @@ public partial class BarRating : System.Web.UI.Page
         if (barByIds.Count == 0)
         {
             barParameters.Add(new SqlParameter("@barId", rate.BarId));
+            barParameters.Add(new SqlParameter("@barGoogleId", rate.BarGoogleId));
             barParameters.Add(new SqlParameter("@barName", rate.BarName));
             barParameters.Add(new SqlParameter("@photoUrl", rate.photoURL));
             barParameters.Add(new SqlParameter("@Address", rate.address));
@@ -139,6 +140,7 @@ public partial class BarRating : System.Web.UI.Page
         User user = Engine.GetUserByUserName(rate.UserName);
         user.UpdateUserByRate(rate);
         Engine.InsertUpdateUserCountersToDB(user);
+        Engine.updatePhotoUrlInDB();
         return insertSucceeded;
     }
 

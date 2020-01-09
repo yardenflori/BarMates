@@ -306,8 +306,8 @@ function initCriterions() {
 
 
 function buildCarouselItem(barId, barName, barPhoto) {
-   
 
+    const url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJEThM7qe0AhURnrZLL5HOOrw&fields=photo&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
     
     var divCarouselItem = $('<div id="' + barId+'"class=\"carousel-item card\"></div>');
     var divCarouselImg = $('<div class=\"card-image\"></div>');
