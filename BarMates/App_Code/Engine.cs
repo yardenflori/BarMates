@@ -581,7 +581,7 @@ public class Engine
         parameters.Add(new SqlParameter("userId", user.UserId));
         parameters.Add(new SqlParameter("userName", user.UserName));
         parameters.Add(new SqlParameter("password", user.Password));
-        parameters.Add(new SqlParameter("age", (int)user.Age));
+        parameters.Add(new SqlParameter("age", user.Age));
 
         parameters.Add(new SqlParameter("burgersPos", user.Food.Burger.PosCounts));
         parameters.Add(new SqlParameter("burgersNeg", user.Food.Burger.NegCounts));
@@ -652,7 +652,7 @@ public class Engine
         parameters.Add(new SqlParameter("datingDontCare", user.Company.Dating.DontCareCounts));
         parameters.Add(new SqlParameter("friendsPos", user.Company.Friends.PosCounts));
         parameters.Add(new SqlParameter("friendsNeg", user.Company.Friends.NegCounts));
-        parameters.Add(new SqlParameter("friendsDontare", user.Company.Friends.DontCareCounts));
+        parameters.Add(new SqlParameter("friendsDontCare", user.Company.Friends.DontCareCounts));
         parameters.Add(new SqlParameter("kidsFriendlyPos", user.Company.KidsFriendly.PosCounts));
         parameters.Add(new SqlParameter("kidsFriendlyNeg", user.Company.KidsFriendly.NegCounts));
         parameters.Add(new SqlParameter("kidsFriendlyDontCare", user.Company.KidsFriendly.DontCareCounts));
