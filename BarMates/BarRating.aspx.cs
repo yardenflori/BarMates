@@ -135,12 +135,13 @@ public partial class BarRating : System.Web.UI.Page
         }
 
         Bar bar = Engine.GetBarByBarID(rate.BarId);
+        Engine.updatePhotoUrlInDB();
         bar.UpdateBarByRate();
         Engine.InsertUpdateBarCharacteristicToDB(bar);
         User user = Engine.GetUserByUserName(rate.UserName);
         user.UpdateUserByRate(rate);
         Engine.InsertUpdateUserCountersToDB(user);
-        Engine.updatePhotoUrlInDB();
+        
         return insertSucceeded;
     }
 

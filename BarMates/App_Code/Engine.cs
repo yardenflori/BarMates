@@ -474,7 +474,7 @@ public class Engine
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("barId", bar.BarId));
-        parameters.Add(new SqlParameter("barGoogleId", bar.BarGoogleId));
+        
 
 
 
@@ -573,6 +573,7 @@ public class Engine
         parameters.Add(new SqlParameter("reggaeton", bar.Music.Reggaeton));
         parameters.Add(new SqlParameter("openMic", bar.Music.OpenMic));
         parameters.Add(new SqlParameter("standup", bar.Music.StandUp));
+        parameters.Add(new SqlParameter("photoUrl", bar.PhotoUrl));
 
         insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_bar", parameters);
 
@@ -710,7 +711,7 @@ public class Engine
 
     public static int updatePhotoUrlInDB()
     {
-        List<string> namesList = new List<string>();
+        
         string urlRequest;
         WebRequest request;
         WebResponse response;
@@ -718,6 +719,7 @@ public class Engine
 
         for(int i =0; i< Bars.Count; i++)
         {
+            List<string> namesList = new List<string>();
             urlRequest = "https://maps.googleapis.com/maps/api/place/details/xml?place_id=" + Bars[i].BarGoogleId + "&fields=photo&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
             request = WebRequest.Create(urlRequest);
             response = request.GetResponse();
@@ -735,7 +737,8 @@ public class Engine
                         namesList.Add(name);
                         photoUrl = photoReferenceToPhotoUrl(namesList[0]);
                         Bars[i].PhotoUrl = photoUrl;
-                        // call sp to update bar (and create sp if needed)
+                        Engine.InsertUpdateBarCharacteristicToDB(Bars[i]);
+                        break;
                     }
 
                 }
@@ -755,7 +758,9 @@ public class Engine
 
     public static string photoReferenceToPhotoUrl(string photoReference)
     {//should be completed
-        return "";
+        string urlRequest = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
+
+        return urlRequest;
     }
 
 }
