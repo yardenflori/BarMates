@@ -27,4 +27,11 @@ public static class Helpers
         int y = now.Month - then.Month;
         return x * 12 + y;
     }
+
+    public static string photoReferenceToPhotoUrl(string photoReference)
+    {
+        string urlRequest = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
+
+        return urlRequest;
+    }
 }

@@ -473,6 +473,7 @@ function initialize() {
     var autocomplete = new google.maps.places.Autocomplete(input, { componentRestrictions: { country: 'il' }, types:['establishment'] });
     autocomplete.addListener('place_changed', function () {
         var place = autocomplete.getPlace();
+       
         if (isBar(place) == true) {
             showBarCriterions();
             barId = place.place_id;

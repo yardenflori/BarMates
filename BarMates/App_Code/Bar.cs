@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Net;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 public class Bar
 {
     public int BarId { get; set; }
+    public string BarGoogleId { get; set; }
     public string BarName { get; set; }
     public string Address { get; set; }
     public string PhotoUrl { get; set; }
@@ -238,4 +243,39 @@ public class Bar
         }
         CalculateBarFeilds();
     }
+
+    public static void UpdateBarPhoto(Bar bar)
+    {
+        string urlRequest = "https://maps.googleapis.com/maps/api/place/details/xml?place_id=" + bar.BarGoogleId + "&fields=photo&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
+        WebRequest request = WebRequest.Create(urlRequest);
+        WebResponse response = request.GetResponse();
+      
+        List<string> namesList = new List<string>();
+
+        using (Stream dataStream = response.GetResponseStream())
+        {
+            try
+            { 
+                XDocument xdoc = XDocument.Load(dataStream);
+
+                var name1 = from item in xdoc.Descendants("result").Elements("photo")
+                            select item.Element("photo_reference").Value;
+                foreach (string name in name1)
+                {
+                    namesList.Add(name);
+                    string photoUrl = Helpers.photoReferenceToPhotoUrl(namesList[0]);
+                    bar.PhotoUrl = photoUrl;
+                    Engine.InsertUpdateBarCharacteristicToDB(bar);
+                    break;
+                }
+
+            }
+            catch
+            {
+
+            }
+
+        }
+    }
 }
+

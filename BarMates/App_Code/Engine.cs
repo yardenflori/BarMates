@@ -4,6 +4,10 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using BarMates;
 using System.Collections;
+using System.Net;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 public class Engine
 {
@@ -197,6 +201,7 @@ public class Engine
     public static void UpdateBarFields(Bar bar, DbDataRecord data)
     {
         bar.BarId = int.Parse(data["barId"].ToString());
+        bar.BarGoogleId = data["barGoogleId"].ToString();
         bar.BarName = data["barName"].ToString();
         bar.Address = data["Address"].ToString();
         bar.Age = Age.None;
@@ -470,7 +475,8 @@ public class Engine
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("barId", bar.BarId));
         
-        
+
+
 
         parameters.Add(new SqlParameter("age18", int.Parse("0")));
         parameters.Add(new SqlParameter("age21", int.Parse("0")));
@@ -567,6 +573,7 @@ public class Engine
         parameters.Add(new SqlParameter("reggaeton", bar.Music.Reggaeton));
         parameters.Add(new SqlParameter("openMic", bar.Music.OpenMic));
         parameters.Add(new SqlParameter("standup", bar.Music.StandUp));
+        parameters.Add(new SqlParameter("photoUrl", bar.PhotoUrl));
 
         insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_bar", parameters);
 
@@ -578,7 +585,7 @@ public class Engine
 
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
-        parameters.Add(new SqlParameter("userId", user.UserId));
+        
         parameters.Add(new SqlParameter("userName", user.UserName));
         parameters.Add(new SqlParameter("password", user.Password));
         parameters.Add(new SqlParameter("age", user.Age));
@@ -703,4 +710,5 @@ public class Engine
     }
 
 }
+
 

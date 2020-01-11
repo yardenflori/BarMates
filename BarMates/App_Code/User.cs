@@ -417,8 +417,9 @@ public class User
 
     public List<Bar> GetBestBars(int numOfBest, List<Bar> bars)
     {
+        var rates = new List<Rate>();
         int n = bars.Count();
-        var scores = new double[n];
+        double[] scores = new double[n];
         double tempMax;
         int tempInd;
         var resultBars = new List<Bar>();
@@ -428,7 +429,8 @@ public class User
             var tempRate = rates.Where(x => (x.BarId == bars[i].BarId)).ToList();
             if (tempRate.Count() > 0)
             {
-                scores[i] = CalculateScoreForBar(bars[i], tempRate[0]) * (3 / 4);
+                double tmp = CalculateScoreForBar(bars[i], tempRate[0]);
+                scores[i] = tmp*0.75;
             }
             else
             {
