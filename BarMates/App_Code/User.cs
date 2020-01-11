@@ -417,12 +417,13 @@ public class User
 
     public List<Bar> GetBestBars(int numOfBest, List<Bar> bars)
     {
-        var rates = Engine.GetRatesByUser(this);
+        var rates = new List<Rate>();
         int n = bars.Count();
         double[] scores = new double[n];
         double tempMax;
         int tempInd;
         var resultBars = new List<Bar>();
+        var rates = Engine.GetRatesByUser(this);
         for (int i = 0; i < n; i++)
         {
             var tempRate = rates.Where(x => (x.BarId == bars[i].BarId)).ToList();

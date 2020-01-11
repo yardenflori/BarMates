@@ -22,6 +22,10 @@ public partial class Homepage : System.Web.UI.Page
         string userName = DBController.GetUserName();
         User user = Engine.GetUserByUserName(userName);
         List<Bar> bars = user.GetBestBars(5, Engine.Bars);
+        for(int i = 0; i <bars.Count; i++)
+        {
+            Bar.UpdateBarPhoto(bars[i]);
+        }
         /*List<Bar> bars = new List<Bar>();
         List<SqlParameter> parameters = new List<SqlParameter>();
         var barsDB = DBController.ExecuteStoredProcedure_Select("sp_get_all_bars", parameters);

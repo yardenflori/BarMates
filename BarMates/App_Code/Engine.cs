@@ -709,60 +709,6 @@ public class Engine
         return insertSucceeded;
     }
 
-    public static int updatePhotoUrlInDB()
-    {
-        
-        string urlRequest;
-        WebRequest request;
-        WebResponse response;
-        string photoUrl;
-
-        for(int i =0; i< Bars.Count; i++)
-        {
-            List<string> namesList = new List<string>();
-            urlRequest = "https://maps.googleapis.com/maps/api/place/details/xml?place_id=" + Bars[i].BarGoogleId + "&fields=photo&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
-            request = WebRequest.Create(urlRequest);
-            response = request.GetResponse();
-
-            using (Stream dataStream = response.GetResponseStream())
-            {
-                try
-                {
-                    XDocument xdoc = XDocument.Load(dataStream);
-
-                    var name1 = from item in xdoc.Descendants("result").Elements("photo")
-                                select item.Element("photo_reference").Value;
-                    foreach (string name in name1)
-                    {
-                        namesList.Add(name);
-                        photoUrl = photoReferenceToPhotoUrl(namesList[0]);
-                        Bars[i].PhotoUrl = photoUrl;
-                        Engine.InsertUpdateBarCharacteristicToDB(Bars[i]);
-                        break;
-                    }
-
-                }
-                catch
-                {
-
-                }
-
-            }
-            response.Close();
-        }
-        
-        
-        
-        return 1;
-    }
-
-    public static string photoReferenceToPhotoUrl(string photoReference)
-    {//should be completed
-        string urlRequest = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
-
-        return urlRequest;
-    }
-
 }
 
 
