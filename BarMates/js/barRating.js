@@ -159,7 +159,7 @@ var options = ['לא אהבתי', 'לא אכפת לי', 'אהבתי'];
 bar.SmokingFree = [
     {
         id: 'SmokingFree',
-        name: 'עישון'
+        name: 'נקי מעישון'
     }
 ];
 
@@ -244,7 +244,14 @@ function EnteredEnumCriterions() {
         var enumCriterion = EnumCriterionsArr[j];
         if ($('#' + enumCriterion.id).prop("checked") == true) {
             var userRate = $('input[name="' + enumCriterion.id + 'group"]:checked').val();
-            if ((-1 <= userRate && userRate <= 1) == false) {
+            var options = enumCriterion.options;
+            var found = false;
+            for (var i = 0; i < options.length; i++) {
+                if (userRate == options[i].id) {
+                    found = true;
+                }
+            }
+            if (found == false) {
                 error = 'יש לבחור ' + enumCriterion.name;
             }
         }
@@ -271,7 +278,7 @@ function saveRateInDB() {
         dataType: "json",
         success: function (data) {
             if (data.d == true) {
-                showError('השמירה בוצעה בהצלחה');
+                showConfirm('השמירה בוצעה בהצלחה');
             }
             else {
                 showError('חלה שגיאה');
@@ -395,12 +402,27 @@ function createCriterions(criterion) {
 
     rowDiv.append(div1);
 }
+function isEnumCriterion(id)
+{
+    var isEnumCr = false;
+    for (var i = 0; i < EnumCriterionsArr.length; i++) {
+        var mainCriterion = EnumCriterionsArr[i];
+        if (EnumCriterionsArr[i].id == id) {
+            isEnumCr = true;
+        }
+    }
+    return isEnumCr;
+}
 function showRadioButtonOptions(id) {
     if ($('#' + id).prop("checked") == true) {
         $('#' + id + '_options').css('display', 'block');//showOptions
+        if (isEnumCriterion(id) == false) {
+            $('input[name="' + id + 'group"][value=0]').prop('checked', true);    
+        }
     }
     else if ($('#' + id).prop("checked") == false) {
         $('#' + id + '_options').css('display', 'none');//hideOptions
+        $('input[name="' + id + 'group"][value=0]:checked').removeProp('checked');      
     }
 }
 function buildMainCriterion(criterions, criterionType) {
