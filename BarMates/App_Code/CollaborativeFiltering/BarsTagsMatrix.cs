@@ -31,7 +31,7 @@ public class BarsTagsMatrix
         Matrix barTagsMatrix = GetBarTagsMatrix(bars);
         int n = barTagsMatrix.IDS.Length;
         double[] barDistance = new double[n];
-        double tempMax = 0;
+        double tempMin = 0;
         int tempInd = 0;
         for(int i = 0; i < n; i++)
         {
@@ -39,10 +39,10 @@ public class BarsTagsMatrix
         }
         for(int i = 0; i < numSimilar; i++)
         {
-            tempMax = barDistance.Max();
-            tempInd = barDistance.ToList().IndexOf(tempMax);
+            tempMin = barDistance.Min();
+            tempInd = barDistance.ToList().IndexOf(tempMin);
             similarBars.Add(barTagsMatrix.IDS[tempInd]);
-            barDistance[tempInd] = -1;
+            barDistance[tempInd] = double.MaxValue;
         }
         return similarBars;
     }
