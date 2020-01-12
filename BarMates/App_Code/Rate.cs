@@ -9,6 +9,7 @@ public class Rate
 {
     public string UserName { get; set; }
     public int BarId { get; set; }
+    public string BarGoogleId { get; set; }
     public string BarName { get; set; }
     public string photoURL { get; set; }
     public string address { get; set; }
@@ -40,6 +41,7 @@ public class Rate
             BarName = jsonRate["BarName"].ToString(),
             address = jsonRate["address"].ToString(),
             BarId = jsonRate["BarId"].ToString().GetHashCode(),
+            BarGoogleId = jsonRate["BarId"].ToString(),
             photoURL = jsonRate["photoUrl"].ToString(),
             date = DateTime.Now,
             //Age

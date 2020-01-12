@@ -407,7 +407,7 @@ public class User
         {
             j = UserCatToBarCat(i);
             realRate = UserCatToRate(i, rate);
-            if (realRate != 2)
+            if (realRate != 7)
             {
                 score += InterestsVector[i] * bar.BarCharacteristics[j] * realRate;
             }
@@ -419,16 +419,18 @@ public class User
     {
         var rates = new List<Rate>();
         int n = bars.Count();
-        var scores = new double[n];
+        double[] scores = new double[n];
         double tempMax;
         int tempInd;
         var resultBars = new List<Bar>();
+        var rates = Engine.GetRatesByUser(this);
         for (int i = 0; i < n; i++)
         {
             var tempRate = rates.Where(x => (x.BarId == bars[i].BarId)).ToList();
             if (tempRate.Count() > 0)
             {
-                scores[i] = CalculateScoreForBar(bars[i], tempRate[0]) * (3 / 4);
+                double tmp = CalculateScoreForBar(bars[i], tempRate[0]);
+                scores[i] = tmp*0.75;
             }
             else
             {

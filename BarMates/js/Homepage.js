@@ -258,7 +258,7 @@ function fillProfileBar(barId) {
         if (globalBars[i].BarId == barId) {
             $('#address .criterion_information').text(globalBars[i].Address);
             fillMainCriterion(bar.Food, globalBars[i].Food, 'food');
-            fillMainCriterion(bar.Drinks, globalBars[i].Drink, 'drinks');
+            fillMainCriterion(bar.Drinks, globalBars[i].Drinks, 'drinks');
             fillMainCriterion(bar.Atmosphere, globalBars[i].Atmosphere, 'envi');
             fillMainCriterion(bar.Company, globalBars[i].Company, 'comp');
             fillMainCriterion(bar.Music, globalBars[i].Music, 'music');
@@ -306,20 +306,11 @@ function initCriterions() {
 
 
 function buildCarouselItem(barId, barName, barPhoto) {
-
-    var url = 'https://maps.googleapis.com/maps/api/place/details/json?place_id=' + barId + ' & fields=photo& key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_ - 6Dyc'
-    fetch(url)
-        .then((response) => {
-            return response.json();
-        })
-        .then((myJson) => {
-            console.log(myJson);
-        });
     
     var divCarouselItem = $('<div id="' + barId+'"class=\"carousel-item card\"></div>');
     var divCarouselImg = $('<div class=\"card-image\"></div>');
 
-    var img = $('<img src=' + barPhoto +  '/> ');
+    var img = $('<img src=' + barPhoto +  '> ');
 
     var span = $('<span class="card-title"></span>').text(barName);
     divCarouselItem.append(divCarouselImg);

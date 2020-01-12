@@ -2,13 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class Homepage : System.Web.UI.Page
 {
@@ -28,6 +22,10 @@ public partial class Homepage : System.Web.UI.Page
         string userName = DBController.GetUserName();
         User user = Engine.GetUserByUserName(userName);
         List<Bar> bars = user.GetBestBars(5, Engine.Bars);
+        for(int i = 0; i <bars.Count; i++)
+        {
+            Bar.UpdateBarPhoto(bars[i]);
+        }
         /*List<Bar> bars = new List<Bar>();
         List<SqlParameter> parameters = new List<SqlParameter>();
         var barsDB = DBController.ExecuteStoredProcedure_Select("sp_get_all_bars", parameters);

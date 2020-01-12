@@ -4,6 +4,10 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using BarMates;
 using System.Collections;
+using System.Net;
+using System.IO;
+using System.Xml.Linq;
+using System.Linq;
 
 public class Engine
 {
@@ -76,6 +80,9 @@ public class Engine
 
     public static void UpdateUserFields(User user, DbDataRecord data)
     {
+        String a = data["userId"].ToString();
+        String b = data["userName"].ToString();
+
         user.UserId = int.Parse(data["userId"].ToString());
         user.UserName = data["userName"].ToString();
         user.Password = data["password"].ToString();
@@ -128,7 +135,7 @@ public class Engine
         user.Atmosphere.Chill.NegCounts = int.Parse(data["chillNeg"].ToString());
         user.Atmosphere.Chill.PosCounts = int.Parse(data["chillPos"].ToString());
         user.Atmosphere.Chill.DontCareCounts = int.Parse(data["chillDontCare"].ToString());
-        string a = data["danceDontCare"].ToString();
+        
         user.Atmosphere.Dance.NegCounts = int.Parse(data["danceNeg"].ToString());
         user.Atmosphere.Dance.PosCounts = int.Parse(data["dancePos"].ToString());
         user.Atmosphere.Dance.DontCareCounts = int.Parse(data["danceDontCare"].ToString());
@@ -194,6 +201,7 @@ public class Engine
     public static void UpdateBarFields(Bar bar, DbDataRecord data)
     {
         bar.BarId = int.Parse(data["barId"].ToString());
+        bar.BarGoogleId = data["barGoogleId"].ToString();
         bar.BarName = data["barName"].ToString();
         bar.Address = data["Address"].ToString();
         bar.Age = Age.None;
@@ -211,6 +219,7 @@ public class Engine
             bar.Age = Age.TwentyFourPlus;
         }
 
+        bar.PhotoUrl = data["photoUrl"].ToString();
 
         bar.Food.Burger = data["burgers"].ToString() == "True";
         bar.Food.Pizza = data["pizza"].ToString() == "True";
@@ -465,13 +474,63 @@ public class Engine
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("barId", bar.BarId));
-        parameters.Add(new SqlParameter("barName", bar.BarName));
-        parameters.Add(new SqlParameter("address", bar.Address));
-        parameters.Add(new SqlParameter("photoUrl", bar.PhotoUrl));
+        
 
-        parameters.Add(new SqlParameter("age", (int)bar.Age));
-        parameters.Add(new SqlParameter("service", (int)bar.Service));
-        parameters.Add(new SqlParameter("price", (int)bar.Price));
+
+
+        parameters.Add(new SqlParameter("age18", int.Parse("0")));
+        parameters.Add(new SqlParameter("age21", int.Parse("0")));
+        parameters.Add(new SqlParameter("age24", int.Parse("0")));
+
+        switch(bar.Age)
+        {
+            case Age.EighteenPlus:
+                parameters[1].Value = 1;
+                break;
+            case Age.TwentyOnePlus:
+                parameters[2].Value = 1;
+                break;
+            case Age.TwentyFourPlus:
+                parameters[3].Value = 1;
+                break;
+
+            default:
+                break;
+        }
+        parameters.Add(new SqlParameter("selfService", int.Parse("0")));
+        parameters.Add(new SqlParameter("fullService", int.Parse("0")));
+
+        switch (bar.Service)
+        {
+            case Service.SelfService:
+                parameters[4].Value = 1;
+                break;
+            case Service.FullService:
+                parameters[5].Value = 1;
+                break;
+            default:
+                break;
+        }
+
+        parameters.Add(new SqlParameter("priceLow", int.Parse("0")));
+        parameters.Add(new SqlParameter("priceMed", int.Parse("0")));
+        parameters.Add(new SqlParameter("priceHigh", int.Parse("0")));
+
+        switch (bar.Price)
+        {
+            case Price.PriceLow:
+                parameters[6].Value = 1;
+                break;
+            case Price.PriceMed:
+                parameters[7].Value = 1;
+                break;
+            case Price.PriceHigh:
+                parameters[8].Value = 1;
+                break;
+
+            default:
+                break;
+        }
 
         parameters.Add(new SqlParameter("burgers", bar.Food.Burger));
         parameters.Add(new SqlParameter("pizza", bar.Food.Pizza));
@@ -514,6 +573,7 @@ public class Engine
         parameters.Add(new SqlParameter("reggaeton", bar.Music.Reggaeton));
         parameters.Add(new SqlParameter("openMic", bar.Music.OpenMic));
         parameters.Add(new SqlParameter("standup", bar.Music.StandUp));
+        parameters.Add(new SqlParameter("photoUrl", bar.PhotoUrl));
 
         insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_bar", parameters);
 
@@ -525,10 +585,10 @@ public class Engine
 
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
-        parameters.Add(new SqlParameter("userId", user.UserId));
+        
         parameters.Add(new SqlParameter("userName", user.UserName));
         parameters.Add(new SqlParameter("password", user.Password));
-        parameters.Add(new SqlParameter("age", (int)user.Age));
+        parameters.Add(new SqlParameter("age", user.Age));
 
         parameters.Add(new SqlParameter("burgersPos", user.Food.Burger.PosCounts));
         parameters.Add(new SqlParameter("burgersNeg", user.Food.Burger.NegCounts));
@@ -599,7 +659,7 @@ public class Engine
         parameters.Add(new SqlParameter("datingDontCare", user.Company.Dating.DontCareCounts));
         parameters.Add(new SqlParameter("friendsPos", user.Company.Friends.PosCounts));
         parameters.Add(new SqlParameter("friendsNeg", user.Company.Friends.NegCounts));
-        parameters.Add(new SqlParameter("friendsDontare", user.Company.Friends.DontCareCounts));
+        parameters.Add(new SqlParameter("friendsDontCare", user.Company.Friends.DontCareCounts));
         parameters.Add(new SqlParameter("kidsFriendlyPos", user.Company.KidsFriendly.PosCounts));
         parameters.Add(new SqlParameter("kidsFriendlyNeg", user.Company.KidsFriendly.NegCounts));
         parameters.Add(new SqlParameter("kidsFriendlyDontCare", user.Company.KidsFriendly.DontCareCounts));
@@ -650,4 +710,5 @@ public class Engine
     }
 
 }
+
 
