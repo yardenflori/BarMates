@@ -417,6 +417,7 @@ public class User
 
     public List<Bar> GetBestBars(int numOfBest, List<Bar> bars)
     {
+        
         int n = bars.Count();
         double[] scores = new double[n];
         double tempMax;

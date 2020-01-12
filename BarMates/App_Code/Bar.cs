@@ -6,6 +6,8 @@ using System.IO;
 using System.Xml.Linq;
 using System.Linq;
 
+
+
 public class Bar
 {
     public int BarId { get; set; }
@@ -47,7 +49,6 @@ public class Bar
 
     public void CalculateBarCharacteristics()
     {
-
         _barCharacteristics[0] = SmokingFree ? 1 : 0;
         switch (Age)
         {
@@ -119,44 +120,130 @@ public class Bar
         _barCharacteristics[43] = Music.Trance ? 1 : 0;
     }
 
+    public void CalculateBarFeilds()
+    {
+        SmokingFree = (_barCharacteristics[0] == 1) ? true : false;
+        if (_barCharacteristics[1] == 1)
+        {
+            Age = Age.EighteenPlus;
+        }
+        else if (_barCharacteristics[2] == 1)
+        {
+            Age = Age.TwentyOnePlus;
+        }
+        else if (_barCharacteristics[3] == 1)
+        {
+            Age = Age.TwentyFourPlus;
+        }
+        else
+        {
+            Age = Age.None;
+        }
+
+        if (_barCharacteristics[4] == 1)
+        {
+            Price = Price.PriceLow;
+        }
+        else if (_barCharacteristics[5] == 1)
+        {
+            Price = Price.PriceMed;
+        }
+        else if (_barCharacteristics[6] == 1)
+        {
+            Price = Price.PriceHigh;
+        }
+        else
+        {
+            Price = Price.None;
+        }
+
+        if (_barCharacteristics[7] == 1)
+        {
+            Service = Service.FullService;
+        }
+        else if (_barCharacteristics[8] == 1)
+        {
+            Service = Service.SelfService;
+        }
+        else
+        {
+            Service = Service.None;
+        }
+        Food.Burger = (_barCharacteristics[9] == 1) ? true : false;
+        Food.Vegan = (_barCharacteristics[10] == 1) ? true : false;
+        Food.Kosher = (_barCharacteristics[11] == 1) ? true : false;
+        Food.Pizza = (_barCharacteristics[12] == 1) ? true : false;
+        Food.Snacks = (_barCharacteristics[13] == 1) ? true : false;
+        Food.Sushi = (_barCharacteristics[14] == 1) ? true : false;
+        Drinks.WideRangeOfBeverages = (_barCharacteristics[15] == 1) ? true : false;
+        Drinks.Beer = (_barCharacteristics[16] == 1) ? true : false;
+        Drinks.BeveragePackages = (_barCharacteristics[17] == 1) ? true : false;
+        Drinks.Cocktail = (_barCharacteristics[18] == 1) ? true : false;
+        Drinks.Jin = (_barCharacteristics[19] == 1) ? true : false;
+        Drinks.Whiskey = (_barCharacteristics[20] == 1) ? true : false;
+        Drinks.Wine = (_barCharacteristics[21] == 1) ? true : false;
+        Atmosphere.Irish = (_barCharacteristics[22] == 1) ? true : false;
+        Atmosphere.Chill = (_barCharacteristics[23] == 1) ? true : false;
+        Atmosphere.Dance = (_barCharacteristics[24] == 1) ? true : false;
+        Food.Vegan = (_barCharacteristics[25] == 1) ? true : false;
+        Atmosphere.Shisha = (_barCharacteristics[26] == 1) ? true : false;
+        Atmosphere.Sport = (_barCharacteristics[27] == 1) ? true : false;
+        Company.Colleagues = (_barCharacteristics[28] == 1) ? true : false;
+        Company.Dating = (_barCharacteristics[29] == 1) ? true : false;
+        Company.Friends = (_barCharacteristics[30] == 1) ? true : false;
+        Company.KidsFriendly = (_barCharacteristics[31] == 1) ? true : false;
+        Company.PetsFriendly = (_barCharacteristics[32] == 1) ? true : false;
+        Music.Greek = (_barCharacteristics[33] == 1) ? true : false;
+        Music.Israeli = (_barCharacteristics[34] == 1) ? true : false;
+        Music.Jazz = (_barCharacteristics[35] == 1) ? true : false;
+        Music.LiveMusic = (_barCharacteristics[36] == 1) ? true : false;
+        Music.Mainstream = (_barCharacteristics[37] == 1) ? true : false;
+        Music.Mizrahit = (_barCharacteristics[38] == 1) ? true : false;
+        Music.OpenMic = (_barCharacteristics[39] == 1) ? true : false;
+        Music.Pop = (_barCharacteristics[40] == 1) ? true : false;
+        Music.Reggaeton = (_barCharacteristics[41] == 1) ? true : false;
+        Music.StandUp = (_barCharacteristics[42] == 1) ? true : false;
+        Music.Trance = (_barCharacteristics[43] == 1) ? true : false;
+    }
+    
     public void UpdateBarByRate()
     {
         List<Rate> rates = Engine.GetRatesByBar(this);
         int[] counters = new int[44];
         int cnt = 0;
+        int temp = 0;
         int timeDiff;
         for (int i = 0; i < rates.Count; i++)
         {
             int[] vector = rates[i].RateVector();
+            timeDiff = Helpers.TimeDifference(DateTime.Now, rates[i].date);
+            if (timeDiff < 3)
+            {
+                temp = 4;
+            }
+            else if (timeDiff < 6)
+            {
+                temp = 3;
+            }
+            else if (timeDiff < 12)
+            {
+                temp = 2;
+            }
+            else
+            {
+                temp = 1;
+            }
+            cnt += temp;
             for (int j = 0; j < vector.Length; j++)
             {
-                timeDiff = Helpers.TimeDifference(DateTime.Now, rates[i].date);
-                if (timeDiff < 3)
-                {
-                    cnt += 4;
-                    counters[j] += vector[j] * 4;
-                }
-                else if (timeDiff < 6)
-                {
-                    cnt += 3;
-                    counters[j] += vector[j] * 3;
-                }
-                else if (timeDiff < 12)
-                {
-                    cnt += 2;
-                    counters[j] += vector[j] * 2;
-                }
-                else
-                {
-                    cnt += 1;
-                    counters[j] += vector[j];
-                }
+                counters[j] += vector[j] * temp;
             }
         }
         for (int i = 0; i < _barCharacteristics.Length; i++)
         {
             _barCharacteristics[i] = (counters[i] > (0.2 * cnt)) ? 1 : 0;
         }
+        CalculateBarFeilds();
     }
 
     public static void UpdateBarPhoto(Bar bar)
@@ -164,13 +251,13 @@ public class Bar
         string urlRequest = "https://maps.googleapis.com/maps/api/place/details/xml?place_id=" + bar.BarGoogleId + "&fields=photo&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
         WebRequest request = WebRequest.Create(urlRequest);
         WebResponse response = request.GetResponse();
-      
+
         List<string> namesList = new List<string>();
 
         using (Stream dataStream = response.GetResponseStream())
         {
             try
-            { 
+            {
                 XDocument xdoc = XDocument.Load(dataStream);
 
                 var name1 = from item in xdoc.Descendants("result").Elements("photo")
