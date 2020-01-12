@@ -417,7 +417,6 @@ public class User
 
     public List<Bar> GetBestBars(int numOfBest, List<Bar> bars)
     {
-        var rates = new List<Rate>();
         int n = bars.Count();
         double[] scores = new double[n];
         double tempMax;
@@ -511,5 +510,373 @@ public class User
         double scoreItemByItem = ScoreBarItemByItem(bar);
         double scoreUserByUser = ScoreBarUserByUser(bar);
         return (scoreItemByItem + scoreUserByUser) / 2;
+    }
+
+    public void UpdateUserByRate(Rate rate)
+    {
+        int[] help = new int[36];
+        for (int i = 0; i < InterestsVector.Length; i++)
+        {
+            help[i] = UserCatToRate(i, rate);
+        }
+        //dontcare
+        if (help[0] == 0)
+            SmokingFree.DontCareCounts++;
+        //like
+        else if (help[0] == 1)
+            SmokingFree.PosCounts++;
+        //didnt like
+        else if (help[0] == -1)
+            SmokingFree.NegCounts++;
+
+        //dontcare
+        if (help[1] == 0)
+            Food.Burger.DontCareCounts++;
+        //like
+        else if (help[1] == 1)
+            Food.Burger.PosCounts++;
+        //didnt like
+        else if (help[1] == -1)
+            Food.Burger.NegCounts++;
+
+        //dontcare
+        if (help[2] == 0)
+            Food.Vegan.DontCareCounts++;
+        //like
+        else if (help[2] == 1)
+            Food.Vegan.PosCounts++;
+        //didnt like
+        else if (help[2] == -1)
+            Food.Vegan.NegCounts++;
+
+        //dontcare
+        if (help[3] == 0)
+            Food.Kosher.DontCareCounts++;
+        //like
+        else if (help[3] == 1)
+            Food.Kosher.PosCounts++;
+        //didnt like
+        else if (help[3] == -1)
+            Food.Kosher.NegCounts++;
+
+        //dontcare
+        if (help[4] == 0)
+            Food.Pizza.DontCareCounts++;
+        //like
+        else if (help[4] == 1)
+            Food.Pizza.PosCounts++;
+        //didnt like
+        else if (help[4] == -1)
+            Food.Pizza.NegCounts++;
+
+        //dontcare
+        if (help[5] == 0)
+            Food.Snacks.DontCareCounts++;
+        //like
+        else if (help[5] == 1)
+            Food.Snacks.PosCounts++;
+        //didnt like
+        else if (help[5] == -1)
+            Food.Snacks.NegCounts++;
+
+        //dontcare
+        if (help[6] == 0)
+            Food.Sushi.DontCareCounts++;
+        //like
+        else if (help[6] == 1)
+            Food.Sushi.PosCounts++;
+        //didnt like
+        else if (help[6] == -1)
+            Food.Sushi.NegCounts++;
+
+        //dontcare
+        if (help[7] == 0)
+            Drinks.Wine.DontCareCounts++;
+        //like
+        else if (help[7] == 1)
+            Drinks.Wine.PosCounts++;
+        //didnt like
+        else if (help[7] == -1)
+            Drinks.Wine.NegCounts++;
+
+        //dontcare
+        if (help[8] == 0)
+            Drinks.Beer.DontCareCounts++;
+        //like
+        else if (help[8] == 1)
+            Drinks.Beer.PosCounts++;
+        //didnt like
+        else if (help[8] == -1)
+            Drinks.Beer.NegCounts++;
+
+        //dontcare
+        if (help[9] == 0)
+            Drinks.BeveragePackages.DontCareCounts++;
+        //like
+        else if (help[9] == 1)
+            Drinks.BeveragePackages.PosCounts++;
+        //didnt like
+        else if (help[9] == -1)
+            Drinks.BeveragePackages.NegCounts++;
+
+        //dontcare
+        if (help[10] == 0)
+            Drinks.Cocktail.DontCareCounts++;
+        //like
+        else if (help[10] == 1)
+            Drinks.Cocktail.PosCounts++;
+        //didnt like
+        else if (help[10] == -1)
+            Drinks.Cocktail.NegCounts++;
+
+        //dontcare
+        if (help[11] == 0)
+            Drinks.Jin.DontCareCounts++;
+        //like
+        else if (help[11] == 1)
+            Drinks.Jin.PosCounts++;
+        //didnt like
+        else if (help[11] == -1)
+            Drinks.Jin.NegCounts++;
+
+        //dontcare
+        if (help[12] == 0)
+            Drinks.Whiskey.DontCareCounts++;
+        //like
+        else if (help[12] == 1)
+            Drinks.Whiskey.PosCounts++;
+        //didnt like
+        else if (help[12] == -1)
+            Drinks.Whiskey.NegCounts++;
+
+        //dontcare
+        if (help[13] == 0)
+            Drinks.WideRangeOfBeverages.DontCareCounts++;
+        //like
+        else if (help[13] == 1)
+            Drinks.WideRangeOfBeverages.PosCounts++;
+        //didnt like
+        else if (help[13] == -1)
+            Drinks.WideRangeOfBeverages.NegCounts++;
+
+        //dontcare
+        if (help[14] == 0)
+            Atmosphere.Irish.DontCareCounts++;
+        //like
+        else if (help[14] == 1)
+            Atmosphere.Irish.PosCounts++;
+        //didnt like
+        else if (help[14] == -1)
+            Atmosphere.Irish.NegCounts++;
+
+        //dontcare
+        if (help[15] == 0)
+            Atmosphere.Chill.DontCareCounts++;
+        //like
+        else if (help[15] == 1)
+            Atmosphere.Chill.PosCounts++;
+        //didnt like
+        else if (help[15] == -1)
+            Atmosphere.Chill.NegCounts++;
+
+        //dontcare
+        if (help[16] == 0)
+            Atmosphere.Dance.DontCareCounts++;
+        //like
+        else if (help[16] == 1)
+            Atmosphere.Dance.PosCounts++;
+        //didnt like
+        else if (help[16] == -1)
+            Atmosphere.Dance.NegCounts++;
+
+        //dontcare
+        if (help[17] == 0)
+            Atmosphere.Party.DontCareCounts++;
+        //like
+        else if (help[17] == 1)
+            Atmosphere.Party.PosCounts++;
+        //didnt like
+        else if (help[17] == -1)
+            Atmosphere.Party.NegCounts++;
+
+        //dontcare
+        if (help[18] == 0)
+            Atmosphere.Shisha.DontCareCounts++;
+        //like
+        else if (help[18] == 1)
+            Atmosphere.Shisha.PosCounts++;
+        //didnt like
+        else if (help[18] == -1)
+            Atmosphere.Shisha.NegCounts++;
+
+        //dontcare
+        if (help[19] == 0)
+            Atmosphere.Sport.DontCareCounts++;
+        //like
+        else if (help[19] == 1)
+            Atmosphere.Sport.PosCounts++;
+        //didnt like
+        else if (help[19] == -1)
+            Atmosphere.Sport.NegCounts++;
+
+        //dontcare
+        if (help[20] == 0)
+            Company.Colleagues.DontCareCounts++;
+        //like
+        else if (help[20] == 1)
+            Company.Colleagues.PosCounts++;
+        //didnt like
+        else if (help[20] == -1)
+            Company.Colleagues.NegCounts++;
+
+        //dontcare
+        if (help[21] == 0)
+            Company.Dating.DontCareCounts++;
+        //like
+        else if (help[21] == 1)
+            Company.Dating.PosCounts++;
+        //didnt like
+        else if (help[21] == -1)
+            Company.Dating.NegCounts++;
+
+        //dontcare
+        if (help[22] == 0)
+            Company.Friends.DontCareCounts++;
+        //like
+        else if (help[22] == 1)
+            Company.Friends.PosCounts++;
+        //didnt like
+        else if (help[22] == -1)
+            Company.Friends.NegCounts++;
+
+        //dontcare
+        if (help[23] == 0)
+            Company.KidsFriendly.DontCareCounts++;
+        //like
+        else if (help[23] == 1)
+            Company.KidsFriendly.PosCounts++;
+        //didnt like
+        else if (help[23] == -1)
+            Company.KidsFriendly.NegCounts++;
+
+        //dontcare
+        if (help[24] == 0)
+            Company.PetsFriendly.DontCareCounts++;
+        //like
+        else if (help[24] == 1)
+            Company.PetsFriendly.PosCounts++;
+        //didnt like
+        else if (help[24] == -1)
+            Company.PetsFriendly.NegCounts++;
+
+        //dontcare
+        if (help[25] == 0)
+            Music.Greek.DontCareCounts++;
+        //like
+        else if (help[25] == 1)
+            Music.Greek.PosCounts++;
+        //didnt like
+        else if (help[25] == -1)
+            Music.Greek.NegCounts++;
+
+        //dontcare
+        if (help[26] == 0)
+            Music.Israeli.DontCareCounts++;
+        //like
+        else if (help[26] == 1)
+            Music.Israeli.PosCounts++;
+        //didnt like
+        else if (help[26] == -1)
+            Music.Israeli.NegCounts++;
+
+        //dontcare
+        if (help[27] == 0)
+            Music.Jazz.DontCareCounts++;
+        //like
+        else if (help[27] == 1)
+            Music.Jazz.PosCounts++;
+        //didnt like
+        else if (help[27] == -1)
+            Music.Jazz.NegCounts++;
+
+        //dontcare
+        if (help[28] == 0)
+            Music.LiveMusic.DontCareCounts++;
+        //like
+        else if (help[28] == 1)
+            Music.LiveMusic.PosCounts++;
+        //didnt like
+        else if (help[28] == -1)
+            Music.LiveMusic.NegCounts++;
+
+        //dontcare
+        if (help[29] == 0)
+            Music.Mainstream.DontCareCounts++;
+        //like
+        else if (help[29] == 1)
+            Music.Mainstream.PosCounts++;
+        //didnt like
+        else if (help[29] == -1)
+            Music.Mainstream.NegCounts++;
+
+        //dontcare
+        if (help[30] == 0)
+            Music.Mizrahit.DontCareCounts++;
+        //like
+        else if (help[30] == 1)
+            Music.Mizrahit.PosCounts++;
+        //didnt like
+        else if (help[30] == -1)
+            Music.Mizrahit.NegCounts++;
+
+        //dontcare
+        if (help[31] == 0)
+            Music.OpenMic.DontCareCounts++;
+        //like
+        else if (help[31] == 1)
+            Music.OpenMic.PosCounts++;
+        //didnt like
+        else if (help[31] == -1)
+            Music.OpenMic.NegCounts++;
+
+        //dontcare
+        if (help[32] == 0)
+            Music.Pop.DontCareCounts++;
+        //like
+        else if (help[32] == 1)
+            Music.Pop.PosCounts++;
+        //didnt like
+        else if (help[32] == -1)
+            Music.Pop.NegCounts++;
+
+        //dontcare
+        if (help[33] == 0)
+            Music.Reggaeton.DontCareCounts++;
+        //like
+        else if (help[33] == 1)
+            Music.Reggaeton.PosCounts++;
+        //didnt like
+        else if (help[33] == -1)
+            Music.Reggaeton.NegCounts++;
+
+        //dontcare
+        if (help[34] == 0)
+            Music.StandUp.DontCareCounts++;
+        //like
+        else if (help[34] == 1)
+            Music.StandUp.PosCounts++;
+        //didnt like
+        else if (help[34] == -1)
+            Music.StandUp.NegCounts++;
+
+        //dontcare
+        if (help[35] == 0)
+            Music.Trance.DontCareCounts++;
+        //like
+        else if (help[35] == 1)
+            Music.Trance.PosCounts++;
+        //didnt like
+        else if (help[35] == -1)
+            Music.Trance.NegCounts++;
     }
 }
