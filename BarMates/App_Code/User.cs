@@ -417,7 +417,7 @@ public class User
 
     public List<Bar> GetBestBars(int numOfBest, List<Bar> bars)
     {
-        var rates = new List<Rate>();
+        
         int n = bars.Count();
         double[] scores = new double[n];
         double tempMax;
@@ -529,7 +529,7 @@ public class User
         //didnt like
         else if (help[0] == -1)
             SmokingFree.NegCounts++;
-        
+
         //dontcare
         if (help[1] == 0)
             Food.Burger.DontCareCounts++;

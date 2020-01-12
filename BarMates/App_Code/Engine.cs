@@ -575,6 +575,8 @@ public class Engine
         parameters.Add(new SqlParameter("standup", bar.Music.StandUp));
         parameters.Add(new SqlParameter("photoUrl", bar.PhotoUrl));
 
+        
+
         insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_bar", parameters);
 
         return insertSucceeded;

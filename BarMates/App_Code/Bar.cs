@@ -6,6 +6,8 @@ using System.IO;
 using System.Xml.Linq;
 using System.Linq;
 
+
+
 public class Bar
 {
     public int BarId { get; set; }
@@ -249,13 +251,13 @@ public class Bar
         string urlRequest = "https://maps.googleapis.com/maps/api/place/details/xml?place_id=" + bar.BarGoogleId + "&fields=photo&key=AIzaSyAsbHXRTAYj2YJfZNxms2Sp15zAG_-6Dyc";
         WebRequest request = WebRequest.Create(urlRequest);
         WebResponse response = request.GetResponse();
-      
+
         List<string> namesList = new List<string>();
 
         using (Stream dataStream = response.GetResponseStream())
         {
             try
-            { 
+            {
                 XDocument xdoc = XDocument.Load(dataStream);
 
                 var name1 = from item in xdoc.Descendants("result").Elements("photo")
