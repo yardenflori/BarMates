@@ -1,0 +1,164 @@
+﻿
+#bar_autocomplete_div {
+    min-width: 500px;
+    width: 33.33%;
+    margin: 20px auto;
+    float: none;
+}
+
+.table-of-contents a {
+    padding-right: 14px;
+    padding-left: 0px;
+}
+
+    .table-of-contents a:hover {
+        border-right: 2px solid #166678;
+        border-left: none;
+    }
+
+    .table-of-contents a.active {
+        border-right: 2px solid #166678;
+        border-left: none;
+    }
+
+@media only screen and (min-width: 993px) {
+    .row .col.l2 {
+        width: auto;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .row .col.m3 {
+        width: auto;
+    }
+}
+
+.main_content {
+    padding: 0 20px;
+}
+
+.criterion_title {
+    color: #166678;
+    font-size: 36px;
+    margin: 10px 0 !important;
+}
+
+    .criterion_title i {
+        color: #166678;
+        font-size: 36px;
+    }
+
+.criterion_information .row {
+    padding: 0 10px;
+    margin: 0;
+}
+
+.criterion_information .col {
+    float: right;
+}
+
+.criterion_information .row:hover {
+    background-color: rgba(0,0,0,0.05)
+}
+
+.options {
+    display: none;
+}
+
+.footer {
+    text-align: center
+}
+
+.pinned {
+    position: fixed !important;
+    left: 0 !important;
+}
+
+.mainCriterion {
+    padding-top: 10px;
+}
+
+#myDIV {
+    float: right;
+}
+
+.col p {
+    margin: 5px 0;
+}
+
+.pac-item {
+    text-align: right;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding:4px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+    flex: 13%;
+    width: 100px;
+    
+}
+
+    .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+    }
+
+img{
+      max-height:100%;
+      max-width:100%;
+}
+
+h3,h5 {
+    color: #166678;
+    margin: 10px 0 !important;
+}
+* {
+    box-sizing: border-box;
+}
+
+
+/* Float four columns side by side */
+.column {
+    float: right;
+    width: 20%;
+    padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {
+    margin: 0 -5px;
+}
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+/* Style the counter cards */
+.card {
+    padding: 16px;
+    text-align: center;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+p {
+    text-align: right;
+    font-size: large;
+    font-weight:bold;
+    direction: rtl;
+    color: #166678;
+    margin: 10px 0 !important;
+}
