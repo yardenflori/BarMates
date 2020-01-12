@@ -56,7 +56,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">דיזי פרישדון<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="1" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="1" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">דיזי פרישדון<i class="material-icons right">close</i></span>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">קונסיירג'<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="2" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="2" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">קונסיירג'<i class="material-icons right">close</i></span>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator text-darken-4">אילקה<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="3" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="3" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">אילקה<i class="material-icons right">close</i></span>
@@ -110,7 +110,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">מילה<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="4" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="4" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">מילה<i class="material-icons right">close</i></span>
@@ -130,7 +130,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">צינה<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="5" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="5" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">צינה<i class="material-icons right">close</i></span>
@@ -148,7 +148,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">סימטא<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="6" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="6" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">סימטא<i class="material-icons right">close</i></span>
@@ -166,7 +166,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">רוטינא<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="7" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="7" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">רוטינא<i class="material-icons right">close</i></span>
@@ -192,7 +192,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">בר-גיורא<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="8" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="8" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">בר-גיורא<i class="material-icons right">close</i></span>
@@ -210,7 +210,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">לילי רוז<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="9" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="9" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">לילי רוז<i class="material-icons right">close</i></span>
@@ -229,7 +229,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">המזג<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="10" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="10" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">המזג<i class="material-icons right">close</i></span>
@@ -248,7 +248,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">סילביה באמפר<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="11" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="11" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">סילביה באמפר<i class="material-icons right">close</i></span>
@@ -266,7 +266,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">המשבצת<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="12" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="12" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">המשבצת<i class="material-icons right">close</i></span>
@@ -291,7 +291,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">ביר-באזאר<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="13" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="13" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">ביר-באזאר<i class="material-icons right">close</i></span>
@@ -309,7 +309,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">פטריקס<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="14" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="14" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">פטריקס<i class="material-icons right">close</i></span>
@@ -328,7 +328,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">פולי<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="15" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="15" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">פולי<i class="material-icons right">close</i></span>
@@ -347,7 +347,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">ספיקאיזי<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="16" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="16" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">ספיקאיזי<i class="material-icons right">close</i></span>
@@ -364,7 +364,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">זו-זו<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="17" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="17" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">זו-זו<i class="material-icons right">close</i></span>
@@ -400,7 +400,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">פרדי לימן<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="18" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="18" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">">פרדי לימן<i class="material-icons right">close</i></span>
@@ -418,7 +418,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">השכנה<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="19" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="19" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">השכנה<i class="material-icons right">close</i></span>
@@ -437,7 +437,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">קזינו דה פריס<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="20" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="20" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">קזינו דה פריס<i class="material-icons right">close</i></span>
@@ -456,7 +456,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">שוקא<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="21" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="21" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">שוקא<i class="material-icons right">close</i></span>
@@ -473,7 +473,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">הטיפה<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="22" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="22" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">הטיפה<i class="material-icons right">close</i></span>
@@ -498,7 +498,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">קקטוס 9<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="23" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="23" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">">קקטוס 9<i class="material-icons right">close</i></span>
@@ -516,7 +516,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">התקליט<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="24" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="24" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">התקליט<i class="material-icons right">close</i></span>
@@ -535,7 +535,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">זבוטינסקי בר<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="25" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="25" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">זבוטינסקי בר<i class="material-icons right">close</i></span>
@@ -554,7 +554,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">גטסבי<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="26" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="26" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">גטסבי<i class="material-icons right">close</i></span>
@@ -571,7 +571,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">גלן<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="27" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="27" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">גלן<i class="material-icons right">close</i></span>
@@ -607,7 +607,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">ברדק<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="28" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="28" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">ברדק<i class="material-icons right">close</i></span>
@@ -625,7 +625,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">גונס פיצה בר<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="29" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="29" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">גונס פיצה בר<i class="material-icons right">close</i></span>
@@ -644,7 +644,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">האיכר פיצה בר<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="30" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="30" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">האיכר פיצה בר<i class="material-icons right">close</i></span>
@@ -663,7 +663,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">פאצו<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="31" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="31" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">פאצו<i class="material-icons right">close</i></span>
@@ -681,7 +681,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">תדר<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="32" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="32" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">תדר<i class="material-icons right">close</i></span>
@@ -707,7 +707,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">דאבלין<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="33" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="33" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">דאבלין<i class="material-icons right">close</i></span>
@@ -725,7 +725,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">מולי בלום<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="34" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="34" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">מולי בלום<i class="material-icons right">close</i></span>
@@ -744,7 +744,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">מרפיס<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="35" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="35" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">מרפיס<i class="material-icons right">close</i></span>
@@ -763,7 +763,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">או'סאליבן<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="36" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="36" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">או'סאליבן<i class="material-icons right">close</i></span>
@@ -783,7 +783,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">פטריקס<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="37" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="37" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">פטריקס<i class="material-icons right">close</i></span>
@@ -801,7 +801,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">טמפל בר<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="38" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="38" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">טמפל בר<i class="material-icons right">close</i></span>
@@ -819,7 +819,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">אוסקר ווילד<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="39z" onclick="myFunc()">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="39z" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">אוסקר ווילד<i class="material-icons right">close</i></span>

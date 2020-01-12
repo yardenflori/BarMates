@@ -5,6 +5,10 @@
     "ChIJ5UpFfCjWAhURO2i7e9IeIhE", "ChIJC9QmWyjWAhUR33Z6a30Jh8g", "ChIJZxCKkijWAhUR-o1nga9-4iM", "ChIJAXiWutEpAxURQsPfOH8X_J4", "ChIJcRbkxtApAxUR8AcnCySqpGg",
     "ChIJHdRoPtEpAxURbR1hoAFqREk", "ChIJzRINidYpAxUR4aSpuY7Svy8", "ChIJzaPwbdEpAxURY-_GIRkgFzc", "ChIJ1Qje4f5JHRURaFFjNKBPEts", "ChIJ75yU16dqHRUR175YJ_om7gc"];
 
+function myFunc(id) {
+    var loc = "BarRating.aspx?barId=" + ids[id];
+    location.href = loc;
+}
 
 
 $(document).ready(function () {

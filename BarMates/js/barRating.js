@@ -506,3 +506,39 @@ $(document).ready(function () {
     initScrollSpy();
     initCriterions();
 });
+
+
+//get barId from challenge redirect
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+//get the params from URL
+function getUrlParam(parameter, defaultvalue) {
+    var urlparameter = defaultvalue;
+    if (window.location.href.indexOf(parameter) > -1) {
+        urlparameter = getUrlVars()[parameter];
+    }
+    return urlparameter;
+}
+
+//if redirected from challeneges hide search bar
+window.onload = function () {
+    var mytext = getUrlParam('barId', 'Empty');
+    var x = document.getElementById("bar_autocomplete_div");
+    var div = document.getElementById('barname');
+    if (mytext != 'Empty') {
+        x.style.display = "none";
+        this.barId = mytext;
+        div.innerHTML += '<br><p>' + this.barId + '</p > ';
+        div.style.cssText = "width:800px; margin:0 auto; font-size: larger; font-weight: bolder; direction: rtl; color: #166678; margin: 10px 0!important;"; 
+        showBarCriterions();
+    }
+       
+
+
+};

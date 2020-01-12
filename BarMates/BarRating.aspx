@@ -39,6 +39,8 @@
                     <i class="material-icons prefix">search</i>
                     <input type="text" id="barsAutocomplete" class="autocomplete" placeholder="בחר בר לדירוג" />
                 </div>
+                 <div id="barname" class="input-field col">
+                </div>
             </div>
             <div class="main_content">
                 <div class="row">
