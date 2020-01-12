@@ -387,7 +387,7 @@
 
             </div>
 
-             <div class="row">
+            <div class="row">
                 <div class="col">
                     <h5>אתגר מחנה יהודה:</h5>
                 </div>
@@ -485,7 +485,7 @@
                     </div>
                 </div>
             </div>
-              <div class="row">
+            <div class="row">
                 <div class="col">
                     <h5>אתגר העיר:</h5>
                 </div>
@@ -583,7 +583,7 @@
                     </div>
                 </div>
             </div>
-             <!-- world challenges-->
+            <!-- world challenges-->
             <div class="row">
                 <div class="col">
                     <h3>אתגרים עולמיים</h3>
@@ -594,7 +594,7 @@
 
             </div>
 
-             <div class="row">
+            <div class="row">
                 <div class="col">
                     <h5>אתגר איטליה:</h5>
                 </div>
@@ -610,7 +610,7 @@
                             <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">">ברדק<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">ברדק<i class="material-icons right">close</i></span>
                             <br />
                             <p>כתובת: ברקת 9, פתח תקווה</p>
                             <br />
@@ -693,6 +693,146 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col">
+                    <h5>אתגר אירלנד:</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/irish/dublin.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">דאבלין<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">דאבלין<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: אריה שנקר 4, הרצליה</p>
+                            <br />
+                            <p>טלפון: 09-954-4889</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/irish/molli.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">מולי בלום<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">מולי בלום<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: מנדלי מוכר ספרים 2, תל אביב יפו</p>
+                            <br />
+                            <p>טלפון: 055-886-0188</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/irish/murphys.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">מרפיס<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">מרפיס<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: אזור התעשיה הסדנא 3, רעננה</p>
+                            <br />
+                            <p>טלפון: 077-504-0620</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/irish/osullivan.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">או'סאליבן<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">או'סאליבן<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: ישפרו סנטר, שדרות המלאכות 121, מודיעין מכבים רעות</p>
+                            <br />
+                            <p>טלפון: 08-970-2119</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/irish/patricks.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">פטריקס<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">פטריקס<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: משה בקר 16, ראשון לציון</p>
+                            <br />
+                            <p>טלפון: 03-532-7586</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/irish/temple.png" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">טמפל בר<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">טמפל בר<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>מתחם G, ויצמן 301, כפר סבא</p>
+                            <br />
+                            <p>טלפון: 09-767-7575</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
+                            <img class="activator" src="images/irish/wild.jpg" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">אוסקר ווילד<i class="material-icons right">more_vert</i></span>
+                            <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">אוסקר ווילד<i class="material-icons right">close</i></span>
+                            <br />
+                            <p>כתובת: סינמה סיטי, המחקר 3, נתניה</p>
+                            <br />
+                            <p>טלפון: 09-977-4575</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </main>
 </body>
