@@ -603,36 +603,36 @@
                 <div class="column">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
-                            <img class="activator" src="images/mahne/fredy.jpg" />
+                            <img class="activator" src="images/pizza/bardak.jpg" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">פרדי לימן<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">ברדק<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">">פרדי לימן<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">">ברדק<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 142, תל אביב יפו</p>
+                            <p>כתובת: ברקת 9, פתח תקווה</p>
                             <br />
-                            <p>טלפון: 054-796-7995</p>
+                            <p>טלפון: 03-654-5558</p>
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
-                            <img class="activator" src="images/mahne/neighber.jpg" />
+                            <img class="activator" src="images/pizza/goons.png" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">השכנה<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">גונס פיצה בר<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">השכנה<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">גונס פיצה בר<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 39, תל אביב יפו</p>
+                            <p>כתובת: כיכר העצמאות 8, נתניה</p>
                             <br />
-                            <p>טלפון: 03-605-0509</p>
+                            <p>טלפון: 09-775-5033</p>
                         </div>
                     </div>
                 </div>
@@ -640,18 +640,18 @@
                     <div class="card">
 
                         <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
-                            <img class="activator" src="images/mahne/paris.png" />
+                            <img class="activator" src="images/pizza/icar.jpg" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">קזינו דה פריס<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">האיכר פיצה בר<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">קזינו דה פריס<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">האיכר פיצה בר<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 60, תל אביב יפו</p>
+                            <p>כתובת: יורדי הסירה 1, תל אביב יפו</p>
                             <br />
-                            <p>טלפון: 073-757-6245</p>
+                            <p>טלפון: 050-554-8989</p>
                         </div>
                     </div>
 
@@ -659,35 +659,36 @@
                 <div class="column">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
-                            <img class="activator" src="images/mahne/shoka.jpg" />
+                            <img class="activator" src="images/pizza/pazzo.png" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">שוקא<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">פאצו<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">שוקא<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">פאצו<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 24, תל אביב יפו</p>
+                            <p>כתובת: היצירה 5, רעננה</p>
                             <br />
+                            <p>טלפון: 09-741-8833</p>
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light" style="height: 200px">
-                            <img class="activator" src="images/mahne/tear.jpg" />
+                            <img class="activator" src="images/pizza/teder.jpg" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">הטיפה<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">תדר<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">הטיפה<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">תדר<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 32, תל אביב יפו</p>
+                            <p>כתובת: בית רומנו, דרך יפו 9, תל אביב יפו</p>
                             <br />
-                            <p>טלפון: 072-395-2045</p>
+                            <p>טלפון: 03-571-9622</p>
                         </div>
                     </div>
                 </div>
