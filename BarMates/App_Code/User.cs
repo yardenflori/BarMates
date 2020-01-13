@@ -6,7 +6,9 @@ public class User
     public int UserId { get; set; }
     public string UserName { get; set; }
     public string Password { get; set; }
+    public int Score { get; set; }
     public int Age { get; set; }
+    public ChallengeUser ChallengeUser { get; set; }
     public Triple SmokingFree { get; set; }
     public Food<Triple> Food { get; set; }
     public Drinks<Triple> Drinks { get; set; }
@@ -90,7 +92,7 @@ public class User
 
     private void CalculateInterestsVector()
     {
-        if(SmokingFree.AllCounts != 0)
+        if (SmokingFree.AllCounts != 0)
             _interestsVector[0] = 1 - (SmokingFree.DontCareCounts / SmokingFree.AllCounts);
         if (Food.Burger.AllCounts != 0)
             _interestsVector[1] = 1 - (Food.Burger.DontCareCounts / Food.Burger.AllCounts);
@@ -417,7 +419,7 @@ public class User
 
     public List<Bar> GetBestBars(int numOfBest, List<Bar> bars)
     {
-        
+
         int n = bars.Count();
         double[] scores = new double[n];
         double tempMax;
@@ -430,7 +432,7 @@ public class User
             if (tempRate.Count() > 0)
             {
                 double tmp = CalculateScoreForBar(bars[i], tempRate[0]);
-                scores[i] = tmp*0.75;
+                scores[i] = tmp * 0.75;
             }
             else
             {
@@ -516,6 +518,34 @@ public class User
     public void UpdateUserByRate(Rate rate)
     {
         int[] help = new int[36];
+        if (Engine.Challenges.Dizengoff.Contains(rate.BarId))
+        {
+            ChallengeUser.Dizengoff[Engine.Challenges.Dizengoff.ToList().IndexOf(rate.BarId)] = true;
+        }
+        else if (Engine.Challenges.Ibngabirol.Contains(rate.BarId))
+        {
+            ChallengeUser.Ibngabirol[Engine.Challenges.Ibngabirol.ToList().IndexOf(rate.BarId)] = true;
+        }
+        else if (Engine.Challenges.Rotchild.Contains(rate.BarId))
+        {
+            ChallengeUser.Rotchild[Engine.Challenges.Rotchild.ToList().IndexOf(rate.BarId)] = true;
+        }
+        else if (Engine.Challenges.MahneYehuda.Contains(rate.BarId))
+        {
+            ChallengeUser.MahneYehuda[Engine.Challenges.MahneYehuda.ToList().IndexOf(rate.BarId)] = true;
+        }
+        else if (Engine.Challenges.JerusalemCity.Contains(rate.BarId))
+        {
+            ChallengeUser.JerusalemCity[Engine.Challenges.JerusalemCity.ToList().IndexOf(rate.BarId)] = true;
+        }
+        else if (Engine.Challenges.Italy.Contains(rate.BarId))
+        {
+            ChallengeUser.Italy[Engine.Challenges.Italy.ToList().IndexOf(rate.BarId)] = true;
+        }
+        else if (Engine.Challenges.Irland.Contains(rate.BarId))
+        {
+            ChallengeUser.Irland[Engine.Challenges.Irland.ToList().IndexOf(rate.BarId)] = true;
+        }
         for (int i = 0; i < InterestsVector.Length; i++)
         {
             help[i] = UserCatToRate(i, rate);
@@ -880,4 +910,153 @@ public class User
         else if (help[35] == -1)
             Music.Trance.NegCounts++;
     }
+
+    private bool IsDizengoffFinished()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            if (!ChallengeUser.Dizengoff[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private bool IsRotchildFinished()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (!ChallengeUser.Rotchild[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private bool IsIbnGabirolFinished()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (!ChallengeUser.Ibngabirol[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private bool IsJerusalemCityFinished()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (!ChallengeUser.JerusalemCity[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private bool IsMahneYehudaFinished()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (!ChallengeUser.MahneYehuda[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private bool IsItalyFinished()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (!ChallengeUser.Italy[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private bool IsIrlandFinished()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            if (!ChallengeUser.Irland[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    private int IsChallengeFinished(Bar bar)
+    {
+        if (Engine.Challenges.Dizengoff.Contains(bar.BarId))
+        {
+            if (IsDizengoffFinished())
+                return 7;
+        }
+        else if (Engine.Challenges.Rotchild.Contains(bar.BarId))
+        {
+            if (IsRotchildFinished())
+                return 5;
+        }
+        else if (Engine.Challenges.Ibngabirol.Contains(bar.BarId))
+        {
+            if (IsIbnGabirolFinished())
+                return 5;
+        }
+        else if (Engine.Challenges.Irland.Contains(bar.BarId))
+        {
+            if (IsIrlandFinished())
+                return 7;
+        }
+        else if (Engine.Challenges.Italy.Contains(bar.BarId))
+        {
+            if (IsItalyFinished())
+                return 5;
+        }
+        else if (Engine.Challenges.JerusalemCity.Contains(bar.BarId))
+        {
+            if (IsJerusalemCityFinished())
+                return 5;
+        }
+        else if (Engine.Challenges.MahneYehuda.Contains(bar.BarId))
+        {
+            if (IsMahneYehudaFinished())
+                return 5;
+        }
+        return 0;
+    }
+
+    public void UpdateScoreAfterRating(Bar bar)
+    {
+        Score += 50;
+        Score += 50 * IsChallengeFinished(bar);
+    }
+
+    public bool IsDeservedAWorldBadge()
+    {
+        if (IsIrlandFinished() && IsItalyFinished())
+        {
+            return true;
+        }
+        return false;
+    }
+    public bool IsDeservedATLVBadge()
+    {
+        if (IsDizengoffFinished() && IsIbnGabirolFinished() && IsRotchildFinished())
+        {
+            return true;
+        }
+        return false;
+    }
+    public bool IsDeservedAJerusalemBadge()
+    {
+        if (IsJerusalemCityFinished() && IsMahneYehudaFinished())
+        {
+            return true;
+        }
+        return false;
+    }
 }
+
