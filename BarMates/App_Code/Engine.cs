@@ -14,6 +14,7 @@ public class Engine
     public static User User { set; get; }
     public static List<User> Users { set; get; }
     public static List<Bar> Bars { get; set; }
+    public static Challenges Challenges { get; set; }
     public Engine()
 	{
         InitUser();
@@ -22,6 +23,7 @@ public class Engine
             InitUsers();
             InitBars();
         }
+        Challenges = new Challenges();
     }
 
     public void InitUser()
@@ -711,6 +713,23 @@ public class Engine
         return insertSucceeded;
     }
 
+    public static User GetChallengeUserByUserId(int userID)
+    {
+        ArrayList challengeUser;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        parameters.Add(new SqlParameter("userId", userID));
+        challengeUser = DBController.ExecuteStoredProcedure_Select("sp_get_challengeUser_by_userId", parameters);
+        if (challengeUser.Count > 0)
+        {
+            foreach (DbDataRecord currentItem in challengeUser)
+            {
+                User user = new User();
+                UpdateUserFields(user, currentItem);
+                return user;
+            }
+        }
+        return null;
+    }
 }
 
 
