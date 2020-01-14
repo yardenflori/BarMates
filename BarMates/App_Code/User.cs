@@ -87,6 +87,7 @@ public class User
         };
 
         SmokingFree = new Triple();
+        ChallengeUser = new ChallengeUser();
 
     }
 
