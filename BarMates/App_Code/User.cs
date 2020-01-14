@@ -1040,6 +1040,7 @@ public class User
     {
         Score += 50;
         Score += 50 * IsChallengeFinished(bar);
+        Engine.InsertUpdateScoreByUserName(this, Score);
     }
 
     public bool IsDeservedAWorldBadge()

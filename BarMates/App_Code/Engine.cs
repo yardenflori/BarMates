@@ -932,6 +932,19 @@ public class Engine
 
         return insertSucceeded;
     }
+    
+    public static bool InsertUpdateScoreByUserName(User user, int score)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("score", score));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_user_score", parameters);
+
+        return insertSucceeded;
+    }
 }
 
 
