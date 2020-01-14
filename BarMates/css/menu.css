@@ -363,3 +363,41 @@ a.btn {
     margin-left: 0px;
     padding-left: 0;
 }
+
+/*loader*/
+#screen_loader {
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    position: fixed;
+    background: #354b5d99;
+    direction: ltr;
+}
+
+#screen_loader_inner {
+    top: calc(50% - 70px);
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.preloader-wrapper {
+    height: 100px;
+    width: 100px;
+}
+
+.spinner-layer {
+    border-color: #166678;
+}
+
+.circle-clipper .circle {
+    border-width: 6px;
+}
+
+.loader_text {
+    color: #fff;
+    direction: rtl;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}

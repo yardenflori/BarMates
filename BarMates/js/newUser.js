@@ -1,4 +1,15 @@
-﻿function onkeydown_register(event) {
+﻿//loader
+var default_loader_text = "עוד רגע.. טוען נתונים";
+function showLoader(loader_text) {
+    $('.loader_text').text(loader_text);
+    $('#screen_loader').removeClass('hide');
+
+}
+function hideLoader() {
+    $('#screen_loader').addClass('hide');
+}
+
+function onkeydown_register(event) {
     event = event || window.event;
     if (event.keyCode == 13) {
         registerClick();
@@ -29,6 +40,7 @@ function showError(error) {
 }
 
 function ajaxRegister() {
+    showLoader('עוד רגע...');
     var userJson = new Object();
     userJson.userName = document.getElementById('username').value;
     userJson.password = document.getElementById('password').value;
@@ -46,20 +58,24 @@ function ajaxRegister() {
             if (data.d == 'Homepage') {
                 window.location.href = 'Homepage.aspx';
             }
-            else if (data.d == 'usernameAlreadyExists'){
+            else if (data.d == 'usernameAlreadyExists') {
+                hideLoader();
                 clearInputs();
                 showError("אנא בחר שם משתמש אחר");
             }
             else if (data.d == 'iLlegal') {
+                hideLoader();
                 clearInputs();
                 showError("שם המשתמש או הסיסמה לא תקינים");
             }
-            else  {
+            else {
+                hideLoader();
                 clearInputs();
                 showError('חלה שגיאה');
             }
         },
         error: function (errMsg) {
+            hideLoader();
             showError('חלה שגיאה');
             clearInputs();
         }

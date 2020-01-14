@@ -20,7 +20,7 @@ bar.Food = [
     },
     {
         id: 'Snacks',
-        name: 'חטיפים'
+        name: 'נשנושים'
     },
     {
         id: 'Vegan',
@@ -155,7 +155,7 @@ bar.Music = [
     }
 ]
 var RegulaeCriterionsArr = [bar.Drinks, bar.Food, bar.Atmosphere, bar.Company, bar.Music];
-var options = ['לא אהבתי', 'לא אכפת לי', 'אהבתי'];
+var options = ['לא אהבתי', 'לא רלוונטי לי', 'אהבתי'];
 bar.SmokingFree = [
     {
         id: 'SmokingFree',
@@ -269,6 +269,7 @@ function saveRate() {
     }
 }
 function saveRateInDB() {
+    showLoader('עוד רגע... שומר דירוג');
     rate = JSON.stringify({ 'rate': JSON.stringify(rate) });
     $.ajax({
         type: "POST",
@@ -277,14 +278,17 @@ function saveRateInDB() {
         data: rate,
         dataType: "json",
         success: function (data) {
+            hideLoader();
             if (data.d == true) {
                 showConfirm('השמירה בוצעה בהצלחה');
+                window.location.href = "Homepage.aspx";
             }
             else {
                 showError('חלה שגיאה');
             }
         },
         error: function (errMsg) {
+            hideLoader();
             showError('חלה שגיאה');
         }
     });

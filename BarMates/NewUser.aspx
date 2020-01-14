@@ -10,6 +10,25 @@
     <link href="css/Login.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/></head>
 <body class="main_login login_form">
+          <!--LOADER-->
+    <div id="screen_loader" class="hide">
+        <div id="screen_loader_inner">
+            <div class="preloader-wrapper active">
+                <div class="spinner-layer">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="loader_text"></div>
+        </div>
+    </div> 
        <section>
         <form id="general_form">
             <fieldset id="login_fieldset">
