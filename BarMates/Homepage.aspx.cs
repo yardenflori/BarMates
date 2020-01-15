@@ -47,10 +47,20 @@ public partial class Homepage : System.Web.UI.Page
     {
         JObject userStatus = new JObject();
         userStatus["userName"] = DBController.GetUserName();
-        userStatus["score"] = 567;
+        userStatus["score"] = Engine.User.Score;
         List<string> challenges = new List<string>();
-        challenges.Add("jerus");
-        challenges.Add("tlv");
+        if (Engine.User.IsDeservedAWorldBadge())
+        {
+            challenges.Add("world");
+        }
+        if (Engine.User.IsDeservedATLVBadge())
+        {
+            challenges.Add("tlv");
+        }
+        if (Engine.User.IsDeservedAJerusalemBadge())
+        {
+            challenges.Add("jerus");
+        }
         userStatus["challenges"] = JsonConvert.SerializeObject(challenges);
         return JsonConvert.SerializeObject(userStatus);
     }
