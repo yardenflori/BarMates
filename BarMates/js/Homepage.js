@@ -319,6 +319,7 @@ function buildCarouselItem(barId, barName, barPhoto) {
     $('#carousel').append(divCarouselItem);
 }
 function initCarousel() {
+    showLoader('רק רגע...בוחרים את הפאבים הטובים ביותר בשבילך')
     $.ajax({
         type: "POST",
         url: 'Homepage.aspx/GetUserBars',
