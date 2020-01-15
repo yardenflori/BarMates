@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BarMates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,9 @@ public partial class challenges : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //sDASD
+        if (DBController.GetUserName() == null)
+        {
+            Response.Redirect("Default.aspx");
+        }
     }
 }
