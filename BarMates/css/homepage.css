@@ -9,7 +9,7 @@ p {
     margin: 10px;
 }
 .main_title {
-    font-size: 36px;
+    font-size: 24px;
     color: #474e53;
     padding: 10px;
     height: 70px;
@@ -58,6 +58,19 @@ p {
 
 .card .card-image .card-title {
     right: 0;
-    font-size: 64px;
+    font-size: 24px;
+    color: #166678;
+    background-color: white;
 }
 /*update*/
+.challenge-img{
+    height:100px;
+}
+#score-div {
+    width: max-content;
+    border: 3px solid #166678;
+    padding: 10px;
+}
+#status-div {
+    height: 60px;
+}

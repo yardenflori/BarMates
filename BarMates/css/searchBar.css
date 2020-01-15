@@ -144,7 +144,9 @@ main {
 
 .card .card-image .card-title {
     right: 0;
-    font-size: 64px;
+    font-size: 24px;
+    color: #166678;
+    background-color: white;
 }
 /*results bar*/
 

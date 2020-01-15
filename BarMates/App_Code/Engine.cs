@@ -713,22 +713,237 @@ public class Engine
         return insertSucceeded;
     }
 
-    public static User GetChallengeUserByUserId(int userID)
+    public static void GetChallengeUserByUserName(User user)
     {
         ArrayList challengeUser;
         List<SqlParameter> parameters = new List<SqlParameter>();
-        parameters.Add(new SqlParameter("userId", userID));
-        challengeUser = DBController.ExecuteStoredProcedure_Select("sp_get_challengeUser_by_userId", parameters);
+        parameters.Add(new SqlParameter("userId", user.UserId));
+        challengeUser = DBController.ExecuteStoredProcedure_Select("sp_get_challengeUser_by_userName", parameters);
         if (challengeUser.Count > 0)
         {
             foreach (DbDataRecord currentItem in challengeUser)
             {
-                User user = new User();
-                UpdateUserFields(user, currentItem);
-                return user;
+                switch(int.Parse(currentItem["id"].ToString()))
+                {
+                    case 1:
+                        user.ChallengeUser.Dizengoff[0] = bool.Parse(currentItem["bar1"].ToString());
+                        user.ChallengeUser.Dizengoff[1] = bool.Parse(currentItem["bar2"].ToString());
+                        user.ChallengeUser.Dizengoff[2] = bool.Parse(currentItem["bar3"].ToString());
+                        user.ChallengeUser.Dizengoff[3] = bool.Parse(currentItem["bar4"].ToString());
+                        user.ChallengeUser.Dizengoff[4] = bool.Parse(currentItem["bar5"].ToString());
+                        user.ChallengeUser.Dizengoff[5] = bool.Parse(currentItem["bar6"].ToString());
+                        user.ChallengeUser.Dizengoff[6] = bool.Parse(currentItem["bar7"].ToString());
+                        break;
+                    case 2:
+                        user.ChallengeUser.Ibngabirol[0] = bool.Parse(currentItem["bar1"].ToString());
+                        user.ChallengeUser.Ibngabirol[1] = bool.Parse(currentItem["bar2"].ToString());
+                        user.ChallengeUser.Ibngabirol[2] = bool.Parse(currentItem["bar3"].ToString());
+                        user.ChallengeUser.Ibngabirol[3] = bool.Parse(currentItem["bar4"].ToString());
+                        user.ChallengeUser.Ibngabirol[4] = bool.Parse(currentItem["bar5"].ToString());
+                        break;
+                    case 3:
+                        user.ChallengeUser.Rotchild[0] = bool.Parse(currentItem["bar1"].ToString());
+                        user.ChallengeUser.Rotchild[1] = bool.Parse(currentItem["bar2"].ToString());
+                        user.ChallengeUser.Rotchild[2] = bool.Parse(currentItem["bar3"].ToString());
+                        user.ChallengeUser.Rotchild[3] = bool.Parse(currentItem["bar4"].ToString());
+                        user.ChallengeUser.Rotchild[4] = bool.Parse(currentItem["bar5"].ToString());
+                        break;
+                    case 4:
+                        user.ChallengeUser.MahneYehuda[0] = bool.Parse(currentItem["bar1"].ToString());
+                        user.ChallengeUser.MahneYehuda[1] = bool.Parse(currentItem["bar2"].ToString());
+                        user.ChallengeUser.MahneYehuda[2] = bool.Parse(currentItem["bar3"].ToString());
+                        user.ChallengeUser.MahneYehuda[3] = bool.Parse(currentItem["bar4"].ToString());
+                        user.ChallengeUser.MahneYehuda[4] = bool.Parse(currentItem["bar5"].ToString());
+                        break;
+                    case 5:
+                        user.ChallengeUser.JerusalemCity[0] = bool.Parse(currentItem["bar1"].ToString());
+                        user.ChallengeUser.JerusalemCity[1] = bool.Parse(currentItem["bar2"].ToString());
+                        user.ChallengeUser.JerusalemCity[2] = bool.Parse(currentItem["bar3"].ToString());
+                        user.ChallengeUser.JerusalemCity[3] = bool.Parse(currentItem["bar4"].ToString());
+                        user.ChallengeUser.JerusalemCity[4] = bool.Parse(currentItem["bar5"].ToString());
+                        break;
+                    case 6:
+                        user.ChallengeUser.Italy[0] = bool.Parse(currentItem["bar1"].ToString());
+                        user.ChallengeUser.Italy[1] = bool.Parse(currentItem["bar2"].ToString());
+                        user.ChallengeUser.Italy[2] = bool.Parse(currentItem["bar3"].ToString());
+                        user.ChallengeUser.Italy[3] = bool.Parse(currentItem["bar4"].ToString());
+                        user.ChallengeUser.Italy[4] = bool.Parse(currentItem["bar5"].ToString());
+                        break;
+                    case 7:
+                        user.ChallengeUser.Irland[0] = bool.Parse(currentItem["bar1"].ToString());
+                        user.ChallengeUser.Irland[1] = bool.Parse(currentItem["bar2"].ToString());
+                        user.ChallengeUser.Irland[2] = bool.Parse(currentItem["bar3"].ToString());
+                        user.ChallengeUser.Irland[3] = bool.Parse(currentItem["bar4"].ToString());
+                        user.ChallengeUser.Irland[4] = bool.Parse(currentItem["bar5"].ToString());
+                        user.ChallengeUser.Irland[5] = bool.Parse(currentItem["bar4"].ToString());
+                        user.ChallengeUser.Irland[6] = bool.Parse(currentItem["bar5"].ToString());
+                        break;
+                    default:
+                        break;
+                }
             }
         }
-        return null;
+    }
+
+    public static bool InsertUpdateDizengoffChallengeUserToDB(User user, int challengeID)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Dizengoff[0]));
+        parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Dizengoff[1]));
+        parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Dizengoff[2]));
+        parameters.Add(new SqlParameter("bar4", user.ChallengeUser.Dizengoff[3]));
+        parameters.Add(new SqlParameter("bar5", user.ChallengeUser.Dizengoff[4]));
+        parameters.Add(new SqlParameter("bar6", user.ChallengeUser.Dizengoff[5]));
+        parameters.Add(new SqlParameter("bar7", user.ChallengeUser.Dizengoff[6]));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_challengeUser_by_userName_and_challengeId", parameters);
+
+        return insertSucceeded;
+    }
+    public static bool InsertUpdateRotchildChallengeUserToDB(User user, int challengeID)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Rotchild[0]));
+        parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Rotchild[1]));
+        parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Rotchild[2]));
+        parameters.Add(new SqlParameter("bar4", user.ChallengeUser.Rotchild[3]));
+        parameters.Add(new SqlParameter("bar5", user.ChallengeUser.Rotchild[4]));
+        parameters.Add(new SqlParameter("bar6", null));
+        parameters.Add(new SqlParameter("bar7", null));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_challengeUser_by_userName_and_challengeId", parameters);
+
+        return insertSucceeded;
+    }
+    public static bool InsertUpdateIbnGabirolChallengeUserToDB(User user, int challengeID)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Ibngabirol[0]));
+        parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Ibngabirol[1]));
+        parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Ibngabirol[2]));
+        parameters.Add(new SqlParameter("bar4", user.ChallengeUser.Ibngabirol[3]));
+        parameters.Add(new SqlParameter("bar5", user.ChallengeUser.Ibngabirol[4]));
+        parameters.Add(new SqlParameter("bar6", null));
+        parameters.Add(new SqlParameter("bar7", null));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_challengeUser_by_userName_and_challengeId", parameters);
+
+        return insertSucceeded;
+    }
+    public static bool InsertUpdateJerusalemCityChallengeUserToDB(User user, int challengeID)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("bar1", user.ChallengeUser.JerusalemCity[0]));
+        parameters.Add(new SqlParameter("bar2", user.ChallengeUser.JerusalemCity[1]));
+        parameters.Add(new SqlParameter("bar3", user.ChallengeUser.JerusalemCity[2]));
+        parameters.Add(new SqlParameter("bar4", user.ChallengeUser.JerusalemCity[3]));
+        parameters.Add(new SqlParameter("bar5", user.ChallengeUser.JerusalemCity[4]));
+        parameters.Add(new SqlParameter("bar6", null));
+        parameters.Add(new SqlParameter("bar7", null));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_challengeUser_by_userName_and_challengeId", parameters);
+
+        return insertSucceeded;
+    }
+    public static bool InsertUpdateMahneYehudaChallengeUserToDB(User user, int challengeID)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("bar1", user.ChallengeUser.MahneYehuda[0]));
+        parameters.Add(new SqlParameter("bar2", user.ChallengeUser.MahneYehuda[1]));
+        parameters.Add(new SqlParameter("bar3", user.ChallengeUser.MahneYehuda[2]));
+        parameters.Add(new SqlParameter("bar4", user.ChallengeUser.MahneYehuda[3]));
+        parameters.Add(new SqlParameter("bar5", user.ChallengeUser.MahneYehuda[4]));
+        parameters.Add(new SqlParameter("bar6", null));
+        parameters.Add(new SqlParameter("bar7", null));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_challengeUser_by_userName_and_challengeId", parameters);
+
+        return insertSucceeded;
+    }
+    public static bool InsertUpdateItalyChallengeUserToDB(User user, int challengeID)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Italy[0]));
+        parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Italy[1]));
+        parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Italy[2]));
+        parameters.Add(new SqlParameter("bar4", user.ChallengeUser.Italy[3]));
+        parameters.Add(new SqlParameter("bar5", user.ChallengeUser.Italy[4]));
+        parameters.Add(new SqlParameter("bar6", null));
+        parameters.Add(new SqlParameter("bar7", null));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_challengeUser_by_userName_and_challengeId", parameters);
+
+        return insertSucceeded;
+    }
+    public static bool InsertUpdateIrlandChallengeUserToDB(User user, int challengeID)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Irland[0]));
+        parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Irland[1]));
+        parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Irland[2]));
+        parameters.Add(new SqlParameter("bar4", user.ChallengeUser.Irland[3]));
+        parameters.Add(new SqlParameter("bar5", user.ChallengeUser.Irland[4]));
+        parameters.Add(new SqlParameter("bar6", user.ChallengeUser.Irland[5]));
+        parameters.Add(new SqlParameter("bar7", user.ChallengeUser.Irland[6]));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_challengeUser_by_userName_and_challengeId", parameters);
+
+        return insertSucceeded;
+    }
+    
+    public static bool InsertUpdateWorldBadgeToDB(User user, string badgeName, bool isDeserved)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("badgeName", badgeName));
+        parameters.Add(new SqlParameter("isdeserved", isDeserved));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_badge_by_userName_badgeName", parameters);
+
+        return insertSucceeded;
+    }
+    
+    public static bool InsertUpdateScoreByUserName(User user, int score)
+    {
+        bool insertSucceeded;
+        List<SqlParameter> parameters = new List<SqlParameter>();
+
+        parameters.Add(new SqlParameter("userName", user.UserName));
+        parameters.Add(new SqlParameter("score", score));
+
+        insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_user_score", parameters);
+
+        return insertSucceeded;
     }
 }
 

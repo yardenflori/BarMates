@@ -357,3 +357,63 @@ ul:not(.browser-default){
     padding-right:0;
 }
 /*update*/
+
+/*loader*/
+#screen_loader {
+    height: 100%;
+    width: 100%;
+    z-index: 1004;
+    position: fixed;
+    background: #354b5d99;
+    direction: ltr;
+}
+
+#screen_loader_inner {
+    top: calc(50% - 70px);
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.preloader-wrapper {
+    height: 100px;
+    width: 100px;
+}
+
+.spinner-layer {
+    border-color: #166678;
+}
+
+.circle-clipper .circle {
+    border-width: 6px;
+}
+
+.loader_text {
+    color: #fff;
+    direction: rtl;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}
+#contact-title {
+    font-size: 24px;
+    color: #166678;
+}
+#client_content {
+    height: 200px;
+}
+ textarea, #contact-div input {
+    background-color: #f5f5f5 !important;
+    border-bottom: none !important;
+    margin: 8px 0 !important;
+    
+}
+#contact-div label{
+    right: 0.9rem;
+}
+#contact-div .row{
+    margin-bottom:0
+}
+.center-btn{
+    text-align:center;
+}

@@ -12,6 +12,25 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>  
 </head>
 <body>
+             <!--LOADER-->
+    <div id="screen_loader">
+        <div id="screen_loader_inner">
+            <div class="preloader-wrapper active">
+                <div class="spinner-layer">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="loader_text"></div>
+        </div>
+    </div> 
     <header>
         <div id="toolbar">
             <div class="logo_wrapper">
@@ -22,6 +41,9 @@
                     <a id="Homepage" href="Homepage.aspx" class="active">ראשי</a>
                     <a id="SearchBar" href="SearchBar.aspx">חיפוש בר</a>
                     <a id="BarRating"  href="BarRating.aspx">דירוג בר</a>
+                    <a id="challenges" href="challenges.aspx">אתגרים</a>
+                    <a id="Contact" href="Contact.aspx">צור קשר</a>
+
                 </div>
             </div>
             <a id="iconnav" class="icon" onclick="ToggleNav()">
@@ -34,6 +56,30 @@
     </header>
     <main>
         <div class="main card">
+            <div id="userStatus" >
+                <div id="status-div">
+                    <div class="main_title right">
+                    <span id="hello_user"></span>                    
+                </div>
+                <div class="main_title left">
+                    <div id="score-div">
+                        <span id="score"></span>
+                    </div>
+                </div>
+                </div>
+                
+                <div id="your_challenges" class="hide">
+                <div class="main_title">
+                    <span>ההישגים שלך</span>                  
+                </div>
+                <div>
+                      <img id="jerus" class="challenge-img hide" src="images/chall/jerus.jpeg" />
+                    <img id="tlv" class="challenge-img hide" src="images/chall/tlv.jpeg" />
+                    <img id="world" class="challenge-img hide" src="images/chall/world.jpeg" />
+                </div>
+
+                </div>
+            </div>
             <div id="recomendBars" >
                 <div class="main_title">
                     <span>ברים מומלצים עבורך</span>

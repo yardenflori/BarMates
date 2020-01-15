@@ -1,4 +1,15 @@
-﻿function logout() {
+﻿//loader
+var default_loader_text = "עוד רגע.. טוען נתונים";
+function showLoader(loader_text) {
+    $('.loader_text').text(loader_text);
+    $('#screen_loader').removeClass('hide');
+
+}
+function hideLoader() {
+    $('#screen_loader').addClass('hide');
+}
+
+function logout() {
     $.ajax({
         type: "POST",
         url: 'Default.aspx/Logout',

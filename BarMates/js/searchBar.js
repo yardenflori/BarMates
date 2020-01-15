@@ -16,7 +16,7 @@ bar.Food = [
     },
     {
         id: 'Snacks',
-        name: 'חטיפים'
+        name: 'נשנושים'
     },
     {
         id: 'Vegan',
@@ -395,6 +395,7 @@ function searchBar() {
     searchBarInDB();
 }
 function searchBarInDB() {
+    showLoader(default_loader_text);
     choises = JSON.stringify({ 'choises': JSON.stringify(choises) });
     $.ajax({
         type: "POST",
@@ -403,6 +404,7 @@ function searchBarInDB() {
         data: choises,
         dataType: "json",
         success: function (data) {
+            hideLoader();
             barList = JSON.parse(data.d);
             if (barList.length > 0) {
                 $('#carousel').empty();//clear carousel
@@ -413,6 +415,7 @@ function searchBarInDB() {
             }
         },
         error: function (errMsg) {
+            hideLoader();
             showError('חלה שגיאה');
         }
     });

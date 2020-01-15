@@ -4,13 +4,8 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class BarRating : System.Web.UI.Page
 {
@@ -144,6 +139,7 @@ public partial class BarRating : System.Web.UI.Page
         user.UpdateUserByRate(rate);
         if(firstRate)
         {
+            Engine.GetChallengeUserByUserName(user);
             user.UpdateScoreAfterRating(bar);
             //user.DeserveABadge();
         }
