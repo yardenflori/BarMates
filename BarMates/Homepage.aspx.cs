@@ -48,7 +48,7 @@ public partial class Homepage : System.Web.UI.Page
         JObject userStatus = new JObject();
         userStatus["userName"] = DBController.GetUserName();
         userStatus["score"] = 567;
-       List<string> challenges = new List<string>();
+        List<string> challenges = new List<string>();
         challenges.Add("jerus");
         challenges.Add("tlv");
         userStatus["challenges"] = JsonConvert.SerializeObject(challenges);
