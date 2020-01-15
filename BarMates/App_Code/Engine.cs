@@ -1083,9 +1083,9 @@ public class Engine
         InsertNewUserToChallengeUserToDB(User);
     }
 
-    public static List<(string, int)> GetBestScoredUsers(int numOfBest)
+    public static List<Tuple<string, int>> GetBestScoredUsers(int numOfBest)
     {
-        List<(string, int)> users = new List<(string, int)>();
+        List<Tuple<string, int>> users = new List<Tuple<string, int>>();
         List<SqlParameter> parameters = new List<SqlParameter>();
         var usersDB = DBController.ExecuteStoredProcedure_Select("sp_get_sorted_users_by_scores", parameters);
         if (usersDB.Count > 0)
@@ -1097,8 +1097,8 @@ public class Engine
                 {
                     int score = int.Parse(currentItem["score"].ToString());
                     string userName = currentItem["userName"].ToString();
-
-                    users.Add((userName, score));
+                    Tuple<string, int> tup = new Tuple<string, int> (userName, score);
+                    users.Add(tup);
                     numOfBest--;
                 }
                 else
