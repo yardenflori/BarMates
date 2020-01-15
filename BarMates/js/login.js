@@ -1,4 +1,16 @@
-﻿function onkeydown_login(event) {
+﻿//loader
+var default_loader_text = "עוד רגע.. טוען נתונים";
+function showLoader(loader_text) {
+    $('.loader_text').text(loader_text);
+    $('#screen_loader').removeClass('hide');
+
+}
+function hideLoader() {
+    $('#screen_loader').addClass('hide');
+}
+
+
+function onkeydown_login(event) {
     event = event || window.event;
     if (event.keyCode == 13) {
         loginClick();
@@ -32,6 +44,7 @@ function showError(error) {
 }
 
 function ajaxLogin() {
+    showLoader('עוד רגע... מתחבר');
     var userJson = new Object();
     userJson.userName = document.getElementById('username').value;
     userJson.password = document.getElementById('password').value;
@@ -46,6 +59,7 @@ function ajaxLogin() {
         success: function (data) {
             clearInputs();
             if (data.d == false) {
+                hideLoader();
                 showError('אחד הנתונים שהוזן שגוי');
             }
             else {
@@ -53,6 +67,7 @@ function ajaxLogin() {
             }
         },
         error: function (errMsg) {
+            hideLoader();
             showError('חלה שגיאה');
             clearInputs();
         }

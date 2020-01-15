@@ -1,5 +1,6 @@
 ﻿using BarMates;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Web.Services;
@@ -40,5 +41,17 @@ public partial class Homepage : System.Web.UI.Page
             }
         }*/
         return JsonConvert.SerializeObject(bars);
+    }
+    [WebMethod]
+    public static string GetUserStatus()
+    {
+        JObject userStatus = new JObject();
+        userStatus["userName"] = DBController.GetUserName();
+        userStatus["score"] = 567;
+       List<string> challenges = new List<string>();
+        challenges.Add("jerus");
+        challenges.Add("tlv");
+        userStatus["challenges"] = JsonConvert.SerializeObject(challenges);
+        return JsonConvert.SerializeObject(userStatus);
     }
 }

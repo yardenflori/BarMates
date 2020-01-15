@@ -15,7 +15,7 @@ bar.Food = [
     },
     {
         id: 'Snacks',
-        name: 'חטיפים'
+        name: 'נשנושים'
     },
     {
         id: 'Vegan',
@@ -336,13 +336,41 @@ function initCarousel() {
                     fillProfileBar(barId);
                 }
             });
+            hideLoader();
         },
         error: function (errMsg) {
             showError('חלה שגיאה');
         }
     });    
 }
+
+function initUserStatus() {
+    $.ajax({
+        type: "POST",
+        url: 'Homepage.aspx/GetUserStatus',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var userStatus = JSON.parse(data.d);
+            $('#hello_user').text('שלום ' + userStatus.userName);
+            $('#score').text(userStatus.score + ' נקודות');
+
+            var challengesList = JSON.parse(userStatus.challenges);
+            if (challengesList.length > 0) {
+                $('#your_challenges').removeClass('hide');
+                for (var i = 0; i < challengesList.length; i++) {
+                    $('#' + challengesList[i]).removeClass('hide');
+                }
+            }      
+           
+        },
+        error: function (errMsg) {
+            showError('חלה שגיאה');
+        }
+    });   
+}
 $(document).ready(function () {
+    initUserStatus();
     initCriterions();
     initCarousel();    
 });

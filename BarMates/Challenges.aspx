@@ -11,7 +11,25 @@
     <link href="css/challenge.css" rel="stylesheet" />
 </head>
 <body>
-
+             <!--LOADER-->
+    <div id="screen_loader" class="hide">
+        <div id="screen_loader_inner">
+            <div class="preloader-wrapper active">
+                <div class="spinner-layer">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="loader_text"></div>
+        </div>
+    </div> 
     <header>
         <div id="toolbar">
             <div class="logo_wrapper">
@@ -22,6 +40,8 @@
                     <a id="Homepage" href="Homepage.aspx">ראשי</a>
                     <a id="SearchBar" href="SearchBar.aspx">חיפוש בר</a>
                     <a id="BarRating" href="BarRating.aspx">דירוג בר</a>
+                    <a id="challenges" href="challenges.aspx" class="active">אתגרים</a>
+                    <a id="Contact" href="Contact.aspx">צור קשר</a>
                 </div>
             </div>
             <a id="iconnav" class="icon" onclick="ToggleNav()">
