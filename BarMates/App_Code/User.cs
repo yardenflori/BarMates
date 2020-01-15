@@ -522,37 +522,37 @@ public class User
         if (Engine.Challenges.Dizengoff.Contains(rate.BarId))
         {
             ChallengeUser.Dizengoff[Engine.Challenges.Dizengoff.ToList().IndexOf(rate.BarId)] = true;
-            Engine.InsertUpdateDizengoffChallengeUserToDB(this, 1);
+            Engine.InsertUpdateDizengoffChallengeUserToDB(this);
         }
         else if (Engine.Challenges.Ibngabirol.Contains(rate.BarId))
         {
             ChallengeUser.Ibngabirol[Engine.Challenges.Ibngabirol.ToList().IndexOf(rate.BarId)] = true;
-            Engine.InsertUpdateIbnGabirolChallengeUserToDB(this, 2);
+            Engine.InsertUpdateIbnGabirolChallengeUserToDB(this);
         }
         else if (Engine.Challenges.Rotchild.Contains(rate.BarId))
         {
             ChallengeUser.Rotchild[Engine.Challenges.Rotchild.ToList().IndexOf(rate.BarId)] = true;
-            Engine.InsertUpdateRotchildChallengeUserToDB(this, 3);
+            Engine.InsertUpdateRotchildChallengeUserToDB(this);
         }
         else if (Engine.Challenges.MahneYehuda.Contains(rate.BarId))
         {
             ChallengeUser.MahneYehuda[Engine.Challenges.MahneYehuda.ToList().IndexOf(rate.BarId)] = true;
-            Engine.InsertUpdateMahneYehudaChallengeUserToDB(this, 4);
+            Engine.InsertUpdateMahneYehudaChallengeUserToDB(this);
         }
         else if (Engine.Challenges.JerusalemCity.Contains(rate.BarId))
         {
             ChallengeUser.JerusalemCity[Engine.Challenges.JerusalemCity.ToList().IndexOf(rate.BarId)] = true;
-            Engine.InsertUpdateJerusalemCityChallengeUserToDB(this, 5);
+            Engine.InsertUpdateJerusalemCityChallengeUserToDB(this);
         }
         else if (Engine.Challenges.Italy.Contains(rate.BarId))
         {
             ChallengeUser.Italy[Engine.Challenges.Italy.ToList().IndexOf(rate.BarId)] = true;
-            Engine.InsertUpdateItalyChallengeUserToDB(this, 6);
+            Engine.InsertUpdateItalyChallengeUserToDB(this);
         }
         else if (Engine.Challenges.Irland.Contains(rate.BarId))
         {
             ChallengeUser.Irland[Engine.Challenges.Irland.ToList().IndexOf(rate.BarId)] = true;
-            Engine.InsertUpdateIrlandChallengeUserToDB(this, 7);
+            Engine.InsertUpdateIrlandChallengeUserToDB(this);
         }
         for (int i = 0; i < InterestsVector.Length; i++)
         {
@@ -1047,6 +1047,7 @@ public class User
     {
         if (IsIrlandFinished() && IsItalyFinished())
         {
+            Engine.InsertUpdateBadgeToDB(this, "World", true);
             return true;
         }
         return false;
@@ -1055,6 +1056,7 @@ public class User
     {
         if (IsDizengoffFinished() && IsIbnGabirolFinished() && IsRotchildFinished())
         {
+            Engine.InsertUpdateBadgeToDB(this, "TLV", true);
             return true;
         }
         return false;
@@ -1063,6 +1065,7 @@ public class User
     {
         if (IsJerusalemCityFinished() && IsMahneYehudaFinished())
         {
+            Engine.InsertUpdateBadgeToDB(this, "Jerusalem", true);
             return true;
         }
         return false;
