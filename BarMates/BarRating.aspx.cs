@@ -141,7 +141,9 @@ public partial class BarRating : System.Web.UI.Page
         {
             Engine.GetChallengeUserByUserName(user);
             user.UpdateScoreAfterRating(bar);
-            //user.DeserveABadge();
+            user.IsDeservedAJerusalemBadge();
+            user.IsDeservedATLVBadge();
+            user.IsDeservedAWorldBadge();
         }
         Engine.InsertUpdateUserCountersToDB(user);
         

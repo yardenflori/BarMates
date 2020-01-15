@@ -16,9 +16,9 @@ public class Engine
     public static List<Bar> Bars { get; set; }
     public static Challenges Challenges { get; set; }
     public Engine()
-	{
+    {
         InitUser();
-        if(User.UserName!=null)
+        if (User.UserName != null)
         {
             InitUsers();
             InitBars();
@@ -29,41 +29,53 @@ public class Engine
     public void InitUser()
     {
         string username = DBController.GetUserName();
-        if (username!=null)
+        if (username != null)
         {
             User = new User();
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("user_name", username));
-            var userDB = DBController.ExecuteStoredProcedure_Select("sp_get_user_by_username", parameters);
-
-            if (userDB.Count > 0)
+            var users = DBController.ExecuteStoredProcedure_Select("sp_get_user_by_username", parameters);
+            List<SqlParameter> parameters2 = new List<SqlParameter>();
+            parameters2.Add(new SqlParameter("user_name", username));
+            var challenges = DBController.ExecuteStoredProcedure_Select("sp_get_challegeUser_by_userName", parameters2);
+            if (users.Count > 0)
             {
-                foreach (DbDataRecord currentItem in userDB)
+                foreach (DbDataRecord currentItem in users)
                 {
                     UpdateUserFields(User, currentItem);
+                    foreach (DbDataRecord currentChallenge in challenges)
+                    {
+                        UpdateChallengeUserFields(User, currentChallenge);
+                    }
                 }
             }
         }
     }
-    
+
     public void InitUsers()
     {
         Users = new List<User>();
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("user_name", User.UserName));
         var usersDB = DBController.ExecuteStoredProcedure_Select("sp_get_all_other_users", parameters);
-
+        List<SqlParameter> parameters2 = new List<SqlParameter>();
+        parameters2.Add(new SqlParameter("user_name", User.UserName));
+        var challenges = DBController.ExecuteStoredProcedure_Select("sp_get_challegeUser_by_userName", parameters2);
         if (usersDB.Count > 0)
         {
             foreach (DbDataRecord currentItem in usersDB)
             {
-                User new_user = new User();
-                UpdateUserFields(new_user, currentItem);
-                Users.Add(new_user);
+                User user = new User();
+                UpdateUserFields(user, currentItem);
+                foreach (DbDataRecord currentChallenge in challenges)
+                {
+                    UpdateChallengeUserFields(user, currentChallenge);
+                }
+                Users.Add(user);
             }
         }
     }
-    
+
     public void InitBars()
     {
         Bars = new List<Bar>();
@@ -89,6 +101,7 @@ public class Engine
         user.UserName = data["userName"].ToString();
         user.Password = data["password"].ToString();
         user.Age = int.Parse(data["age"].ToString());
+        user.Score = int.Parse(data["score"].ToString());
         user.SmokingFree.NegCounts = int.Parse(data["smokingFreeNeg"].ToString());
         user.SmokingFree.PosCounts = int.Parse(data["smokingFreePos"].ToString());
         user.SmokingFree.DontCareCounts = int.Parse(data["smokingFreeDontCare"].ToString());
@@ -137,7 +150,7 @@ public class Engine
         user.Atmosphere.Chill.NegCounts = int.Parse(data["chillNeg"].ToString());
         user.Atmosphere.Chill.PosCounts = int.Parse(data["chillPos"].ToString());
         user.Atmosphere.Chill.DontCareCounts = int.Parse(data["chillDontCare"].ToString());
-        
+
         user.Atmosphere.Dance.NegCounts = int.Parse(data["danceNeg"].ToString());
         user.Atmosphere.Dance.PosCounts = int.Parse(data["dancePos"].ToString());
         user.Atmosphere.Dance.DontCareCounts = int.Parse(data["danceDontCare"].ToString());
@@ -198,6 +211,8 @@ public class Engine
         user.Music.StandUp.NegCounts = int.Parse(data["standupNeg"].ToString());
         user.Music.StandUp.PosCounts = int.Parse(data["standupPos"].ToString());
         user.Music.StandUp.DontCareCounts = int.Parse(data["standupDontCare"].ToString());
+
+
     }
 
     public static void UpdateBarFields(Bar bar, DbDataRecord data)
@@ -212,7 +227,7 @@ public class Engine
         {
             bar.Age = Age.EighteenPlus;
         }
-        else if(data["age21"].ToString() == "True")
+        else if (data["age21"].ToString() == "True")
         {
             bar.Age = Age.TwentyOnePlus;
         }
@@ -257,7 +272,7 @@ public class Engine
         bar.Music.Israeli = data["israeli"].ToString() == "True";
         bar.Music.LiveMusic = data["liveMusic"].ToString() == "True";
         bar.Music.Reggaeton = data["reggaeton"].ToString() == "True";
-        
+
         bar.Music.OpenMic = data["openMic"].ToString() == "True";
         bar.Music.StandUp = data["standup"].ToString() == "True";
 
@@ -284,12 +299,12 @@ public class Engine
         {
             bar.Service = Service.SelfService;
         }
-        
+
     }
 
     public static User GetUserByUserID(int userID)
     {
-        ArrayList users;
+        ArrayList users, challenges;
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("userId", userID));
         users = DBController.ExecuteStoredProcedure_Select("sp_get_user_by_userId", parameters);
@@ -299,6 +314,13 @@ public class Engine
             {
                 User user = new User();
                 UpdateUserFields(user, currentItem);
+                List<SqlParameter> parameters2 = new List<SqlParameter>();
+                parameters2.Add(new SqlParameter("userName", user.UserName));
+                challenges = DBController.ExecuteStoredProcedure_Select("sp_get_challegeUser_by_userName", parameters2);
+                foreach (DbDataRecord currentChallenge in challenges)
+                {
+                    UpdateChallengeUserFields(user, currentChallenge);
+                }
                 return user;
             }
         }
@@ -307,29 +329,95 @@ public class Engine
 
     public static User GetUserByUserName(string userName)
     {
-        ArrayList users;
+        ArrayList users, challenges;
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("user_name", userName));
         users = DBController.ExecuteStoredProcedure_Select("sp_get_user_by_userName", parameters);
+        List<SqlParameter> parameters2 = new List<SqlParameter>();
+        parameters2.Add(new SqlParameter("userName", userName));
+        challenges = DBController.ExecuteStoredProcedure_Select("sp_get_challengeUser_by_userName", parameters2);
         if (users.Count > 0)
         {
             foreach (DbDataRecord currentItem in users)
             {
                 User user = new User();
                 UpdateUserFields(user, currentItem);
+                foreach (DbDataRecord currentChallenge in challenges)
+                {
+                    UpdateChallengeUserFields(user, currentChallenge);
+                }
                 return user;
             }
         }
         return null;
     }
 
+    public static void UpdateChallengeUserFields(User user, DbDataRecord data)
+    {
+        switch(int.Parse(data["id"].ToString()))
+        {
+            case (1):
+                user.ChallengeUser.Dizengoff[0] = bool.Parse(data["bar1"].ToString());
+                user.ChallengeUser.Dizengoff[1] = bool.Parse(data["bar2"].ToString());
+                user.ChallengeUser.Dizengoff[2] = bool.Parse(data["bar3"].ToString());
+                user.ChallengeUser.Dizengoff[3] = bool.Parse(data["bar4"].ToString());
+                user.ChallengeUser.Dizengoff[4] = bool.Parse(data["bar5"].ToString());
+                user.ChallengeUser.Dizengoff[5] = bool.Parse(data["bar6"].ToString());
+                user.ChallengeUser.Dizengoff[6] = bool.Parse(data["bar7"].ToString());
+                break;
+            case (2):
+                user.ChallengeUser.Ibngabirol[0] = bool.Parse(data["bar1"].ToString());
+                user.ChallengeUser.Ibngabirol[1] = bool.Parse(data["bar2"].ToString());
+                user.ChallengeUser.Ibngabirol[2] = bool.Parse(data["bar3"].ToString());
+                user.ChallengeUser.Ibngabirol[3] = bool.Parse(data["bar4"].ToString());
+                user.ChallengeUser.Ibngabirol[4] = bool.Parse(data["bar5"].ToString());
+                break;
+            case (3):
+                user.ChallengeUser.Rotchild[0] = bool.Parse(data["bar1"].ToString());
+                user.ChallengeUser.Rotchild[1] = bool.Parse(data["bar2"].ToString());
+                user.ChallengeUser.Rotchild[2] = bool.Parse(data["bar3"].ToString());
+                user.ChallengeUser.Rotchild[3] = bool.Parse(data["bar4"].ToString());
+                user.ChallengeUser.Rotchild[4] = bool.Parse(data["bar5"].ToString());
+                break;
+            case (4):
+                user.ChallengeUser.MahneYehuda[0] = bool.Parse(data["bar1"].ToString());
+                user.ChallengeUser.MahneYehuda[1] = bool.Parse(data["bar2"].ToString());
+                user.ChallengeUser.MahneYehuda[2] = bool.Parse(data["bar3"].ToString());
+                user.ChallengeUser.MahneYehuda[3] = bool.Parse(data["bar4"].ToString());
+                user.ChallengeUser.MahneYehuda[4] = bool.Parse(data["bar5"].ToString());
+                break;
+            case (5):
+                user.ChallengeUser.JerusalemCity[0] = bool.Parse(data["bar1"].ToString());
+                user.ChallengeUser.JerusalemCity[1] = bool.Parse(data["bar2"].ToString());
+                user.ChallengeUser.JerusalemCity[2] = bool.Parse(data["bar3"].ToString());
+                user.ChallengeUser.JerusalemCity[3] = bool.Parse(data["bar4"].ToString());
+                user.ChallengeUser.JerusalemCity[4] = bool.Parse(data["bar5"].ToString());
+                break;
+            case (6):
+                user.ChallengeUser.Italy[0] = bool.Parse(data["bar1"].ToString());
+                user.ChallengeUser.Italy[1] = bool.Parse(data["bar2"].ToString());
+                user.ChallengeUser.Italy[2] = bool.Parse(data["bar3"].ToString());
+                user.ChallengeUser.Italy[3] = bool.Parse(data["bar4"].ToString());
+                user.ChallengeUser.Italy[4] = bool.Parse(data["bar5"].ToString());
+                break;
+            case (7):
+                user.ChallengeUser.Irland[0] = bool.Parse(data["bar1"].ToString());
+                user.ChallengeUser.Irland[1] = bool.Parse(data["bar2"].ToString());
+                user.ChallengeUser.Irland[2] = bool.Parse(data["bar3"].ToString());
+                user.ChallengeUser.Irland[3] = bool.Parse(data["bar4"].ToString());
+                user.ChallengeUser.Irland[4] = bool.Parse(data["bar5"].ToString());
+                user.ChallengeUser.Irland[5] = bool.Parse(data["bar6"].ToString());
+                user.ChallengeUser.Irland[6] = bool.Parse(data["bar7"].ToString());
+                break;
+        }
+    }
     public static void UpdateRateFields(Rate rate, DbDataRecord data)
     {
         rate.UserName = data["userName"].ToString();
         rate.BarId = int.Parse(data["barId"].ToString());
         rate.date = DateTime.Parse(data["date"].ToString());
         int age = int.Parse(data["age"].ToString());
-        switch(age)
+        switch (age)
         {
             case 0:
                 rate.Age = Age.EighteenPlus;
@@ -345,7 +433,7 @@ public class Engine
                 break;
         }
         int service = int.Parse(data["service"].ToString());
-        switch(service)
+        switch (service)
         {
             case 0:
                 rate.Service = Service.SelfService;
@@ -359,7 +447,7 @@ public class Engine
 
         }
         int price = int.Parse(data["price"].ToString());
-        switch(price)
+        switch (price)
         {
             case 0:
                 rate.Price = Price.PriceLow;
@@ -450,7 +538,7 @@ public class Engine
         }
         return barRates;
     }
-    
+
     public static Bar GetBarByBarID(int barID)
     {
         ArrayList bars;
@@ -476,7 +564,7 @@ public class Engine
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
         parameters.Add(new SqlParameter("barId", bar.BarId));
-        
+
 
 
 
@@ -484,7 +572,7 @@ public class Engine
         parameters.Add(new SqlParameter("age21", int.Parse("0")));
         parameters.Add(new SqlParameter("age24", int.Parse("0")));
 
-        switch(bar.Age)
+        switch (bar.Age)
         {
             case Age.EighteenPlus:
                 parameters[1].Value = 1;
@@ -577,7 +665,7 @@ public class Engine
         parameters.Add(new SqlParameter("standup", bar.Music.StandUp));
         parameters.Add(new SqlParameter("photoUrl", bar.PhotoUrl));
 
-        
+
 
         insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_bar", parameters);
 
@@ -589,7 +677,7 @@ public class Engine
 
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
-        
+
         parameters.Add(new SqlParameter("userName", user.UserName));
         parameters.Add(new SqlParameter("password", user.Password));
         parameters.Add(new SqlParameter("age", user.Age));
@@ -723,7 +811,7 @@ public class Engine
         {
             foreach (DbDataRecord currentItem in challengeUser)
             {
-                switch(int.Parse(currentItem["id"].ToString()))
+                switch (int.Parse(currentItem["id"].ToString()))
                 {
                     case 1:
                         user.ChallengeUser.Dizengoff[0] = bool.Parse(currentItem["bar1"].ToString());
@@ -785,13 +873,14 @@ public class Engine
         }
     }
 
-    public static bool InsertUpdateDizengoffChallengeUserToDB(User user, int challengeID)
+    public static bool InsertUpdateDizengoffChallengeUserToDB(User user)
     {
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
 
         parameters.Add(new SqlParameter("userName", user.UserName));
-        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("id", 1));
+        parameters.Add(new SqlParameter("name", "Dizengoff"));
         parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Dizengoff[0]));
         parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Dizengoff[1]));
         parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Dizengoff[2]));
@@ -804,13 +893,14 @@ public class Engine
 
         return insertSucceeded;
     }
-    public static bool InsertUpdateRotchildChallengeUserToDB(User user, int challengeID)
+    public static bool InsertUpdateRotchildChallengeUserToDB(User user)
     {
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
 
         parameters.Add(new SqlParameter("userName", user.UserName));
-        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("id", 3));
+        parameters.Add(new SqlParameter("name", "Rotchild"));
         parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Rotchild[0]));
         parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Rotchild[1]));
         parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Rotchild[2]));
@@ -823,13 +913,14 @@ public class Engine
 
         return insertSucceeded;
     }
-    public static bool InsertUpdateIbnGabirolChallengeUserToDB(User user, int challengeID)
+    public static bool InsertUpdateIbnGabirolChallengeUserToDB(User user)
     {
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
 
         parameters.Add(new SqlParameter("userName", user.UserName));
-        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("id", 2));
+        parameters.Add(new SqlParameter("name", "IbnGabirol"));
         parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Ibngabirol[0]));
         parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Ibngabirol[1]));
         parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Ibngabirol[2]));
@@ -842,13 +933,14 @@ public class Engine
 
         return insertSucceeded;
     }
-    public static bool InsertUpdateJerusalemCityChallengeUserToDB(User user, int challengeID)
+    public static bool InsertUpdateJerusalemCityChallengeUserToDB(User user)
     {
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
 
         parameters.Add(new SqlParameter("userName", user.UserName));
-        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("id", 5));
+        parameters.Add(new SqlParameter("name", "JerusalemCity"));
         parameters.Add(new SqlParameter("bar1", user.ChallengeUser.JerusalemCity[0]));
         parameters.Add(new SqlParameter("bar2", user.ChallengeUser.JerusalemCity[1]));
         parameters.Add(new SqlParameter("bar3", user.ChallengeUser.JerusalemCity[2]));
@@ -861,13 +953,14 @@ public class Engine
 
         return insertSucceeded;
     }
-    public static bool InsertUpdateMahneYehudaChallengeUserToDB(User user, int challengeID)
+    public static bool InsertUpdateMahneYehudaChallengeUserToDB(User user)
     {
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
 
         parameters.Add(new SqlParameter("userName", user.UserName));
-        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("id", 4));
+        parameters.Add(new SqlParameter("name", "MahneYehuda"));
         parameters.Add(new SqlParameter("bar1", user.ChallengeUser.MahneYehuda[0]));
         parameters.Add(new SqlParameter("bar2", user.ChallengeUser.MahneYehuda[1]));
         parameters.Add(new SqlParameter("bar3", user.ChallengeUser.MahneYehuda[2]));
@@ -880,13 +973,14 @@ public class Engine
 
         return insertSucceeded;
     }
-    public static bool InsertUpdateItalyChallengeUserToDB(User user, int challengeID)
+    public static bool InsertUpdateItalyChallengeUserToDB(User user)
     {
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
 
         parameters.Add(new SqlParameter("userName", user.UserName));
-        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("id", 6));
+        parameters.Add(new SqlParameter("name", "Irland"));
         parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Italy[0]));
         parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Italy[1]));
         parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Italy[2]));
@@ -899,13 +993,14 @@ public class Engine
 
         return insertSucceeded;
     }
-    public static bool InsertUpdateIrlandChallengeUserToDB(User user, int challengeID)
+    public static bool InsertUpdateIrlandChallengeUserToDB(User user)
     {
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
 
         parameters.Add(new SqlParameter("userName", user.UserName));
-        parameters.Add(new SqlParameter("challengeId", challengeID));
+        parameters.Add(new SqlParameter("id", 7));
+        parameters.Add(new SqlParameter("name", "Irland"));
         parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Irland[0]));
         parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Irland[1]));
         parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Irland[2]));
@@ -918,8 +1013,8 @@ public class Engine
 
         return insertSucceeded;
     }
-    
-    public static bool InsertUpdateWorldBadgeToDB(User user, string badgeName, bool isDeserved)
+
+    public static bool InsertUpdateBadgeToDB(User user, string badgeName, bool isDeserved)
     {
         bool insertSucceeded;
         List<SqlParameter> parameters = new List<SqlParameter>();
@@ -932,7 +1027,7 @@ public class Engine
 
         return insertSucceeded;
     }
-    
+
     public static bool InsertUpdateScoreByUserName(User user, int score)
     {
         bool insertSucceeded;
@@ -944,6 +1039,48 @@ public class Engine
         insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_update_user_score", parameters);
 
         return insertSucceeded;
+    }
+
+    public static bool InsertNewUserToChallengeUserToDB(User user)
+    {
+        bool insertSucceeded = false;
+        List<string> names = new List<string> { "Dizengoff", "IbnGabirol", "Rotchild", "MahneYehuda", "JerusalemCity", "Italy", "Irland" };
+        for (int i = 0; i < 7; i++)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("id", i + 1));
+            parameters.Add(new SqlParameter("name", names[i]));
+            parameters.Add(new SqlParameter("userName", user.UserName));
+
+            insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_user_to_challengeUser", parameters);
+        }
+
+        return insertSucceeded;
+    }
+
+    public static bool InsertNewUserToBadgeToDB(User user)
+    {
+        bool insertSucceeded = false;
+        List<string> names = new List<string> { "TLV", "Jerusalem", "World" };
+        for (int i = 0; i < 3; i++)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("userName", user.UserName));
+            parameters.Add(new SqlParameter("badgeName", names[i]));
+
+            insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_user_to_badge", parameters);
+        }
+
+        return insertSucceeded;
+    }
+
+    public static void InitAll()
+    {
+        foreach(User user in Users)
+        {
+            InsertNewUserToChallengeUserToDB(user);
+        }
+        InsertNewUserToChallengeUserToDB(User);
     }
 }
 
