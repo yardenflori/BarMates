@@ -354,7 +354,7 @@ public class Engine
 
     public static void UpdateChallengeUserFields(User user, DbDataRecord data)
     {
-        switch(int.Parse(data["id"].ToString()))
+        switch (int.Parse(data["id"].ToString()))
         {
             case (1):
                 user.ChallengeUser.Dizengoff[0] = bool.Parse(data["bar1"].ToString());
@@ -1076,11 +1076,38 @@ public class Engine
 
     public static void InitAll()
     {
-        foreach(User user in Users)
+        foreach (User user in Users)
         {
             InsertNewUserToChallengeUserToDB(user);
         }
         InsertNewUserToChallengeUserToDB(User);
+    }
+
+    public static List<(string, int)> GetBestScoredUsers(int numOfBest)
+    {
+        List<(string, int)> users = new List<(string, int)>();
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        var usersDB = DBController.ExecuteStoredProcedure_Select("sp_get_sorted_users_by_scores", parameters);
+        if (usersDB.Count > 0)
+        {
+
+            foreach (DbDataRecord currentItem in usersDB)
+            {
+                if (numOfBest > 0)
+                {
+                    int score = int.Parse(currentItem["score"].ToString());
+                    string userName = currentItem["userName"].ToString();
+
+                    users.Add((userName, score));
+                    numOfBest--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        return users;
     }
 }
 
