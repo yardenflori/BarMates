@@ -22,7 +22,6 @@ public partial class Homepage : System.Web.UI.Page
     {
         string userName = DBController.GetUserName();
         User user = Engine.GetUserByUserName(userName);
-        Engine.InitAll();
         List<Bar> bars = user.GetBestBars(5, Engine.Bars);
         for (int i = 0; i <bars.Count; i++)
         {
