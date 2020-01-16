@@ -118,7 +118,7 @@ function initAgeSelect() {
     selectField.options.length = 0;
     selectField.options[selectField.length] = new Option("לחץ לבחירה", "0");
     selectField.options[0].disabled = true;
-    for (var i = 12; i <= 99; i++) {
+    for (var i = 18; i <= 99; i++) {
         $('#age').val(i);
         selectField.options[selectField.length] = new Option(i, i);
     }
