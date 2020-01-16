@@ -162,15 +162,15 @@ bar.Price.name = 'מחיר';
 bar.Price.options = [
     {
         id: 'Price0',
-        name: 'זול'
+        name: '$'
     },
     {
         id: 'Price1',
-        name: 'סביר'
+        name: '$$'
     },
     {
         id: 'Price2',
-        name: 'יקר'
+        name: '$$$'
     }
 ];
 bar.Service = new Object();
