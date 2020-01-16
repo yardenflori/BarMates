@@ -839,7 +839,7 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title activator grey-text text-darken-4">אוסקר ווילד<i class="material-icons right">more_vert</i></span>
-                            <p><a class="waves-effect waves-light btn" id="39z" onclick="myFunc(this.id)">דרג אותי!</a></p>
+                            <p><a class="waves-effect waves-light btn" id="39" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">אוסקר ווילד<i class="material-icons right">close</i></span>
