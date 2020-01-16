@@ -6,7 +6,7 @@
     "ChIJHdRoPtEpAxURbR1hoAFqREk", "ChIJzRINidYpAxUR4aSpuY7Svy8", "ChIJzaPwbdEpAxURY-_GIRkgFzc", "ChIJ1Qje4f5JHRURaFFjNKBPEts", "ChIJ75yU16dqHRUR175YJ_om7gc"];
 
 function myFunc(id) {
-    var loc = "BarRating.aspx?barId=" + ids[id];
+    var loc = "BarRating.aspx?barId=" + ids[id-1];
     location.href = loc;
 }
 

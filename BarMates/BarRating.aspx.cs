@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Web.Services;
 
@@ -148,6 +149,50 @@ public partial class BarRating : System.Web.UI.Page
         Engine.InsertUpdateUserCountersToDB(user);
         
         return insertSucceeded;
+    }
+
+
+    [WebMethod]
+    public static string GetBarDetails(String barGoogleId)
+    {
+        ArrayList bars;
+        JObject barDetails = new JObject();
+        bool saveSucceeded = true;
+        JObject jsonId = new JObject();
+        string barId="";
+        try
+        {
+            jsonId = JsonConvert.DeserializeObject<JObject>(barGoogleId);
+            barId = jsonId["barGoogleId"].ToString();
+        }
+
+        catch
+        {
+            saveSucceeded = false;
+        }
+
+        if (saveSucceeded)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            
+            parameters.Add(new SqlParameter("barId", barId.GetHashCode()));
+
+            bars = DBController.ExecuteStoredProcedure_Select("sp_get_bar_by_barId", parameters);
+
+            if (bars.Count == 1)
+            {
+                foreach (DbDataRecord currentItem in bars)
+                {
+                    barDetails["barId"] = currentItem["barGoogleId"].ToString();
+                    barDetails["barName"] = currentItem["barName"].ToString();
+                    barDetails["barAddress"] = currentItem["Address"].ToString();
+                    barDetails["barPhotoURL"] = currentItem["photoUrl"].ToString();
+                }
+            }
+
+        }
+        return JsonConvert.SerializeObject(barDetails);
+
     }
 
 

@@ -489,7 +489,9 @@ function initialize() {
             $('.main_content input').prop('disabled', true);
             $('#savebtn').addClass('disabled');
         }
+        
     });
+    
 }
 function isBar(place) {  
     if (place.types.includes("bar"))
@@ -532,13 +534,12 @@ function getUrlParam(parameter, defaultvalue) {
 
 //if redirected from challeneges hide search bar
 window.onload = function () {
-    var mytext = getUrlParam('barId', 'Empty');
+    var barIdFromUrl = getUrlParam('barId', 'Empty');
     var x = document.getElementById("bar_autocomplete_div");
     var div = document.getElementById('barname');
-    if (mytext != 'Empty') {
+    if (barIdFromUrl != 'Empty') {
         x.style.display = "none";
-        this.barId = mytext;
-        div.innerHTML += '<br><p>' + this.barId + '</p > ';
+        fillBarDetails(barIdFromUrl);
         div.style.cssText = "width:800px; margin:0 auto; font-size: larger; font-weight: bolder; direction: rtl; color: #166678; margin: 10px 0!important;"; 
         showBarCriterions();
     }
@@ -546,3 +547,28 @@ window.onload = function () {
 
 
 };
+
+function fillBarDetails(barIdFromUrl) {
+    var tmp = new Object();
+    tmp.barGoogleId = barIdFromUrl;
+    var barGoogleId = JSON.stringify({ 'barGoogleId': JSON.stringify(tmp) });
+    $.ajax({
+        type: "POST",
+        url: 'BarRating.aspx/GetBarDetails',
+        contentType: "application/json; charset=utf-8",
+        data: barGoogleId,
+        dataType: "json",
+        success: function (data) {
+            var barDetails = JSON.parse(data.d);
+            barId = barDetails.barId;
+            barName = barDetails.barName;
+            var div = document.getElementById('barname');
+            div.innerHTML += '<br><p>' + barName + '</p > ';
+            barAddress = barDetails.barAddress;
+            barPhotoURL = barDetails.barPhotoURL;
+        },
+        error: function (errMsg) {
+            showError('חלה שגיאה');
+        }
+    });
+}
