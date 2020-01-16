@@ -56,7 +56,12 @@
     </header>
     <main>
         <div class="card">
-            <div id="contact-title">פניה חדשה:</div>
+            <div id="contact-title"> פניה חדשה: </div>
+            <p style="color: #166678;">
+                יש לך רעיון לאתגר מגניב?<br />
+                חסרה לך תגית חיפוש או דירוג?<br />
+                שתפו אותנו!
+            </p>
             <div id="contact-div">
                 <div class="contect_form">
                     <div class="row">

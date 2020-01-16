@@ -58,6 +58,9 @@ public partial class NewUser : System.Web.UI.Page
                 parameters.Add(new SqlParameter("password", userDetails["password"].ToString()));
                 parameters.Add(new SqlParameter("age", int.Parse(userDetails["age"].ToString())));
                 DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_user", parameters);
+                User user = Engine.GetUserByUserName(userName);
+                Engine.InsertNewUserToBadgeToDB(user);
+                Engine.InsertNewUserToChallengeUserToDB(user);
             }
         }
         return returnVal;
