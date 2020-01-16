@@ -1097,7 +1097,7 @@ public class Engine
                 {
                     int score = int.Parse(currentItem["score"].ToString());
                     string userName = currentItem["userName"].ToString();
-                    Tuple<string, int> tup = new Tuple<string, int> (userName, score);
+                    Tuple<string, int> tup = new Tuple<string, int>(userName, score);
                     users.Add(tup);
                     numOfBest--;
                 }
@@ -1108,6 +1108,39 @@ public class Engine
             }
         }
         return users;
+    }
+
+    public static List<string> GetAllUserBadges()
+    {
+        ArrayList badges;
+        List<string> res = new List<string>();
+        List<SqlParameter> parameters = new List<SqlParameter>();
+        parameters.Add(new SqlParameter("userName", User.UserName));
+        badges = DBController.ExecuteStoredProcedure_Select("sp_get_badges_by_userName", parameters);
+        if (badges.Count > 0)
+        {
+            foreach (DbDataRecord currentItem in badges)
+            {
+                var s = currentItem["badgeName"].ToString();
+                switch (s)
+                {
+                    case "World":
+                        if (bool.Parse(currentItem["isdeserved"].ToString()))
+                            res.Add("world");
+                        break;
+                    case "TLV":
+                        if (bool.Parse(currentItem["isdeserved"].ToString()))
+                            res.Add("tlv");
+                        break;
+                    case "Jerusalem":
+                        if (bool.Parse(currentItem["isdeserved"].ToString()))
+                            res.Add("jerus");
+                        break;
+                }
+            }
+            return res;
+        }
+        return null;
     }
 }
 

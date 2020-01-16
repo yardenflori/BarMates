@@ -45,23 +45,13 @@ public partial class Homepage : System.Web.UI.Page
     [WebMethod]
     public static string GetUserStatus()
     {
-        JObject userStatus = new JObject();
-        userStatus["userName"] = DBController.GetUserName();
-        userStatus["score"] = Engine.User.Score;
-        List<string> challenges = new List<string>();
-        if (Engine.User.IsDeservedAWorldBadge())
+        List<string> challenges = Engine.GetAllUserBadges();
+        JObject userStatus = new JObject
         {
-            challenges.Add("world");
-        }
-        if (Engine.User.IsDeservedATLVBadge())
-        {
-            challenges.Add("tlv");
-        }
-        if (Engine.User.IsDeservedAJerusalemBadge())
-        {
-            challenges.Add("jerus");
-        }
-        userStatus["challenges"] = JsonConvert.SerializeObject(challenges);
+            ["userName"] = DBController.GetUserName(),
+            ["score"] = Engine.User.Score,
+            ["challenges"] = JsonConvert.SerializeObject(challenges)
+        };
         return JsonConvert.SerializeObject(userStatus);
     }
 }

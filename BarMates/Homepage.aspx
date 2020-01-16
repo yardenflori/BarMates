@@ -73,7 +73,7 @@
                     <span>ההישגים שלך</span>                  
                 </div>
                 <div>
-                      <img id="jerus" class="challenge-img hide" src="images/chall/jerus.jpeg" />
+                      <img id="jerus" class="challenge-img hide" src="images/chall/jerus.jpeg" style="height:114px; width:110px"/>
                     <img id="tlv" class="challenge-img hide" src="images/chall/tlv.jpeg" />
                     <img id="world" class="challenge-img hide" src="images/chall/world.jpeg" />
                 </div>
