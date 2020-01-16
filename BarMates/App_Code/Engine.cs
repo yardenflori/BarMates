@@ -980,7 +980,7 @@ public class Engine
 
         parameters.Add(new SqlParameter("userName", user.UserName));
         parameters.Add(new SqlParameter("id", 6));
-        parameters.Add(new SqlParameter("name", "Irland"));
+        parameters.Add(new SqlParameter("name", "Italy"));
         parameters.Add(new SqlParameter("bar1", user.ChallengeUser.Italy[0]));
         parameters.Add(new SqlParameter("bar2", user.ChallengeUser.Italy[1]));
         parameters.Add(new SqlParameter("bar3", user.ChallengeUser.Italy[2]));
@@ -1078,9 +1078,11 @@ public class Engine
     {
         foreach (User user in Users)
         {
-            InsertNewUserToChallengeUserToDB(user);
+            //InsertNewUserToChallengeUserToDB(user);
+            InsertNewUserToBadgeToDB(user);
         }
-        InsertNewUserToChallengeUserToDB(User);
+        InsertNewUserToBadgeToDB(User);
+        //InsertNewUserToChallengeUserToDB(User);
     }
 
     public static List<Tuple<string, int>> GetBestScoredUsers(int numOfBest)
