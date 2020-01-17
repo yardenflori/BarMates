@@ -185,11 +185,11 @@
                             <img class="activator" src="images/dizi/rutina.png" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">רוטינא<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">רוטינה<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn" id="7" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">רוטינא<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">רוטינה<i class="material-icons right">close</i></span>
                             <br />
                             <p>כתובת: פרישמן 41, תל אביב יפו</p>
                             <br />
@@ -285,11 +285,11 @@
                             <img class="activator" src="images/iben/square.png" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">המשבצת<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">משבצת<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn" id="12" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">המשבצת<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">משבצת<i class="material-icons right">close</i></span>
                             <br />
                             <p>כתובת: שדרות דוד המלך 1, תל אביב יפו</p>
                             <br />
@@ -366,11 +366,11 @@
                             <img class="activator" src="images/rotshild/speak.jpg" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">ספיקאיזי<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">speakeasy<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn" id="16" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">ספיקאיזי<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">speakeasy<i class="material-icons right">close</i></span>
                             <br />
                             <p>כתובת: שדרות רוטשילד 24, תל אביב יפו</p>
                             <br />
@@ -419,15 +419,15 @@
                             <img class="activator" src="images/mahne/fredy.jpg" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">פרדי לימן<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">פרדי למון<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn" id="18" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">">פרדי לימן<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">פרדי למון<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 142, תל אביב יפו</p>
+                            <p>כתובת: עץ חיים 19, ירושלים</p>
                             <br />
-                            <p>טלפון: 054-796-7995</p>
+                            <p>טלפון: 052-440-5591</p>
                         </div>
                     </div>
                 </div>
@@ -443,9 +443,9 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">השכנה<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 39, תל אביב יפו</p>
+                            <p>כתובת: בית יעקב 11, ירושלים</p>
                             <br />
-                            <p>טלפון: 03-605-0509</p>
+                            <p>טלפון: 02-537-59169</p>
                         </div>
                     </div>
                 </div>
@@ -462,9 +462,9 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">קזינו דה פריס<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 60, תל אביב יפו</p>
+                            <p>כתובת: מחנה יהודה 3, ירושלים</p>
                             <br />
-                            <p>טלפון: 073-757-6245</p>
+                            <p>טלפון: 02-650-4235</p>
                         </div>
                     </div>
 
@@ -481,8 +481,9 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">שוקא<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 24, תל אביב יפו</p>
+                            <p>כתובת: האגוז, ירושלים</p>
                             <br />
+                            <p>טלפון: 054-946-6554</p>
                         </div>
                     </div>
                 </div>
@@ -498,9 +499,8 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">הטיפה<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 32, תל אביב יפו</p>
+                            <p>כתובת: הדקל 2, ירושלים</p>
                             <br />
-                            <p>טלפון: 072-395-2045</p>
                         </div>
                     </div>
                 </div>
@@ -521,11 +521,11 @@
                             <p><a class="waves-effect waves-light btn" id="23" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">">קקטוס 9<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">קקטוס 9<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 142, תל אביב יפו</p>
+                            <p>כתובת: שושן 4, ירושלים</p>
                             <br />
-                            <p>טלפון: 054-796-7995</p>
+                            <p>טלפון: 054-482-3671</p>
                         </div>
                     </div>
                 </div>
@@ -541,9 +541,9 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">התקליט<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 39, תל אביב יפו</p>
+                            <p>כתובת: הלני המלכה 7, ירושלים</p>
                             <br />
-                            <p>טלפון: 03-605-0509</p>
+                            <p>טלפון: 02-624-4073</p>
                         </div>
                     </div>
                 </div>
@@ -560,9 +560,9 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">זבוטינסקי בר<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 60, תל אביב יפו</p>
+                            <p>כתובת: 1 94147, שמעון בן שטח, ירושלים</p>
                             <br />
-                            <p>טלפון: 073-757-6245</p>
+                            <p>טלפון: 055-725-1561</p>
                         </div>
                     </div>
 
@@ -579,8 +579,9 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">גטסבי<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 24, תל אביב יפו</p>
+                            <p>כתובת: הלל 18, ירושלים</p>
                             <br />
+                            <p>טלפון: 054-814-7143</p>
                         </div>
                     </div>
                 </div>
@@ -596,9 +597,9 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">גלן<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: שדרות רוטשילד 32, תל אביב יפו</p>
+                            <p>כתובת: שלומציון המלכה 18, ירושלים</p>
                             <br />
-                            <p>טלפון: 072-395-2045</p>
+                            <p>טלפון: 054-901-0076</p>
                         </div>
                     </div>
                 </div>
@@ -744,11 +745,11 @@
                             <img class="activator" src="images/irish/molli.jpg" />
                         </div>
                         <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">מולי בלום<i class="material-icons right">more_vert</i></span>
+                            <span class="card-title activator grey-text text-darken-4">מולי בלומס<i class="material-icons right">more_vert</i></span>
                             <p><a class="waves-effect waves-light btn" id="34" onclick="myFunc(this.id)">דרג אותי!</a></p>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">מולי בלום<i class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">מולי בלומס<i class="material-icons right">close</i></span>
                             <br />
                             <p>כתובת: מנדלי מוכר ספרים 2, תל אביב יפו</p>
                             <br />
