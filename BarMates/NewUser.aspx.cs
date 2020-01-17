@@ -52,6 +52,7 @@ public partial class NewUser : System.Web.UI.Page
 
                 returnVal = "Homepage";
                 HttpContext.Current.Session["userName"] = userName;
+                HttpContext.Current.Session["needUpdate"] = "1";
 
                 parameters = new List<SqlParameter>();
                 parameters.Add(new SqlParameter("user_name", userDetails["userName"].ToString()));

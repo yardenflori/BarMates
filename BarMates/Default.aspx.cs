@@ -40,6 +40,7 @@ public partial class _Default : System.Web.UI.Page
             else
             {
                 HttpContext.Current.Session["userName"] = userName;
+                HttpContext.Current.Session["needUpdate"] = "1";
             }
         }
         return isSucceeded;

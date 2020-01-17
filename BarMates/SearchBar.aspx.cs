@@ -48,20 +48,15 @@ public partial class SearchBar : System.Web.UI.Page
             }
             barsList = SearchBarsInDb(choisesList);
 
-            for (int i = 0; i < barsList.Count; i++)
+            /*for (int i = 0; i < barsList.Count; i++)
             {
                 Bar.UpdateBarPhoto(barsList[i]);
-            }
+            }*/
         }
         return JsonConvert.SerializeObject(barsList);
     }
     public static List<Bar> SearchBarsInDb(List<KeyValuePair<string, int>> choisesList)
-    {//הפונקציה מקבלת רשימה של 
-     //KeyValuePair<int, int> 
-     //id =beer, value-1 or 0
-     //ומחזירה את רשימה של הברים מסוג בר
-     // Yarden should implement this with SP
-
+    {
         List<Bar> barsList = new List<Bar>();
         ArrayList searchresults;
         List<SqlParameter> parameters = new List<SqlParameter>();

@@ -42,6 +42,7 @@
                     <a id="SearchBar" href="SearchBar.aspx">חיפוש בר</a>
                     <a id="BarRating" href="BarRating.aspx">דירוג בר</a>
                     <a id="challenges" href="challenges.aspx">אתגרים</a>
+                    <a id="leaderboard" href="leaderboard.aspx">המובילים</a>
                     <a id="Contact" href="Contact.aspx" class="active">צור קשר</a>
 
                 </div>
@@ -60,7 +61,7 @@
             <p style="color: #166678;">
                 יש לך רעיון לאתגר מגניב?<br />
                 חסרה לך תגית חיפוש או דירוג?<br />
-                שתפו אותנו!
+                שתף אותנו!
             </p>
             <div id="contact-div">
                 <div class="contect_form">

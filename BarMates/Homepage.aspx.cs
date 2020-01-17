@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Services;
 
 public partial class Homepage : System.Web.UI.Page
@@ -22,24 +24,49 @@ public partial class Homepage : System.Web.UI.Page
     {
         string userName = DBController.GetUserName();
         User user = Engine.GetUserByUserName(userName);
-        List<Bar> bars = user.GetBestBars(5, Engine.Bars);
-        for (int i = 0; i <bars.Count; i++)
+        List<Bar> bestBars = new List<Bar>();
+        bool isSucceeded = true;
+        Bar bar = new Bar();
+
+        if (HttpContext.Current.Session["needUpdate"].ToString() == "1")
         {
-            Bar.UpdateBarPhoto(bars[i]);
+            bestBars = user.GetBestBars(5, Engine.Bars);
+            HttpContext.Current.Session["bestBar1"] = JsonConvert.SerializeObject(bestBars[0]);
+            HttpContext.Current.Session["bestBar2"] = JsonConvert.SerializeObject(bestBars[1]);
+            HttpContext.Current.Session["bestBar3"] = JsonConvert.SerializeObject(bestBars[2]);
+            HttpContext.Current.Session["bestBar4"] = JsonConvert.SerializeObject(bestBars[3]);
+            HttpContext.Current.Session["bestBar5"] = JsonConvert.SerializeObject(bestBars[4]);
+
+            
+
+            HttpContext.Current.Session["needUpdate"] = "0";
         }
-        /*List<Bar> bars = new List<Bar>();
-        List<SqlParameter> parameters = new List<SqlParameter>();
-        var barsDB = DBController.ExecuteStoredProcedure_Select("sp_get_all_bars", parameters);
-        if (barsDB.Count > 0)
+
+        else
         {
-            foreach (DbDataRecord currentItem in barsDB)
+            for (int i = 0; i < 5; i++)
             {
-                Bar newBar = new Bar();
-                Engine.UpdateBarFields(newBar, currentItem);
-                bars.Add(newBar);
+                try
+                {
+                    bar = JsonConvert.DeserializeObject<Bar>(HttpContext.Current.Session["bestBar" + (i+1).ToString()].ToString());
+                }
+                catch
+                {
+                    isSucceeded = false;
+                }
+                if (isSucceeded)
+                {
+                    bestBars.Add(bar);
+                }
             }
-        }*/
-        return JsonConvert.SerializeObject(bars);
+            for (int i = 0; i < bestBars.Count; i++)
+            {
+                Bar.UpdateBarPhoto(bestBars[i]);
+            }
+        }
+        
+        
+        return JsonConvert.SerializeObject(bestBars);
     }
     [WebMethod]
     public static string GetUserStatus()

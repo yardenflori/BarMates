@@ -263,10 +263,14 @@ function saveRate() {
     if (error != "") {
         showError(error);
     }
-    else{
+    else {
+        $('.modal').modal({ dismissible: false });
         fillRateObject();
         saveRateInDB();
     }
+}
+function goToHomePage() {
+    window.location.href = "Homepage.aspx";
 }
 function saveRateInDB() {
     showLoader('עוד רגע... שומר דירוג');
@@ -279,9 +283,17 @@ function saveRateInDB() {
         dataType: "json",
         success: function (data) {
             hideLoader();
-            if (data.d == true) {
-                showConfirm('השמירה בוצעה בהצלחה');
-                window.location.href = "Homepage.aspx";
+            var RateToReturn = JSON.parse(data.d);
+
+            if (RateToReturn!=null && RateToReturn.insertSucceeded != null && RateToReturn.insertSucceeded == 'True') {
+                if (RateToReturn.challengeWin != null && RateToReturn.challengeWin != "") {
+                    $('#modal_text').text('כל הכבוד! ניצחת באתגר ' + RateToReturn.challengeWin);
+                }
+                else {
+                    $('#modal_text').text('השמירה בוצעה בהצלחה');
+                }
+                $('#modal1').modal('open');
+               
             }
             else {
                 showError('חלה שגיאה');

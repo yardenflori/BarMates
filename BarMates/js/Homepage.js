@@ -357,7 +357,7 @@ function initUserStatus() {
             $('#score').text(userStatus.score + ' נקודות');
 
             var challengesList = JSON.parse(userStatus.challenges);
-            if (challengesList.length > 0) {
+            if (challengesList!=null && challengesList.length > 0) {
                 $('#your_challenges').removeClass('hide');
                 for (var i = 0; i < challengesList.length; i++) {
                     $('#' + challengesList[i]).removeClass('hide');

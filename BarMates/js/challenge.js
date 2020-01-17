@@ -13,8 +13,50 @@ function myFunc(id) {
     location.href = loc;
 }
 
+function getIndex(id) {
+    var index = -1;
+    for (var i = 0; i < ids.length; i++) {
+        if (id == ids[i]) {
+            index = i + 1;
+        }
+    }
+    return index;
+}
+function getRatedBars() {
+    showLoader('עוד רגע... טוען נתונים');
+    $.ajax({
+        type: "POST",
+        url: 'challenges.aspx/RatedBars',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            hideLoader();
+            var userRates = JSON.parse(data.d);
+            if (userRates != null) {
+                for (var i = 0; i < userRates.length; i++) {
 
+                    var index = getIndex(userRates[i]);
+                    if (index != -1) {
+                        var doneIcon = $('<i class="material-icons left" style="">done</i>');
+                        $('#' + index).parent().parent().append(doneIcon);
+                    }
+                    
+                }
+               
+
+            }
+            else {
+                showError('חלה שגיאה');
+            }
+        },
+        error: function (errMsg) {
+            hideLoader();
+            showError('חלה שגיאה');
+        }
+    });
+}
 $(document).ready(function () {
     $('.collapsible').collapsible();
+    getRatedBars();
 });
 

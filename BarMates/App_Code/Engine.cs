@@ -414,6 +414,7 @@ public class Engine
     public static void UpdateRateFields(Rate rate, DbDataRecord data)
     {
         rate.UserName = data["userName"].ToString();
+        
         rate.BarId = int.Parse(data["barId"].ToString());
         rate.date = DateTime.Parse(data["date"].ToString());
         int age = int.Parse(data["age"].ToString());
@@ -1085,32 +1086,7 @@ public class Engine
         //InsertNewUserToChallengeUserToDB(User);
     }
 
-    public static List<Tuple<string, int>> GetBestScoredUsers(int numOfBest)
-    {
-        List<Tuple<string, int>> users = new List<Tuple<string, int>>();
-        List<SqlParameter> parameters = new List<SqlParameter>();
-        var usersDB = DBController.ExecuteStoredProcedure_Select("sp_get_sorted_users_by_scores", parameters);
-        if (usersDB.Count > 0)
-        {
-
-            foreach (DbDataRecord currentItem in usersDB)
-            {
-                if (numOfBest > 0)
-                {
-                    int score = int.Parse(currentItem["score"].ToString());
-                    string userName = currentItem["userName"].ToString();
-                    Tuple<string, int> tup = new Tuple<string, int>(userName, score);
-                    users.Add(tup);
-                    numOfBest--;
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-        return users;
-    }
+   
 
     public static List<string> GetAllUserBadges()
     {

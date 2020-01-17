@@ -37,7 +37,19 @@
     font-size: 36px;
     margin:10px 0 !important;
 }
-.criterion_title i{
+#modal_text {
+    color: #166678;
+    font-size: 36px;
+    margin: 10px 0 !important;
+    text-align: center;
+}
+.modal-footer {
+    text-align: center !important;
+}
+.modal-footer a {
+    color:white;
+}
+.criterion_title i {
     color: #166678;
     font-size: 36px;
 }

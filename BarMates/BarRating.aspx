@@ -42,6 +42,7 @@
                     <a id="SearchBar" href="SearchBar.aspx">חיפוש בר</a>
                     <a id="BarRating"  href="BarRating.aspx" class="active">דירוג בר</a>
                     <a id="challenges" href="challenges.aspx">אתגרים</a>
+                    <a id="leaderboard" href="leaderboard.aspx">המובילים</a>
                     <a id="Contact" href="Contact.aspx">צור קשר</a>
 
                 </div>
@@ -142,6 +143,14 @@
             </div>
         </div>
     </main>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div id="modal_text"></div>
+        </div>
+        <div class="modal-footer">
+            <a onclick="goToHomePage()" class="btn modal-close waves-effect waves-green btn-flat">סיום</a>
+        </div>
+    </div>
 </body>
 <script src="js/jquery-1.11.3.js"></script>
 <script src="js/materialize.min.js"></script>

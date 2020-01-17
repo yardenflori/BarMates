@@ -12,6 +12,25 @@
     <link href="css/leaderboard.css" rel="stylesheet" />
 </head>
 <body>
+                 <!--LOADER-->
+    <div id="screen_loader" class="hide">
+        <div id="screen_loader_inner">
+            <div class="preloader-wrapper active">
+                <div class="spinner-layer">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="loader_text"></div>
+        </div>
+    </div> 
     <header>
         <div id="toolbar">
             <div class="logo_wrapper">
@@ -19,9 +38,12 @@
             </div>
             <div class="topnav" id="myTopnav">
                 <div class="topnav_inner">
-                    <a id="Homepage" href="Homepage.aspx">ראשי</a>
+                   <a id="Homepage" href="Homepage.aspx" >ראשי</a>
                     <a id="SearchBar" href="SearchBar.aspx">חיפוש בר</a>
-                    <a id="BarRating" href="BarRating.aspx">דירוג בר</a>
+                    <a id="BarRating"  href="BarRating.aspx">דירוג בר</a>
+                    <a id="challenges" href="challenges.aspx">אתגרים</a>
+                    <a id="leaderboard" href="leaderboard.aspx"  class="active">המובילים</a>
+                    <a id="Contact" href="Contact.aspx">צור קשר</a>
                 </div>
             </div>
             <a id="iconnav" class="icon" onclick="ToggleNav()">
@@ -34,35 +56,22 @@
     </header>
     <main>
         <div class="card">
-            <div class="row">
-                <h2 class="criterion_title">טבלת המובילים</h2>
+            <div id="leadersTitleDiv" class="row">
+                  <img id="leaderImg" src="images/extratop10.png" />
+                <div id="leaderTitle" class="criterion_title">טבלת המובילים</div>
+              
             </div>
             <div class="container">
-                <table class="centered">
+                <table id="leaders" class="centered highlight">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>מקום</th>
                             <th>שם</th>
                             <th>ניקוד</th>
                         </tr>
                     </thead>
-
-                    <tbody>
-                        <tr>
-                            <td class="counterCell"></td>
-                            <td>Alvin</td>                            
-                            <td>$0.87</td>
-                        </tr>
-                        <tr>
-                             <td class="counterCell"></td>
-                            <td>Alan</td>
-                            <td>$3.76</td>
-                        </tr>
-                        <tr>
-                             <td class="counterCell"></td>
-                            <td>Jonathan</td>
-                            <td>$7.00</td>
-                        </tr>
+                    <tbody id="tbody">
+                        
                     </tbody>
                 </table>
             </div>
