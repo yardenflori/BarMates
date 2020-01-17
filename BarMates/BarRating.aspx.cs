@@ -18,13 +18,31 @@ public partial class BarRating : System.Web.UI.Page
         }
     }
     [WebMethod]
+    private static bool IsSpamRate(Rate rate)
+    {
+        int cnt = 0;
+        var rateVector = rate.RateVector();
+        for (int i = 0; i < rateVector.Length; i++)
+        {
+            if (rateVector[i] == 1)
+            {
+                cnt++;
+                if (cnt >= 2)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    [WebMethod]
     public static bool SaveRate(string rate)
     {
         bool saveSucceeded = true;
         JObject jsonRate = null;
         try
         {
-            jsonRate = JsonConvert.DeserializeObject<JObject>(rate);           
+            jsonRate = JsonConvert.DeserializeObject<JObject>(rate);
         }
         catch
         {
@@ -32,12 +50,19 @@ public partial class BarRating : System.Web.UI.Page
         }
         if (saveSucceeded)
         {
-            Rate newRate = Rate.ParseObjectToRate(jsonRate); 
-            saveSucceeded = InsertNewRatingToDB(newRate);
+            Rate newRate = Rate.ParseObjectToRate(jsonRate);
+            if (IsSpamRate(newRate))
+            {
+                return true;
+            }
+            else
+            {
+                saveSucceeded = InsertNewRatingToDB(newRate);
+            }
         }
         return saveSucceeded;
     }
-    
+
     public static bool InsertNewRatingToDB(Rate rate)
     {
         bool insertSucceeded, firstRate;
@@ -150,7 +175,6 @@ public partial class BarRating : System.Web.UI.Page
         
         return insertSucceeded;
     }
-
 
     [WebMethod]
     public static string GetBarDetails(String barGoogleId)
