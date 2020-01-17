@@ -19,7 +19,25 @@ public partial class BarRating : System.Web.UI.Page
         }
     }
     [WebMethod]
-    public static string SaveRate(string rate)
+    private static bool IsSpamRate(Rate rate)
+    {
+        int cnt = 0;
+        var rateVector = rate.RateVector();
+        for (int i = 0; i < rateVector.Length; i++)
+        {
+            if (rateVector[i] == 1)
+            {
+                cnt++;
+                if (cnt >= 2)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    [WebMethod]
+    public static bool SaveRate(string rate)
     {
         bool saveSucceeded = true;
         JObject RateToReturn=new JObject();
@@ -28,7 +46,7 @@ public partial class BarRating : System.Web.UI.Page
         JObject jsonRate = null;
         try
         {
-            jsonRate = JsonConvert.DeserializeObject<JObject>(rate);           
+            jsonRate = JsonConvert.DeserializeObject<JObject>(rate);
         }
         catch
         {
@@ -174,7 +192,6 @@ public partial class BarRating : System.Web.UI.Page
         rateToReturn["challengeWin"] = challengeWin;
         return rateToReturn;
     }
-
 
     [WebMethod]
     public static string GetBarDetails(String barGoogleId)
