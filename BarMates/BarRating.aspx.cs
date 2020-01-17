@@ -37,7 +37,7 @@ public partial class BarRating : System.Web.UI.Page
         return true;
     }
     [WebMethod]
-    public static bool SaveRate(string rate)
+    public static string SaveRate(string rate)
     {
         bool saveSucceeded = true;
         JObject RateToReturn=new JObject();
@@ -80,9 +80,7 @@ public partial class BarRating : System.Web.UI.Page
             barParameters.Add(new SqlParameter("@barName", rate.BarName));
             barParameters.Add(new SqlParameter("@photoUrl", rate.photoURL));
             barParameters.Add(new SqlParameter("@Address", rate.address));
-            insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_bar", barParameters);
-
-            
+            insertSucceeded = DBController.ExecuteStoredProcedure_InsertOrUpdateOrDelete("sp_insert_new_bar", barParameters); 
         }
         if (insertSucceeded == true)
         {
