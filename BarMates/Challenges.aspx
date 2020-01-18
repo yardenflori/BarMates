@@ -41,7 +41,7 @@
                     <a id="SearchBar" href="SearchBar.aspx">חיפוש בר</a>
                     <a id="BarRating" href="BarRating.aspx">דירוג בר</a>
                     <a id="challenges" href="challenges.aspx" class="active">אתגרים</a>
-                    <a id="leaderboard" href="leaderboard.aspx">המובילים</a>
+                    <a id="leaderboard" href="leaderboard.aspx">המבוסמים</a>
                     <a id="Contact" href="Contact.aspx">צור קשר</a>
                 </div>
             </div>
