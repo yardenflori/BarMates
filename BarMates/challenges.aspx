@@ -11,7 +11,7 @@
     <link href="css/challenge.css" rel="stylesheet" />
 </head>
 <body>
-             <!--LOADER-->
+    <!--LOADER-->
     <div id="screen_loader" class="hide">
         <div id="screen_loader_inner">
             <div class="preloader-wrapper active">
@@ -29,7 +29,7 @@
             </div>
             <div class="loader_text"></div>
         </div>
-    </div> 
+    </div>
     <header>
         <div id="toolbar">
             <div class="logo_wrapper">
@@ -55,6 +55,12 @@
     </header>
     <main>
         <div class="card">
+            <div class="row">
+                <h3>ברוך הבא לעמוד האתגרים!</h3>
+            </div>
+            <div class="row">
+                <h5>דרג כמה שיותר ברים מהאתגרים העומדים בפנייך, צבור נקודות, קבל באדג'ים ותהילת עולם</h5>
+            </div>
             <div class="row">
                 <div class="col">
                     <h3>אתגרי תל אביב</h3>
@@ -634,9 +640,9 @@
                         <div class="card-reveal">
                             <span class="card-title grey-text text-darken-4">ברדק<i class="material-icons right">close</i></span>
                             <br />
-                            <p>כתובת: ברקת 9, פתח תקווה</p>
+                            <p>כתובת: קרן היסוד 38, ירושלים</p>
                             <br />
-                            <p>טלפון: 03-654-5558</p>
+                            <p>טלפון: 1599-599779</p>
                         </div>
                     </div>
                 </div>

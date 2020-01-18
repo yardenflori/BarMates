@@ -319,7 +319,7 @@ function buildCarouselItem(barId, barName, barPhoto) {
     $('#carousel').append(divCarouselItem);
 }
 function initCarousel() {
-    showLoader('BarMates, making you happy hour happier')
+    showLoader('BarMates, making your happy hour happier')
     $.ajax({
         type: "POST",
         url: 'Homepage.aspx/GetUserBars',
