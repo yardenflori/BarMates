@@ -18,24 +18,7 @@ public partial class BarRating : System.Web.UI.Page
             Response.Redirect("Default.aspx");
         }
     }
-    [WebMethod]
-    private static bool IsSpamRate(Rate rate)
-    {
-        int cnt = 0;
-        var rateVector = rate.RateVector();
-        for (int i = 0; i < rateVector.Length; i++)
-        {
-            if (rateVector[i] == 1)
-            {
-                cnt++;
-                if (cnt >= 2)
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+    
     [WebMethod]
     public static string SaveRate(string rate)
     {
