@@ -1043,30 +1043,39 @@ public class User
         Engine.InsertUpdateScoreByUserName(this, Score);
     }
 
-    public bool IsDeservedAWorldBadge()
+    public bool IsDeservedAWorldBadge(Bar bar)
     {
-        if (IsIrlandFinished() && IsItalyFinished())
+        if (Engine.Challenges.Irland.Contains(bar.BarId) || Engine.Challenges.Italy.Contains(bar.BarId))
         {
-            Engine.InsertUpdateBadgeToDB(this, "World", true);
-            return true;
+            if (IsIrlandFinished() && IsItalyFinished())
+            {
+                Engine.InsertUpdateBadgeToDB(this, "World", true);
+                return true;
+            }
         }
         return false;
     }
-    public bool IsDeservedATLVBadge()
+    public bool IsDeservedATLVBadge(Bar bar)
     {
-        if (IsDizengoffFinished() && IsIbnGabirolFinished() && IsRotchildFinished())
+        if (Engine.Challenges.Dizengoff.Contains(bar.BarId) || Engine.Challenges.Ibngabirol.Contains(bar.BarId) || Engine.Challenges.Rotchild.Contains(bar.BarId))
         {
-            Engine.InsertUpdateBadgeToDB(this, "TLV", true);
-            return true;
+            if (IsDizengoffFinished() && IsIbnGabirolFinished() && IsRotchildFinished())
+            {
+                Engine.InsertUpdateBadgeToDB(this, "TLV", true);
+                return true;
+            }
         }
         return false;
     }
-    public bool IsDeservedAJerusalemBadge()
+    public bool IsDeservedAJerusalemBadge(Bar bar)
     {
-        if (IsJerusalemCityFinished() && IsMahneYehudaFinished())
+        if (Engine.Challenges.JerusalemCity.Contains(bar.BarId) || Engine.Challenges.MahneYehuda.Contains(bar.BarId))
         {
-            Engine.InsertUpdateBadgeToDB(this, "Jerusalem", true);
-            return true;
+            if (IsJerusalemCityFinished() && IsMahneYehudaFinished())
+            {
+                Engine.InsertUpdateBadgeToDB(this, "Jerusalem", true);
+                return true;
+            }
         }
         return false;
     }
