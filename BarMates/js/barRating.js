@@ -273,7 +273,7 @@ function goToHomePage() {
     window.location.href = "Homepage.aspx";
 }
 function saveRateInDB() {
-    showLoader('עוד רגע... שומר דירוג');
+    showLoader('גם מסע של 1000 צייסרים מתחיל בצייסר אחד');
     rate = JSON.stringify({ 'rate': JSON.stringify(rate) });
     $.ajax({
         type: "POST",
@@ -287,7 +287,7 @@ function saveRateInDB() {
 
             if (RateToReturn!=null && RateToReturn.insertSucceeded != null && RateToReturn.insertSucceeded == 'True') {
                 if (RateToReturn.challengeWin != null && RateToReturn.challengeWin != "") {
-                    $('#modal_text').text('כל הכבוד! ניצחת באתגר ' + RateToReturn.challengeWin);
+                    $('#modal_text').text('הדרך להתחיל היא להפסיק לדבר, ולהתחיל לשתות! אשכרה סיימת אתגר ' + RateToReturn.challengeWin);
                 }
                 else {
                     $('#modal_text').text('השמירה בוצעה בהצלחה');
