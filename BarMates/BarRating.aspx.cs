@@ -173,15 +173,15 @@ public partial class BarRating : System.Web.UI.Page
             {
                 Engine.GetChallengeUserByUserName(user);
                 user.UpdateScoreAfterRating(bar);
-                if (user.IsDeservedAJerusalemBadge())
+                if (user.IsDeservedAJerusalemBadge(bar))
                 {
                     challengeWin = "ירושלים";
                 }
-                if (user.IsDeservedATLVBadge())
+                if (user.IsDeservedATLVBadge(bar))
                 {
                     challengeWin = "תל אביב";
                 }
-                if (user.IsDeservedAWorldBadge())
+                if (user.IsDeservedAWorldBadge(bar))
                 {
                     challengeWin = "עולמי";
                 }
