@@ -172,7 +172,7 @@ public partial class BarRating : System.Web.UI.Page
             if (firstRate)
             {
                 Engine.GetChallengeUserByUserName(user);
-                user.UpdateScoreAfterRating(bar);
+                user.UpdateScoreAfterRating(bar, rate);
                 if (user.IsDeservedAJerusalemBadge(bar))
                 {
                     challengeWin = "ירושלים";

@@ -1036,10 +1036,30 @@ public class User
         return 0;
     }
 
-    public void UpdateScoreAfterRating(Bar bar)
+    public void UpdateScoreAfterRating(Bar bar, Rate rate)
     {
-        Score += 50;
-        Score += 50 * IsChallengeFinished(bar);
+        int tmpScore = 0;
+        var rateVec = rate.RateVector();
+        var barVec = bar.BarCharacteristics;
+        for (int i = 0; i < barVec.Length; i++)
+        {
+            if (rateVec[i] != 0) //should mean that the user didnt rate this category at all
+            {
+                if (rateVec[i] == barVec[i])
+                {
+                    tmpScore += 10;
+                }
+                else
+                {
+                    tmpScore -= 10;
+                }
+            }
+        }
+        Score += tmpScore;
+        if (tmpScore >= 0)
+        {
+            Score += 50 * IsChallengeFinished(bar);
+        }
         Engine.InsertUpdateScoreByUserName(this, Score);
     }
 
